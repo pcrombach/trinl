@@ -61,13 +61,13 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     });
     //
     var lastArgs = dataFactoryConfig.currentModel.get('__dataItem__Filter');
-    console.log('__DataItem__SideMenuCtrl __dataItem__Filter from config: ', lastArgs);
+    //console.log('__DataItem__SideMenuCtrl __dataItem__Filter from config: ', lastArgs);
     //
     var filter = {
       filter: lastArgs.tag
     };
     //
-    console.log('__DataItem__sCtrl lastArgs from config: ', lastArgs);
+    //console.log('__DataItem__sCtrl lastArgs from config: ', lastArgs);
 
     if (lastArgs.filter === 'Tag') {
       $rootScope.$emit('setNavTitleEvent', filter);
@@ -87,7 +87,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     var __dataItem__Predicate = $rootScope.$on('__dataItem__Predicate', function (event, args) {
 
-      console.log('__DataItem__sCtrl __dataItem__Predicate event __dataItem__Sorter set to: ', args);
+      //console.log('__DataItem__sCtrl __dataItem__Predicate event __dataItem__Sorter set to: ', args);
 
       $scope.predicate = args.predicate;
       $scope.reverse = args.reverse;
@@ -95,13 +95,13 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       dataFactoryConfig.currentModel.set('__dataItem__Sorter', args);
       dataFactoryConfigX.update(dataFactoryConfig.currentModel);
 
-      console.log('__DataItem__sCtrl __dataItem__Predicate event __dataItem__Sorter saved in config: ', args);
+      //console.log('__DataItem__sCtrl __dataItem__Predicate event __dataItem__Sorter saved in config: ', args);
     });
     $scope.$on('$destroy', __dataItem__Predicate);
     //
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.addEventListener('message', function (event) {
-        console.log('Received a message from service worker: ', event.data.message);
+        //console.log('Received a message from service worker: ', event.data.message);
         if (event.data.message === 'RefreshSpoor') {
           refresh();
         }
@@ -110,7 +110,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     var event0 = $scope.$on('$ionicView.enter', function () {
 
-      console.warn('__DataItem__sCtrl $ionicView.ecnter');
+      //console.warn('__DataItem__sCtrl $ionicView.ecnter');
 
       if (!dataFactory__DataItem__.card) {
         $ionicSideMenuDelegate.toggleLeft();
@@ -179,7 +179,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     var event0b = $scope.$on('$ionicView.beforeLeave', function () {
       if (dataFactory__DataItem__.card) {
-        console.warn('__DataItem__Ctrl $ionicView.beforeLeave, dataFactory__DataItem__.card: ', dataFactory__DataItem__.card);
+        //console.warn('__DataItem__Ctrl $ionicView.beforeLeave, dataFactory__DataItem__.card: ', dataFactory__DataItem__.card);
         $rootScope.$emit('sleepClock__DataItem__');
       }
     });
@@ -192,7 +192,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       var tagModel = args;
       var tagId = tagModel.get('Id');
 
-      console.warn('+++ __DataItem__sCtrl __dataItem__DeleteTags tagId: ', tagId);
+      //console.warn('+++ __DataItem__sCtrl __dataItem__DeleteTags tagId: ', tagId);
       //
       //	Verwijder in mijn __dataItem__SupStore en update
       //
@@ -200,10 +200,10 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
       function doChunkDelete(chunkDelete, index) {
 
-        console.warn('__DataItem__sCtrl doChunkDelete');
+        //console.warn('__DataItem__sCtrl doChunkDelete');
 
         if (index >= chunkDelete.length) {
-          console.log('__DataItem__sCtrl doChunkDelete READY');
+          //console.log('__DataItem__sCtrl doChunkDelete READY');
           return;
         }
 
@@ -214,7 +214,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
           //	Alleen supModel eigenaar
           //
           if (__dataItem__SupModel) {
-            console.log('__DataItem__sCtrl doChunksDelete', __dataItem__SupModel);
+            //console.log('__DataItem__sCtrl doChunksDelete', __dataItem__SupModel);
             if (__dataItem__SupModel.eigenaar === false) {
               loDash.remove(__dataItem__SupModel.tags, function (tagModel) {
                 return tagModel.get('Id') === tagId;
@@ -255,7 +255,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
           return __dataItem__TagModel.get('tagId') === tagId;
         });
       });
-      console.log('__DataItem__sCtrl __dataItem__DeleteTags after doChunkDelete __dataItem__Store: ', dataFactory__DataItem__.store);
+      //console.log('__DataItem__sCtrl __dataItem__DeleteTags after doChunkDelete __dataItem__Store: ', dataFactory__DataItem__.store);
       //
       //	Verwijder in tagStore en update
       //
@@ -287,11 +287,11 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       var tagModel = args;
       var tagId = tagModel.get('Id');
       var tagTekst = tagModel.get('tag');
-      console.warn('+++ __DataItem__sCtrl __dataItem__EditTags tagId, tagTekst: ', tagId, tagTekst);
+      //console.warn('+++ __DataItem__sCtrl __dataItem__EditTags tagId, tagTekst: ', tagId, tagTekst);
       //
       //	Wijzig in tagStore en update
       //
-      console.warn('+++ __DataItem__sCtrl __dataItem__EditTags tagStore update: ', dataFactoryTag.store);
+      //console.warn('+++ __DataItem__sCtrl __dataItem__EditTags tagStore update: ', dataFactoryTag.store);
       loDash.each(dataFactoryTag.store, function (tagModel) {
         if (tagModel.get('Id') === tagId) {
           tagModel.set('tag', tagTekst);
@@ -302,14 +302,14 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       //	Verwijder in mijn __dataItem__SupStore en update
       //
       var chunkEdit = loDash.chunk(dataFactory__DataItem__Sup.store, 10);
-      console.log(chunkEdit);
+      //console.log(chunkEdit);
 
       function doChunkEdit(chunkEdit, index) {
 
-        console.warn('__DataItem__sCtrl doChunkEdit');
+        //console.warn('__DataItem__sCtrl doChunkEdit');
 
         if (index >= chunkEdit.length) {
-          console.log('__DataItem__sCtrl doChunkEdit READY');
+          //console.log('__DataItem__sCtrl doChunkEdit READY');
           return;
         }
 
@@ -344,7 +344,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       //
       loDash.each(dataFactory__DataItem__.store, function (__dataItem__Model) {
 
-        console.log('__DataItem__sCtrl EditAllLabels, __dataItem__Model: ', __dataItem__Model);
+        //console.log('__DataItem__sCtrl EditAllLabels, __dataItem__Model: ', __dataItem__Model);
 
         initxData(__dataItem__Model);
 
@@ -362,27 +362,27 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     $scope.$on('$destroy', event3);
     //
     function doVerwijderen(mijn__DataItem__s) {
-      console.time('Verwijderen');
+      //console.time('Verwijderen');
 
       $ionicLoading.show({
         template: 'Verwijderen Locaties Selectie<br><br><span class="trinl-rood"><b>' + filter.filter + '</b></span><br><br><br>Een ogenblik geduld aub...'
       });
 
       var chunkRemove = loDash.chunk(mijn__DataItem__s, 10);
-      console.log(chunkRemove);
+      //console.log(chunkRemove);
 
       function doChunkRemove(chunkRemove, index) {
 
-        console.warn('__DataItem__sCtrl doChunkRemove, index: ', index);
+        //console.warn('__DataItem__sCtrl doChunkRemove, index: ', index);
 
         if (index >= chunkRemove.length) {
-          console.log('__DataItem__sCtrl doChunkRemove READY');
+          //console.log('__DataItem__sCtrl doChunkRemove READY');
           $ionicLoading.hide();
 
           $rootScope.$emit('sideMenu__DataItem__sFilter', {
             filter: 'Alle'
           });
-          console.timeEnd('Verwijderen');
+          //console.timeEnd('Verwijderen');
           return;
         }
         //
@@ -394,14 +394,14 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
           var __dataItem__Id = __dataItem__Model.get('Id');
 
-          console.warn('__DataItem__sCtrl doChunkRemove, index: ', index);
+          //console.warn('__DataItem__sCtrl doChunkRemove, index: ', index);
           //
           // Filter de __dataItem__tags van dit __dataItem__model
           //
           var __dataItem__tags = loDash.filter(dataFactory__DataItem__Tag.store, function (__dataItem__tagModel) {
             return __dataItem__tagModel.get('__dataItem__Id') === __dataItem__Id;
           });
-          console.warn('__DataItem__sCtrl doChunkRemove, __dataItem__tags from Id: ', __dataItem__tags, __dataItem__Model.get('Id'), __dataItem__Model.get('naam'));
+          //console.warn('__DataItem__sCtrl doChunkRemove, __dataItem__tags from Id: ', __dataItem__tags, __dataItem__Model.get('Id'), __dataItem__Model.get('naam'));
           //
           // De __dataItem__tags van dit model worden later verwijderd
           // Er is nu tijd om de __DataItem__SideMenuCtrl te informeren om zijn tags bij te werken
@@ -417,7 +417,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
             //
             if (tagModel) {
 
-              console.warn('__DataItem__sCtrl doChunkRemove, verwijder __dataItem__tag: ', tagModel.get('tag'));
+              //console.warn('__DataItem__sCtrl doChunkRemove, verwijder __dataItem__tag: ', tagModel.get('tag'));
 
               __dataItem__TagModel.xData = tagModel;
 
@@ -474,12 +474,12 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     var event12 = $rootScope.$on('__dataItem__VerwijderSelectie', function (event, args) {
       //
-      console.error('Verwijderen Selectie ceo data.__dataItem__s:  ', $scope.ceo.Id, $scope.data.__dataItem__s);
+      //console.error('Verwijderen Selectie ceo data.__dataItem__s:  ', $scope.ceo.Id, $scope.data.__dataItem__s);
       //
       var mijn__DataItem__s = loDash.filter($scope.data.__dataItem__s, function (__dataItem__Model) {
         return __dataItem__Model.get('gebruikerId') === $scope.ceo.Id;
       });
-      console.error('Mijn__DataItem__s aantal: ', mijn__DataItem__s.length);
+      //console.error('Mijn__DataItem__s aantal: ', mijn__DataItem__s.length);
 
       if (mijn__DataItem__s.length === 0) {
         $ionicPopup.alert({
@@ -540,7 +540,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     function watchLabelGeenLabel__DataItem__(tagModel) {
       done += 1;
-      console.log('watchLabelGeenLabel__DataItem__ todo, done: ', todo, done);
+      //console.log('watchLabelGeenLabel__DataItem__ todo, done: ', todo, done);
       if (done >= todo) {
 
         $rootScope.$emit('__dataItem__sNieuweAantallen');
@@ -556,7 +556,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     var event13 = $rootScope.$on('labelGeenLabel__DataItem__', function (event, args) {
 
-      console.warn('__DataItem__sCtrl event labelGeenLabel__DataItem__ args: ', args.tagModel);
+      //console.warn('__DataItem__sCtrl event labelGeenLabel__DataItem__ args: ', args.tagModel);
 
       var tagModel = args.tagModel;
 
@@ -578,7 +578,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       loDash.each(__dataItem__sZonderLabel, function (__dataItem__Model) {
 
         var __dataItem__Id = __dataItem__Model.get('Id');
-        console.log('__DataItem__sCtrl event labelGeenLabel__DataItem__ __dataItem__sZonderLabel __dataItem__Id, __dataItem__Naam: ', __dataItem__Id, __dataItem__Model.get('naam'));
+        //console.log('__DataItem__sCtrl event labelGeenLabel__DataItem__ __dataItem__sZonderLabel __dataItem__Id, __dataItem__Naam: ', __dataItem__Id, __dataItem__Model.get('naam'));
 
         var __dataItem__TagModel = new dataFactory__DataItem__Tag.Model();
         __dataItem__TagModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
@@ -588,8 +588,8 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
           __dataItem__TagModel.xData = tagModel;
 
-          console.log('__DataItem__sCtrl labelGeenLabel__DataItem__ __dataItem__tag TOEVOEGEN in  SideMenu: ', __dataItem__Model.get('naam'), tagModel.get('tag'));
-          console.log('__DataItem__sCtrl labelGeenLabel__DataItem__ __dataItem__tag TOEVOEGEN in  __dataItem__Model.xData.tags: ', __dataItem__Model.get('naam'), add__DataItem__TagModel);
+          //console.log('__DataItem__sCtrl labelGeenLabel__DataItem__ __dataItem__tag TOEVOEGEN in  SideMenu: ', __dataItem__Model.get('naam'), tagModel.get('tag'));
+          //console.log('__DataItem__sCtrl labelGeenLabel__DataItem__ __dataItem__tag TOEVOEGEN in  __dataItem__Model.xData.tags: ', __dataItem__Model.get('naam'), add__DataItem__TagModel);
 
           __dataItem__Model.xData.tags.push(__dataItem__TagModel);
           $rootScope.$emit('__dataItem__AddLabel', {
@@ -604,7 +604,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     var event4 = $rootScope.$on('__dataItem__StartSearch', function () {
 
-      console.warn('+++ __dataItem__Ctrl __dataItem__StartSearch');
+      //console.warn('+++ __dataItem__Ctrl __dataItem__StartSearch');
 
       $scope.data.__dataItem__s = [];
     });
@@ -620,7 +620,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
           //sorteerDetailsTags(__dataItem__Model);
         //});
 
-        console.log('__DataItem__sCtrl finishFilter FILTER AANTAL __dataItem__s selected: ', dataFactory__DataItem__.selected);
+        //console.log('__DataItem__sCtrl finishFilter FILTER AANTAL __dataItem__s selected: ', dataFactory__DataItem__.selected);
         //
         /*  ###
         //removeIf(berichten)
@@ -633,7 +633,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
         ###  */
 
         $timeout(function () {
-          console.log('__DataItem__Ctrl finishFilter $ionicScrollDelegate');
+          //console.log('__DataItem__Ctrl finishFilter $ionicScrollDelegate');
           $ionicScrollDelegate.$getByHandle('__dataItem__List').scrollTop(true);
           //$ionicScrollDelegate.scrollTop(true);
 
@@ -643,7 +643,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     var event5 = $rootScope.$on('__dataItem__sFilter', function (event, args) {
 
-      console.error('__DataItem__sCtrl on.__dataItem__sFilter: ', args);
+      //console.error('__DataItem__sCtrl on.__dataItem__sFilter: ', args);
 
       //
       // Indien geen argumenten dan de oude filter toepassen
@@ -656,10 +656,10 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
       dataFactoryConfig.currentModel.set('__dataItem__Filter', args);
       dataFactoryConfigX.update(dataFactoryConfig.currentModel);
-      console.log('__DataItem__sCtrl laatste __dataItem__sFilter saved in config: ', args);
+      //console.log('__DataItem__sCtrl laatste __dataItem__sFilter saved in config: ', args);
 
       if (args.filter === 'Mijn') {
-        console.warn('__DataItem__sCtrl __dataItem__sFilter: Mijn');
+        //console.warn('__DataItem__sCtrl __dataItem__sFilter: Mijn');
         $scope.data.__dataItem__s = loDash.filter(dataFactory__DataItem__.store, function (__dataItem__Model) {
           return __dataItem__Model.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
         });
@@ -667,7 +667,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       }
 
       if (args.filter === 'Public') {
-        console.warn('__DataItem__sCtrl __dataItem__sFilter: Public');
+        //console.warn('__DataItem__sCtrl __dataItem__sFilter: Public');
         $scope.data.__dataItem__s = loDash.filter(dataFactory__DataItem__.store, function (__dataItem__Model) {
           return __dataItem__Model.get('gebruikerId') !== dataFactoryCeo.currentModel.get('Id');
         });
@@ -675,22 +675,22 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       }
 
       if (args.filter === 'Alle') {
-        console.warn('__DataItem__sCtrl __dataItem__sFilter: Alle');
+        //console.warn('__DataItem__sCtrl __dataItem__sFilter: Alle');
         $scope.data.__dataItem__s = loDash.each(dataFactory__DataItem__.store);
         finishFilter();
       }
 
       if (args.filter === 'Geen label') {
 
-        console.warn('__DataItem__sCtrl __dataItem__sFilter: Geen label');
+        //console.warn('__DataItem__sCtrl __dataItem__sFilter: Geen label');
 
         $scope.data.__dataItem__s = loDash.filter(dataFactory__DataItem__.store, function (__dataItem__Model) {
           if (__dataItem__Model.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id')) {
-            console.warn('__DataItem__sCtrl __dataItem__sFilter Geen label in __dataItem__Model: ', __dataItem__Model);
+            //console.warn('__DataItem__sCtrl __dataItem__sFilter Geen label in __dataItem__Model: ', __dataItem__Model);
             if (__dataItem__Model.xData === undefined) {
               return false;
             }
-            console.warn('__DataItem__sCtrl __dataItem__sFilter __dataItem__Model.xData: ', __dataItem__Model.xData);
+            //console.warn('__DataItem__sCtrl __dataItem__sFilter __dataItem__Model.xData: ', __dataItem__Model.xData);
             if (__dataItem__Model.xData.tags !== undefined) {
               return __dataItem__Model.xData && __dataItem__Model.xData.tags.length === 0;
             } else {
@@ -699,22 +699,22 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
           }
         });
 
-        console.log('__DataItem__sCtrl ongelabeld aantal __dataItem__s: ', $scope.data.__dataItem__s);
+        //console.log('__DataItem__sCtrl ongelabeld aantal __dataItem__s: ', $scope.data.__dataItem__s);
 
         finishFilter();
       }
 
       if (args.filter === 'Tag') {
 
-        console.warn('__DataItem__sCtrl __dataItem__sFilter: Tag:', args.tag);
+        //console.warn('__DataItem__sCtrl __dataItem__sFilter: Tag:', args.tag);
 
         $scope.data.__dataItem__s = loDash.filter(dataFactory__DataItem__.store, function (__dataItem__Model) {
 
           initxData(__dataItem__Model);
-          console.log('__DataItem__sCtrl __dataItem__sFilter Tag __dataItem__Model naam: ', __dataItem__Model.get('naam'));
-          console.log('__DataItem__sCtrl __dataItem__sFilter Tag __dataItem__Model naam: ', __dataItem__Model.xData.tags);
+          //console.log('__DataItem__sCtrl __dataItem__sFilter Tag __dataItem__Model naam: ', __dataItem__Model.get('naam'));
+          //console.log('__DataItem__sCtrl __dataItem__sFilter Tag __dataItem__Model naam: ', __dataItem__Model.xData.tags);
           if (__dataItem__Model.xData.tags.length >= 1) {
-            console.warn('__DataItem__sCtrl __dataItem__sFilter Tag: ', __dataItem__Model.xData.tags.tag);
+            //console.warn('__DataItem__sCtrl __dataItem__sFilter Tag: ', __dataItem__Model.xData.tags.tag);
           }
           var found = loDash.find(__dataItem__Model.xData.tags, function (__dataItem__TagModel) {
             return __dataItem__TagModel.xData.get('tag') === args.tag;
@@ -725,19 +725,19 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       }
 
       if (args.filter === 'Geen') {
-        console.warn('__DataItem__sCtrl __dataItem__sFilter: Geen');
+        //console.warn('__DataItem__sCtrl __dataItem__sFilter: Geen');
         $scope.data.__dataItem__s = [];
-        console.log('__DataItem__sCtrl ongelabeld aantal __dataItem__s: ', $scope.data.__dataItem__s);
+        //console.log('__DataItem__sCtrl ongelabeld aantal __dataItem__s: ', $scope.data.__dataItem__s);
         finishFilter();
       }
 
       if (args.filter === 'Search') {
-        console.log('__DataItem__sCtrl __dataItem__sFilter: Search', args);
+        //console.log('__DataItem__sCtrl __dataItem__sFilter: Search', args);
 
         if (args.search === '') {
           $scope.search.label = '';
           $scope.data.__dataItem__s = [];
-          console.log('__DataItem__sCtrl __dataItem__sFilter: geen Search');
+          //console.log('__DataItem__sCtrl __dataItem__sFilter: geen Search');
           finishFilter();
         } else {
           $scope.data.__dataItem__s = dataFactory__DataItem__.store;
@@ -748,18 +748,18 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       }
 
       if (args.filter === 'Nieuw') {
-        console.warn('__DataItem__sCtrl __dataItem__sFilter: Nieuw');
+        //console.warn('__DataItem__sCtrl __dataItem__sFilter: Nieuw');
         $scope.data.__dataItem__s = dataFactory__DataItem__.nieuw;
         finishFilter();
       }
 
       if (args.filter === 'Favorieten') {
 
-        console.warn('__DataItem__sCtrl __dataItem__sFilter: Favorieten');
+        //console.warn('__DataItem__sCtrl __dataItem__sFilter: Favorieten');
 
         $scope.data.__dataItem__s = dataFactory__DataItem__.star;
 
-        console.log('__DataItem__sCtrl nieuwe __dataItem__s: ', dataFactory__DataItem__.star);
+        //console.log('__DataItem__sCtrl nieuwe __dataItem__s: ', dataFactory__DataItem__.star);
         finishFilter();
       }
     });
@@ -767,7 +767,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     var event10 = $rootScope.$on('deleteLabel', function (event, args) {
 
-      console.warn('__DataItem__sCtrl event deleteLabel: ', args);
+      //console.warn('__DataItem__sCtrl event deleteLabel: ', args);
 
       loDash.each(dataFactory__DataItem__.store, function (__dataItem__Model) {
 
@@ -797,7 +797,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
         gpxDoneErrors += 1;
 
-        console.warn('__DataItem__sCtrl watchGpxErrors gpxDoneErrors, gpxTodoErrors: ', gpxDoneErrors, gpxTodoErrors);
+        //console.warn('__DataItem__sCtrl watchGpxErrors gpxDoneErrors, gpxTodoErrors: ', gpxDoneErrors, gpxTodoErrors);
 
         if (gpxDoneErrors >= gpxTodoErrors) {
 
@@ -830,7 +830,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
         gpxDone += 1;
 
-        console.warn('__DataItem__sCtrl watchGpx gpxDone, gpxTodo: ', gpxDone, gpxTodo, uploadErrors.length);
+        //console.warn('__DataItem__sCtrl watchGpx gpxDone, gpxTodo: ', gpxDone, gpxTodo, uploadErrors.length);
 
         if (gpxDone >= gpxTodo) {
 
@@ -869,7 +869,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
           var __dataItem__Id = __dataItem__Model.get('Id');
           var base64String = uploadError.base64String;
 
-          console.log('__DataItem__sCtrl uploadError __dataItem__Model, uploadError: ', __dataItem__Model, uploadError);
+          //console.log('__DataItem__sCtrl uploadError __dataItem__Model, uploadError: ', __dataItem__Model, uploadError);
 
           dataFactoryExport__DataItem__s.recordGPX(__dataItem__Model.get('lat'), __dataItem__Model.get('lng'), __dataItem__Model.get('naam'), __dataItem__Model.get('tekst'), __dataItem__Id, base64String).then(function () {
 
@@ -882,7 +882,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
             watchGpx__DataItem__sErrors();
             // eslint-disable-next-line no-unused-vars
           }).catch(function (err) {
-            console.error('__DataItem__sCtrl uploadError ERROR err: ', err);
+            //console.error('__DataItem__sCtrl uploadError ERROR err: ', err);
             watchGpx__DataItem__sErrors();
           });
         });
@@ -890,7 +890,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
       function doExporteren__DataItem__s(mijn__DataItem__s) {
 
-        console.warn('__DataItem__sCtrl doExporteren__DataItem__s');
+        //console.warn('__DataItem__sCtrl doExporteren__DataItem__s');
 
         gpxTodo = mijn__DataItem__s.length;
         gpxDone;
@@ -923,7 +923,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
             uploadErrors.push({
               __dataItem__Model: __dataItem__Model
             });
-            console.error('__DataItem__sCtrl upload ERROR __dataItem__ naam, err: ', __dataItem__Model.get('naam'), err);
+            //console.error('__DataItem__sCtrl upload ERROR __dataItem__ naam, err: ', __dataItem__Model.get('naam'), err);
             watchGpx__DataItem__s();
           });
         });
@@ -932,7 +932,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       var mijn__DataItem__s = loDash.filter($scope.data.__dataItem__s, function (__dataItem__Model) {
         return __dataItem__Model.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
       });
-      console.log('__DataItem__sCtrl __dataItem__ExporteerSelectie mijn__DataItem__s: ', mijn__DataItem__s);
+      //console.log('__DataItem__sCtrl __dataItem__ExporteerSelectie mijn__DataItem__s: ', mijn__DataItem__s);
 
       var aantal__DataItem__s = mijn__DataItem__s.length;
       $ionicLoading.hide();
@@ -990,7 +990,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
  
       function watchGpxFotosErrors() {
  
-        console.warn('__DataItem__sCtrl watchGpxErrors gpxDoneErrors, gpxTodoErrors: ', gpxDoneErrors, gpxTodoErrors);
+        //console.warn('__DataItem__sCtrl watchGpxErrors gpxDoneErrors, gpxTodoErrors: ', gpxDoneErrors, gpxTodoErrors);
  
         gpxDoneErrors += 1;
         if (gpxDoneErrors >= gpxTodoErrors) {
@@ -1022,7 +1022,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
  
       function watchGpxFotos() {
  
-        console.warn('__DataItem__sCtrl watchGpx gpxDone, gpxTodo: ', gpxDone, gpxTodo);
+        //console.warn('__DataItem__sCtrl watchGpx gpxDone, gpxTodo: ', gpxDone, gpxTodo);
  
         gpxDone += 1;
         if (gpxDone >= gpxTodo) {
@@ -1061,7 +1061,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
           var __dataItem__Id = __dataItem__Model.get('Id');
           var base64String = uploadError.base64String;
  
-          console.log('__DataItem__sCtrl uploadError __dataItem__Model, uploadError: ', __dataItem__Model, uploadError);
+          //console.log('__DataItem__sCtrl uploadError __dataItem__Model, uploadError: ', __dataItem__Model, uploadError);
  
           dataFactoryExport__DataItem__s.recordGPX(__dataItem__Model.get('lat'), __dataItem__Model.get('lng'), __dataItem__Model.get('naam'), __dataItem__Model.get('tekst'), __dataItem__Id, base64String).then(function () {
  
@@ -1074,7 +1074,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
             watchGpxFotosErrors();
             // eslint-disable-next-line no-unused-vars
           }).catch(function (err) {
-            console.error('__DataItem__sCtrl uploadError ERROR err: ', err);
+            //console.error('__DataItem__sCtrl uploadError ERROR err: ', err);
             watchGpxFotosErrors();
           });
         });
@@ -1104,20 +1104,20 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
           //var exportNaam = __dataItem__Model.get('naam');
           var content;
  
-          console.warn('__DataItem__CardCtrl __dataItem__Model: ', __dataItem__Model, __dataItem__Model.get('naam'));
+          //console.warn('__DataItem__CardCtrl __dataItem__Model: ', __dataItem__Model, __dataItem__Model.get('naam'));
           (function (__dataItem__Model) {
  
             dataFactory__DataItem__s.get__DataItem__Src(__dataItem__Model.get('gebruikerId'), __dataItem__Model.get('dir'), __dataItem__Model.get('__dataItem__Id'), __dataItem__Model.get('extension')).then(function (result) {
               content = result;
  
-              console.warn('__DataItem__sCtrl prep export content: ', content);
+              //console.warn('__DataItem__sCtrl prep export content: ', content);
  
               var img = new Image();
               img.crossOrigin = 'Anonymous';
               img.setAttribute('style', 'display:none');
               img.setAttribute('alt', 'script div');
               img.setAttribute('src', content);
-              console.log('__DataItem__sCtrl prep export img: ', img);
+              //console.log('__DataItem__sCtrl prep export img: ', img);
  
               img.onload = function () {
                 var c = document.createElement('canvas');
@@ -1127,7 +1127,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
                 ctx.drawImage(img, 0, 0, c.width, c.height);
                 var uri = c.toDataURL('image/jpg'),
                   base64String = uri.replace(/^data:image.+;base64,/, '');
-                console.log('__DataItem__sCtrl prep export base64String: ', base64String);
+                //console.log('__DataItem__sCtrl prep export base64String: ', base64String);
                 dataFactoryExport__DataItem__s.recordGPX(__dataItem__Model.get('lat'), __dataItem__Model.get('lng'), __dataItem__Model.get('naam'), __dataItem__Model.get('tekst'), __dataItem__Id, base64String).then(function () {
                   $ionicLoading.show({
                     template: '<ion-spinner icon="lines" class="spinner-energized"></ion-spinner><br>Bezig met Exporteren Locaties<br><br><span class="trinl-rood"><b>' + __dataItem__Model.get('naam') + '</b></span><br><br>Een ogenblik geduld aub...'
@@ -1139,8 +1139,8 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
                     __dataItem__Model: __dataItem__Model,
                     base64String: base64String
                   });
-                  console.log('__DataItem__sCtrl upload ERROR uploadErrors: ', uploadErrors);
-                  console.error('__DataItem__sCtrl upload ERROR __dataItem__ naam, err: ', __dataItem__Model.get('naam'), err);
+                  //console.log('__DataItem__sCtrl upload ERROR uploadErrors: ', uploadErrors);
+                  //console.error('__DataItem__sCtrl upload ERROR __dataItem__ naam, err: ', __dataItem__Model.get('naam'), err);
                   watchGpxFotos();
                 });
               };
@@ -1205,9 +1205,9 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       ###  */
       /*  ###
       //removeIf(!tracks)
-      console.log('Geoposition: ', dataFactoryTrack.Geoposition);
+      //console.log('Geoposition: ', dataFactoryTrack.Geoposition);
  
-      console.log('TracksCtrl trackExporteerSelectie $scope.data.tracks: ', $scope.data.tracks);
+      //console.log('TracksCtrl trackExporteerSelectie $scope.data.tracks: ', $scope.data.tracks);
       //
       //  In $scope.data.tracks staan de geselecteerde tracks
       //  Eerst wordt een geojsonModel geopen met openGPX.
@@ -1216,7 +1216,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       //  Daarna wordt geojson geconverteerd naar gpx en opgeslagen in de Dropbox-map Locaties
       //
       var gpxNaam = args.filter;
-      console.log('TracksCtrl trackExporteerSelectie gpxNaam: ', gpxNaam);
+      //console.log('TracksCtrl trackExporteerSelectie gpxNaam: ', gpxNaam);
 
       if (gpxNaam === 'Search') {
 
@@ -1249,7 +1249,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
         popupEditZoekNaam.then(function (res) {
 
           if (res !== undefined) {
-            console.log('FotosSideMenuCtrl editTag Label gewijzigd in: ' + res);
+            //console.log('FotosSideMenuCtrl editTag Label gewijzigd in: ' + res);
             gpxNaam = res;
           }
         });
@@ -1262,7 +1262,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
         gpxDoneErrors += 1;
 
-        console.warn('TracksCtrl watchGpxErrors gpxDoneErrors, gpxTodoErrors: ', gpxDoneErrors, gpxTodoErrors);
+        //console.warn('TracksCtrl watchGpxErrors gpxDoneErrors, gpxTodoErrors: ', gpxDoneErrors, gpxTodoErrors);
 
         if (gpxDoneErrors >= gpxTodoErrors) {
 
@@ -1295,7 +1295,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
         gpxDone += 1;
 
-        console.warn('TracksCtrl watchGpx gpxDone, gpxTodo: ', gpxDone, gpxTodo, uploadErrors.length);
+        //console.warn('TracksCtrl watchGpx gpxDone, gpxTodo: ', gpxDone, gpxTodo, uploadErrors.length);
 
         if (gpxDone >= gpxTodo) {
 
@@ -1339,7 +1339,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
           var trackModel = uploadError.trackModel;
           var trackId = trackModel.get('Id');
 
-          console.log('TracksCtrl uploadError trackModel, uploadError: ', trackModel, uploadError);
+          //console.log('TracksCtrl uploadError trackModel, uploadError: ', trackModel, uploadError);
 
           dataFactoryExportTracks.recordGPX(trackModel.get('lat'), trackModel.get('lng'), trackModel.get('naam'), trackModel.get('tekst'), trackId, trackData).then(function () {
 
@@ -1352,7 +1352,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
             watchGpxTracksErrors();
           // eslint-disable-next-line no-unused-vars
           }).catch(function (err) {
-            console.error('TracksCtrl uploadError ERROR err: ', err);
+            //console.error('TracksCtrl uploadError ERROR err: ', err);
             watchGpxTracksErrors();
           });
         });
@@ -1377,10 +1377,10 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       loDash.each(mijnTracks, function (trackModel) {
         var trackId = trackModel.get('Id');
         var gebruikerId = trackModel.get('gebruikerId');
-        console.log('TracksCtrl trackExporteerSelectie trackModel: ', trackModel);
+        //console.log('TracksCtrl trackExporteerSelectie trackModel: ', trackModel);
 
         dataFactoryTracks.loadTrack(gebruikerId, trackId, 'txt').then(function (trackData) {
-          console.log('TracksCtrl trackExporteerSelectie trackData: ', trackData);
+          //console.log('TracksCtrl trackExporteerSelectie trackData: ', trackData);
           //dataFactoryExportTracks.openGPX();
           dataFactoryExportTracks.recordGPX(trackModel.get('lat'), trackModel.get('lng'), trackModel.get('naam'), trackModel.get('tekst'), trackId, trackData);
           //dataFactoryExportTracks.closeGPX('NMFL-naam');
@@ -1404,11 +1404,11 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //removeIf(!berichten)
     $scope.nieuwBericht = function () {
 
-      console.warn('BerichtenCtrl nieuwBericht');
+      //console.warn('BerichtenCtrl nieuwBericht');
 
       //		$scope.bericht = {};
 
-      console.warn('BerichtenCtrl nieuwBericht uitgelogd = anoniem: ', dataFactoryCeo.currentModel.get('uitgelogd'), dataFactoryCeo.currentModel.get('gebruikerNaam'));
+      //console.warn('BerichtenCtrl nieuwBericht uitgelogd = anoniem: ', dataFactoryCeo.currentModel.get('uitgelogd'), dataFactoryCeo.currentModel.get('gebruikerNaam'));
 
       //		if (!dataFactoryCeo.currentModel.get('uitgelogd')) {
 
@@ -1449,7 +1449,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
           // eslint-disable-next-line no-unused-vars
         }, function (err) {
           //dataFactorySync.enableSyncOnResume = true;
-          console.error('FotosCtrl maakFoto ERROR: ', err);
+          //console.error('FotosCtrl maakFoto ERROR: ', err);
         });
       }
     };
@@ -1458,7 +1458,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     $scope.clicked__DataItem__ = function (__dataItem__Model) {
       dataFactory__DataItem__.card = true;
-      console.warn('__DataItem__sCtrl clicked__DataItem__ dataFactory__DataItem__.card: ', __dataItem__Model, dataFactory__DataItem__.card);
+      //console.warn('__DataItem__sCtrl clicked__DataItem__ dataFactory__DataItem__.card: ', __dataItem__Model, dataFactory__DataItem__.card);
       $state.go('__dataItem__s.__dataItem__Card', {
         'Id': __dataItem__Model.get('Id')
       });
@@ -1468,7 +1468,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
      * Nogmaals filteren starten
      */
     $scope.clearSearchLabel = function () {
-      console.warn('__DataItem__sCtrl clearSearchLabel');
+      //console.warn('__DataItem__sCtrl clearSearchLabel');
       $scope.search.label = '';
       $scope.data.__dataItem__s = dataFactory__DataItem__.store;
 
@@ -1479,7 +1479,7 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
     //
     function sorteerDetailsTags(__dataItem__Model) {
       //
-      console.error('__DataItem__CardCtrl sorteerDetailsTags');
+      //console.error('__DataItem__CardCtrl sorteerDetailsTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
@@ -1508,23 +1508,23 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
       //
       if (!__dataItem__Model.xData) {
         __dataItem__Model.xData = {};
-        console.log('__DataItem__sCtrl update__DataItem__ xData: ', __dataItem__Model.xData);
+        //console.log('__DataItem__sCtrl update__DataItem__ xData: ', __dataItem__Model.xData);
       }
       if (!__dataItem__Model.xData.pois) {
         __dataItem__Model.xData.pois = [];
-        console.log('__DataItem__sCtrl update__DataItem__ xData.pois: ', __dataItem__Model.xData.pois);
+        //console.log('__DataItem__sCtrl update__DataItem__ xData.pois: ', __dataItem__Model.xData.pois);
       }
       if (!__dataItem__Model.xData.fotos) {
         __dataItem__Model.xData.fotos = [];
-        console.log('__DataItem__sCtrl update__DataItem__ xData.fotos: ', __dataItem__Model.xData.fotos);
+        //console.log('__DataItem__sCtrl update__DataItem__ xData.fotos: ', __dataItem__Model.xData.fotos);
       }
       if (!__dataItem__Model.xData.tags) {
         __dataItem__Model.xData.tags = [];
-        console.log('__DataItem__sCtrl update__DataItem__ xData.tags: ', __dataItem__Model.xData.tags);
+        //console.log('__DataItem__sCtrl update__DataItem__ xData.tags: ', __dataItem__Model.xData.tags);
       }
       if (!__dataItem__Model.xData.groep) {
         __dataItem__Model.xData.groep = '';
-        console.log('__DataItem__sCtrl update__DataItem__ xData.groep: ', __dataItem__Model.xData.groep);
+        //console.log('__DataItem__sCtrl update__DataItem__ xData.groep: ', __dataItem__Model.xData.groep);
       }
     }
     //
@@ -1532,17 +1532,17 @@ trinl.controller('__DataItem__sCtrl', ['loDash', '$rootScope', '$scope', '$timeo
 
       $rootScope.$emit('refresh__DataItem__');
 
-      console.error('__DataItem__sCtrl doReload broadcast reloadComplete');
+      //console.error('__DataItem__sCtrl doReload broadcast reloadComplete');
       $scope.$broadcast('scroll.refreshComplete');
     };
     //
     $scope.$on('elemHasFocus', function (event, args) {
 
-      console.warn('__DataItem__sCtrl elemHasFocus event: ', args);
+      //console.warn('__DataItem__sCtrl elemHasFocus event: ', args);
       //
       if (args.message === 'Zoek in locaties') {
         $timeout(function () {
-          console.error('__DataItem__sCtrl elemHasFocus scrollTop $ionicScrollDelegate');
+          //console.error('__DataItem__sCtrl elemHasFocus scrollTop $ionicScrollDelegate');
           $ionicScrollDelegate.$getByHandle('__dataItem__List').scrollTop(true);
         });
       }

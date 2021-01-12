@@ -6,11 +6,11 @@
 trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state', '$timeout', '$interval', '$cordovaNetwork', '$ionicPlatform', '$ionicPopup', '$ionicPopover', '$ionicModal', '$ionicLoading', '$ionicSideMenuDelegate', 'dataFactoryDropbox', 'dataFactoryHelp', 'dataFactoryTag', 'dataFactoryFoto', 'dataFactoryConfig', 'dataFactoryConfigX', 'dataFactoryCeo', '$ionicListDelegate', '$ionicScrollDelegate', 'dataFactoryAnalytics',
   function (loDash, $rootScope, $scope, $state, $timeout, $interval, $cordovaNetwork, $ionicPlatform, $ionicPopup, $ionicPopover, $ionicModal, $ionicLoading, $ionicSideMenuDelegate, dataFactoryDropbox, dataFactoryHelp, dataFactoryTag, dataFactoryFoto, dataFactoryConfig, dataFactoryConfigX, dataFactoryCeo, $ionicListDelegate, $ionicScrollDelegate, dataFactoryAnalytics) {
 
-    //console.warn('FotosSideMenuCtrl start');
+    console.warn('FotosSideMenuCtrl start');
 
     dataFactoryDropbox.setType('/Fotos');
 
-    //console.warn('FotosSideMenuCtrl dropbox migratie done!');
+    console.warn('FotosSideMenuCtrl dropbox migratie done!');
 
     var mode = 'foto';
 
@@ -32,7 +32,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     $scope.data.filteredFotos = dataFactoryFoto.store;
 
     $rootScope.$on('fotoSideMenuUpdate', function () {
-      //console.error('fotoSideMenuUpdate');
+      console.error('fotoSideMenuUpdate');
       $scope.data.tags = dataFactoryFoto.sideMenuTags;
       sorteerDataTags();
     });
@@ -42,7 +42,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
-      //console.log('$scope.data.tags: ', $scope.data.tags);
+      console.log('$scope.data.tags: ', $scope.data.tags);
 
       var tagsPrivate = loDash.filter($scope.data.tags, function (tag) {
         return tag.tagId.length !== 0 && tag.tagId.length <= 3 && tag.tagGebruikerId !== '';
@@ -61,7 +61,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
       tagsNormaal = loDash.orderBy(tagsNormaal, o => o.tag, 'asc');
       $scope.data.tags = [...tagsPrivate, ...tagsStandaard, ...tagsNormaal];
 
-      //console.log('tagsPrivate, tagsStandaard, tagsNormaal: ', tagsPrivate, tagsStandaard, tagsNormaal);
+      console.log('tagsPrivate, tagsStandaard, tagsNormaal: ', tagsPrivate, tagsStandaard, tagsNormaal);
     }
 
     sorteerDataTags();
@@ -89,7 +89,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     var initSearch = false;
 
     var lastArgs = dataFactoryConfig.currentModel.get('fotoFilter');
-    //console.log('fotoSideMenuCtrl fotoFilter from config: ', lastArgs);
+    console.log('fotoSideMenuCtrl fotoFilter from config: ', lastArgs);
 
     if (!lastArgs.filter) {
       lastArgs = {
@@ -100,7 +100,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
       lastArgs = JSON.parse(lastArgs);
     }
     var filter = lastArgs;
-    //console.log('fotoSideMenuCtrl fotoFilter from config: ', filter);
+    console.log('fotoSideMenuCtrl fotoFilter from config: ', filter);
 
     fotosAantallen();
 
@@ -116,7 +116,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     var zoek = '';
 
     var sorter = dataFactoryConfig.currentModel.get('fotoSorter');
-    //console.log('fotoSideMenuCtrl fotoSorter from config: ', sorter);
+    console.log('fotoSideMenuCtrl fotoSorter from config: ', sorter);
 
     if (sorter.predicate === 'createdOn.value') {
       if (sorter.reverse) {
@@ -133,7 +133,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         sorteer = 'Datum&nbsp&nbsp<i class="radio-icon ion-arrow-up-b"></i>';
       }
       $scope.fotosSortCreatedOnUp = sorter.reverse;
-      //console.log('FotoSideMenuCtrl init sorter from config CreatedOn: ', sorter);
+      console.log('FotoSideMenuCtrl init sorter from config CreatedOn: ', sorter);
     }
     if (sorter.predicate === 'gelezen.value') {
       if (sorter.reverse) {
@@ -150,7 +150,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         sorteer = 'Gelezen&nbsp&nbsp<i class="radio-icon ion-arrow-up-b"></i>';
       }
       $scope.fotosSortGelezenUp = sorter.reverse;
-      //console.log('FotoSideMenuCtrl init sorter from config Gelezen: ', sorter);
+      console.log('FotoSideMenuCtrl init sorter from config Gelezen: ', sorter);
     }
     if (sorter.predicate === 'naam.value') {
       if (sorter.reverse) {
@@ -167,7 +167,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         sorteer = 'Naam&nbsp&nbsp<i class="radio-icon ion-arrow-up-b"></i>';
       }
       $scope.fotosSortNaamUp = sorter.reverse;
-      //console.log('FotoSideMenuCtrl init sorter from config Naam: ', sorter);
+      console.log('FotoSideMenuCtrl init sorter from config Naam: ', sorter);
     }
 
     $timeout(function () {
@@ -181,12 +181,12 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     $scope.openKaart2 = function () {
 
-      //console.warn('FotoSideMenuCtrl openKaart2');
+      console.warn('FotoSideMenuCtrl openKaart2');
       dataFactoryAnalytics.createEvent('sessie', 'kaarten', 'start', '1');
     };
 
     $scope.fotosSortNaamClick = function () {
-      //console.warn('FotoSideMenuCtrl fotosSortNaamClick $scope.fotosSortNaamUp: ', $scope.fotosSortNaamUp);
+      console.warn('FotoSideMenuCtrl fotosSortNaamClick $scope.fotosSortNaamUp: ', $scope.fotosSortNaamUp);
 
       $scope.fotosSortNaamUp = !$scope.fotosSortNaamUp;
       if ($scope.fotosSortNaamUp) {
@@ -210,7 +210,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     $scope.fotosSortDatumClick = function () {
 
-      //console.warn('FotoSideMenuCtrl fotosSortDatumClick $scope.fotosSortCreatedOnUp: ', $scope.fotosSortCreatedOnUp);
+      console.warn('FotoSideMenuCtrl fotosSortDatumClick $scope.fotosSortCreatedOnUp: ', $scope.fotosSortCreatedOnUp);
 
       $scope.fotosSortCreatedOnUp = !$scope.fotosSortCreatedOnUp;
       if ($scope.fotosSortCreatedOnUp) {
@@ -234,7 +234,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     $scope.fotosSortGelezenClick = function () {
 
-      //console.warn('FotoSideMenuCtrl fotosSortGelezenClick $scope.fotosSortGelezenUp: ', $scope.fotosSortGelezenUp);
+      console.warn('FotoSideMenuCtrl fotosSortGelezenClick $scope.fotosSortGelezenUp: ', $scope.fotosSortGelezenUp);
 
       $scope.fotosSortGelezenUp = !$scope.fotosSortGelezenUp;
       if ($scope.fotosSortGelezenUp) {
@@ -256,8 +256,8 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     function tagsRemove(fotoModel, tagModel) {
 
-      //console.warn('FotosSideMenuCtrl tagsRemove fotoModel, tagModel: ', fotoModel, tagModel);
-      //console.log('FotosSideMenuCtrl tagsRemove naam tag', fotoModel.get('naam'), tagModel.get('tag'));
+      console.warn('FotosSideMenuCtrl tagsRemove fotoModel, tagModel: ', fotoModel, tagModel);
+      console.log('FotosSideMenuCtrl tagsRemove naam tag', fotoModel.get('naam'), tagModel.get('tag'));
 
       var xtag = loDash.find($scope.data.tags, function (tag) {
         return tag.tag === tagModel.get('tag');
@@ -265,13 +265,13 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
       if (xtag) {
 
-        //console.log('FotosSideMenuCtrl tagsRemove xtag gevonden: ', xtag);
+        console.log('FotosSideMenuCtrl tagsRemove xtag gevonden: ', xtag);
 
         //var naam = fotoModel.get('naam');
         //
         //  Verwijder het fotoModel uit de itemss tabel
         //
-        //console.log('FotosSideMenuCtrl tagsRemove removing foto Id from xtag.items: ', fotoModel.get('Id'), xtag.items);
+        console.log('FotosSideMenuCtrl tagsRemove removing foto Id from xtag.items: ', fotoModel.get('Id'), xtag.items);
         loDash.remove(xtag.items, function (foto) {
           //return foto.Id === fotoModel.get('Id') && foto.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
           return foto.get('Id') === fotoModel.get('Id');
@@ -309,16 +309,16 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
           loDash.remove($scope.data.tags, function (sideMenuTag) {
             return sideMenuTag.tag === xtag.tag;
           });
-          //console.log('FotosSideMenuCtrl tagsAdd removed to update: ', xtag);
+          console.log('FotosSideMenuCtrl tagsAdd removed to update: ', xtag);
           $scope.data.tags.push(xtag);
           //$scope.data.tags = loDash.orderBy($scope.data.tags, o => o.tag, 'asc');
 
           sorteerDataTags();
         }
 
-        //console.log('FotosSideMenuCtrl tagsRemove tag, xtag REMOVED: ', tagModel.get('tag'), $scope.data.tags);
+        console.log('FotosSideMenuCtrl tagsRemove tag, xtag REMOVED: ', tagModel.get('tag'), $scope.data.tags);
       } else {
-        //console.error('FotosSideMenuCtrl tagsRemove xtag tag NOT FOUND: ', tagModel.get('tag'));
+        console.error('FotosSideMenuCtrl tagsRemove xtag tag NOT FOUND: ', tagModel.get('tag'));
       }
     }
     //
@@ -330,8 +330,8 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     //  fotoModel.xData.tags.xData het gaat
     //    
     function tagsAdd(fotoModel, tagModel) {
-      //console.log('FotosSideMenuCtrl tagsAdd fotoModel, tagModel: ', fotoModel, tagModel);
-      //console.log('FotosSideMenuCtrl tagsAdd naam tag', fotoModel.get('naam'), tagModel.get('Id'), tagModel.get('tag'));
+      console.log('FotosSideMenuCtrl tagsAdd fotoModel, tagModel: ', fotoModel, tagModel);
+      console.log('FotosSideMenuCtrl tagsAdd naam tag', fotoModel.get('naam'), tagModel.get('Id'), tagModel.get('tag'));
       //
       //  Selecteer de xtag die hoort bij tag in tagModel.
       //
@@ -372,8 +372,8 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         $scope.data.tags.push(xtag);
 
         sorteerDataTags();
-        //console.log('FotosSideMenuCtrl tagsAdd menu-onbject nog NIET AANWEZIG nieuwe xtag object naam, Id: ', fotoModel.get('naam'), fotoModel.get('Id'), $scope.data.tags);
-        //console.log('FotosSideMenuCtrl tagsAdd menu-object nog NIET AANWEZIG nieuwe xtag => $scope.data.tags object naam, Id: ', fotoModel.get('naam'), fotoModel.get('Id'), $scope.data.tags);
+        console.log('FotosSideMenuCtrl tagsAdd menu-onbject nog NIET AANWEZIG nieuwe xtag object naam, Id: ', fotoModel.get('naam'), fotoModel.get('Id'), $scope.data.tags);
+        console.log('FotosSideMenuCtrl tagsAdd menu-object nog NIET AANWEZIG nieuwe xtag => $scope.data.tags object naam, Id: ', fotoModel.get('naam'), fotoModel.get('Id'), $scope.data.tags);
 
       } else {
         //
@@ -396,18 +396,18 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         loDash.remove($scope.data.tags, function (sideMenuTag) {
           return sideMenuTag.tag === xtag.tag;
         });
-        //console.log('FotosSideMenuCtrl tagsAdd removed to update: ', xtag);
+        console.log('FotosSideMenuCtrl tagsAdd removed to update: ', xtag);
         $scope.data.tags.push(xtag);
 
         sorteerDataTags();
 
-        //console.log('FotosSideMenuCtrl tagsAdd menu-onbject fotoModel REEDS AANWEZIG in tabel items naam, Id UPDATE: ', fotoModel.get('naam'), fotoModel.get('Id'), $scope.data.tags);
+        console.log('FotosSideMenuCtrl tagsAdd menu-onbject fotoModel REEDS AANWEZIG in tabel items naam, Id UPDATE: ', fotoModel.get('naam'), fotoModel.get('Id'), $scope.data.tags);
       }
     }
 
     function tagsUpdate(tagModel) {
-      //console.log('FotosSideMenuCtrl tagsUpdate naam tag', tagModel.get('tag'));
-      //console.log('FotosSideMenuCtrl tagsUpdate $scope.data.tags: ', $scope.data.tags);
+      console.log('FotosSideMenuCtrl tagsUpdate naam tag', tagModel.get('tag'));
+      console.log('FotosSideMenuCtrl tagsUpdate $scope.data.tags: ', $scope.data.tags);
       //
       //  Selecteer de xtag die hoort bij tag in tagModel.
       //
@@ -424,14 +424,14 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         loDash.remove($scope.data.tags, function (sideMenuTag) {
           return sideMenuTag.tagId === xtag.tagId;
         });
-        //console.log('FotosSideMenuCtrl tagsAdd removed old tagModel: ', tagModel.get('tag'), xtag.tag);
+        console.log('FotosSideMenuCtrl tagsAdd removed old tagModel: ', tagModel.get('tag'), xtag.tag);
         $scope.data.tags.push(xtag);
 
         sorteerDataTags();
 
-        //console.log('FotosSideMenuCtrl tagsUpdate menu-onbject fotoModel in #scope.data.tags  UPDATE: ', $scope.data.tags);
+        console.log('FotosSideMenuCtrl tagsUpdate menu-onbject fotoModel in #scope.data.tags  UPDATE: ', $scope.data.tags);
       } else {
-        //console.error('FotosSideMenuCtrl tagsUpdate xtag NIET GEVONDEN: ', $scope.data.tags, tagModel.get('Id'));
+        console.error('FotosSideMenuCtrl tagsUpdate xtag NIET GEVONDEN: ', $scope.data.tags, tagModel.get('Id'));
       }
     }
     //
@@ -443,7 +443,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     }
 
     function delayFinalizeTags() {
-      //console.warn('delayFinalizeTags fotoModel');
+      console.warn('delayFinalizeTags fotoModel');
       finalizeTags();
       $timeout.cancel(loadingTime);
 
@@ -452,7 +452,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     var event1 = $rootScope.$on('sideMenuFotosFilter', function (event, args) {
 
-      //console.warn('sideMenuFotosFilter args: ', args);
+      console.warn('sideMenuFotosFilter args: ', args);
 
       var filter = args.filter;
       var tag = {
@@ -470,35 +470,35 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     $scope.$on('$destroy', event1);
 
     $rootScope.$on('fotoAddLabel', function (event, args) {
-      //console.log('FotosSideMenuCtrl event fotoAddLabel args: ', args);
+      console.log('FotosSideMenuCtrl event fotoAddLabel args: ', args);
       var fotoModel = args.fotoModel;
       var tagModel = args.tagModel;
-      //console.warn('FotosSideMenuCtrl fotoAddLabel: ', fotoModel.get('naam'), tagModel.get('tag'));
+      console.warn('FotosSideMenuCtrl fotoAddLabel: ', fotoModel.get('naam'), tagModel.get('tag'));
       tagsAdd(fotoModel, tagModel);
       debouncedFinalizeTags();
     });
 
     $rootScope.$on('fotoRemoveLabel', function (event, args) {
-      //console.warn('FotosSideMenuCtrl event fotoAddLabel args: ', args);
+      console.warn('FotosSideMenuCtrl event fotoAddLabel args: ', args);
       var fotoModel = args.fotoModel;
       var tagModel = args.tagModel;
-      //console.warn('FotosSideMenuCtrl fotoRemoveLabel: ', fotoModel, tagModel);
-      //console.warn('FotosSideMenuCtrl fotoRemoveLabel: ', fotoModel.get('naam'), tagModel.get('tag'));
+      console.warn('FotosSideMenuCtrl fotoRemoveLabel: ', fotoModel, tagModel);
+      console.warn('FotosSideMenuCtrl fotoRemoveLabel: ', fotoModel.get('naam'), tagModel.get('tag'));
       tagsRemove(fotoModel, tagModel);
       debouncedFinalizeTags();
     });
 
     $rootScope.$on('fotoUpdateLabel', function (event, args) {
-      //console.warn('FotosSideMenuCtrl event fotoUpdateLabel args: ', args);
+      console.warn('FotosSideMenuCtrl event fotoUpdateLabel args: ', args);
       var tagModel = args.tagModel;
-      //console.warn('++++++++++++++++++++++++++++++ FotosSideMenuCtrl fotoUpdateLabel: ', tagModel.get('tag'));
+      console.warn('++++++++++++++++++++++++++++++ FotosSideMenuCtrl fotoUpdateLabel: ', tagModel.get('tag'));
       tagsUpdate(tagModel);
       debouncedFinalizeTags();
     });
 
     var event4 = $rootScope.$on('fotoNavTitle', function (event, args) {
 
-      //console.warn('+++ FotosSideMenuCtrl navTitle filter sorter, $scope.fotosSortNaamUp: ', args.filter, args.sorter, $scope.fotosSortNaamUp);
+      console.warn('+++ FotosSideMenuCtrl navTitle filter sorter, $scope.fotosSortNaamUp: ', args.filter, args.sorter, $scope.fotosSortNaamUp);
       filter.filter = args.filter.filter;
       if (args.filter.tag !== undefined) {
         filter.filter = args.filter.tag;
@@ -521,7 +521,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     function fotosAantallenGeenLabel() {
 
-      //console.warn('FotosSideMenuCtrl fotosAantallenGeenLabel');
+      console.warn('FotosSideMenuCtrl fotosAantallenGeenLabel');
 
       $scope.aantalGeenLabels = 0;
 
@@ -564,21 +564,21 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
       fotosAantallenGeenLabel();
 
-      //console.log('FotosSideMenuCtrl aantalAlle: ' + $scope.aantalAlle + ', aantalMijn: ' + $scope.aantalMijn + ', aantalPublic: ' + $scope.aantalPublic + ', aantalNieuw: ' + $scope.aantalNieuw + ', aantalStar: ' + $scope.aantalStar  + ', aantalGeenLabels: ', $scope.aantalGeenLabels);
+      console.log('FotosSideMenuCtrl aantalAlle: ' + $scope.aantalAlle + ', aantalMijn: ' + $scope.aantalMijn + ', aantalPublic: ' + $scope.aantalPublic + ', aantalNieuw: ' + $scope.aantalNieuw + ', aantalStar: ' + $scope.aantalStar  + ', aantalGeenLabels: ', $scope.aantalGeenLabels);
     }
 
     var event5 = $rootScope.$on('fotosNieuweAantallen', function () {
 
-      //console.warn('FotosSideMenuCtrl on.fotosNieuwAantallen');
+      console.warn('FotosSideMenuCtrl on.fotosNieuwAantallen');
 
       fotosAantallen();
-      //console.log('+++ FotosSideMenuCtrl aantalAlle, aantalMijn, aantalPublic, aantalNieuw, aantalStar, aantalGeenLabels: ', $scope.aantalAlle, $scope.aantalMijn, $scope.aantalPublic, $scope.aantalNieuw, $scope.aantalStar, $scope.aantalGeenLabels);
+      console.log('+++ FotosSideMenuCtrl aantalAlle, aantalMijn, aantalPublic, aantalNieuw, aantalStar, aantalGeenLabels: ', $scope.aantalAlle, $scope.aantalMijn, $scope.aantalPublic, $scope.aantalNieuw, $scope.aantalStar, $scope.aantalGeenLabels);
     });
     $scope.$on('$destroy', event5);
 
     var event7 = $scope.$on('elemHasFocus', function (event, args) {
       if (args.message !== 'Zoek label') {
-        //console.warn('+++ FotosSideMenuCtrl elem has focus: ', args);
+        console.warn('+++ FotosSideMenuCtrl elem has focus: ', args);
         filter.filter = 'Search';
         setNavTitle();
 
@@ -592,7 +592,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     var event8 = $rootScope.$on('setPredicate', function (event, args) {
 
-      //console.log('FotosSideMenuCtrl event setPredicate: ', args);
+      console.log('FotosSideMenuCtrl event setPredicate: ', args);
 
       sorter = JSON.parse(args);
 
@@ -646,8 +646,8 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     // eslint-disable-next-line no-unused-vars
     $scope.$watch('search.label', function (val) {
       if ($scope.search.label !== '') {
-        //console.error('+++ FotosSideMenuCtrl watch search.label label: ', $scope.search.label);
-        //console.error('+++ FotosSideMenuCtrl watch search.label val: ', val);
+        console.error('+++ FotosSideMenuCtrl watch search.label label: ', $scope.search.label);
+        console.error('+++ FotosSideMenuCtrl watch search.label val: ', val);
       }
     });
     //
@@ -655,8 +655,8 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
       if ($scope.searchFoto.naam !== '') {
 
-        //console.warn('+++ FotosSideMenuCtrl watch searchFoto.naam naam: ', $scope.searchFoto.naam);
-        //console.warn('+++ FotosSideMenuCtrl watch searchFoto.naam val: ', val);
+        console.warn('+++ FotosSideMenuCtrl watch searchFoto.naam naam: ', $scope.searchFoto.naam);
+        console.warn('+++ FotosSideMenuCtrl watch searchFoto.naam val: ', val);
 
         zoek = val;
         setNavTitle();
@@ -675,13 +675,13 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     });
 
     $scope.clearSearch = function () {
-      //console.log('FotosSideMenuCtrl clearSearch');
+      console.log('FotosSideMenuCtrl clearSearch');
       $scope.search.label = '';
       zoek = '';
     };
 
     $scope.clearSearchFoto = function () {
-      //console.log('FotosSideMenuCtrl clearSearchFoto');
+      console.log('FotosSideMenuCtrl clearSearchFoto');
       $scope.searchFoto.naam = '';
       zoek = '';
       setNavTitle();
@@ -690,14 +690,14 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     var setNavTitleEvent = $rootScope.$on('setNavTitleEvent', function (event, tagFilter) {
-      //console.log('FotosSideMenuCtrl setNavTitleEvent filter: ', tagFilter);
+      console.log('FotosSideMenuCtrl setNavTitleEvent filter: ', tagFilter);
       filter = tagFilter;
       setNavTitle();
     });
     $scope.$on('$destroy', setNavTitleEvent);
 
     var fotoSetNavTitleGlobalEvent = $rootScope.$on('fotoSetNavTitleGlobal', function (event, args) {
-      //console.log('FotosSideMenuCtrl setNavTitleGlobal filter, sorter: ', args);
+      console.log('FotosSideMenuCtrl setNavTitleGlobal filter, sorter: ', args);
       filter = {
         filter: args.filter
       };
@@ -710,9 +710,9 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     function setNavTitle() {
 
-      //console.log('FotosSideMenuCtrl setNavTitle sorteer: ', sorteer);
-      //console.log('FotosSideMenuCtrl setNavTitle filter.filter: ', filter.filter);
-      //console.log('FotosSideMenuCtrl setNavTitle zoek: ', zoek);
+      console.log('FotosSideMenuCtrl setNavTitle sorteer: ', sorteer);
+      console.log('FotosSideMenuCtrl setNavTitle filter.filter: ', filter.filter);
+      console.log('FotosSideMenuCtrl setNavTitle zoek: ', zoek);
 
       $scope.subHeader = '';
       var first = false;
@@ -750,12 +750,12 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         $ionicScrollDelegate.scrollTop(true);
       });
 
-      //console.log('FotosSideMenuCtrl setNavTitle set : ', $scope.subHeader);
+      console.log('FotosSideMenuCtrl setNavTitle set : ', $scope.subHeader);
 
     }
 
     $scope.toggleLeftSideMenu = function () {
-      //console.warn('BerichtenSideMenuCtrl toggleLeftSideMenu');
+      console.warn('BerichtenSideMenuCtrl toggleLeftSideMenu');
       dataFactoryAnalytics.createEvent('fotos', 'sessie', 'kaarten', '', '1');
       $ionicSideMenuDelegate.toggleLeft();
     };
@@ -763,7 +763,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     
     //removeIf(!fotos)
     $rootScope.$on('fotoFilterMaakFoto', function () {
-      //console.log('FotosSideMenuCtrl fotosFilterMaakFoto');
+      console.log('FotosSideMenuCtrl fotosFilterMaakFoto');
       $scope.searchFoto.naam = 'Mijn foto';
       zoek = 'Mijn foto';
 
@@ -778,8 +778,8 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     //endRemoveIf(!fotos)
     
     $rootScope.$on('fotoFilterNotification', function () {
-      //console.log('fotoFilterNotification');
-      //console.log('FotosSideMenuCtrl fotosFilterNieuw');
+      console.log('fotoFilterNotification');
+      console.log('FotosSideMenuCtrl fotosFilterNieuw');
       $scope.searchFoto.naam = '';
       zoek = '';
 
@@ -791,7 +791,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     });
 
     $scope.fotosFilterAlle = function () {
-      //console.warn('FotosSideMenuCtrl fotosFilterAlle');
+      console.warn('FotosSideMenuCtrl fotosFilterAlle');
       $scope.searchFoto.naam = '';
       zoek = '';
 
@@ -804,7 +804,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.fotosFilterMijn = function () {
-      //console.warn('FotosSideMenuCtrl fotosFilterMijn');
+      console.warn('FotosSideMenuCtrl fotosFilterMijn');
       filter.filter = 'Mijn';
       setNavTitle();
       $rootScope.$emit('fotosFilter', {
@@ -814,7 +814,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.fotosFilterPublic = function () {
-      //console.warn('FotosSideMenuCtrl fotosFilterPublic');
+      console.warn('FotosSideMenuCtrl fotosFilterPublic');
       filter.filter = 'Public';
       setNavTitle();
       $rootScope.$emit('fotosFilter', {
@@ -824,7 +824,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.fotosFilterNieuw = function () {
-      //console.warn('FotosSideMenuCtrl fotosFilterNieuw');
+      console.warn('FotosSideMenuCtrl fotosFilterNieuw');
       $scope.searchFoto.naam = '';
       zoek = '';
 
@@ -837,7 +837,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.fotosFilterFavorieten = function () {
-      //console.warn('FotosSideMenuCtrl fotosFilterFavorieten');
+      console.warn('FotosSideMenuCtrl fotosFilterFavorieten');
       $scope.searchFoto.naam = '';
       zoek = '';
 
@@ -850,7 +850,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.fotosFilterOngelabeld = function () {
-      //console.warn('FotosSideMenuCtrl fotosFilterOngelabeld');
+      console.warn('FotosSideMenuCtrl fotosFilterOngelabeld');
       $scope.searchFoto.naam = '';
       zoek = '';
 
@@ -864,7 +864,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.fotosFilterGeen = function () {
-      //console.warn('FotosSideMenuCtrl fotosFilterGeen');
+      console.warn('FotosSideMenuCtrl fotosFilterGeen');
       $scope.searchFoto.naam = '';
       zoek = '';
 
@@ -877,7 +877,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.fotosFilterGeenLabel = function () {
-      //console.warn('FotosSideMenuCtrl fotosFilterGeen');
+      console.warn('FotosSideMenuCtrl fotosFilterGeen');
       $scope.searchFoto.naam = '';
       zoek = '';
       filter.filter = 'Geen label';
@@ -885,15 +885,15 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
       $rootScope.$emit('fotosFilter', {
         filter: 'Geen label'
       });
-      //console.error('+++ FotosSideMenuCtrl fotosFilter: Geen');
+      console.error('+++ FotosSideMenuCtrl fotosFilter: Geen');
       $state.go('fotos.fotos');
     };
 
     $scope.filterTag = function (tag) {
 
-      //console.warn('FotosSideMenuCtrl filterTag: ', tag);
+      console.warn('FotosSideMenuCtrl filterTag: ', tag);
       filter.filter = tag.tag;
-      //console.log('FotosSideMenuCtrl fotosFilter: ', filter.filter);
+      console.log('FotosSideMenuCtrl fotosFilter: ', filter.filter);
 
       setNavTitle();
 
@@ -902,13 +902,13 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         tag: tag.tag
         //tagId: tag.fotos[0].xData.tags[0].xData.get('Id')
       });
-      //console.log('FotosSideMenuCtrl fotosFilter: ', { filter: 'Tag', tag: tag.items[0].xData.tags[0].xData, tagId: tag.items[0].xData.tags[0].xData.get('Id') });
+      console.log('FotosSideMenuCtrl fotosFilter: ', { filter: 'Tag', tag: tag.items[0].xData.tags[0].xData, tagId: tag.items[0].xData.tags[0].xData.get('Id') });
 
       $state.go('fotos.fotos');
     };
 
     $scope.fotosVerwijderDoelgroep = function () {
-      //console.warn('BerichtenSideMenuCtrl fotosVerwijderDoelgroep');
+      console.warn('BerichtenSideMenuCtrl fotosVerwijderDoelgroep');
     };
 
     //
@@ -922,9 +922,9 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     //
     $scope.editTagFromSideMenu = function (xtag) {
 
-      //console.log('TracksSideMenuCtrl deleteTagFromSideMenu xtag: ', xtag);
-      //console.log('TracksSideMenuCtrl deleteTagFromSideMenu tagId: ', xtag.tagId);
-      //console.log('TracksSideMenuCtrl deleteTagFromSideMenu tagGebruikerId : ', xtag.tagGebruikerId);
+      console.log('TracksSideMenuCtrl deleteTagFromSideMenu xtag: ', xtag);
+      console.log('TracksSideMenuCtrl deleteTagFromSideMenu tagId: ', xtag.tagId);
+      console.log('TracksSideMenuCtrl deleteTagFromSideMenu tagGebruikerId : ', xtag.tagGebruikerId);
 
       $ionicListDelegate.closeOptionButtons();
       //
@@ -933,7 +933,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         var tagModel = loDash.find(dataFactoryTag.store, function (tagModel) {
           return tagModel.get('Id') === xtag.tagId;
         });
-        //console.log('TracksSideMenuCtrl editTagFromSideMenu tagModel gevonden: ', tagModel);
+        console.log('TracksSideMenuCtrl editTagFromSideMenu tagModel gevonden: ', tagModel);
         if (!tagModel || (tagModel.get('Id').length < 4 || tagModel.get('gebruikerId') !== dataFactoryCeo.currentModel.get('Id'))) {
           $ionicPopup.alert({
             title: 'Wijzigen label',
@@ -943,7 +943,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
           if (tagModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id')) {
             $scope.editTag(tagModel, xtag);
           } else {
-            //console.log('TracksSideMenuCtrl editTagFromSideMenu ongeldigtagModel gevonden: ', tagModel, tagModel.get('gebruikerId'), dataFactoryCeo.currentModel.get('Id'));
+            console.log('TracksSideMenuCtrl editTagFromSideMenu ongeldigtagModel gevonden: ', tagModel, tagModel.get('gebruikerId'), dataFactoryCeo.currentModel.get('Id'));
           }
         }
       } else {
@@ -955,7 +955,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.editTag = function (tagModel, xtag) {
-      //console.warn('FotosSideMenuCtrl editTag tagModel: ', tagModel);
+      console.warn('FotosSideMenuCtrl editTag tagModel: ', tagModel);
 
       var tag = xtag.tag;
       $scope.popup = {};
@@ -984,7 +984,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
       });
       popupEditTag.then(function (res) {
 
-        //console.log('FotosSideMenuCtrl editTag Label gewijzigd in: ' + res);
+        console.log('FotosSideMenuCtrl editTag Label gewijzigd in: ' + res);
         if (res !== undefined) {
 
           xtag.tag = res;
@@ -1018,9 +1018,9 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     //
     $scope.deleteTagFromSideMenu = function (xtag) {
 
-      //console.log('TracksSideMenuCtrl deleteTagFromSideMenu xtag: ', xtag);
-      //console.log('TracksSideMenuCtrl deleteTagFromSideMenu tagId: ', xtag.tagId);
-      //console.log('TracksSideMenuCtrl deleteTagFromSideMenu tagGebruikerId : ', xtag.tagGebruikerId);
+      console.log('TracksSideMenuCtrl deleteTagFromSideMenu xtag: ', xtag);
+      console.log('TracksSideMenuCtrl deleteTagFromSideMenu tagId: ', xtag.tagId);
+      console.log('TracksSideMenuCtrl deleteTagFromSideMenu tagGebruikerId : ', xtag.tagGebruikerId);
 
       $ionicListDelegate.closeOptionButtons();
       //
@@ -1029,7 +1029,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         var tagModel = loDash.find(dataFactoryTag.store, function (tagModel) {
           return tagModel.get('Id') === xtag.tagId;
         });
-        //console.log('TracksSideMenuCtrl editTagFromSideMenu tagModel gevonden: ', tagModel);
+        console.log('TracksSideMenuCtrl editTagFromSideMenu tagModel gevonden: ', tagModel);
         if (!tagModel || (tagModel.get('Id').length < 4 || tagModel.get('gebruikerId') !== dataFactoryCeo.currentModel.get('Id'))) {
           $ionicPopup.alert({
             title: 'Verwijderen label',
@@ -1039,7 +1039,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
           if (tagModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id')) {
             $scope.deleteTag(tagModel, xtag);
           } else {
-            //console.log('TracksSideMenuCtrl editTagFromSideMenu ongeldigtagModel gevonden: ', tagModel, tagModel.get('gebruikerId'), dataFactoryCeo.currentModel.get('Id'));
+            console.log('TracksSideMenuCtrl editTagFromSideMenu ongeldigtagModel gevonden: ', tagModel, tagModel.get('gebruikerId'), dataFactoryCeo.currentModel.get('Id'));
           }
         }
       } else {
@@ -1052,8 +1052,8 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     $scope.deleteTag = function (tagModel, xtag) {
 
-      //console.log('FotosSideMenuCtrl deleteTag tagModel: ', tagModel);
-      //console.log('FotosSideMenuCtrl deleteTag xtag: ', xtag);
+      console.log('FotosSideMenuCtrl deleteTag tagModel: ', tagModel);
+      console.log('FotosSideMenuCtrl deleteTag xtag: ', xtag);
 
       $ionicPopup.confirm({
         title: 'Verwijderen label',
@@ -1072,19 +1072,19 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
               truuk.push(itemModel);
             });
             loDash.each(truuk, function (fotoModel) {
-              //console.log('FotosSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, fotoModel);
+              console.log('FotosSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, fotoModel);
               if (fotoModel && fotoModel.xData) {
                 //
 
                 sorteerDataTags();
                 //
                 loDash.each(fotoModel.xData.tags, function (fotoTagModel) {
-                  //console.log('FotosSideMenuCtrl deleteTag fotoModal.tags loop: ', fotoModel.xData.tags, fotoTagModel);
+                  console.log('FotosSideMenuCtrl deleteTag fotoModal.tags loop: ', fotoModel.xData.tags, fotoTagModel);
                   (function (fotoModel, fotoTagModel) {
                     if (fotoTagModel.xData.get('tag') === xtag.tag) {
-                      //console.log('FotosSideMenuCtrl deleteTag fotoTagModel in fotoModel.tags wordt verwijderd uit backend: ', fotoTagModel);
+                      console.log('FotosSideMenuCtrl deleteTag fotoTagModel in fotoModel.tags wordt verwijderd uit backend: ', fotoTagModel);
                       fotoTagModel.remove().then(function () {
-                        //console.log('FotosSideMenuCtrl deleteTag fotoTagModel wordt verwijderd uit fotoModel.tags: ', fotoTagModel);
+                        console.log('FotosSideMenuCtrl deleteTag fotoTagModel wordt verwijderd uit fotoModel.tags: ', fotoTagModel);
                         loDash.remove(fotoModel.xData.tags, function (fotoTagModel) {
                           return fotoTagModel.xData.get('tag') === xtag.tag;
                         });
@@ -1100,7 +1100,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
               }
             });
 
-            //console.log('FotosSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
+            console.log('FotosSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
             loDash.remove(dataFactoryTag.store, function (tag) {
               return tag.get('Id') === xtag.tag && tag.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
             });
@@ -1111,7 +1111,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
             // Verwijder tag in de backend. De backend verwijderd ook alle fototags met tagId van alle andere gebruikers
             //
             if (tagModel.get('gebruikerId') !== '') {
-              //console.log('FotosSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
+              console.log('FotosSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
               tagModel.remove();
             }
 
@@ -1124,14 +1124,14 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.verwijderSelectie = function () {
-      //console.log('FotosSideMenuCtrl event fotoVerwijderSelectie');
+      console.log('FotosSideMenuCtrl event fotoVerwijderSelectie');
       $rootScope.$emit('fotoVerwijderSelectie', filter);
     };
     //
     //	Init Dropbox
     //
     $scope.exporteerSelectie = function () {
-      //console.log('FotosSideMenuCtrl event fotoExporteerSelectie');
+      console.log('FotosSideMenuCtrl event fotoExporteerSelectie');
       $rootScope.$emit('fotoExporteerSelectie', filter);
     };
 
@@ -1154,7 +1154,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $rootScope.$on('setDropboxReady', function () {
-      //console.log('FotosSideMenuCtrl event setDropboxReady');
+      console.log('FotosSideMenuCtrl event setDropboxReady');
       $scope.dropbox = true;
     });
 
@@ -1176,29 +1176,29 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $rootScope.$on('resetDropboxReady', function () {
-      //console.log('FotosSideMenuCtrl event resetDropboxReady');
+      console.log('FotosSideMenuCtrl event resetDropboxReady');
       $scope.dropbox = false;
     });
 
     function checkDbToken() {
       dataFactoryConfigX.loadMe().then(function (configModel) {
         dataFactoryDropbox.accessToken = configModel.get('dbtoken');
-        //console.log('FotosSideMenuCtrl configX loadMe dbtoken: ', configModel.get('gebruikerId'), configModel.get('Id'), configModel.get('dbtoken'));
-        //console.log('FotosSideMenuCtrl $scope.dropbox: ', $scope.dropbox);
+        console.log('FotosSideMenuCtrl configX loadMe dbtoken: ', configModel.get('gebruikerId'), configModel.get('Id'), configModel.get('dbtoken'));
+        console.log('FotosSideMenuCtrl $scope.dropbox: ', $scope.dropbox);
 
         if ($scope.dropbox && dataFactoryDropbox.accessToken === '') {
           $scope.dropbox = false;
-          //console.error('FotoSideMenuCtrl ontkoppelen: ', dataFactoryDropbox.accessToken);
+          console.error('FotoSideMenuCtrl ontkoppelen: ', dataFactoryDropbox.accessToken);
         }
         if (!$scope.dropbox && dataFactoryDropbox.accessToken !== '') {
           $scope.dropbox = true;
-          //console.log('FotoSideMenuCtrl koppelen: ', dataFactoryDropbox.accessToken);
+          console.log('FotoSideMenuCtrl koppelen: ', dataFactoryDropbox.accessToken);
         }
         // eslint-disable-next-line no-unused-vars
       }).catch(function (err) {
         $scope.dropbox = false;
         dataFactoryDropbox.accessToken = '';
-        //console.error('FotosSideMenuCtrl configX.loadme ERROR: ', err);
+        console.error('FotosSideMenuCtrl configX.loadme ERROR: ', err);
       });
     }
     //
@@ -1206,7 +1206,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     // Het resultaat is dropbox = false/true;
     //
     $interval(function () {
-      //console.log('FotosSideMenuCtrl checking dropbox token');
+      console.log('FotosSideMenuCtrl checking dropbox token');
       checkDbToken();
     }, 10000, 5);
     //
@@ -1221,12 +1221,12 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
       $rootScope.$on('$cordovaNetwork:online', function () {
         $scope.online = true;
-        //console.warn('================================================================================ event cordovaNetwork:online');
+        console.warn('================================================================================ event cordovaNetwork:online');
         checkDbToken();
       });
 
       $rootScope.$on('$cordovaNetwork:offline', function () {
-        //console.warn('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ event cordovaNetwork:offline');
+        console.warn('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ event cordovaNetwork:offline');
         $scope.online = false;
       });
 
@@ -1248,7 +1248,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     $scope.addNieuweLabel = function (tag) {
 
-      //console.warn('FotoCardCtrl addNieuweLabel: ', tag);
+      console.warn('FotoCardCtrl addNieuweLabel: ', tag);
 
       if (tag !== '') {
 
@@ -1268,7 +1268,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
             //
             $scope.selectLabelClick(tagModel);
             $scope.clearSearch();
-            //console.log('FotoCardCtrl addNieuweLabel tag: ', tagModel);
+            console.log('FotoCardCtrl addNieuweLabel tag: ', tagModel);
           });
         } else {
 
@@ -1290,8 +1290,8 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     $scope.selectLabelClick = function (tagModel) {
 
-      //console.warn('FotoSideMenuCtrl selectLabelClick tagModel: ', tagModel);
-      //console.log('FotoSideMenuCtrl selectLabelClick tagId: ', tagModel.get('Id'));
+      console.warn('FotoSideMenuCtrl selectLabelClick tagModel: ', tagModel);
+      console.log('FotoSideMenuCtrl selectLabelClick tagId: ', tagModel.get('Id'));
 
       $ionicPopup.confirm({
         title: 'Fotos zonder label',
@@ -1337,13 +1337,13 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         helpType = 'Spoor';
         helpTyp = 'dit';
       }
-      //console.log(mode, tmp);
+      console.log(mode, tmp);
       tmp.naam = tmp.naam.replace('__TYPE__', helpType);
       tmp2 = tmp.help.replace(/__TYP__/g, helpTyp);
       tmp3 = tmp2.replace(/__TYPE__/g, helpType);
       tmp.help = tmp3.replace(/__TYPES__/g, helpTypes);
 
-      //console.log('HELP tmp: ', tmp);
+      console.log('HELP tmp: ', tmp);
 
       $scope.cardHelps.push(tmp);
     }
@@ -1418,7 +1418,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     $scope.geenLabelSelectie = function ($event) {
 
-      //console.warn('FotoSideMenuCtrl geenLabelSelectie: ', $event, $scope.global.tags);
+      console.warn('FotoSideMenuCtrl geenLabelSelectie: ', $event, $scope.global.tags);
 
       dataFactoryTag.syncDown().then(function () {
         $scope.global.tags = loDash.filter(dataFactoryTag.store, function (tagModel) {
@@ -1438,7 +1438,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.openTags = function ($event) {
-      //console.warn('FotoSideMenuCtrl openTags');
+      console.warn('FotoSideMenuCtrl openTags');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openModalTags();
       } else {
@@ -1447,7 +1447,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     };
 
     $scope.closeTags = function ($event) {
-      //console.warn('FotoSideMenuCtrl closeTags');
+      console.warn('FotoSideMenuCtrl closeTags');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeModalTags();
       } else {
@@ -1465,10 +1465,10 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
 
     $scope.openPopoverTags = function ($event) {
       //$scope.search.label = '';
-      //console.log($scope.global, $scope.search.label);
-      //console.warn('FotoSideMenuCtrl openPopoverTags: ', $event);
+      console.log($scope.global, $scope.search.label);
+      console.warn('FotoSideMenuCtrl openPopoverTags: ', $event);
 
-      //console.warn('FotoSideMenuCtrl openModalTags: ', $scope.global.tags);
+      console.warn('FotoSideMenuCtrl openModalTags: ', $scope.global.tags);
       $scope.popoverTags.show($event);
     };
 
@@ -1490,12 +1490,12 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     });
 
     $scope.openModalTags = function ($event) {
-      //console.warn('FotoSideMenuCtrl openModalTags: ', $scope.global.tags);
+      console.warn('FotoSideMenuCtrl openModalTags: ', $scope.global.tags);
       $scope.modalTags.show($event);
     };
 
     $scope.closeModalTags = function () {
-      //console.warn('closeModalTags: ');
+      console.warn('closeModalTags: ');
       $scope.modalTags.hide();
     };
     $scope.$on('$destroy', function () {
@@ -1505,7 +1505,7 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
     //  HELP
     //
     $scope.closeHelp = function ($event) {
-      //console.log('FotoSideMenuCtrl closeHelp');
+      console.log('FotoSideMenuCtrl closeHelp');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeHelpModal();
       } else {
@@ -1530,11 +1530,11 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
         $scope.helpPopover = helpPopover;
       });
     $scope.openHelpPopover = function ($event) {
-      //console.log('FotoSideMenuCtrl openHelpPopover');
+      console.log('FotoSideMenuCtrl openHelpPopover');
       $scope.helpPopover.show($event);
     };
     $scope.closeHelpPopover = function () {
-      //console.log('FotoSideMenuCtrl openHelpPopover');
+      console.log('FotoSideMenuCtrl openHelpPopover');
       $scope.helpPopover.hide();
     };
     $scope.$on('$destroy', function () {
@@ -1550,11 +1550,11 @@ trinl.controller('FotosSideMenuCtrl', ['loDash', '$rootScope', '$scope', '$state
       }
     );
     $scope.openHelpModal = function () {
-      //console.log('FotoSideMenuCtrl openHelpModal');
+      console.log('FotoSideMenuCtrl openHelpModal');
       $scope.helpModal.show();
     };
     $scope.closeHelpModal = function () {
-      //console.log('FotoSideMenuCtrl closeHelpModal');
+      console.log('FotoSideMenuCtrl closeHelpModal');
       $scope.helpModal.hide();
     };
     $scope.$on('$destroy', function () {

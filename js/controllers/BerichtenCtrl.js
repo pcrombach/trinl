@@ -46,13 +46,13 @@
     });
     //
     var lastArgs = dataFactoryConfig.currentModel.get('berichtFilter');
-    console.log('BerichtSideMenuCtrl berichtFilter from config: ', lastArgs);
+    //console.log('BerichtSideMenuCtrl berichtFilter from config: ', lastArgs);
     //
     var filter = {
       filter: lastArgs.tag
     };
     //
-    console.log('BerichtenCtrl lastArgs from config: ', lastArgs);
+    //console.log('BerichtenCtrl lastArgs from config: ', lastArgs);
 
     if (lastArgs.filter === 'Tag') {
       $rootScope.$emit('setNavTitleEvent', filter);
@@ -72,7 +72,7 @@
     //
     var berichtPredicate = $rootScope.$on('berichtPredicate', function (event, args) {
 
-      console.log('BerichtenCtrl berichtPredicate event berichtSorter set to: ', args);
+      //console.log('BerichtenCtrl berichtPredicate event berichtSorter set to: ', args);
 
       $scope.predicate = args.predicate;
       $scope.reverse = args.reverse;
@@ -80,13 +80,13 @@
       dataFactoryConfig.currentModel.set('berichtSorter', args);
       dataFactoryConfigX.update(dataFactoryConfig.currentModel);
 
-      console.log('BerichtenCtrl berichtPredicate event berichtSorter saved in config: ', args);
+      //console.log('BerichtenCtrl berichtPredicate event berichtSorter saved in config: ', args);
     });
     $scope.$on('$destroy', berichtPredicate);
     //
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.addEventListener('message', function (event) {
-        console.log('Received a message from service worker: ', event.data.message);
+        //console.log('Received a message from service worker: ', event.data.message);
         if (event.data.message === 'RefreshSpoor') {
           refresh();
         }
@@ -95,7 +95,7 @@
     //
     var event0 = $scope.$on('$ionicView.enter', function () {
 
-      console.warn('BerichtenCtrl $ionicView.ecnter');
+      //console.warn('BerichtenCtrl $ionicView.ecnter');
 
       if (!dataFactoryBericht.card) {
         $ionicSideMenuDelegate.toggleLeft();
@@ -123,7 +123,7 @@
     //
     var event0b = $scope.$on('$ionicView.beforeLeave', function () {
       if (dataFactoryBericht.card) {
-        console.warn('BerichtCtrl $ionicView.beforeLeave, dataFactoryBericht.card: ', dataFactoryBericht.card);
+        //console.warn('BerichtCtrl $ionicView.beforeLeave, dataFactoryBericht.card: ', dataFactoryBericht.card);
         $rootScope.$emit('sleepClockBericht');
       }
     });
@@ -136,7 +136,7 @@
       var tagModel = args;
       var tagId = tagModel.get('Id');
 
-      console.warn('+++ BerichtenCtrl berichtDeleteTags tagId: ', tagId);
+      //console.warn('+++ BerichtenCtrl berichtDeleteTags tagId: ', tagId);
       //
       //	Verwijder in mijn berichtSupStore en update
       //
@@ -144,10 +144,10 @@
 
       function doChunkDelete(chunkDelete, index) {
 
-        console.warn('BerichtenCtrl doChunkDelete');
+        //console.warn('BerichtenCtrl doChunkDelete');
 
         if (index >= chunkDelete.length) {
-          console.log('BerichtenCtrl doChunkDelete READY');
+          //console.log('BerichtenCtrl doChunkDelete READY');
           return;
         }
 
@@ -158,7 +158,7 @@
           //	Alleen supModel eigenaar
           //
           if (berichtSupModel) {
-            console.log('BerichtenCtrl doChunksDelete', berichtSupModel);
+            //console.log('BerichtenCtrl doChunksDelete', berichtSupModel);
             if (berichtSupModel.eigenaar === false) {
               loDash.remove(berichtSupModel.tags, function (tagModel) {
                 return tagModel.get('Id') === tagId;
@@ -199,7 +199,7 @@
           return berichtTagModel.get('tagId') === tagId;
         });
       });
-      console.log('BerichtenCtrl berichtDeleteTags after doChunkDelete berichtStore: ', dataFactoryBericht.store);
+      //console.log('BerichtenCtrl berichtDeleteTags after doChunkDelete berichtStore: ', dataFactoryBericht.store);
       //
       //	Verwijder in tagStore en update
       //
@@ -231,11 +231,11 @@
       var tagModel = args;
       var tagId = tagModel.get('Id');
       var tagTekst = tagModel.get('tag');
-      console.warn('+++ BerichtenCtrl berichtEditTags tagId, tagTekst: ', tagId, tagTekst);
+      //console.warn('+++ BerichtenCtrl berichtEditTags tagId, tagTekst: ', tagId, tagTekst);
       //
       //	Wijzig in tagStore en update
       //
-      console.warn('+++ BerichtenCtrl berichtEditTags tagStore update: ', dataFactoryTag.store);
+      //console.warn('+++ BerichtenCtrl berichtEditTags tagStore update: ', dataFactoryTag.store);
       loDash.each(dataFactoryTag.store, function (tagModel) {
         if (tagModel.get('Id') === tagId) {
           tagModel.set('tag', tagTekst);
@@ -246,14 +246,14 @@
       //	Verwijder in mijn berichtSupStore en update
       //
       var chunkEdit = loDash.chunk(dataFactoryBerichtSup.store, 10);
-      console.log(chunkEdit);
+      //console.log(chunkEdit);
 
       function doChunkEdit(chunkEdit, index) {
 
-        console.warn('BerichtenCtrl doChunkEdit');
+        //console.warn('BerichtenCtrl doChunkEdit');
 
         if (index >= chunkEdit.length) {
-          console.log('BerichtenCtrl doChunkEdit READY');
+          //console.log('BerichtenCtrl doChunkEdit READY');
           return;
         }
 
@@ -288,7 +288,7 @@
       //
       loDash.each(dataFactoryBericht.store, function (berichtModel) {
 
-        console.log('BerichtenCtrl EditAllLabels, berichtModel: ', berichtModel);
+        //console.log('BerichtenCtrl EditAllLabels, berichtModel: ', berichtModel);
 
         initxData(berichtModel);
 
@@ -306,27 +306,27 @@
     $scope.$on('$destroy', event3);
     //
     function doVerwijderen(mijnBerichten) {
-      console.time('Verwijderen');
+      //console.time('Verwijderen');
 
       $ionicLoading.show({
         template: 'Verwijderen Locaties Selectie<br><br><span class="trinl-rood"><b>' + filter.filter + '</b></span><br><br><br>Een ogenblik geduld aub...'
       });
 
       var chunkRemove = loDash.chunk(mijnBerichten, 10);
-      console.log(chunkRemove);
+      //console.log(chunkRemove);
 
       function doChunkRemove(chunkRemove, index) {
 
-        console.warn('BerichtenCtrl doChunkRemove, index: ', index);
+        //console.warn('BerichtenCtrl doChunkRemove, index: ', index);
 
         if (index >= chunkRemove.length) {
-          console.log('BerichtenCtrl doChunkRemove READY');
+          //console.log('BerichtenCtrl doChunkRemove READY');
           $ionicLoading.hide();
 
           $rootScope.$emit('sideMenuBerichtenFilter', {
             filter: 'Alle'
           });
-          console.timeEnd('Verwijderen');
+          //console.timeEnd('Verwijderen');
           return;
         }
         //
@@ -338,14 +338,14 @@
 
           var berichtId = berichtModel.get('Id');
 
-          console.warn('BerichtenCtrl doChunkRemove, index: ', index);
+          //console.warn('BerichtenCtrl doChunkRemove, index: ', index);
           //
           // Filter de berichttags van dit berichtmodel
           //
           var berichttags = loDash.filter(dataFactoryBerichtTag.store, function (berichttagModel) {
             return berichttagModel.get('berichtId') === berichtId;
           });
-          console.warn('BerichtenCtrl doChunkRemove, berichttags from Id: ', berichttags, berichtModel.get('Id'), berichtModel.get('naam'));
+          //console.warn('BerichtenCtrl doChunkRemove, berichttags from Id: ', berichttags, berichtModel.get('Id'), berichtModel.get('naam'));
           //
           // De berichttags van dit model worden later verwijderd
           // Er is nu tijd om de BerichtSideMenuCtrl te informeren om zijn tags bij te werken
@@ -361,7 +361,7 @@
             //
             if (tagModel) {
 
-              console.warn('BerichtenCtrl doChunkRemove, verwijder berichttag: ', tagModel.get('tag'));
+              //console.warn('BerichtenCtrl doChunkRemove, verwijder berichttag: ', tagModel.get('tag'));
 
               berichtTagModel.xData = tagModel;
 
@@ -418,12 +418,12 @@
     //
     var event12 = $rootScope.$on('berichtVerwijderSelectie', function (event, args) {
       //
-      console.error('Verwijderen Selectie ceo data.berichten:  ', $scope.ceo.Id, $scope.data.berichten);
+      //console.error('Verwijderen Selectie ceo data.berichten:  ', $scope.ceo.Id, $scope.data.berichten);
       //
       var mijnBerichten = loDash.filter($scope.data.berichten, function (berichtModel) {
         return berichtModel.get('gebruikerId') === $scope.ceo.Id;
       });
-      console.error('MijnBerichten aantal: ', mijnBerichten.length);
+      //console.error('MijnBerichten aantal: ', mijnBerichten.length);
 
       if (mijnBerichten.length === 0) {
         $ionicPopup.alert({
@@ -484,7 +484,7 @@
     //
     function watchLabelGeenLabelBericht(tagModel) {
       done += 1;
-      console.log('watchLabelGeenLabelBericht todo, done: ', todo, done);
+      //console.log('watchLabelGeenLabelBericht todo, done: ', todo, done);
       if (done >= todo) {
 
         $rootScope.$emit('berichtenNieuweAantallen');
@@ -500,7 +500,7 @@
     //
     var event13 = $rootScope.$on('labelGeenLabelBericht', function (event, args) {
 
-      console.warn('BerichtenCtrl event labelGeenLabelBericht args: ', args.tagModel);
+      //console.warn('BerichtenCtrl event labelGeenLabelBericht args: ', args.tagModel);
 
       var tagModel = args.tagModel;
 
@@ -522,7 +522,7 @@
       loDash.each(berichtenZonderLabel, function (berichtModel) {
 
         var berichtId = berichtModel.get('Id');
-        console.log('BerichtenCtrl event labelGeenLabelBericht berichtenZonderLabel berichtId, berichtNaam: ', berichtId, berichtModel.get('naam'));
+        //console.log('BerichtenCtrl event labelGeenLabelBericht berichtenZonderLabel berichtId, berichtNaam: ', berichtId, berichtModel.get('naam'));
 
         var berichtTagModel = new dataFactoryBerichtTag.Model();
         berichtTagModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
@@ -532,8 +532,8 @@
 
           berichtTagModel.xData = tagModel;
 
-          console.log('BerichtenCtrl labelGeenLabelBericht berichttag TOEVOEGEN in  SideMenu: ', berichtModel.get('naam'), tagModel.get('tag'));
-          console.log('BerichtenCtrl labelGeenLabelBericht berichttag TOEVOEGEN in  berichtModel.xData.tags: ', berichtModel.get('naam'), addBerichtTagModel);
+          //console.log('BerichtenCtrl labelGeenLabelBericht berichttag TOEVOEGEN in  SideMenu: ', berichtModel.get('naam'), tagModel.get('tag'));
+          //console.log('BerichtenCtrl labelGeenLabelBericht berichttag TOEVOEGEN in  berichtModel.xData.tags: ', berichtModel.get('naam'), addBerichtTagModel);
 
           berichtModel.xData.tags.push(berichtTagModel);
           $rootScope.$emit('berichtAddLabel', {
@@ -548,7 +548,7 @@
     //
     var event4 = $rootScope.$on('berichtStartSearch', function () {
 
-      console.warn('+++ berichtCtrl berichtStartSearch');
+      //console.warn('+++ berichtCtrl berichtStartSearch');
 
       $scope.data.berichten = [];
     });
@@ -564,13 +564,13 @@
           //sorteerDetailsTags(berichtModel);
         //});
 
-        console.log('BerichtenCtrl finishFilter FILTER AANTAL berichten selected: ', dataFactoryBericht.selected);
+        //console.log('BerichtenCtrl finishFilter FILTER AANTAL berichten selected: ', dataFactoryBericht.selected);
         //
         
         
 
         $timeout(function () {
-          console.log('BerichtCtrl finishFilter $ionicScrollDelegate');
+          //console.log('BerichtCtrl finishFilter $ionicScrollDelegate');
           $ionicScrollDelegate.$getByHandle('berichtList').scrollTop(true);
           //$ionicScrollDelegate.scrollTop(true);
 
@@ -580,7 +580,7 @@
     //
     var event5 = $rootScope.$on('berichtenFilter', function (event, args) {
 
-      console.error('BerichtenCtrl on.berichtenFilter: ', args);
+      //console.error('BerichtenCtrl on.berichtenFilter: ', args);
 
       //
       // Indien geen argumenten dan de oude filter toepassen
@@ -593,10 +593,10 @@
 
       dataFactoryConfig.currentModel.set('berichtFilter', args);
       dataFactoryConfigX.update(dataFactoryConfig.currentModel);
-      console.log('BerichtenCtrl laatste berichtenFilter saved in config: ', args);
+      //console.log('BerichtenCtrl laatste berichtenFilter saved in config: ', args);
 
       if (args.filter === 'Mijn') {
-        console.warn('BerichtenCtrl berichtenFilter: Mijn');
+        //console.warn('BerichtenCtrl berichtenFilter: Mijn');
         $scope.data.berichten = loDash.filter(dataFactoryBericht.store, function (berichtModel) {
           return berichtModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
         });
@@ -604,7 +604,7 @@
       }
 
       if (args.filter === 'Public') {
-        console.warn('BerichtenCtrl berichtenFilter: Public');
+        //console.warn('BerichtenCtrl berichtenFilter: Public');
         $scope.data.berichten = loDash.filter(dataFactoryBericht.store, function (berichtModel) {
           return berichtModel.get('gebruikerId') !== dataFactoryCeo.currentModel.get('Id');
         });
@@ -612,22 +612,22 @@
       }
 
       if (args.filter === 'Alle') {
-        console.warn('BerichtenCtrl berichtenFilter: Alle');
+        //console.warn('BerichtenCtrl berichtenFilter: Alle');
         $scope.data.berichten = loDash.each(dataFactoryBericht.store);
         finishFilter();
       }
 
       if (args.filter === 'Geen label') {
 
-        console.warn('BerichtenCtrl berichtenFilter: Geen label');
+        //console.warn('BerichtenCtrl berichtenFilter: Geen label');
 
         $scope.data.berichten = loDash.filter(dataFactoryBericht.store, function (berichtModel) {
           if (berichtModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id')) {
-            console.warn('BerichtenCtrl berichtenFilter Geen label in berichtModel: ', berichtModel);
+            //console.warn('BerichtenCtrl berichtenFilter Geen label in berichtModel: ', berichtModel);
             if (berichtModel.xData === undefined) {
               return false;
             }
-            console.warn('BerichtenCtrl berichtenFilter berichtModel.xData: ', berichtModel.xData);
+            //console.warn('BerichtenCtrl berichtenFilter berichtModel.xData: ', berichtModel.xData);
             if (berichtModel.xData.tags !== undefined) {
               return berichtModel.xData && berichtModel.xData.tags.length === 0;
             } else {
@@ -636,22 +636,22 @@
           }
         });
 
-        console.log('BerichtenCtrl ongelabeld aantal berichten: ', $scope.data.berichten);
+        //console.log('BerichtenCtrl ongelabeld aantal berichten: ', $scope.data.berichten);
 
         finishFilter();
       }
 
       if (args.filter === 'Tag') {
 
-        console.warn('BerichtenCtrl berichtenFilter: Tag:', args.tag);
+        //console.warn('BerichtenCtrl berichtenFilter: Tag:', args.tag);
 
         $scope.data.berichten = loDash.filter(dataFactoryBericht.store, function (berichtModel) {
 
           initxData(berichtModel);
-          console.log('BerichtenCtrl berichtenFilter Tag berichtModel naam: ', berichtModel.get('naam'));
-          console.log('BerichtenCtrl berichtenFilter Tag berichtModel naam: ', berichtModel.xData.tags);
+          //console.log('BerichtenCtrl berichtenFilter Tag berichtModel naam: ', berichtModel.get('naam'));
+          //console.log('BerichtenCtrl berichtenFilter Tag berichtModel naam: ', berichtModel.xData.tags);
           if (berichtModel.xData.tags.length >= 1) {
-            console.warn('BerichtenCtrl berichtenFilter Tag: ', berichtModel.xData.tags.tag);
+            //console.warn('BerichtenCtrl berichtenFilter Tag: ', berichtModel.xData.tags.tag);
           }
           var found = loDash.find(berichtModel.xData.tags, function (berichtTagModel) {
             return berichtTagModel.xData.get('tag') === args.tag;
@@ -662,19 +662,19 @@
       }
 
       if (args.filter === 'Geen') {
-        console.warn('BerichtenCtrl berichtenFilter: Geen');
+        //console.warn('BerichtenCtrl berichtenFilter: Geen');
         $scope.data.berichten = [];
-        console.log('BerichtenCtrl ongelabeld aantal berichten: ', $scope.data.berichten);
+        //console.log('BerichtenCtrl ongelabeld aantal berichten: ', $scope.data.berichten);
         finishFilter();
       }
 
       if (args.filter === 'Search') {
-        console.log('BerichtenCtrl berichtenFilter: Search', args);
+        //console.log('BerichtenCtrl berichtenFilter: Search', args);
 
         if (args.search === '') {
           $scope.search.label = '';
           $scope.data.berichten = [];
-          console.log('BerichtenCtrl berichtenFilter: geen Search');
+          //console.log('BerichtenCtrl berichtenFilter: geen Search');
           finishFilter();
         } else {
           $scope.data.berichten = dataFactoryBericht.store;
@@ -685,18 +685,18 @@
       }
 
       if (args.filter === 'Nieuw') {
-        console.warn('BerichtenCtrl berichtenFilter: Nieuw');
+        //console.warn('BerichtenCtrl berichtenFilter: Nieuw');
         $scope.data.berichten = dataFactoryBericht.nieuw;
         finishFilter();
       }
 
       if (args.filter === 'Favorieten') {
 
-        console.warn('BerichtenCtrl berichtenFilter: Favorieten');
+        //console.warn('BerichtenCtrl berichtenFilter: Favorieten');
 
         $scope.data.berichten = dataFactoryBericht.star;
 
-        console.log('BerichtenCtrl nieuwe berichten: ', dataFactoryBericht.star);
+        //console.log('BerichtenCtrl nieuwe berichten: ', dataFactoryBericht.star);
         finishFilter();
       }
     });
@@ -704,7 +704,7 @@
     //
     var event10 = $rootScope.$on('deleteLabel', function (event, args) {
 
-      console.warn('BerichtenCtrl event deleteLabel: ', args);
+      //console.warn('BerichtenCtrl event deleteLabel: ', args);
 
       loDash.each(dataFactoryBericht.store, function (berichtModel) {
 
@@ -738,11 +738,11 @@
     //removeIf(!berichten)
     $scope.nieuwBericht = function () {
 
-      console.warn('BerichtenCtrl nieuwBericht');
+      //console.warn('BerichtenCtrl nieuwBericht');
 
       //		$scope.bericht = {};
 
-      console.warn('BerichtenCtrl nieuwBericht uitgelogd = anoniem: ', dataFactoryCeo.currentModel.get('uitgelogd'), dataFactoryCeo.currentModel.get('gebruikerNaam'));
+      //console.warn('BerichtenCtrl nieuwBericht uitgelogd = anoniem: ', dataFactoryCeo.currentModel.get('uitgelogd'), dataFactoryCeo.currentModel.get('gebruikerNaam'));
 
       //		if (!dataFactoryCeo.currentModel.get('uitgelogd')) {
 
@@ -761,7 +761,7 @@
     //
     $scope.clickedBericht = function (berichtModel) {
       dataFactoryBericht.card = true;
-      console.warn('BerichtenCtrl clickedBericht dataFactoryBericht.card: ', berichtModel, dataFactoryBericht.card);
+      //console.warn('BerichtenCtrl clickedBericht dataFactoryBericht.card: ', berichtModel, dataFactoryBericht.card);
       $state.go('berichten.berichtCard', {
         'Id': berichtModel.get('Id')
       });
@@ -771,7 +771,7 @@
      * Nogmaals filteren starten
      */
     $scope.clearSearchLabel = function () {
-      console.warn('BerichtenCtrl clearSearchLabel');
+      //console.warn('BerichtenCtrl clearSearchLabel');
       $scope.search.label = '';
       $scope.data.berichten = dataFactoryBericht.store;
 
@@ -782,7 +782,7 @@
     //
     function sorteerDetailsTags(berichtModel) {
       //
-      console.error('BerichtCardCtrl sorteerDetailsTags');
+      //console.error('BerichtCardCtrl sorteerDetailsTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
@@ -811,23 +811,23 @@
       //
       if (!berichtModel.xData) {
         berichtModel.xData = {};
-        console.log('BerichtenCtrl updateBericht xData: ', berichtModel.xData);
+        //console.log('BerichtenCtrl updateBericht xData: ', berichtModel.xData);
       }
       if (!berichtModel.xData.pois) {
         berichtModel.xData.pois = [];
-        console.log('BerichtenCtrl updateBericht xData.pois: ', berichtModel.xData.pois);
+        //console.log('BerichtenCtrl updateBericht xData.pois: ', berichtModel.xData.pois);
       }
       if (!berichtModel.xData.fotos) {
         berichtModel.xData.fotos = [];
-        console.log('BerichtenCtrl updateBericht xData.fotos: ', berichtModel.xData.fotos);
+        //console.log('BerichtenCtrl updateBericht xData.fotos: ', berichtModel.xData.fotos);
       }
       if (!berichtModel.xData.tags) {
         berichtModel.xData.tags = [];
-        console.log('BerichtenCtrl updateBericht xData.tags: ', berichtModel.xData.tags);
+        //console.log('BerichtenCtrl updateBericht xData.tags: ', berichtModel.xData.tags);
       }
       if (!berichtModel.xData.groep) {
         berichtModel.xData.groep = '';
-        console.log('BerichtenCtrl updateBericht xData.groep: ', berichtModel.xData.groep);
+        //console.log('BerichtenCtrl updateBericht xData.groep: ', berichtModel.xData.groep);
       }
     }
     //
@@ -835,17 +835,17 @@
 
       $rootScope.$emit('refreshBericht');
 
-      console.error('BerichtenCtrl doReload broadcast reloadComplete');
+      //console.error('BerichtenCtrl doReload broadcast reloadComplete');
       $scope.$broadcast('scroll.refreshComplete');
     };
     //
     $scope.$on('elemHasFocus', function (event, args) {
 
-      console.warn('BerichtenCtrl elemHasFocus event: ', args);
+      //console.warn('BerichtenCtrl elemHasFocus event: ', args);
       //
       if (args.message === 'Zoek in locaties') {
         $timeout(function () {
-          console.error('BerichtenCtrl elemHasFocus scrollTop $ionicScrollDelegate');
+          //console.error('BerichtenCtrl elemHasFocus scrollTop $ionicScrollDelegate');
           $ionicScrollDelegate.$getByHandle('berichtList').scrollTop(true);
         });
       }

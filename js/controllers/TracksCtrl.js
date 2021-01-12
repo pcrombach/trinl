@@ -46,13 +46,13 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     });
     //
     var lastArgs = dataFactoryConfig.currentModel.get('trackFilter');
-    console.log('TrackSideMenuCtrl trackFilter from config: ', lastArgs);
+    //console.log('TrackSideMenuCtrl trackFilter from config: ', lastArgs);
     //
     var filter = {
       filter: lastArgs.tag
     };
     //
-    console.log('TracksCtrl lastArgs from config: ', lastArgs);
+    //console.log('TracksCtrl lastArgs from config: ', lastArgs);
 
     if (lastArgs.filter === 'Tag') {
       $rootScope.$emit('setNavTitleEvent', filter);
@@ -72,7 +72,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     var trackPredicate = $rootScope.$on('trackPredicate', function (event, args) {
 
-      console.log('TracksCtrl trackPredicate event trackSorter set to: ', args);
+      //console.log('TracksCtrl trackPredicate event trackSorter set to: ', args);
 
       $scope.predicate = args.predicate;
       $scope.reverse = args.reverse;
@@ -80,13 +80,13 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       dataFactoryConfig.currentModel.set('trackSorter', args);
       dataFactoryConfigX.update(dataFactoryConfig.currentModel);
 
-      console.log('TracksCtrl trackPredicate event trackSorter saved in config: ', args);
+      //console.log('TracksCtrl trackPredicate event trackSorter saved in config: ', args);
     });
     $scope.$on('$destroy', trackPredicate);
     //
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.addEventListener('message', function (event) {
-        console.log('Received a message from service worker: ', event.data.message);
+        //console.log('Received a message from service worker: ', event.data.message);
         if (event.data.message === 'RefreshSpoor') {
           refresh();
         }
@@ -95,7 +95,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     var event0 = $scope.$on('$ionicView.enter', function () {
 
-      console.warn('TracksCtrl $ionicView.ecnter');
+      //console.warn('TracksCtrl $ionicView.ecnter');
 
       if (!dataFactoryTrack.card) {
         $ionicSideMenuDelegate.toggleLeft();
@@ -134,7 +134,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     var event0b = $scope.$on('$ionicView.beforeLeave', function () {
       if (dataFactoryTrack.card) {
-        console.warn('TrackCtrl $ionicView.beforeLeave, dataFactoryTrack.card: ', dataFactoryTrack.card);
+        //console.warn('TrackCtrl $ionicView.beforeLeave, dataFactoryTrack.card: ', dataFactoryTrack.card);
         $rootScope.$emit('sleepClockTrack');
       }
     });
@@ -147,7 +147,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       var tagModel = args;
       var tagId = tagModel.get('Id');
 
-      console.warn('+++ TracksCtrl trackDeleteTags tagId: ', tagId);
+      //console.warn('+++ TracksCtrl trackDeleteTags tagId: ', tagId);
       //
       //	Verwijder in mijn trackSupStore en update
       //
@@ -155,10 +155,10 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
 
       function doChunkDelete(chunkDelete, index) {
 
-        console.warn('TracksCtrl doChunkDelete');
+        //console.warn('TracksCtrl doChunkDelete');
 
         if (index >= chunkDelete.length) {
-          console.log('TracksCtrl doChunkDelete READY');
+          //console.log('TracksCtrl doChunkDelete READY');
           return;
         }
 
@@ -169,7 +169,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
           //	Alleen supModel eigenaar
           //
           if (trackSupModel) {
-            console.log('TracksCtrl doChunksDelete', trackSupModel);
+            //console.log('TracksCtrl doChunksDelete', trackSupModel);
             if (trackSupModel.eigenaar === false) {
               loDash.remove(trackSupModel.tags, function (tagModel) {
                 return tagModel.get('Id') === tagId;
@@ -210,7 +210,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
           return trackTagModel.get('tagId') === tagId;
         });
       });
-      console.log('TracksCtrl trackDeleteTags after doChunkDelete trackStore: ', dataFactoryTrack.store);
+      //console.log('TracksCtrl trackDeleteTags after doChunkDelete trackStore: ', dataFactoryTrack.store);
       //
       //	Verwijder in tagStore en update
       //
@@ -242,11 +242,11 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       var tagModel = args;
       var tagId = tagModel.get('Id');
       var tagTekst = tagModel.get('tag');
-      console.warn('+++ TracksCtrl trackEditTags tagId, tagTekst: ', tagId, tagTekst);
+      //console.warn('+++ TracksCtrl trackEditTags tagId, tagTekst: ', tagId, tagTekst);
       //
       //	Wijzig in tagStore en update
       //
-      console.warn('+++ TracksCtrl trackEditTags tagStore update: ', dataFactoryTag.store);
+      //console.warn('+++ TracksCtrl trackEditTags tagStore update: ', dataFactoryTag.store);
       loDash.each(dataFactoryTag.store, function (tagModel) {
         if (tagModel.get('Id') === tagId) {
           tagModel.set('tag', tagTekst);
@@ -257,14 +257,14 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       //	Verwijder in mijn trackSupStore en update
       //
       var chunkEdit = loDash.chunk(dataFactoryTrackSup.store, 10);
-      console.log(chunkEdit);
+      //console.log(chunkEdit);
 
       function doChunkEdit(chunkEdit, index) {
 
-        console.warn('TracksCtrl doChunkEdit');
+        //console.warn('TracksCtrl doChunkEdit');
 
         if (index >= chunkEdit.length) {
-          console.log('TracksCtrl doChunkEdit READY');
+          //console.log('TracksCtrl doChunkEdit READY');
           return;
         }
 
@@ -299,7 +299,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       //
       loDash.each(dataFactoryTrack.store, function (trackModel) {
 
-        console.log('TracksCtrl EditAllLabels, trackModel: ', trackModel);
+        //console.log('TracksCtrl EditAllLabels, trackModel: ', trackModel);
 
         initxData(trackModel);
 
@@ -317,27 +317,27 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     $scope.$on('$destroy', event3);
     //
     function doVerwijderen(mijnTracks) {
-      console.time('Verwijderen');
+      //console.time('Verwijderen');
 
       $ionicLoading.show({
         template: 'Verwijderen Spoors Selectie<br><br><span class="trinl-rood"><b>' + filter.filter + '</b></span><br><br><br>Een ogenblik geduld aub...'
       });
 
       var chunkRemove = loDash.chunk(mijnTracks, 10);
-      console.log(chunkRemove);
+      //console.log(chunkRemove);
 
       function doChunkRemove(chunkRemove, index) {
 
-        console.warn('TracksCtrl doChunkRemove, index: ', index);
+        //console.warn('TracksCtrl doChunkRemove, index: ', index);
 
         if (index >= chunkRemove.length) {
-          console.log('TracksCtrl doChunkRemove READY');
+          //console.log('TracksCtrl doChunkRemove READY');
           $ionicLoading.hide();
 
           $rootScope.$emit('sideMenuTracksFilter', {
             filter: 'Alle'
           });
-          console.timeEnd('Verwijderen');
+          //console.timeEnd('Verwijderen');
           return;
         }
         //
@@ -349,14 +349,14 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
 
           var trackId = trackModel.get('Id');
 
-          console.warn('TracksCtrl doChunkRemove, index: ', index);
+          //console.warn('TracksCtrl doChunkRemove, index: ', index);
           //
           // Filter de tracktags van dit trackmodel
           //
           var tracktags = loDash.filter(dataFactoryTrackTag.store, function (tracktagModel) {
             return tracktagModel.get('trackId') === trackId;
           });
-          console.warn('TracksCtrl doChunkRemove, tracktags from Id: ', tracktags, trackModel.get('Id'), trackModel.get('naam'));
+          //console.warn('TracksCtrl doChunkRemove, tracktags from Id: ', tracktags, trackModel.get('Id'), trackModel.get('naam'));
           //
           // De tracktags van dit model worden later verwijderd
           // Er is nu tijd om de TrackSideMenuCtrl te informeren om zijn tags bij te werken
@@ -372,7 +372,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
             //
             if (tagModel) {
 
-              console.warn('TracksCtrl doChunkRemove, verwijder tracktag: ', tagModel.get('tag'));
+              //console.warn('TracksCtrl doChunkRemove, verwijder tracktag: ', tagModel.get('tag'));
 
               trackTagModel.xData = tagModel;
 
@@ -429,12 +429,12 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     var event12 = $rootScope.$on('trackVerwijderSelectie', function (event, args) {
       //
-      console.error('Verwijderen Selectie ceo data.tracks:  ', $scope.ceo.Id, $scope.data.tracks);
+      //console.error('Verwijderen Selectie ceo data.tracks:  ', $scope.ceo.Id, $scope.data.tracks);
       //
       var mijnTracks = loDash.filter($scope.data.tracks, function (trackModel) {
         return trackModel.get('gebruikerId') === $scope.ceo.Id;
       });
-      console.error('MijnTracks aantal: ', mijnTracks.length);
+      //console.error('MijnTracks aantal: ', mijnTracks.length);
 
       if (mijnTracks.length === 0) {
         $ionicPopup.alert({
@@ -495,7 +495,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     function watchLabelGeenLabelTrack(tagModel) {
       done += 1;
-      console.log('watchLabelGeenLabelTrack todo, done: ', todo, done);
+      //console.log('watchLabelGeenLabelTrack todo, done: ', todo, done);
       if (done >= todo) {
 
         $rootScope.$emit('tracksNieuweAantallen');
@@ -511,7 +511,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     var event13 = $rootScope.$on('labelGeenLabelTrack', function (event, args) {
 
-      console.warn('TracksCtrl event labelGeenLabelTrack args: ', args.tagModel);
+      //console.warn('TracksCtrl event labelGeenLabelTrack args: ', args.tagModel);
 
       var tagModel = args.tagModel;
 
@@ -533,7 +533,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       loDash.each(tracksZonderLabel, function (trackModel) {
 
         var trackId = trackModel.get('Id');
-        console.log('TracksCtrl event labelGeenLabelTrack tracksZonderLabel trackId, trackNaam: ', trackId, trackModel.get('naam'));
+        //console.log('TracksCtrl event labelGeenLabelTrack tracksZonderLabel trackId, trackNaam: ', trackId, trackModel.get('naam'));
 
         var trackTagModel = new dataFactoryTrackTag.Model();
         trackTagModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
@@ -543,8 +543,8 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
 
           trackTagModel.xData = tagModel;
 
-          console.log('TracksCtrl labelGeenLabelTrack tracktag TOEVOEGEN in  SideMenu: ', trackModel.get('naam'), tagModel.get('tag'));
-          console.log('TracksCtrl labelGeenLabelTrack tracktag TOEVOEGEN in  trackModel.xData.tags: ', trackModel.get('naam'), addTrackTagModel);
+          //console.log('TracksCtrl labelGeenLabelTrack tracktag TOEVOEGEN in  SideMenu: ', trackModel.get('naam'), tagModel.get('tag'));
+          //console.log('TracksCtrl labelGeenLabelTrack tracktag TOEVOEGEN in  trackModel.xData.tags: ', trackModel.get('naam'), addTrackTagModel);
 
           trackModel.xData.tags.push(trackTagModel);
           $rootScope.$emit('trackAddLabel', {
@@ -559,7 +559,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     var event4 = $rootScope.$on('trackStartSearch', function () {
 
-      console.warn('+++ trackCtrl trackStartSearch');
+      //console.warn('+++ trackCtrl trackStartSearch');
 
       $scope.data.tracks = [];
     });
@@ -575,7 +575,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
           //sorteerDetailsTags(trackModel);
         //});
 
-        console.log('TracksCtrl finishFilter FILTER AANTAL tracks selected: ', dataFactoryTrack.selected);
+        //console.log('TracksCtrl finishFilter FILTER AANTAL tracks selected: ', dataFactoryTrack.selected);
         //
         
         //removeIf(berichten)
@@ -588,7 +588,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
         
 
         $timeout(function () {
-          console.log('TrackCtrl finishFilter $ionicScrollDelegate');
+          //console.log('TrackCtrl finishFilter $ionicScrollDelegate');
           $ionicScrollDelegate.$getByHandle('trackList').scrollTop(true);
           //$ionicScrollDelegate.scrollTop(true);
 
@@ -598,7 +598,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     var event5 = $rootScope.$on('tracksFilter', function (event, args) {
 
-      console.error('TracksCtrl on.tracksFilter: ', args);
+      //console.error('TracksCtrl on.tracksFilter: ', args);
 
       //
       // Indien geen argumenten dan de oude filter toepassen
@@ -611,10 +611,10 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
 
       dataFactoryConfig.currentModel.set('trackFilter', args);
       dataFactoryConfigX.update(dataFactoryConfig.currentModel);
-      console.log('TracksCtrl laatste tracksFilter saved in config: ', args);
+      //console.log('TracksCtrl laatste tracksFilter saved in config: ', args);
 
       if (args.filter === 'Mijn') {
-        console.warn('TracksCtrl tracksFilter: Mijn');
+        //console.warn('TracksCtrl tracksFilter: Mijn');
         $scope.data.tracks = loDash.filter(dataFactoryTrack.store, function (trackModel) {
           return trackModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
         });
@@ -622,7 +622,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       }
 
       if (args.filter === 'Public') {
-        console.warn('TracksCtrl tracksFilter: Public');
+        //console.warn('TracksCtrl tracksFilter: Public');
         $scope.data.tracks = loDash.filter(dataFactoryTrack.store, function (trackModel) {
           return trackModel.get('gebruikerId') !== dataFactoryCeo.currentModel.get('Id');
         });
@@ -630,22 +630,22 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       }
 
       if (args.filter === 'Alle') {
-        console.warn('TracksCtrl tracksFilter: Alle');
+        //console.warn('TracksCtrl tracksFilter: Alle');
         $scope.data.tracks = loDash.each(dataFactoryTrack.store);
         finishFilter();
       }
 
       if (args.filter === 'Geen label') {
 
-        console.warn('TracksCtrl tracksFilter: Geen label');
+        //console.warn('TracksCtrl tracksFilter: Geen label');
 
         $scope.data.tracks = loDash.filter(dataFactoryTrack.store, function (trackModel) {
           if (trackModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id')) {
-            console.warn('TracksCtrl tracksFilter Geen label in trackModel: ', trackModel);
+            //console.warn('TracksCtrl tracksFilter Geen label in trackModel: ', trackModel);
             if (trackModel.xData === undefined) {
               return false;
             }
-            console.warn('TracksCtrl tracksFilter trackModel.xData: ', trackModel.xData);
+            //console.warn('TracksCtrl tracksFilter trackModel.xData: ', trackModel.xData);
             if (trackModel.xData.tags !== undefined) {
               return trackModel.xData && trackModel.xData.tags.length === 0;
             } else {
@@ -654,22 +654,22 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
           }
         });
 
-        console.log('TracksCtrl ongelabeld aantal tracks: ', $scope.data.tracks);
+        //console.log('TracksCtrl ongelabeld aantal tracks: ', $scope.data.tracks);
 
         finishFilter();
       }
 
       if (args.filter === 'Tag') {
 
-        console.warn('TracksCtrl tracksFilter: Tag:', args.tag);
+        //console.warn('TracksCtrl tracksFilter: Tag:', args.tag);
 
         $scope.data.tracks = loDash.filter(dataFactoryTrack.store, function (trackModel) {
 
           initxData(trackModel);
-          console.log('TracksCtrl tracksFilter Tag trackModel naam: ', trackModel.get('naam'));
-          console.log('TracksCtrl tracksFilter Tag trackModel naam: ', trackModel.xData.tags);
+          //console.log('TracksCtrl tracksFilter Tag trackModel naam: ', trackModel.get('naam'));
+          //console.log('TracksCtrl tracksFilter Tag trackModel naam: ', trackModel.xData.tags);
           if (trackModel.xData.tags.length >= 1) {
-            console.warn('TracksCtrl tracksFilter Tag: ', trackModel.xData.tags.tag);
+            //console.warn('TracksCtrl tracksFilter Tag: ', trackModel.xData.tags.tag);
           }
           var found = loDash.find(trackModel.xData.tags, function (trackTagModel) {
             return trackTagModel.xData.get('tag') === args.tag;
@@ -680,19 +680,19 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       }
 
       if (args.filter === 'Geen') {
-        console.warn('TracksCtrl tracksFilter: Geen');
+        //console.warn('TracksCtrl tracksFilter: Geen');
         $scope.data.tracks = [];
-        console.log('TracksCtrl ongelabeld aantal tracks: ', $scope.data.tracks);
+        //console.log('TracksCtrl ongelabeld aantal tracks: ', $scope.data.tracks);
         finishFilter();
       }
 
       if (args.filter === 'Search') {
-        console.log('TracksCtrl tracksFilter: Search', args);
+        //console.log('TracksCtrl tracksFilter: Search', args);
 
         if (args.search === '') {
           $scope.search.label = '';
           $scope.data.tracks = [];
-          console.log('TracksCtrl tracksFilter: geen Search');
+          //console.log('TracksCtrl tracksFilter: geen Search');
           finishFilter();
         } else {
           $scope.data.tracks = dataFactoryTrack.store;
@@ -703,18 +703,18 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       }
 
       if (args.filter === 'Nieuw') {
-        console.warn('TracksCtrl tracksFilter: Nieuw');
+        //console.warn('TracksCtrl tracksFilter: Nieuw');
         $scope.data.tracks = dataFactoryTrack.nieuw;
         finishFilter();
       }
 
       if (args.filter === 'Favorieten') {
 
-        console.warn('TracksCtrl tracksFilter: Favorieten');
+        //console.warn('TracksCtrl tracksFilter: Favorieten');
 
         $scope.data.tracks = dataFactoryTrack.star;
 
-        console.log('TracksCtrl nieuwe tracks: ', dataFactoryTrack.star);
+        //console.log('TracksCtrl nieuwe tracks: ', dataFactoryTrack.star);
         finishFilter();
       }
     });
@@ -722,7 +722,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     var event10 = $rootScope.$on('deleteLabel', function (event, args) {
 
-      console.warn('TracksCtrl event deleteLabel: ', args);
+      //console.warn('TracksCtrl event deleteLabel: ', args);
 
       loDash.each(dataFactoryTrack.store, function (trackModel) {
 
@@ -748,9 +748,9 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       
       
       //removeIf(!tracks)
-      console.log('Geoposition: ', dataFactoryTrack.Geoposition);
+      //console.log('Geoposition: ', dataFactoryTrack.Geoposition);
  
-      console.log('TracksCtrl trackExporteerSelectie $scope.data.tracks: ', $scope.data.tracks);
+      //console.log('TracksCtrl trackExporteerSelectie $scope.data.tracks: ', $scope.data.tracks);
       //
       //  In $scope.data.tracks staan de geselecteerde tracks
       //  Eerst wordt een geojsonModel geopen met openGPX.
@@ -759,7 +759,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       //  Daarna wordt geojson geconverteerd naar gpx en opgeslagen in de Dropbox-map Spoors
       //
       var gpxNaam = args.filter;
-      console.log('TracksCtrl trackExporteerSelectie gpxNaam: ', gpxNaam);
+      //console.log('TracksCtrl trackExporteerSelectie gpxNaam: ', gpxNaam);
 
       if (gpxNaam === 'Search') {
 
@@ -792,7 +792,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
         popupEditZoekNaam.then(function (res) {
 
           if (res !== undefined) {
-            console.log('FotosSideMenuCtrl editTag Label gewijzigd in: ' + res);
+            //console.log('FotosSideMenuCtrl editTag Label gewijzigd in: ' + res);
             gpxNaam = res;
           }
         });
@@ -805,7 +805,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
 
         gpxDoneErrors += 1;
 
-        console.warn('TracksCtrl watchGpxErrors gpxDoneErrors, gpxTodoErrors: ', gpxDoneErrors, gpxTodoErrors);
+        //console.warn('TracksCtrl watchGpxErrors gpxDoneErrors, gpxTodoErrors: ', gpxDoneErrors, gpxTodoErrors);
 
         if (gpxDoneErrors >= gpxTodoErrors) {
 
@@ -838,7 +838,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
 
         gpxDone += 1;
 
-        console.warn('TracksCtrl watchGpx gpxDone, gpxTodo: ', gpxDone, gpxTodo, uploadErrors.length);
+        //console.warn('TracksCtrl watchGpx gpxDone, gpxTodo: ', gpxDone, gpxTodo, uploadErrors.length);
 
         if (gpxDone >= gpxTodo) {
 
@@ -882,7 +882,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
           var trackModel = uploadError.trackModel;
           var trackId = trackModel.get('Id');
 
-          console.log('TracksCtrl uploadError trackModel, uploadError: ', trackModel, uploadError);
+          //console.log('TracksCtrl uploadError trackModel, uploadError: ', trackModel, uploadError);
 
           dataFactoryExportTracks.recordGPX(trackModel.get('lat'), trackModel.get('lng'), trackModel.get('naam'), trackModel.get('tekst'), trackId, trackData).then(function () {
 
@@ -895,7 +895,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
             watchGpxTracksErrors();
           // eslint-disable-next-line no-unused-vars
           }).catch(function (err) {
-            console.error('TracksCtrl uploadError ERROR err: ', err);
+            //console.error('TracksCtrl uploadError ERROR err: ', err);
             watchGpxTracksErrors();
           });
         });
@@ -920,10 +920,10 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       loDash.each(mijnTracks, function (trackModel) {
         var trackId = trackModel.get('Id');
         var gebruikerId = trackModel.get('gebruikerId');
-        console.log('TracksCtrl trackExporteerSelectie trackModel: ', trackModel);
+        //console.log('TracksCtrl trackExporteerSelectie trackModel: ', trackModel);
 
         dataFactoryTracks.loadTrack(gebruikerId, trackId, 'txt').then(function (trackData) {
-          console.log('TracksCtrl trackExporteerSelectie trackData: ', trackData);
+          //console.log('TracksCtrl trackExporteerSelectie trackData: ', trackData);
           //dataFactoryExportTracks.openGPX();
           dataFactoryExportTracks.recordGPX(trackModel.get('lat'), trackModel.get('lng'), trackModel.get('naam'), trackModel.get('tekst'), trackId, trackData);
           //dataFactoryExportTracks.closeGPX('NMFL-naam');
@@ -950,7 +950,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     $scope.clickedTrack = function (trackModel) {
       dataFactoryTrack.card = true;
-      console.warn('TracksCtrl clickedTrack dataFactoryTrack.card: ', trackModel, dataFactoryTrack.card);
+      //console.warn('TracksCtrl clickedTrack dataFactoryTrack.card: ', trackModel, dataFactoryTrack.card);
       $state.go('tracks.trackCard', {
         'Id': trackModel.get('Id')
       });
@@ -960,7 +960,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
      * Nogmaals filteren starten
      */
     $scope.clearSearchLabel = function () {
-      console.warn('TracksCtrl clearSearchLabel');
+      //console.warn('TracksCtrl clearSearchLabel');
       $scope.search.label = '';
       $scope.data.tracks = dataFactoryTrack.store;
 
@@ -971,7 +971,7 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
     //
     function sorteerDetailsTags(trackModel) {
       //
-      console.error('TrackCardCtrl sorteerDetailsTags');
+      //console.error('TrackCardCtrl sorteerDetailsTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
@@ -1000,23 +1000,23 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
       //
       if (!trackModel.xData) {
         trackModel.xData = {};
-        console.log('TracksCtrl updateTrack xData: ', trackModel.xData);
+        //console.log('TracksCtrl updateTrack xData: ', trackModel.xData);
       }
       if (!trackModel.xData.pois) {
         trackModel.xData.pois = [];
-        console.log('TracksCtrl updateTrack xData.pois: ', trackModel.xData.pois);
+        //console.log('TracksCtrl updateTrack xData.pois: ', trackModel.xData.pois);
       }
       if (!trackModel.xData.fotos) {
         trackModel.xData.fotos = [];
-        console.log('TracksCtrl updateTrack xData.fotos: ', trackModel.xData.fotos);
+        //console.log('TracksCtrl updateTrack xData.fotos: ', trackModel.xData.fotos);
       }
       if (!trackModel.xData.tags) {
         trackModel.xData.tags = [];
-        console.log('TracksCtrl updateTrack xData.tags: ', trackModel.xData.tags);
+        //console.log('TracksCtrl updateTrack xData.tags: ', trackModel.xData.tags);
       }
       if (!trackModel.xData.groep) {
         trackModel.xData.groep = '';
-        console.log('TracksCtrl updateTrack xData.groep: ', trackModel.xData.groep);
+        //console.log('TracksCtrl updateTrack xData.groep: ', trackModel.xData.groep);
       }
     }
     //
@@ -1024,17 +1024,17 @@ trinl.controller('TracksCtrl', ['loDash', '$rootScope', '$scope', '$timeout', '$
 
       $rootScope.$emit('refreshTrack');
 
-      console.error('TracksCtrl doReload broadcast reloadComplete');
+      //console.error('TracksCtrl doReload broadcast reloadComplete');
       $scope.$broadcast('scroll.refreshComplete');
     };
     //
     $scope.$on('elemHasFocus', function (event, args) {
 
-      console.warn('TracksCtrl elemHasFocus event: ', args);
+      //console.warn('TracksCtrl elemHasFocus event: ', args);
       //
       if (args.message === 'Zoek in locaties') {
         $timeout(function () {
-          console.error('TracksCtrl elemHasFocus scrollTop $ionicScrollDelegate');
+          //console.error('TracksCtrl elemHasFocus scrollTop $ionicScrollDelegate');
           $ionicScrollDelegate.$getByHandle('trackList').scrollTop(true);
         });
       }

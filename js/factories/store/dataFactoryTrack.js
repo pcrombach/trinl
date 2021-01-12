@@ -277,10 +277,10 @@ trinl.factory('dataFactoryTrack', ['loDash', '$rootScope', '$q', '$timeout', '$i
 
     dataFactoryTrack.Model.prototype = {
       get: function (prop) {
-        ////console.log(dataFactoryTrack.storeId + ' get: ' + prop);
+        //console.log(dataFactoryTrack.storeId + ' get: ' + prop);
         var m = this;
         if (m[prop] !== undefined) {
-          ////console.log('get: ' + m[prop].value);
+          //console.log('get: ' + m[prop].value);
           return m[prop].value;
         } else {
           return null;
@@ -288,26 +288,26 @@ trinl.factory('dataFactoryTrack', ['loDash', '$rootScope', '$q', '$timeout', '$i
       },
       getId: function () {
         var m = this;
-        ////console.log('getId: ' + m.get['Id']);
+        //console.log('getId: ' + m.get['Id']);
         return m.get('Id');
       },
       remove: function () {
         var m = this;
-        ////console.log('remove : ' + JSON.stringify(m));
+        //console.log('remove : ' + JSON.stringify(m));
         m.unsetAll();
         m.set('deletedOn', dataFactoryAlive.getTimestamp());
         m.set('changedOn', dataFactoryAlive.getTimestamp());
         return dataFactoryTrack.remove(m);
       },
       save: function () {
-        ////console.log('save');
+        //console.log('save');
         var m = this;
         m.set('changedOn', dataFactoryAlive.getTimestamp());
-        ////console.error('save: ', m);
+        //console.error('save: ', m);
         return dataFactoryTrack.save(m);
       },
       setAll: function () {
-        ////console.log('setAll');
+        //console.log('setAll');
         var m = this;
         loDash.each(m, function (field) {
           field.dirty = true;
@@ -319,11 +319,11 @@ trinl.factory('dataFactoryTrack', ['loDash', '$rootScope', '$q', '$timeout', '$i
             return false;
           }
         });
-        ////console.log('setAll: ' + JSON.stringify(m));
+        //console.log('setAll: ' + JSON.stringify(m));
         return m;
       },
       unsetAll: function () {
-        ////console.log('track unsetAll');
+        //console.log('track unsetAll');
 
         var m = this;
         if (m.$$hashKey) {
@@ -331,7 +331,7 @@ trinl.factory('dataFactoryTrack', ['loDash', '$rootScope', '$q', '$timeout', '$i
         }
         loDash.each(m, function (field) {
           if (field !== true && field !== false) {
-            ////console.log('track unsetAll m, field: ', m, field);
+            //console.log('track unsetAll m, field: ', m, field);
             field.dirty = false;
           }
         });
@@ -341,12 +341,12 @@ trinl.factory('dataFactoryTrack', ['loDash', '$rootScope', '$q', '$timeout', '$i
             return false;
           }
         });
-        ////console.log('track unsetAll: ', m);
+        //console.log('track unsetAll: ', m);
         return m;
       },
       set: function (prop, value) {
         var m = this;
-        ////console.log('set prop: ', prop);
+        //console.log('set prop: ', prop);
         m[prop].value = value;
         m[prop].dirty = true;
         var Id = m.get('Id');
@@ -356,11 +356,11 @@ trinl.factory('dataFactoryTrack', ['loDash', '$rootScope', '$q', '$timeout', '$i
             return false;
           }
         });
-        ////console.log('set: ', m);
+        //console.log('set: ', m);
         return m;
       },
       unset: function (prop) {
-        ////console.log('setAll');
+        //console.log('setAll');
         var m = this;
         m[prop].dirty = false;
 
@@ -380,13 +380,13 @@ trinl.factory('dataFactoryTrack', ['loDash', '$rootScope', '$q', '$timeout', '$i
             }
           });
         }
-        ////console.log('unset: ' + JSON.stringify(m));
+        //console.log('unset: ' + JSON.stringify(m));
 
         return m;
       },
       setId: function (Id) {
         var m = this;
-        ////console.log('setId record: ' + Id);
+        //console.log('setId record: ' + Id);
         m.set('Id', Id);
         loDash.each(dataFactoryTrack.data, function (item) {
           if (item.record.get('Id') === Id) {
@@ -394,7 +394,7 @@ trinl.factory('dataFactoryTrack', ['loDash', '$rootScope', '$q', '$timeout', '$i
             return false;
           }
         });
-        ////console.log('setId: ' + JSON.stringify(m));
+        //console.log('setId: ' + JSON.stringify(m));
 
         return m;
       }
