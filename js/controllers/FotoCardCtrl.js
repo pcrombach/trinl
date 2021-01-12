@@ -37,8 +37,8 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     var ceo = {};
     ceo.Id = localStorage.getItem('authentication_id');
     ceo.profielId = localStorage.getItem('authentication_profielId');
-    console.error('FotoCardCtrl ceo.Id: ', ceo.Id);
-    console.error('FotoCardCtrl ceo.profielId: ', +ceo.profielId);
+    //console.error('FotoCardCtrl ceo.Id: ', ceo.Id);
+    //console.error('FotoCardCtrl ceo.profielId: ', +ceo.profielId);
 
     $scope.global = {};
 
@@ -70,19 +70,19 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     // eslint-disable-next-line no-unused-vars
     //
     var event0a = $scope.$on('$ionicView.beforeEnter', function () {
-      console.warn('FotoCardCtrl $ionicView.beforeEnter');
+      //console.warn('FotoCardCtrl $ionicView.beforeEnter');
       init();
     });
     $scope.$on('$destroy', event0a);
 
     var event0z = $scope.$on('$ionicView.afterEnter', function () {
-      console.warn('FotoCardCtrl $ionicView.afterEnter');
+      //console.warn('FotoCardCtrl $ionicView.afterEnter');
       isCardClosed = false;
     });
     $scope.$on('$destroy', event0z);
 
     var event0b = $scope.$on('$ionicView.beforeLeave', function () {
-      console.warn('FotoCardCtrl $ionicView.beforeLeave');
+      //console.warn('FotoCardCtrl $ionicView.beforeLeave');
       //$timeout(function () {
       $scope.closeFotoCard(false);
       //}, 100);
@@ -91,7 +91,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     //
     var event1 = $rootScope.$on('labelsFotoUpdate', function (event, args) {
       var fotoModel = args.fotoModel;
-      console.warn('FotoCardCtrl on.labelsFotoUpdate fotoModel: ', fotoModel, fotoModel.get('naam'));
+      //console.warn('FotoCardCtrl on.labelsFotoUpdate fotoModel: ', fotoModel, fotoModel.get('naam'));
       updateLabels(fotoModel);
     });
     $scope.$on('$destroy', event1);
@@ -116,7 +116,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     //
     $scope.infoTag = function (tagModel) {
 
-      console.log('FotoCardCtrl tagModel: ', tagModel);
+      //console.log('FotoCardCtrl tagModel: ', tagModel);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -132,7 +132,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     $scope.editTag = function (tagModel) {
       var tag = tagModel.get('tag');
-      console.warn('FotoCardCtrl editTag: ', tag, tagModel);
+      //console.warn('FotoCardCtrl editTag: ', tag, tagModel);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -162,10 +162,10 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       });
       popupEditTag.then(function (res) {
 
-        console.log('FotosSideMenuCtrl editTag Label gewijzigd in: ' + res);
+        //console.log('FotosSideMenuCtrl editTag Label gewijzigd in: ' + res);
         if (res !== undefined) {
 
-          console.log('FotosSideMenuCtrl editTag fotoModel tags: ', tag, fotoModel && fotoModel.xData.tags);
+          //console.log('FotosSideMenuCtrl editTag fotoModel tags: ', tag, fotoModel && fotoModel.xData.tags);
 
           $rootScope.$emit('fotoRemoveLabel', {
             fotoModel: fotoModel,
@@ -198,7 +198,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     $scope.deleteTag = function (tagModel) {
       var tag = tagModel.get('tag');
-      console.warn('FotoCardCtrl editTag: ', tag);
+      //console.warn('FotoCardCtrl editTag: ', tag);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -215,14 +215,14 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
             $scope.closeTags();
 
             loDash.each(dataFactoryFoto.store, function (fotoModel) {
-              console.log('FotosSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, fotoModel);
+              //console.log('FotosSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, fotoModel);
               loDash.each(fotoModel.xData.tags, function (fotoTagModel) {
-                console.log('FotosSideMenuCtrl deleteTag fotoModal.tags loop: ', fotoModel.xData.tags, fotoTagModel);
+                //console.log('FotosSideMenuCtrl deleteTag fotoModal.tags loop: ', fotoModel.xData.tags, fotoTagModel);
                 (function (fotoTagModel) {
                   if (fotoTagModel.xData.get('tag') === tag) {
-                    console.log('FotosSideMenuCtrl deleteTag fotoTagModel in fotoModel.tags wordt verwijderd uit backend: ', fotoTagModel);
+                    //console.log('FotosSideMenuCtrl deleteTag fotoTagModel in fotoModel.tags wordt verwijderd uit backend: ', fotoTagModel);
                     fotoTagModel.remove().then(function () {
-                      console.log('FotosSideMenuCtrl deleteTag fotoTagModel wordt verwijderd uit fotoModel.tags: ', fotoTagModel);
+                      //console.log('FotosSideMenuCtrl deleteTag fotoTagModel wordt verwijderd uit fotoModel.tags: ', fotoTagModel);
                       loDash.remove(fotoModel.xData.tags, function (fotoTagModel) {
                         return fotoTagModel.xData.get('tag') === tag;
                       });
@@ -242,12 +242,12 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
             loDash.remove(dataFactoryTag.data, function (dataItem) {
               return dataItem.record.get('Id') === tag && dataItem.record.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
             });
-            console.log('FotosSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
+            //console.log('FotosSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
             //
             // Verwijder tag in de backend. De backend verwijderd ook alle fototags met tagId van alle andere gebruikers
             //
             if (tagModel.get('gebruikerId') !== '') {
-              console.log('FotosSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
+              //console.log('FotosSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
               tagModel.remove();
             }
 
@@ -260,7 +260,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     function sorteerGlobalTags() {
 
-      console.error('fotoCardCtrl sorteerGlobalTags');
+      //console.error('fotoCardCtrl sorteerGlobalTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
@@ -287,12 +287,12 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     function sorteerDetailsTags() {
 
-      console.error('FotoCardCtrl sorteerDetailsTags');
+      //console.error('FotoCardCtrl sorteerDetailsTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
 
-      console.error('$scope.details.tags: ', $scope.details.tags);
+      //console.error('$scope.details.tags: ', $scope.details.tags);
 
       var tagsPrivate = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length <= 3 && tag.xData.get('gebruikerId') !== '';
@@ -300,7 +300,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       if (tagsPrivate.length > 0) {
         tagsPrivate = loDash.orderBy(tagsPrivate, o => o.xData.get('tag'), 'asc');
       }
-      console.error('tagsPrivate: ', tagsPrivate);
+      //console.error('tagsPrivate: ', tagsPrivate);
 
       var tagsStandaard = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length <= 3 && tag.xData.get('gebruikerId') === '';
@@ -308,7 +308,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       if (tagsStandaard.length > 0) {
         tagsStandaard = loDash.orderBy(tagsStandaard, o => o.xData.get('tag'), 'asc');
       }
-      console.error('tagsStandaard: ', tagsStandaard);
+      //console.error('tagsStandaard: ', tagsStandaard);
 
       var tagsNormaal = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length > 3;
@@ -316,13 +316,13 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       if (tagsNormaal.length > 0) {
         tagsNormaal = loDash.orderBy(tagsNormaal, o => o.xData.tag.value, 'asc');
       }
-      console.error('tagsNormaal: ', tagsNormaal);
+      //console.error('tagsNormaal: ', tagsNormaal);
 
       $scope.details.tags = [...tagsPrivate, ...tagsStandaard, ...tagsNormaal];
     }
 
     function fotosCheckFotoReactieAantal(reacties) {
-      console.warn('FotosCtrl fotosCheckFotoReactieOud, reacties: ', reacties);
+      //console.warn('FotosCtrl fotosCheckFotoReactieOud, reacties: ', reacties);
 
       var maxAantal = 50;
 
@@ -332,7 +332,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
       var teller = 0;
       loDash.each(reacties, function (reactieModel) {
-        console.log('FotosCtrl fotosCheckFotoReactieAantal reactieModel: ', reactieModel);
+        //console.log('FotosCtrl fotosCheckFotoReactieAantal reactieModel: ', reactieModel);
         teller += 1;
         if (teller > maxAantal) {
 
@@ -359,7 +359,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
               return dataItem.record.get('reactieId') === reactieId;
             });
           }
-          console.error('FotosCtrl fotosCheckFotoReactieAantal reactie removed SUCCESS');
+          //console.error('FotosCtrl fotosCheckFotoReactieAantal reactie removed SUCCESS');
         }
       });
       if (verwijderingen > 0) {
@@ -376,7 +376,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     function fotosCheckFotoReactieOud(reacties) {
 
-      console.warn('FotosCtrl fotosCheckFotoReactieOud, reacties: ', reacties);
+      //console.warn('FotosCtrl fotosCheckFotoReactieOud, reacties: ', reacties);
 
       var aantalOuder = 7;
       var formatOuder = 'days';
@@ -384,18 +384,18 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       var q = $q.defer();
       var tooOld = moment().subtract(aantalOuder, formatOuder).format('YYYY-MM-DD HH:mm:ss');
       var verwijderingen = false;
-      console.log('FotosCtrl fotosCheckFotoReactieOud: ', tooOld);
+      //console.log('FotosCtrl fotosCheckFotoReactieOud: ', tooOld);
       //
       //  Ouder dan 
       //
       loDash.each(reacties, function (reactieModel) {
         if (reactieModel) {
-          console.log('FotosCtrl fotosCheckFotoReactieOud reactieModel: ', reactieModel);
+          //console.log('FotosCtrl fotosCheckFotoReactieOud reactieModel: ', reactieModel);
           var datum = reactieModel.get('changedOn');
           var reactieId = reactieModel.get('Id');
           if (datum < tooOld) {
             verwijderingen += 1;
-            console.log('FotosCtrl fotosCheckFotoReactieOud changedOn, fotoId, tooOld: ', datum, fotoId, tooOld);
+            //console.log('FotosCtrl fotosCheckFotoReactieOud changedOn, fotoId, tooOld: ', datum, fotoId, tooOld);
 
             reactieModel.remove();
             loDash.remove(dataFactoryFotoReactie.store, function (reactieModel) {
@@ -418,7 +418,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
             }
             $rootScope.$emit('filter');
             $rootScope.$emit('fotosNieuweAantallen');
-            console.error('FotosCtrl fotosCheckFotoReactieOud reactie removed SUCCESS');
+            //console.error('FotosCtrl fotosCheckFotoReactieOud reactie removed SUCCESS');
           }
         }
       });
@@ -435,10 +435,10 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     }
 
     function updateReacties(fotoModel) {
-      console.log('FotosCtrl updateReacties voor foto naam Id: ', fotoModel.get('Id'), fotoModel.get('naam'));
+      //console.log('FotosCtrl updateReacties voor foto naam Id: ', fotoModel.get('Id'), fotoModel.get('naam'));
       var fotoId = fotoModel.get('Id');
 
-      console.log('FotosCtrl updateReacties dataFactoryFotoReactie.store: ', dataFactoryFotoReactie.store);
+      //console.log('FotosCtrl updateReacties dataFactoryFotoReactie.store: ', dataFactoryFotoReactie.store);
 
       var fotoReacties = loDash.filter(dataFactoryFotoReactie.store, function (fotoReactieModel) {
         return fotoReactieModel.get('fotoId') === fotoId;
@@ -449,13 +449,13 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         fotosCheckFotoReactieOud(fotoReacties).then(function () {
         });
       });
-      console.warn('FotoCardCtrl loadReactie foto in store, aantal: ', dataFactoryFoto.store.length);
-      console.warn('FotoCardCtrl loadReactie reacties in store, aantal: ', fotoReacties.length);
+      //console.warn('FotoCardCtrl loadReactie foto in store, aantal: ', dataFactoryFoto.store.length);
+      //console.warn('FotoCardCtrl loadReactie reacties in store, aantal: ', fotoReacties.length);
       $scope.details.reactiesAantal = fotoReacties.length;
     }
 
     $scope.reactie = function () {
-      console.warn('FotoCardCtrl reactie');
+      //console.warn('FotoCardCtrl reactie');
 
       $scope.input = {};
       $scope.input.naam = '';
@@ -467,7 +467,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     $scope.saveReactie = function (input) {
 
-      console.warn('FotoCardCtrl saveReactie input fotoId: ', input, fotoId);
+      //console.warn('FotoCardCtrl saveReactie input fotoId: ', input, fotoId);
 
       if ($scope.initFoto === 'Reactie') {
 
@@ -479,7 +479,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         tmp = tmp.replace(/\\"/g, '"');
         var htmlreactietekst = '<p>' + tmp + '</p>';
         tmp = false;
-        console.error('FotoCardCtrl saveReactie: ', htmlreactietekst);
+        //console.error('FotoCardCtrl saveReactie: ', htmlreactietekst);
         reactieModel.set('reactie', htmlreactietekst);
         reactieModel.set('fotoId', fotoId);
         reactieModel.set('fotoGebruikerId', fotoModel.get('gebruikerId'));
@@ -500,14 +500,14 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
           reactieSupModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
           reactieSupModel.set('xnew', false);
           reactieSupModel.save().then(function (reactieSupModel) {
-            console.error('FotoCardCtrl saveReactie reactieSupModel: ', reactieSupModel);
+            //console.error('FotoCardCtrl saveReactie reactieSupModel: ', reactieSupModel);
             reactieModel.xData = {
               sup: reactieSupModel
             };
           });
           fotoSupModel.set('fotoId', fotoId);
           fotoSupModel.save().then(function () {
-            console.error('FotoCardCtrl saveReactie fotoSupModel: ', fotoSupModel);
+            //console.error('FotoCardCtrl saveReactie fotoSupModel: ', fotoSupModel);
           });
           $scope.details.reacties.splice(0, 0, reactieModel);
         });
@@ -516,9 +516,9 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.saveFotoItemTekst = function (input) {
-      console.warn('FotoCardCtrl saveFotoTekst: ', $scope.details);
-      console.warn('FotoCardCtrl saveFotoTekst: ', input);
-      console.error('FotoCardCtrl size message: ', input.naam.length + input.tekst.length);
+      //console.warn('FotoCardCtrl saveFotoTekst: ', $scope.details);
+      //console.warn('FotoCardCtrl saveFotoTekst: ', input);
+      //console.error('FotoCardCtrl size message: ', input.naam.length + input.tekst.length);
 
       $scope.details.naam = input.naam;
       $scope.details.tekst = input.tekst;
@@ -551,7 +551,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.openFotoTekst = function () {
-      console.warn('FotoCardCtrl openFotoTekst');
+      //console.warn('FotoCardCtrl openFotoTekst');
 
       $scope.input = {};
       $scope.input.naam = $scope.details.naam;
@@ -563,9 +563,9 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     function updateLabels(fotoModel) {
-      console.log('FotoCardCtrl updateLabels fotoModel, fotoId: ', fotoModel, fotoId, fotoModel.get('naam'));
+      //console.log('FotoCardCtrl updateLabels fotoModel, fotoId: ', fotoModel, fotoId, fotoModel.get('naam'));
       if (fotoModel.get('Id') === fotoId) {
-        console.log('FotoCardCtrl updateLabels fotoModel: ', fotoModel.get('naam'), fotoModel.get('Id'));
+        //console.log('FotoCardCtrl updateLabels fotoModel: ', fotoModel.get('naam'), fotoModel.get('Id'));
         //
         // Indien labels worden toegevoegd dan worden die toegevoegd in de dataFactoryFotoTag store en data
         // De label moet ook toegevoegd worden aan de fotoModel.xData.tags
@@ -583,7 +583,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     //  Bovendien wordt dit label toegevoegd aan de labels van het het Model.
     //
     $scope.addNieuweLabel = function (tag) {
-      console.warn('FotoCardCtrl addNieuweLabel: ', tag);
+      //console.warn('FotoCardCtrl addNieuweLabel: ', tag);
 
       if (tag !== '') {
         var found = loDash.find($scope.global.tags, function (tagModel) {
@@ -601,15 +601,15 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
             tagModel.set('yprive', true);
           }
           tagModel.save().then(function () {
-            console.log('addNieuweLabel: ', dataFactoryTag.store);
+            //console.log('addNieuweLabel: ', dataFactoryTag.store);
             $scope.global.tags = loDash.filter(dataFactoryTag.store, function (tagModel) {
               return ((tagModel.get('Id').length < 3 && tagModel.get('gebruikerId') === '') || tagModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id'));
             });
             sorteerGlobalTags();
-            console.log('addNieuweLabel: ', $scope.global.tags);
+            //console.log('addNieuweLabel: ', $scope.global.tags);
             $scope.selectLabelClick(tagModel);
             $scope.clearSearchLabel();
-            console.log('FotoCardCtrl addNieuweLabel tag: ', tagModel);
+            //console.log('FotoCardCtrl addNieuweLabel tag: ', tagModel);
           });
         } else {
           $ionicPopup.confirm({
@@ -634,9 +634,9 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     $scope.selectLabelClick = function (tagModel) {
       var tagId = tagModel.get('Id');
 
-      console.warn('FotoCardCtrl selectLabelClick tagModel: ', tagModel);
-      console.warn('FotoCardCtrl selectLabelClick fotoId: ', fotoId);
-      console.warn('FotoCardCtrl selectLabelClick tagId: ', tagModel.get('Id'));
+      //console.warn('FotoCardCtrl selectLabelClick tagModel: ', tagModel);
+      //console.warn('FotoCardCtrl selectLabelClick fotoId: ', fotoId);
+      //console.warn('FotoCardCtrl selectLabelClick tagId: ', tagModel.get('Id'));
       //
       //  Kijk of de fototag reeds bestaat
       //
@@ -652,18 +652,18 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         fotoTagModel.set('xprive', true);
         fotoTagModel.set('yprive', false);
 
-        console.error('FotoCardCtrl newLabel groepenId: ', fotoModel.get('groepenId'));
+        //console.error('FotoCardCtrl newLabel groepenId: ', fotoModel.get('groepenId'));
         var groepenId = fotoModel.get('groepenId');
         if (groepenId === '' || groepenId === 'Iedereen') {
           if (tagId.length <= 3) {
             fotoTagModel.set('yprive', true);
             fotoTagModel.set('xprive', false);
-            console.log('FotoCardCtrl publiceren PUBLIC tagId', fotoTagModel.get('tagId'));
+            //console.log('FotoCardCtrl publiceren PUBLIC tagId', fotoTagModel.get('tagId'));
           }
         } else {
           fotoTagModel.set('yprive', true);
           fotoTagModel.set('xprive', false);
-          console.log('FotoCardCtrl publiceren made PUBLIC tagId', fotoTagModel.get('tagId'));
+          //console.log('FotoCardCtrl publiceren made PUBLIC tagId', fotoTagModel.get('tagId'));
           //
           tagModel.set('yprive', true);
           tagModel.set('xprive', false);
@@ -673,7 +673,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
             });
             sorteerGlobalTags();
           });
-          console.log('FotoCardCtrl publiceren made PUBLIC tag, naam', tagModel.get('tag'));
+          //console.log('FotoCardCtrl publiceren made PUBLIC tag, naam', tagModel.get('tag'));
         }
         fotoTagModel.save().then(function () {
 
@@ -729,22 +729,22 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.addTagToFoto = function ($event) {
-      console.warn('FotoCardCtrl addTagToFoto');
+      //console.warn('FotoCardCtrl addTagToFoto');
 
       $scope.clearSearchLabel($event);
       $scope.openTags($event);
     };
 
     $scope.deleteLabelTag = function (fotoTagModel) {
-      console.warn('FotoCardCtrl deleteLabelTag fotoModel: ', fotoModel, fotoModel.get('naam'), );
-      console.warn('FotoCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
-      console.warn('FotoCardCtrl deleteLabelTag fotoTagModel: ', fotoTagModel);
-      console.warn('FotoCardCtrl deleteLabelTag tagModel: ', fotoTagModel.xData);
+      //console.warn('FotoCardCtrl deleteLabelTag fotoModel: ', fotoModel, fotoModel.get('naam'), );
+      //console.warn('FotoCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
+      //console.warn('FotoCardCtrl deleteLabelTag fotoTagModel: ', fotoTagModel);
+      //console.warn('FotoCardCtrl deleteLabelTag tagModel: ', fotoTagModel.xData);
       var tagModel = fotoTagModel.xData;
-      console.warn('FotoCardCtrl deleteLabelTag tag.gebruikerId: ', tagModel.get('gebruikerId'));
-      console.warn('FotoCardCtrl ceo.gebruikerId: ', dataFactoryCeo.currentModel.get('Id'));
-      console.warn('FotoCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
-      console.warn('FotoCardCtrl deleteLabelTag fotoModel.xdata.tags: ', fotoModel.xData.tags);
+      //console.warn('FotoCardCtrl deleteLabelTag tag.gebruikerId: ', tagModel.get('gebruikerId'));
+      //console.warn('FotoCardCtrl ceo.gebruikerId: ', dataFactoryCeo.currentModel.get('Id'));
+      //console.warn('FotoCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
+      //console.warn('FotoCardCtrl deleteLabelTag fotoModel.xdata.tags: ', fotoModel.xData.tags);
 
       var fotoTagId = fotoTagModel.get('Id');
 
@@ -768,17 +768,17 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.selecteerFoto = function () {
-      console.log('FotosCtrl selecteerFoto: ', fotoModel);
+      //console.log('FotosCtrl selecteerFoto: ', fotoModel);
 
       $rootScope.$emit('fotoSelected', fotoModel);
       $state.go('app.kaart');
     };
 
     $scope.clickedAvatar = function (details) {
-      console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
+      //console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
 
-      console.warn('FotoCardCtrl clickedAvatar naam: ', details.gebruikerNaam);
-      console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
+      //console.warn('FotoCardCtrl clickedAvatar naam: ', details.gebruikerNaam);
+      //console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
 
       if (details.gebruikerId == $scope.ceo.Id) {
         var content =
@@ -823,10 +823,10 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
                   return blacklistModel.get('type') === 'gebruikers' && blacklistModel.get('blackId') === gebruikerId;
                 });
 
-                console.warn('FotoCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
+                //console.warn('FotoCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
 
                 if (found) {
-                  console.warn('FotoCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
+                  //console.warn('FotoCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
 
                   $scope.details.volgt = true;
 
@@ -850,7 +850,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
                   blacklistModel.save();
                   removed = true;
 
-                  console.warn('FotoCardCtrl updateVolgt blacklistStore blacklistModel niet gevonden aangemaakt en saved: ', blacklistModel);
+                  //console.warn('FotoCardCtrl updateVolgt blacklistStore blacklistModel niet gevonden aangemaakt en saved: ', blacklistModel);
                 }
 
                 if (removed) {
@@ -878,7 +878,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
                 var itemsToRemove = loDash.filter(dataFactoryFoto.store, function (fotoModel) {
                   return fotoModel.get('gebruikerId') === gebruikerId;
                 });
-                console.log('FotoCardCtrl fotoItems removing from Store.....: ', itemsToRemove);
+                //console.log('FotoCardCtrl fotoItems removing from Store.....: ', itemsToRemove);
 
                 loDash.each(itemsToRemove, function (fotoModel) {
                   var fotoId = fotoModel.get('Id');
@@ -897,7 +897,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.updateVolgt = function () {
-      console.warn('FotoCardCtrl updateVolgt: ', fotoModel, fotoModel.get('naam'));
+      //console.warn('FotoCardCtrl updateVolgt: ', fotoModel, fotoModel.get('naam'));
 
       $scope.details.volgt = false;
 
@@ -907,10 +907,10 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         return blacklistModel.get('blackId') === fotoModel.get('Id');
       });
 
-      console.warn('FotoCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
+      //console.warn('FotoCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
 
       if (found) {
-        console.warn('FotoCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
+        //console.warn('FotoCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
 
         removeFotoFromStores(fotoModel.get('Id'), false);
 
@@ -939,7 +939,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.updateStar = function () {
-      console.warn('FotoCardCtrl updateStar in: ', fotoSupModel);
+      //console.warn('FotoCardCtrl updateStar in: ', fotoSupModel);
 
       $scope.details.star = fotoSupModel.get('star');
 
@@ -950,9 +950,9 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
           return fotoModel.get('Id') === fotoId;
         });
         fotoSupModel.set('star', $scope.details.star);
-        console.warn('FotoCardCtrl updateStar fotoSupModel: ', fotoSupModel.get('fotoId'));
+        //console.warn('FotoCardCtrl updateStar fotoSupModel: ', fotoSupModel.get('fotoId'));
         fotoSupModel.save();
-        console.warn('FotoCardCtrl updateStar: ', fotoSupModel, fotoModel.xData.sup.xnew.value);
+        //console.warn('FotoCardCtrl updateStar: ', fotoSupModel, fotoModel.xData.sup.xnew.value);
       } else {
         $scope.details.star = true;
         fotoModel.xData.sup.set('star', true);
@@ -964,15 +964,15 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         }
         fotoSupModel.set('star', $scope.details.star);
         //fotoSupModel.set('fotoId', fotoId);
-        console.warn('FotoCardCtrl updateStar fotoSupModel: ', fotoSupModel.get('fotoId'));
+        //console.warn('FotoCardCtrl updateStar fotoSupModel: ', fotoSupModel.get('fotoId'));
         fotoSupModel.save();
-        console.warn('FotoCardCtrl updateStar: ', fotoSupModel, fotoModel.xData.sup.xnew.value);
+        //console.warn('FotoCardCtrl updateStar: ', fotoSupModel, fotoModel.xData.sup.xnew.value);
       }
       $rootScope.$emit('fotosNieuweAantallen');
     };
 
     $scope.selectGroep = function (groep) {
-      console.warn('FotoCardCtrl selectGroep: ', groep, groep.groep, groep.groepenId);
+      //console.warn('FotoCardCtrl selectGroep: ', groep, groep.groep, groep.groepenId);
       $scope.details.groep = groep.groep;
       fotoModel.set('groepenId', groep.groepenId);
       $scope.details.xprive = false;
@@ -985,7 +985,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       //  Standaard labels zijn altijd public. Dus niet publiceren.
       //  Andere Tags en fototags ook prive/public maken
       //
-      console.log('FotoCardCtrl selectGroepfototags, tags van naam: ', fotoModel.get('naam'));
+      //console.log('FotoCardCtrl selectGroepfototags, tags van naam: ', fotoModel.get('naam'));
       //
       loDash.each(dataFactoryFotoTag.store, function (fotoTagModel) {
         //
@@ -995,7 +995,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
           //
           fotoTagModel.set('yprive', true);
           fotoTagModel.set('xprive', true);
-          console.log('FotoCardCtrl selectGroep made PRIVATE tagId', fotoTagModel.get('tagId'));
+          //console.log('FotoCardCtrl selectGroep made PRIVATE tagId', fotoTagModel.get('tagId'));
 
           var groepenId = fotoModel.get('groepenId');
           if (groepenId === '' || groepenId === 'Iedereen') {
@@ -1003,12 +1003,12 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
             if (tagId.length <= 3) {
               fotoTagModel.set('yprive', true);
               fotoTagModel.set('xprive', false);
-              console.log('FotoCardCtrl selectGroep PUBLIC tagId', fotoTagModel.get('tagId'));
+              //console.log('FotoCardCtrl selectGroep PUBLIC tagId', fotoTagModel.get('tagId'));
             }
           } else {
             fotoTagModel.set('yprive', true);
             fotoTagModel.set('xprive', false);
-            console.log('FotoCardCtrl selectGroep made PUBLIC tagId', fotoTagModel.get('tagId'));
+            //console.log('FotoCardCtrl selectGroep made PUBLIC tagId', fotoTagModel.get('tagId'));
             //
             var tag = loDash.find(dataFactoryTag.store, function (tagModel) {
               return tagModel.get('Id') === tagId && tagModel.get('gebruikerId') !== '';
@@ -1017,7 +1017,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
               tag.set('yprive', true);
               tag.set('xprive', false);
               tag.save();
-              console.log('FotoCardCtrl selectGroep made PUBLIC tag, naam', tag.get('tag'));
+              //console.log('FotoCardCtrl selectGroep made PUBLIC tag, naam', tag.get('tag'));
             }
           }
           fotoTagModel.save();
@@ -1027,19 +1027,19 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.openDeelnemers = function (groepy, $event) {
-      console.warn('FotoCardCtrl openDeelnemersGroep: ', groepy);
+      //console.warn('FotoCardCtrl openDeelnemersGroep: ', groepy);
 
       $scope.deelnemers = loDash.filter(dataFactoryGroepdeelnemers.store, function (groep) {
         return groep.get('groep') === groepy;
       });
-      console.warn('FotoCardCtrl openDeelnemersGroep: ', $scope.deelnemers);
+      //console.warn('FotoCardCtrl openDeelnemersGroep: ', $scope.deelnemers);
       $scope.openGroepDeelnemers($event);
     };
 
     function showGroepen($event) {
-      console.warn('FotoCardCtrl showGroepen: ', $event);
-      console.warn('FotoCardCtrl showGroepen groepen: ', dataFactoryGroepen.store, dataFactoryGroepen.store.length);
-      console.warn('FotoCardCtrl showGroepdeelnemers: ', dataFactoryGroepdeelnemers.store, dataFactoryGroepdeelnemers.store.length);
+      //console.warn('FotoCardCtrl showGroepen: ', $event);
+      //console.warn('FotoCardCtrl showGroepen groepen: ', dataFactoryGroepen.store, dataFactoryGroepen.store.length);
+      //console.warn('FotoCardCtrl showGroepdeelnemers: ', dataFactoryGroepdeelnemers.store, dataFactoryGroepdeelnemers.store.length);
 
       $scope.groepen = [];
       $scope.deelnemers = [];
@@ -1048,15 +1048,15 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       tmp = loDash.filter(dataFactoryGroepdeelnemers.store, function (groepdeelnemerModel) {
         return ((groepdeelnemerModel.get('deelnemerId') === dataFactoryCeo.currentModel.get('Id') && groepdeelnemerModel.get('publicist') === true) || groepdeelnemerModel.get('groep') === 'Iedereen');
       });
-      console.warn('FotoCardCtrl showGroepen tmp: ', tmp, tmp.length);
+      //console.warn('FotoCardCtrl showGroepen tmp: ', tmp, tmp.length);
       loDash.each(tmp, function (groep) {
         tmp = loDash.mapValues(groep, 'value');
         $scope.deelnemers.push(tmp);
       });
-      console.warn('FotoCardCtrl showGroepen $scope.deelnemers: ', $scope.deelnemers);
+      //console.warn('FotoCardCtrl showGroepen $scope.deelnemers: ', $scope.deelnemers);
 
       $scope.groepen = loDash.uniqBy($scope.deelnemers, 'groep');
-      console.warn('FotoCardCtrl showGroepen $scope.groepen: ', $scope.groepen);
+      //console.warn('FotoCardCtrl showGroepen $scope.groepen: ', $scope.groepen);
 
       if ($scope.groepen.length > 1) {
         $scope.openGroepen($event);
@@ -1091,7 +1091,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
               if (found) {
                 $scope.details.groep = found.get('groep');
                 fotoModel.xData.groep = found.get('groep');
-                console.error('FotoCardCtrl updateXprive details.groep foto.xData.groep set: ', $scope.details.groep);
+                //console.error('FotoCardCtrl updateXprive details.groep foto.xData.groep set: ', $scope.details.groep);
               }
             }
             //
@@ -1104,7 +1104,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
             //  Standaard labels zijn altijd public. Dus niet publiceren.
             //  Andere Tags en fototags ook prive/public maken
             //
-            console.log('FotoCardCtrl updateXprive fototags, tags van naam: ', fotoModel.get('naam'));
+            //console.log('FotoCardCtrl updateXprive fototags, tags van naam: ', fotoModel.get('naam'));
             //
             loDash.each(dataFactoryFotoTag.store, function (fotoTagModel) {
 
@@ -1112,7 +1112,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
                 //
                 //
                 var tagId = fotoTagModel.get('tagId');
-                console.log('FotoCardCtrl updateXprive tagId: ', tagId);
+                //console.log('FotoCardCtrl updateXprive tagId: ', tagId);
                 //
                 var groepenId = fotoModel.get('groepenId');
                 if (groepenId === '' || groepenId === 'Iedereen') {
@@ -1121,13 +1121,13 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
                     fotoTagModel.set('yprive', true);
                     fotoTagModel.set('xprive', false);
                     fotoTagModel.save();
-                    console.log('FotoCardCtrl updateXprive gepubliceerd tagId', fotoTagModel.get('tagId'));
+                    //console.log('FotoCardCtrl updateXprive gepubliceerd tagId', fotoTagModel.get('tagId'));
                   }
                 } else {
                   fotoTagModel.set('yprive', true);
                   fotoTagModel.set('xprive', false);
                   fotoTagModel.save();
-                  console.log('FotoCardCtrl updateXprive gepubliceerd tagId', fotoTagModel.get('tagId'));
+                  //console.log('FotoCardCtrl updateXprive gepubliceerd tagId', fotoTagModel.get('tagId'));
                   var tag = loDash.find(dataFactoryTag.store, function (tagModel) {
                     return tagModel.get('Id') === tagId && tagModel.get('gebruikerId') !== '';
                   });
@@ -1135,7 +1135,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
                     tag.set('yprive', true);
                     tag.set('xprive', false);
                     tag.save();
-                    console.log('FotoCardCtrl updateXprive gepubliceerd tag, naam', tag.get('tag'));
+                    //console.log('FotoCardCtrl updateXprive gepubliceerd tag, naam', tag.get('tag'));
                   }
                 }
               }
@@ -1149,7 +1149,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
           //
           $scope.details.groep = '';
           fotoModel.xData.groep = '';
-          console.error('FotoCardCtrl updateXprive details.groep foto.xData.groep reset: ', $scope.details.groep);
+          //console.error('FotoCardCtrl updateXprive details.groep foto.xData.groep reset: ', $scope.details.groep);
 
           fotoModel.set('gebruikerId', fotoModel.get('gebruikerId'));
           fotoModel.set('yprive', true);
@@ -1167,12 +1167,12 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
           });
         }
 
-        console.warn('FotoCardCtrl updateXprive: ', fotoModel);
+        //console.warn('FotoCardCtrl updateXprive: ', fotoModel);
 
         fotoModel.set('Id', fotoId);
         fotoModel.set('gebruikerId', fotoModel.get('gebruikerId'));
         fotoModel.save().then(function () {
-          console.error('FotoCardCtrl updateXprive saved SUCCESS: ', fotoModel.get('xprive'));
+          //console.error('FotoCardCtrl updateXprive saved SUCCESS: ', fotoModel.get('xprive'));
         });
       }
     };
@@ -1185,33 +1185,33 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       //
       if (!fotoModel.xData) {
         fotoModel.xData = {};
-        console.log('FotosCtrl initxData xData');
+        //console.log('FotosCtrl initxData xData');
       }
       if (!fotoModel.xData.fotos) {
         fotoModel.xData.fotos = [];
-        console.log('FotosCtrl initxData xData.fotos');
+        //console.log('FotosCtrl initxData xData.fotos');
       }
       if (!fotoModel.xData.fotos) {
         fotoModel.xData.fotos = [];
-        console.log('FotosCtrl initxData xData.fotoa');
+        //console.log('FotosCtrl initxData xData.fotoa');
       }
       if (!fotoModel.xData.tags) {
         fotoModel.xData.tags = [];
-        console.log('FotosCtrl initxData xData.tags');
+        //console.log('FotosCtrl initxData xData.tags');
       }
     }
 
     function updateFoto() {
 
-      console.log('FotoCardCtrl fotoModel: ', fotoModel, fotoModel.get('naam'));
+      //console.log('FotoCardCtrl fotoModel: ', fotoModel, fotoModel.get('naam'));
       var fotoId = fotoModel.get('Id');
-      console.warn('FotoCardCtrl fotoUpdate fotoId: ', fotoId);
+      //console.warn('FotoCardCtrl fotoUpdate fotoId: ', fotoId);
       
       //removeIf(!fotos)
       dataFactoryFotos.getFotoSrc(fotoModel.get('gebruikerId'), fotoModel.get('fotoId'), fotoModel.get('extension')).then(function (result) {
-        console.warn('FotoCardCtrl result: ', result);
+        //console.warn('FotoCardCtrl result: ', result);
         $scope.details.content = result.path;
-        console.warn('FotoCardCtrl $scope.details.content: ', $scope.details.content);
+        //console.warn('FotoCardCtrl $scope.details.content: ', $scope.details.content);
       });
       //endRemoveIf(!fotos)
       
@@ -1221,13 +1221,13 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     
       $scope.details.trackNaam = '';
       dataFactoryTrack.syncDown().then(function () {
-        console.log('TrackCardCtrl dataFactoryTrack.store: ', dataFactoryTrack.store, fotoId);
+        //console.log('TrackCardCtrl dataFactoryTrack.store: ', dataFactoryTrack.store, fotoId);
         var trackModel = loDash.find(dataFactoryTrack.store, function (trackModel) {
           return trackModel.get('Id') === fotoModel.get('trackId');
         });
         if (trackModel) {
           $scope.details.trackNaam = trackModel.get('naam');
-          console.log('TrackCardCtrl trackNaam: ', $scope.details.trackNaam, dataFactoryTrack.store, trackModel);
+          //console.log('TrackCardCtrl trackNaam: ', $scope.details.trackNaam, dataFactoryTrack.store, trackModel);
         }
       });
       //endRemoveIf(!fotos)
@@ -1253,7 +1253,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       $scope.details.fotoId = fotoId;
       $scope.details.tags = fotoModel.xData.tags;
       sorteerDetailsTags();
-      console.log('FotoCardCtrl updateFoto xData.tags: ', fotoModel.xData.tags);
+      //console.log('FotoCardCtrl updateFoto xData.tags: ', fotoModel.xData.tags);
 
       $scope.details.groep = '';
 
@@ -1289,21 +1289,21 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
       var gelezen = +fotoSupModel.get('gelezen');
       $scope.details.gelezen = gelezen;
-      console.log('updateFotoUpdate gelezen: ', gelezen);
+      //console.log('updateFotoUpdate gelezen: ', gelezen);
 
-      console.log('FotoCardCtrl updateFoto updateReacties Clock');
+      //console.log('FotoCardCtrl updateFoto updateReacties Clock');
 
       updateReacties(fotoModel);
 
       dataFactoryClock.stopClockFoto();
       $rootScope.$emit('startClockFoto');
       $timeout(function () {
-        console.log('FotoCardCtrl updateFoto updateReacties start Clock');
+        //console.log('FotoCardCtrl updateFoto updateReacties start Clock');
 
         dataFactoryClock.startClockFotoCardFast(function () {
-          console.log('FotoCardCtrl updateFoto syncDown controleren op gelezen en reacties');
+          //console.log('FotoCardCtrl updateFoto syncDown controleren op gelezen en reacties');
           $scope.details.gelezen = +fotoSupModel.get('gelezen');
-          console.log('FotoCardCtrl updateFoto syncDown controleren op gelezen: ', +fotoSupModel.get('gelezen'));
+          //console.log('FotoCardCtrl updateFoto syncDown controleren op gelezen: ', +fotoSupModel.get('gelezen'));
           updateReacties(fotoModel);
         });
       }, 200);
@@ -1313,7 +1313,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
       if (!tmp.Id) {
 
-        console.warn('FotoCardCtrl HELP tmp: ', tmp);
+        //console.warn('FotoCardCtrl HELP tmp: ', tmp);
 
       } else {
 
@@ -1330,14 +1330,14 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         tmp3 = tmp2.replace(/__TYPE__/g, helpType);
         tmp.help = tmp3.replace(/__TYPES__/g, helpTypes);
 
-        console.log('FotoCardCtrl HELP tmp: ', tmp.modal);
+        //console.log('FotoCardCtrl HELP tmp: ', tmp.modal);
 
         $scope.cardHelps.push(tmp);
       }
     }
 
     function showHelp() {
-      console.warn('FotoCardCtrl showHelp');
+      //console.warn('FotoCardCtrl showHelp');
 
       var item;
       if (mode === 'bericht') {
@@ -1549,7 +1549,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         });
         typingHelp(loDash.mapValues(label, 'value'));
 
-        console.error('FotoCardCtrl kaartItemHelps $scope.cardHelps: ', $scope.cardHelps);
+        //console.error('FotoCardCtrl kaartItemHelps $scope.cardHelps: ', $scope.cardHelps);
       }
       //endRemoveIf(berichten)
       
@@ -1557,7 +1557,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     function removeFotoFromStores(fotoId, backend) {
 
-      console.warn('FotoCardCtrl removeFotoFromStores fotoId: ', fotoId);
+      //console.warn('FotoCardCtrl removeFotoFromStores fotoId: ', fotoId);
 
       var fotoModel = loDash.find(dataFactoryFoto.store, function (fotoModel) {
         return fotoModel.get('Id') === fotoId;
@@ -1587,7 +1587,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
             tagModel: tagModel
           });
         } else {
-          console.error('FotoCardCtrl removeFotoFromStores tagModel NOT FOUND');
+          //console.error('FotoCardCtrl removeFotoFromStores tagModel NOT FOUND');
         }
       });
 
@@ -1620,7 +1620,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     }
 
     $scope.deleteFoto = function () {
-      console.warn('FotoCardCtrl deleteFoto');
+      //console.warn('FotoCardCtrl deleteFoto');
       $ionicPopup.confirm({
         title: 'Verwijder Foto',
         content:
@@ -1648,7 +1648,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     $scope.closeFotoCard = function (stay) {
 
-      console.error('FotoCardCtrl closeFotoCard isCardClosed: ', isCardClosed);
+      //console.error('FotoCardCtrl closeFotoCard isCardClosed: ', isCardClosed);
 
       dataFactoryClock.stopClockFotoCard();
 
@@ -1656,7 +1656,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         if (stay === undefined) {
           stay = true;
         }
-        console.error('FotoCardCtrl closePoiCard stay: ', stay);
+        //console.error('FotoCardCtrl closePoiCard stay: ', stay);
         if (blacklisted) {
           removeFotoFromStores(fotoId, false);
 
@@ -1674,7 +1674,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
               reactieSupModel.save();
             }
           });
-          console.log('FotoCardCtrl closeFotoCard reacties xnew reset in dataFactoryFotoReactieSup.store');
+          //console.log('FotoCardCtrl closeFotoCard reacties xnew reset in dataFactoryFotoReactieSup.store');
           //
           // Verwijder status nieuw van foto in model sup.
           //
@@ -1684,19 +1684,19 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
             fotoSupModel.set('fotoId', fotoSupModel.get('fotoId'));
             var gelezen = +fotoSupModel.get('gelezen');
 
-            console.log('FotoCardCtrl closeFotoCard $scope.details.gelezen: ', $scope.details.gelezen);
+            //console.log('FotoCardCtrl closeFotoCard $scope.details.gelezen: ', $scope.details.gelezen);
 
-            console.log('FotoCardCtrl closeFotoCard gelezen fotoSupModel oud: ', gelezen);
+            //console.log('FotoCardCtrl closeFotoCard gelezen fotoSupModel oud: ', gelezen);
             var xread = +fotoSupModel.get('xread') + 1;
             fotoSupModel.set('xread', xread);
-            console.log('FotoCardCtrl closeFotoCard xread updated in fotoSupModel: ', xread);
+            //console.log('FotoCardCtrl closeFotoCard xread updated in fotoSupModel: ', xread);
 
             $scope.details.gelezen = gelezen + xread;
             fotoModel.xData.sup.set('gelezen', $scope.details.gelezen);
-            console.log('FotoCardCtrl closeFotoCard gelezen + xread updated as gelezen in fotoSupModel: ', $scope.details.gelezen);
+            //console.log('FotoCardCtrl closeFotoCard gelezen + xread updated as gelezen in fotoSupModel: ', $scope.details.gelezen);
 
             fotoSupModel.set('xnew', false);
-            console.log('FotoCardCtrl closeFotoCard xnew reset in fotoSupModel');
+            //console.log('FotoCardCtrl closeFotoCard xnew reset in fotoSupModel');
             //
             // Verwijder foto van lijst nieuw in store
             //
@@ -1719,17 +1719,17 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
                   return fotoReactieSup.get('xnew');
                 });
 
-                console.log('FotoCardCtrl closed nieuwe foto, fotoReacties: ', fotoNieuw, fotoReactieNieuw);
+                //console.log('FotoCardCtrl closed nieuwe foto, fotoReacties: ', fotoNieuw, fotoReactieNieuw);
 
                 if (fotoNieuw.length > 0 || fotoReactieNieuw.length > 0) {
                   dataFactoryNotification.composeTitleBodyNotification(fotoNieuw.length, fotoReactieNieuw.length, 'foto');
-                  console.log('FotoCardCtrl notification met fotoNieuw, fotoReactieNieuw: ', fotoNieuw, fotoReactieNieuw);
+                  //console.log('FotoCardCtrl notification met fotoNieuw, fotoReactieNieuw: ', fotoNieuw, fotoReactieNieuw);
                 }
 
                 $rootScope.$emit('sleepClockFoto');
               },
               function () {
-                console.error('fotoSupModel saved ERROR');
+                //console.error('fotoSupModel saved ERROR');
               }
             );
           }
@@ -1741,12 +1741,12 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         }
         isCardClosed = true;
       } else {
-        console.warn('FotoCardCtrl closeFotoCard SKIPPED!!!!!');
+        //console.warn('FotoCardCtrl closeFotoCard SKIPPED!!!!!');
       }
     };
 
     $scope.clearSearchLabel = function () {
-      console.warn('FotoCardCtrl clearearchLabel');
+      //console.warn('FotoCardCtrl clearearchLabel');
 
       $scope.search.label = '';
     };
@@ -1760,7 +1760,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.closeTags = function () {
-      console.warn('FotoCracCtrl closeTags');
+      //console.warn('FotoCracCtrl closeTags');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeModalTags();
       } else {
@@ -1779,12 +1779,12 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       });
 
     $scope.openModalTags = function ($event) {
-      console.warn('openModalTags: ');
+      //console.warn('openModalTags: ');
       $scope.modalTags.show($event);
     };
 
     $scope.closeModalTags = function () {
-      console.warn('closeModalTags: ');
+      //console.warn('closeModalTags: ');
       $scope.modalTags.hide();
     };
 
@@ -1818,7 +1818,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     $scope.$on('$destroy', function () {
       $scope.modalFoto.remove();
-      console.log('FotoCardCtrl ModalFoto is removed!');
+      //console.log('FotoCardCtrl ModalFoto is removed!');
     });
     //
     // Popover Tag
@@ -1869,11 +1869,11 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
 
     $scope.$on('$destroy', function () {
       $scope.modalFoto.remove();
-      console.log('FotoCardCtrl ModalFoto is removed!');
+      //console.log('FotoCardCtrl ModalFoto is removed!');
     });
 
     $scope.closeGroepen = function ($event) {
-      console.log('FotoCardCtrl closeGroepen');
+      //console.log('FotoCardCtrl closeGroepen');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeGroepenModal();
       } else {
@@ -1882,7 +1882,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.openGroepen = function ($event) {
-      console.log('FotoCardCtrl openGroepen $event: ', $event);
+      //console.log('FotoCardCtrl openGroepen $event: ', $event);
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openGroepenModal();
       } else {
@@ -1903,17 +1903,17 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     );
 
     $scope.openGroepenModal = function () {
-      console.log('FotoCardCtrl openGroepenModal');
+      //console.log('FotoCardCtrl openGroepenModal');
       $scope.groepenModal.show();
     };
 
     $scope.closeGroepenModal = function () {
-      console.log('FotoCardCtrl closeGroepenModal');
+      //console.log('FotoCardCtrl closeGroepenModal');
       $scope.groepenModal.hide();
     };
     $scope.$on('$destroy', function () {
       $scope.groepenModal.remove();
-      console.log('FotoCardCtrl groepenModal is removed!');
+      //console.log('FotoCardCtrl groepenModal is removed!');
     });
     //
     // GroepenPopover
@@ -1927,12 +1927,12 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       });
 
     $scope.openGroepenPopover = function ($event) {
-      console.log('FotoCardCtrl openGroepenPopover');
+      //console.log('FotoCardCtrl openGroepenPopover');
       $scope.groepenPopover.show($event);
     };
 
     $scope.closeGroepenPopover = function () {
-      console.log('FotoCardCtrl closeGroepenPopover');
+      //console.log('FotoCardCtrl closeGroepenPopover');
       $scope.groepenPopover.hide();
     };
 
@@ -1941,7 +1941,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     });
 
     $scope.closeGroepDeelnemers = function () {
-      console.log('FotoCardCtrl closeGroepen');
+      //console.log('FotoCardCtrl closeGroepen');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeGroepDeelnemersModal();
       } else {
@@ -1950,7 +1950,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.openGroepDeelnemers = function ($event) {
-      console.log('FotoCardCtrl openGroepen $event: ', $event);
+      //console.log('FotoCardCtrl openGroepen $event: ', $event);
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openGroepDeelnemersModal();
       } else {
@@ -1971,17 +1971,17 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     );
 
     $scope.openGroepDeelnemersModal = function () {
-      console.log('FotoCardCtrl openGroepDeelnemersModal');
+      //console.log('FotoCardCtrl openGroepDeelnemersModal');
       $scope.groepDeelnemersModal.show();
     };
 
     $scope.closeGroepDeelnemersModal = function () {
-      console.log('FotoCardCtrl closeGroepDeelnemersModal');
+      //console.log('FotoCardCtrl closeGroepDeelnemersModal');
       $scope.groepDeelnemersModal.hide();
     };
     $scope.$on('$destroy', function () {
       $scope.groepDeelnemersModal.remove();
-      console.log('FotoCardCtrl groepDeelnemersModal is removed!');
+      //console.log('FotoCardCtrl groepDeelnemersModal is removed!');
     });
     //
     // GroepDeelnemersPopover
@@ -1995,12 +1995,12 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       });
 
     $scope.openGroepDeelnemersPopover = function ($event) {
-      console.log('FotoCardCtrl openGroepDeelnemersPopover');
+      //console.log('FotoCardCtrl openGroepDeelnemersPopover');
       $scope.groepDeelnemersPopover.show($event);
     };
 
     $scope.closeGroepDeelnemersPopover = function () {
-      console.log('FotoCardCtrl closeGroepDeelnemersPopover');
+      //console.log('FotoCardCtrl closeGroepDeelnemersPopover');
       $scope.groepDeelnemersPopover.hide();
     };
 
@@ -2011,7 +2011,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     // Popover helpPopoverCard
     //
     $scope.openHelp = function ($event) {
-      console.log('FotoCardCtrl openHelp');
+      //console.log('FotoCardCtrl openHelp');
       showHelp();
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openHelpModal();
@@ -2021,7 +2021,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.closeHelp = function ($event) {
-      console.log('FotoCardCtrl openHelp');
+      //console.log('FotoCardCtrl openHelp');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeHelpModal();
       } else {
@@ -2037,11 +2037,11 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         $scope.helpPopover = helpPopover;
       });
     $scope.openHelpPopover = function ($event) {
-      console.log('FotoCardCtrl openHelpPopover');
+      //console.log('FotoCardCtrl openHelpPopover');
       $scope.helpPopover.show($event);
     };
     $scope.closeHelpPopover = function () {
-      console.log('FotoCardCtrl openHelpPopover');
+      //console.log('FotoCardCtrl openHelpPopover');
       $scope.helpPopover.hide();
     };
     $scope.$on('$destroy', function () {
@@ -2057,11 +2057,11 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       }
     );
     $scope.openHelpModal = function () {
-      console.log('FotoCardCtrl closeHelpModal');
+      //console.log('FotoCardCtrl closeHelpModal');
       $scope.helpModal.show();
     };
     $scope.closeHelpModalCard = function () {
-      console.log('FotoCardCtrl closeHelpModal');
+      //console.log('FotoCardCtrl closeHelpModal');
       $scope.helpModal.hide();
     };
     $scope.$on('$destroy', function () {
@@ -2102,7 +2102,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       });
     
       $scope.openGlobalHelpPopover = function ($event) {
-      console.warn('KaartCtrl openGlobaleHelpPopover');
+      //console.warn('KaartCtrl openGlobaleHelpPopover');
       $scope.globalHelpPopover.show($event);
     };
     
@@ -2160,7 +2160,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
     };
 
     $scope.setReactieNavTitle = function (title) {
-      console.log('FotoCardCtrl setReactieNavTitle: ' + title);
+      //console.log('FotoCardCtrl setReactieNavTitle: ' + title);
       $ionicNavBarDelegate.title(title);
     };
 
@@ -2168,13 +2168,13 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
       dataFactoryFotoSup.store = loDash.uniqBy(dataFactoryFotoSup.store, function (fotoSup) {
         return fotoSup.get('fotoId');
       });
-      console.warn('FotoCardCtrl init FotoStore: ', dataFactoryFoto.store);
-      console.warn('FotoCardCtrl init FotoSupStore: ', dataFactoryFotoSup.store);
+      //console.warn('FotoCardCtrl init FotoStore: ', dataFactoryFoto.store);
+      //console.warn('FotoCardCtrl init FotoSupStore: ', dataFactoryFotoSup.store);
       fotoModel = loDash.find(dataFactoryFoto.store, function (fotoModel) {
         return fotoModel.get('Id') === fotoId;
       });
 
-      console.warn('FotoCardCtrl init fotoModel: ', fotoModel, fotoModel.get('naam'));
+      //console.warn('FotoCardCtrl init fotoModel: ', fotoModel, fotoModel.get('naam'));
 
       if (fotoModel) {
         fotoSupModel = loDash.find(dataFactoryFotoSup.store, function (fotoSupModel) {
@@ -2189,7 +2189,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
           fotoSupModel.set('star', false);
           //fotoSupModel.set('fotoId', fotoId);
           fotoSupModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
-          console.error('FotoCardCtrl init fotoSupModel: ', fotoSupModel.get('fotoId'));
+          //console.error('FotoCardCtrl init fotoSupModel: ', fotoSupModel.get('fotoId'));
           fotoSupModel.save().then(function () {
             fotoModel.xData.sup = fotoSupModel;
             var xnew = fotoModel.xData.sup.get('xnew');
@@ -2202,15 +2202,15 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
                 dataFactoryFoto.nieuw.push(fotoModel, fotoModel.get('naam'));
               }
             }
-            console.log('FotoCardCtrl init met nieuw supModel');
+            //console.log('FotoCardCtrl init met nieuw supModel');
           });
         } else {
-          console.log('FotoCardCtrl init bestaand supModel: ', fotoSupModel);
+          //console.log('FotoCardCtrl init bestaand supModel: ', fotoSupModel);
 
           initxData(fotoModel);
 
           fotoModel.xData.sup = fotoSupModel;
-          console.log('fotoModel.xData.sup: ', fotoModel.xData.sup);
+          //console.log('fotoModel.xData.sup: ', fotoModel.xData.sup);
 
           var xnew = fotoModel.xData.sup.get('xnew');
 
@@ -2225,7 +2225,7 @@ trinl.controller('FotoCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sc
         }
         updateFoto(fotoModel, fotoModel.get('naam'));
       } else {
-        console.warn('FotoCardCtrl findRecord ERROR Id: ', fotoId);
+        //console.warn('FotoCardCtrl findRecord ERROR Id: ', fotoId);
 
         $ionicPopup.confirm({
           title: 'Foto',

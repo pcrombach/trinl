@@ -31,8 +31,8 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     var ceo = {};
     ceo.Id = localStorage.getItem('authentication_id');
     ceo.profielId = localStorage.getItem('authentication_profielId');
-    console.error('TrackCardCtrl ceo.Id: ', ceo.Id);
-    console.error('TrackCardCtrl ceo.profielId: ', +ceo.profielId);
+    //console.error('TrackCardCtrl ceo.Id: ', ceo.Id);
+    //console.error('TrackCardCtrl ceo.profielId: ', +ceo.profielId);
 
     $scope.global = {};
 
@@ -64,19 +64,19 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     // eslint-disable-next-line no-unused-vars
     //
     var event0a = $scope.$on('$ionicView.beforeEnter', function () {
-      console.warn('TrackCardCtrl $ionicView.beforeEnter');
+      //console.warn('TrackCardCtrl $ionicView.beforeEnter');
       init();
     });
     $scope.$on('$destroy', event0a);
 
     var event0z = $scope.$on('$ionicView.afterEnter', function () {
-      console.warn('TrackCardCtrl $ionicView.afterEnter');
+      //console.warn('TrackCardCtrl $ionicView.afterEnter');
       isCardClosed = false;
     });
     $scope.$on('$destroy', event0z);
 
     var event0b = $scope.$on('$ionicView.beforeLeave', function () {
-      console.warn('TrackCardCtrl $ionicView.beforeLeave');
+      //console.warn('TrackCardCtrl $ionicView.beforeLeave');
       //$timeout(function () {
       $scope.closeTrackCard(false);
       //}, 100);
@@ -85,7 +85,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     //
     var event1 = $rootScope.$on('labelsTrackUpdate', function (event, args) {
       var trackModel = args.trackModel;
-      console.warn('TrackCardCtrl on.labelsTrackUpdate trackModel: ', trackModel, trackModel.get('naam'));
+      //console.warn('TrackCardCtrl on.labelsTrackUpdate trackModel: ', trackModel, trackModel.get('naam'));
       updateLabels(trackModel);
     });
     $scope.$on('$destroy', event1);
@@ -110,7 +110,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     //
     $scope.infoTag = function (tagModel) {
 
-      console.log('TrackCardCtrl tagModel: ', tagModel);
+      //console.log('TrackCardCtrl tagModel: ', tagModel);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -126,7 +126,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     $scope.editTag = function (tagModel) {
       var tag = tagModel.get('tag');
-      console.warn('TrackCardCtrl editTag: ', tag, tagModel);
+      //console.warn('TrackCardCtrl editTag: ', tag, tagModel);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -156,10 +156,10 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       });
       popupEditTag.then(function (res) {
 
-        console.log('TracksSideMenuCtrl editTag Label gewijzigd in: ' + res);
+        //console.log('TracksSideMenuCtrl editTag Label gewijzigd in: ' + res);
         if (res !== undefined) {
 
-          console.log('TracksSideMenuCtrl editTag trackModel tags: ', tag, trackModel && trackModel.xData.tags);
+          //console.log('TracksSideMenuCtrl editTag trackModel tags: ', tag, trackModel && trackModel.xData.tags);
 
           $rootScope.$emit('trackRemoveLabel', {
             trackModel: trackModel,
@@ -192,7 +192,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     $scope.deleteTag = function (tagModel) {
       var tag = tagModel.get('tag');
-      console.warn('TrackCardCtrl editTag: ', tag);
+      //console.warn('TrackCardCtrl editTag: ', tag);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -209,14 +209,14 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
             $scope.closeTags();
 
             loDash.each(dataFactoryTrack.store, function (trackModel) {
-              console.log('TracksSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, trackModel);
+              //console.log('TracksSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, trackModel);
               loDash.each(trackModel.xData.tags, function (trackTagModel) {
-                console.log('TracksSideMenuCtrl deleteTag trackModal.tags loop: ', trackModel.xData.tags, trackTagModel);
+                //console.log('TracksSideMenuCtrl deleteTag trackModal.tags loop: ', trackModel.xData.tags, trackTagModel);
                 (function (trackTagModel) {
                   if (trackTagModel.xData.get('tag') === tag) {
-                    console.log('TracksSideMenuCtrl deleteTag trackTagModel in trackModel.tags wordt verwijderd uit backend: ', trackTagModel);
+                    //console.log('TracksSideMenuCtrl deleteTag trackTagModel in trackModel.tags wordt verwijderd uit backend: ', trackTagModel);
                     trackTagModel.remove().then(function () {
-                      console.log('TracksSideMenuCtrl deleteTag trackTagModel wordt verwijderd uit trackModel.tags: ', trackTagModel);
+                      //console.log('TracksSideMenuCtrl deleteTag trackTagModel wordt verwijderd uit trackModel.tags: ', trackTagModel);
                       loDash.remove(trackModel.xData.tags, function (trackTagModel) {
                         return trackTagModel.xData.get('tag') === tag;
                       });
@@ -236,12 +236,12 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
             loDash.remove(dataFactoryTag.data, function (dataItem) {
               return dataItem.record.get('Id') === tag && dataItem.record.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
             });
-            console.log('TracksSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
+            //console.log('TracksSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
             //
             // Verwijder tag in de backend. De backend verwijderd ook alle tracktags met tagId van alle andere gebruikers
             //
             if (tagModel.get('gebruikerId') !== '') {
-              console.log('TracksSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
+              //console.log('TracksSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
               tagModel.remove();
             }
 
@@ -254,7 +254,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     function sorteerGlobalTags() {
 
-      console.error('trackCardCtrl sorteerGlobalTags');
+      //console.error('trackCardCtrl sorteerGlobalTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
@@ -281,12 +281,12 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     function sorteerDetailsTags() {
 
-      console.error('TrackCardCtrl sorteerDetailsTags');
+      //console.error('TrackCardCtrl sorteerDetailsTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
 
-      console.error('$scope.details.tags: ', $scope.details.tags);
+      //console.error('$scope.details.tags: ', $scope.details.tags);
 
       var tagsPrivate = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length <= 3 && tag.xData.get('gebruikerId') !== '';
@@ -294,7 +294,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       if (tagsPrivate.length > 0) {
         tagsPrivate = loDash.orderBy(tagsPrivate, o => o.xData.get('tag'), 'asc');
       }
-      console.error('tagsPrivate: ', tagsPrivate);
+      //console.error('tagsPrivate: ', tagsPrivate);
 
       var tagsStandaard = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length <= 3 && tag.xData.get('gebruikerId') === '';
@@ -302,7 +302,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       if (tagsStandaard.length > 0) {
         tagsStandaard = loDash.orderBy(tagsStandaard, o => o.xData.get('tag'), 'asc');
       }
-      console.error('tagsStandaard: ', tagsStandaard);
+      //console.error('tagsStandaard: ', tagsStandaard);
 
       var tagsNormaal = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length > 3;
@@ -310,13 +310,13 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       if (tagsNormaal.length > 0) {
         tagsNormaal = loDash.orderBy(tagsNormaal, o => o.xData.tag.value, 'asc');
       }
-      console.error('tagsNormaal: ', tagsNormaal);
+      //console.error('tagsNormaal: ', tagsNormaal);
 
       $scope.details.tags = [...tagsPrivate, ...tagsStandaard, ...tagsNormaal];
     }
 
     function tracksCheckTrackReactieAantal(reacties) {
-      console.warn('TracksCtrl tracksCheckTrackReactieOud, reacties: ', reacties);
+      //console.warn('TracksCtrl tracksCheckTrackReactieOud, reacties: ', reacties);
 
       var maxAantal = 50;
 
@@ -326,7 +326,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
       var teller = 0;
       loDash.each(reacties, function (reactieModel) {
-        console.log('TracksCtrl tracksCheckTrackReactieAantal reactieModel: ', reactieModel);
+        //console.log('TracksCtrl tracksCheckTrackReactieAantal reactieModel: ', reactieModel);
         teller += 1;
         if (teller > maxAantal) {
 
@@ -353,7 +353,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
               return dataItem.record.get('reactieId') === reactieId;
             });
           }
-          console.error('TracksCtrl tracksCheckTrackReactieAantal reactie removed SUCCESS');
+          //console.error('TracksCtrl tracksCheckTrackReactieAantal reactie removed SUCCESS');
         }
       });
       if (verwijderingen > 0) {
@@ -370,7 +370,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     function tracksCheckTrackReactieOud(reacties) {
 
-      console.warn('TracksCtrl tracksCheckTrackReactieOud, reacties: ', reacties);
+      //console.warn('TracksCtrl tracksCheckTrackReactieOud, reacties: ', reacties);
 
       var aantalOuder = 7;
       var formatOuder = 'days';
@@ -378,18 +378,18 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       var q = $q.defer();
       var tooOld = moment().subtract(aantalOuder, formatOuder).format('YYYY-MM-DD HH:mm:ss');
       var verwijderingen = false;
-      console.log('TracksCtrl tracksCheckTrackReactieOud: ', tooOld);
+      //console.log('TracksCtrl tracksCheckTrackReactieOud: ', tooOld);
       //
       //  Ouder dan 
       //
       loDash.each(reacties, function (reactieModel) {
         if (reactieModel) {
-          console.log('TracksCtrl tracksCheckTrackReactieOud reactieModel: ', reactieModel);
+          //console.log('TracksCtrl tracksCheckTrackReactieOud reactieModel: ', reactieModel);
           var datum = reactieModel.get('changedOn');
           var reactieId = reactieModel.get('Id');
           if (datum < tooOld) {
             verwijderingen += 1;
-            console.log('TracksCtrl tracksCheckTrackReactieOud changedOn, trackId, tooOld: ', datum, trackId, tooOld);
+            //console.log('TracksCtrl tracksCheckTrackReactieOud changedOn, trackId, tooOld: ', datum, trackId, tooOld);
 
             reactieModel.remove();
             loDash.remove(dataFactoryTrackReactie.store, function (reactieModel) {
@@ -412,7 +412,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
             }
             $rootScope.$emit('filter');
             $rootScope.$emit('tracksNieuweAantallen');
-            console.error('TracksCtrl tracksCheckTrackReactieOud reactie removed SUCCESS');
+            //console.error('TracksCtrl tracksCheckTrackReactieOud reactie removed SUCCESS');
           }
         }
       });
@@ -429,10 +429,10 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     }
 
     function updateReacties(trackModel) {
-      console.log('TracksCtrl updateReacties voor track naam Id: ', trackModel.get('Id'), trackModel.get('naam'));
+      //console.log('TracksCtrl updateReacties voor track naam Id: ', trackModel.get('Id'), trackModel.get('naam'));
       var trackId = trackModel.get('Id');
 
-      console.log('TracksCtrl updateReacties dataFactoryTrackReactie.store: ', dataFactoryTrackReactie.store);
+      //console.log('TracksCtrl updateReacties dataFactoryTrackReactie.store: ', dataFactoryTrackReactie.store);
 
       var trackReacties = loDash.filter(dataFactoryTrackReactie.store, function (trackReactieModel) {
         return trackReactieModel.get('trackId') === trackId;
@@ -443,13 +443,13 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         tracksCheckTrackReactieOud(trackReacties).then(function () {
         });
       });
-      console.warn('TrackCardCtrl loadReactie track in store, aantal: ', dataFactoryTrack.store.length);
-      console.warn('TrackCardCtrl loadReactie reacties in store, aantal: ', trackReacties.length);
+      //console.warn('TrackCardCtrl loadReactie track in store, aantal: ', dataFactoryTrack.store.length);
+      //console.warn('TrackCardCtrl loadReactie reacties in store, aantal: ', trackReacties.length);
       $scope.details.reactiesAantal = trackReacties.length;
     }
 
     $scope.reactie = function () {
-      console.warn('TrackCardCtrl reactie');
+      //console.warn('TrackCardCtrl reactie');
 
       $scope.input = {};
       $scope.input.naam = '';
@@ -461,7 +461,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     $scope.saveReactie = function (input) {
 
-      console.warn('TrackCardCtrl saveReactie input trackId: ', input, trackId);
+      //console.warn('TrackCardCtrl saveReactie input trackId: ', input, trackId);
 
       if ($scope.initTrack === 'Reactie') {
 
@@ -473,7 +473,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         tmp = tmp.replace(/\\"/g, '"');
         var htmlreactietekst = '<p>' + tmp + '</p>';
         tmp = false;
-        console.error('TrackCardCtrl saveReactie: ', htmlreactietekst);
+        //console.error('TrackCardCtrl saveReactie: ', htmlreactietekst);
         reactieModel.set('reactie', htmlreactietekst);
         reactieModel.set('trackId', trackId);
         reactieModel.set('trackGebruikerId', trackModel.get('gebruikerId'));
@@ -494,14 +494,14 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
           reactieSupModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
           reactieSupModel.set('xnew', false);
           reactieSupModel.save().then(function (reactieSupModel) {
-            console.error('TrackCardCtrl saveReactie reactieSupModel: ', reactieSupModel);
+            //console.error('TrackCardCtrl saveReactie reactieSupModel: ', reactieSupModel);
             reactieModel.xData = {
               sup: reactieSupModel
             };
           });
           trackSupModel.set('trackId', trackId);
           trackSupModel.save().then(function () {
-            console.error('TrackCardCtrl saveReactie trackSupModel: ', trackSupModel);
+            //console.error('TrackCardCtrl saveReactie trackSupModel: ', trackSupModel);
           });
           $scope.details.reacties.splice(0, 0, reactieModel);
         });
@@ -510,9 +510,9 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.saveTrackItemTekst = function (input) {
-      console.warn('TrackCardCtrl saveTrackTekst: ', $scope.details);
-      console.warn('TrackCardCtrl saveTrackTekst: ', input);
-      console.error('TrackCardCtrl size message: ', input.naam.length + input.tekst.length);
+      //console.warn('TrackCardCtrl saveTrackTekst: ', $scope.details);
+      //console.warn('TrackCardCtrl saveTrackTekst: ', input);
+      //console.error('TrackCardCtrl size message: ', input.naam.length + input.tekst.length);
 
       $scope.details.naam = input.naam;
       $scope.details.tekst = input.tekst;
@@ -545,7 +545,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.openTrackTekst = function () {
-      console.warn('TrackCardCtrl openTrackTekst');
+      //console.warn('TrackCardCtrl openTrackTekst');
 
       $scope.input = {};
       $scope.input.naam = $scope.details.naam;
@@ -557,9 +557,9 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     function updateLabels(trackModel) {
-      console.log('TrackCardCtrl updateLabels trackModel, trackId: ', trackModel, trackId, trackModel.get('naam'));
+      //console.log('TrackCardCtrl updateLabels trackModel, trackId: ', trackModel, trackId, trackModel.get('naam'));
       if (trackModel.get('Id') === trackId) {
-        console.log('TrackCardCtrl updateLabels trackModel: ', trackModel.get('naam'), trackModel.get('Id'));
+        //console.log('TrackCardCtrl updateLabels trackModel: ', trackModel.get('naam'), trackModel.get('Id'));
         //
         // Indien labels worden toegevoegd dan worden die toegevoegd in de dataFactoryTrackTag store en data
         // De label moet ook toegevoegd worden aan de trackModel.xData.tags
@@ -577,7 +577,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     //  Bovendien wordt dit label toegevoegd aan de labels van het het Model.
     //
     $scope.addNieuweLabel = function (tag) {
-      console.warn('TrackCardCtrl addNieuweLabel: ', tag);
+      //console.warn('TrackCardCtrl addNieuweLabel: ', tag);
 
       if (tag !== '') {
         var found = loDash.find($scope.global.tags, function (tagModel) {
@@ -595,15 +595,15 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
             tagModel.set('yprive', true);
           }
           tagModel.save().then(function () {
-            console.log('addNieuweLabel: ', dataFactoryTag.store);
+            //console.log('addNieuweLabel: ', dataFactoryTag.store);
             $scope.global.tags = loDash.filter(dataFactoryTag.store, function (tagModel) {
               return ((tagModel.get('Id').length < 3 && tagModel.get('gebruikerId') === '') || tagModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id'));
             });
             sorteerGlobalTags();
-            console.log('addNieuweLabel: ', $scope.global.tags);
+            //console.log('addNieuweLabel: ', $scope.global.tags);
             $scope.selectLabelClick(tagModel);
             $scope.clearSearchLabel();
-            console.log('TrackCardCtrl addNieuweLabel tag: ', tagModel);
+            //console.log('TrackCardCtrl addNieuweLabel tag: ', tagModel);
           });
         } else {
           $ionicPopup.confirm({
@@ -628,9 +628,9 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     $scope.selectLabelClick = function (tagModel) {
       var tagId = tagModel.get('Id');
 
-      console.warn('TrackCardCtrl selectLabelClick tagModel: ', tagModel);
-      console.warn('TrackCardCtrl selectLabelClick trackId: ', trackId);
-      console.warn('TrackCardCtrl selectLabelClick tagId: ', tagModel.get('Id'));
+      //console.warn('TrackCardCtrl selectLabelClick tagModel: ', tagModel);
+      //console.warn('TrackCardCtrl selectLabelClick trackId: ', trackId);
+      //console.warn('TrackCardCtrl selectLabelClick tagId: ', tagModel.get('Id'));
       //
       //  Kijk of de tracktag reeds bestaat
       //
@@ -646,18 +646,18 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         trackTagModel.set('xprive', true);
         trackTagModel.set('yprive', false);
 
-        console.error('TrackCardCtrl newLabel groepenId: ', trackModel.get('groepenId'));
+        //console.error('TrackCardCtrl newLabel groepenId: ', trackModel.get('groepenId'));
         var groepenId = trackModel.get('groepenId');
         if (groepenId === '' || groepenId === 'Iedereen') {
           if (tagId.length <= 3) {
             trackTagModel.set('yprive', true);
             trackTagModel.set('xprive', false);
-            console.log('TrackCardCtrl publiceren PUBLIC tagId', trackTagModel.get('tagId'));
+            //console.log('TrackCardCtrl publiceren PUBLIC tagId', trackTagModel.get('tagId'));
           }
         } else {
           trackTagModel.set('yprive', true);
           trackTagModel.set('xprive', false);
-          console.log('TrackCardCtrl publiceren made PUBLIC tagId', trackTagModel.get('tagId'));
+          //console.log('TrackCardCtrl publiceren made PUBLIC tagId', trackTagModel.get('tagId'));
           //
           tagModel.set('yprive', true);
           tagModel.set('xprive', false);
@@ -667,7 +667,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
             });
             sorteerGlobalTags();
           });
-          console.log('TrackCardCtrl publiceren made PUBLIC tag, naam', tagModel.get('tag'));
+          //console.log('TrackCardCtrl publiceren made PUBLIC tag, naam', tagModel.get('tag'));
         }
         trackTagModel.save().then(function () {
 
@@ -723,22 +723,22 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.addTagToTrack = function ($event) {
-      console.warn('TrackCardCtrl addTagToTrack');
+      //console.warn('TrackCardCtrl addTagToTrack');
 
       $scope.clearSearchLabel($event);
       $scope.openTags($event);
     };
 
     $scope.deleteLabelTag = function (trackTagModel) {
-      console.warn('TrackCardCtrl deleteLabelTag trackModel: ', trackModel, trackModel.get('naam'), );
-      console.warn('TrackCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
-      console.warn('TrackCardCtrl deleteLabelTag trackTagModel: ', trackTagModel);
-      console.warn('TrackCardCtrl deleteLabelTag tagModel: ', trackTagModel.xData);
+      //console.warn('TrackCardCtrl deleteLabelTag trackModel: ', trackModel, trackModel.get('naam'), );
+      //console.warn('TrackCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
+      //console.warn('TrackCardCtrl deleteLabelTag trackTagModel: ', trackTagModel);
+      //console.warn('TrackCardCtrl deleteLabelTag tagModel: ', trackTagModel.xData);
       var tagModel = trackTagModel.xData;
-      console.warn('TrackCardCtrl deleteLabelTag tag.gebruikerId: ', tagModel.get('gebruikerId'));
-      console.warn('TrackCardCtrl ceo.gebruikerId: ', dataFactoryCeo.currentModel.get('Id'));
-      console.warn('TrackCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
-      console.warn('TrackCardCtrl deleteLabelTag trackModel.xdata.tags: ', trackModel.xData.tags);
+      //console.warn('TrackCardCtrl deleteLabelTag tag.gebruikerId: ', tagModel.get('gebruikerId'));
+      //console.warn('TrackCardCtrl ceo.gebruikerId: ', dataFactoryCeo.currentModel.get('Id'));
+      //console.warn('TrackCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
+      //console.warn('TrackCardCtrl deleteLabelTag trackModel.xdata.tags: ', trackModel.xData.tags);
 
       var trackTagId = trackTagModel.get('Id');
 
@@ -762,17 +762,17 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.selecteerTrack = function () {
-      console.log('TracksCtrl selecteerTrack: ', trackModel);
+      //console.log('TracksCtrl selecteerTrack: ', trackModel);
 
       $rootScope.$emit('trackSelected', trackModel);
       $state.go('app.kaart');
     };
 
     $scope.clickedAvatar = function (details) {
-      console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
+      //console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
 
-      console.warn('TrackCardCtrl clickedAvatar naam: ', details.gebruikerNaam);
-      console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
+      //console.warn('TrackCardCtrl clickedAvatar naam: ', details.gebruikerNaam);
+      //console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
 
       if (details.gebruikerId == $scope.ceo.Id) {
         var content =
@@ -817,10 +817,10 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
                   return blacklistModel.get('type') === 'gebruikers' && blacklistModel.get('blackId') === gebruikerId;
                 });
 
-                console.warn('TrackCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
+                //console.warn('TrackCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
 
                 if (found) {
-                  console.warn('TrackCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
+                  //console.warn('TrackCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
 
                   $scope.details.volgt = true;
 
@@ -844,7 +844,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
                   blacklistModel.save();
                   removed = true;
 
-                  console.warn('TrackCardCtrl updateVolgt blacklistStore blacklistModel niet gevonden aangemaakt en saved: ', blacklistModel);
+                  //console.warn('TrackCardCtrl updateVolgt blacklistStore blacklistModel niet gevonden aangemaakt en saved: ', blacklistModel);
                 }
 
                 if (removed) {
@@ -872,7 +872,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
                 var itemsToRemove = loDash.filter(dataFactoryTrack.store, function (trackModel) {
                   return trackModel.get('gebruikerId') === gebruikerId;
                 });
-                console.log('TrackCardCtrl trackItems removing from Store.....: ', itemsToRemove);
+                //console.log('TrackCardCtrl trackItems removing from Store.....: ', itemsToRemove);
 
                 loDash.each(itemsToRemove, function (trackModel) {
                   var trackId = trackModel.get('Id');
@@ -891,7 +891,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.updateVolgt = function () {
-      console.warn('TrackCardCtrl updateVolgt: ', trackModel, trackModel.get('naam'));
+      //console.warn('TrackCardCtrl updateVolgt: ', trackModel, trackModel.get('naam'));
 
       $scope.details.volgt = false;
 
@@ -901,10 +901,10 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         return blacklistModel.get('blackId') === trackModel.get('Id');
       });
 
-      console.warn('TrackCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
+      //console.warn('TrackCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
 
       if (found) {
-        console.warn('TrackCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
+        //console.warn('TrackCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
 
         removeTrackFromStores(trackModel.get('Id'), false);
 
@@ -933,7 +933,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.updateStar = function () {
-      console.warn('TrackCardCtrl updateStar in: ', trackSupModel);
+      //console.warn('TrackCardCtrl updateStar in: ', trackSupModel);
 
       $scope.details.star = trackSupModel.get('star');
 
@@ -944,9 +944,9 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
           return trackModel.get('Id') === trackId;
         });
         trackSupModel.set('star', $scope.details.star);
-        console.warn('TrackCardCtrl updateStar trackSupModel: ', trackSupModel.get('trackId'));
+        //console.warn('TrackCardCtrl updateStar trackSupModel: ', trackSupModel.get('trackId'));
         trackSupModel.save();
-        console.warn('TrackCardCtrl updateStar: ', trackSupModel, trackModel.xData.sup.xnew.value);
+        //console.warn('TrackCardCtrl updateStar: ', trackSupModel, trackModel.xData.sup.xnew.value);
       } else {
         $scope.details.star = true;
         trackModel.xData.sup.set('star', true);
@@ -958,15 +958,15 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         }
         trackSupModel.set('star', $scope.details.star);
         //trackSupModel.set('trackId', trackId);
-        console.warn('TrackCardCtrl updateStar trackSupModel: ', trackSupModel.get('trackId'));
+        //console.warn('TrackCardCtrl updateStar trackSupModel: ', trackSupModel.get('trackId'));
         trackSupModel.save();
-        console.warn('TrackCardCtrl updateStar: ', trackSupModel, trackModel.xData.sup.xnew.value);
+        //console.warn('TrackCardCtrl updateStar: ', trackSupModel, trackModel.xData.sup.xnew.value);
       }
       $rootScope.$emit('tracksNieuweAantallen');
     };
 
     $scope.selectGroep = function (groep) {
-      console.warn('TrackCardCtrl selectGroep: ', groep, groep.groep, groep.groepenId);
+      //console.warn('TrackCardCtrl selectGroep: ', groep, groep.groep, groep.groepenId);
       $scope.details.groep = groep.groep;
       trackModel.set('groepenId', groep.groepenId);
       $scope.details.xprive = false;
@@ -979,7 +979,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       //  Standaard labels zijn altijd public. Dus niet publiceren.
       //  Andere Tags en tracktags ook prive/public maken
       //
-      console.log('TrackCardCtrl selectGroeptracktags, tags van naam: ', trackModel.get('naam'));
+      //console.log('TrackCardCtrl selectGroeptracktags, tags van naam: ', trackModel.get('naam'));
       //
       loDash.each(dataFactoryTrackTag.store, function (trackTagModel) {
         //
@@ -989,7 +989,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
           //
           trackTagModel.set('yprive', true);
           trackTagModel.set('xprive', true);
-          console.log('TrackCardCtrl selectGroep made PRIVATE tagId', trackTagModel.get('tagId'));
+          //console.log('TrackCardCtrl selectGroep made PRIVATE tagId', trackTagModel.get('tagId'));
 
           var groepenId = trackModel.get('groepenId');
           if (groepenId === '' || groepenId === 'Iedereen') {
@@ -997,12 +997,12 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
             if (tagId.length <= 3) {
               trackTagModel.set('yprive', true);
               trackTagModel.set('xprive', false);
-              console.log('TrackCardCtrl selectGroep PUBLIC tagId', trackTagModel.get('tagId'));
+              //console.log('TrackCardCtrl selectGroep PUBLIC tagId', trackTagModel.get('tagId'));
             }
           } else {
             trackTagModel.set('yprive', true);
             trackTagModel.set('xprive', false);
-            console.log('TrackCardCtrl selectGroep made PUBLIC tagId', trackTagModel.get('tagId'));
+            //console.log('TrackCardCtrl selectGroep made PUBLIC tagId', trackTagModel.get('tagId'));
             //
             var tag = loDash.find(dataFactoryTag.store, function (tagModel) {
               return tagModel.get('Id') === tagId && tagModel.get('gebruikerId') !== '';
@@ -1011,7 +1011,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
               tag.set('yprive', true);
               tag.set('xprive', false);
               tag.save();
-              console.log('TrackCardCtrl selectGroep made PUBLIC tag, naam', tag.get('tag'));
+              //console.log('TrackCardCtrl selectGroep made PUBLIC tag, naam', tag.get('tag'));
             }
           }
           trackTagModel.save();
@@ -1021,19 +1021,19 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.openDeelnemers = function (groepy, $event) {
-      console.warn('TrackCardCtrl openDeelnemersGroep: ', groepy);
+      //console.warn('TrackCardCtrl openDeelnemersGroep: ', groepy);
 
       $scope.deelnemers = loDash.filter(dataFactoryGroepdeelnemers.store, function (groep) {
         return groep.get('groep') === groepy;
       });
-      console.warn('TrackCardCtrl openDeelnemersGroep: ', $scope.deelnemers);
+      //console.warn('TrackCardCtrl openDeelnemersGroep: ', $scope.deelnemers);
       $scope.openGroepDeelnemers($event);
     };
 
     function showGroepen($event) {
-      console.warn('TrackCardCtrl showGroepen: ', $event);
-      console.warn('TrackCardCtrl showGroepen groepen: ', dataFactoryGroepen.store, dataFactoryGroepen.store.length);
-      console.warn('TrackCardCtrl showGroepdeelnemers: ', dataFactoryGroepdeelnemers.store, dataFactoryGroepdeelnemers.store.length);
+      //console.warn('TrackCardCtrl showGroepen: ', $event);
+      //console.warn('TrackCardCtrl showGroepen groepen: ', dataFactoryGroepen.store, dataFactoryGroepen.store.length);
+      //console.warn('TrackCardCtrl showGroepdeelnemers: ', dataFactoryGroepdeelnemers.store, dataFactoryGroepdeelnemers.store.length);
 
       $scope.groepen = [];
       $scope.deelnemers = [];
@@ -1042,15 +1042,15 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       tmp = loDash.filter(dataFactoryGroepdeelnemers.store, function (groepdeelnemerModel) {
         return ((groepdeelnemerModel.get('deelnemerId') === dataFactoryCeo.currentModel.get('Id') && groepdeelnemerModel.get('publicist') === true) || groepdeelnemerModel.get('groep') === 'Iedereen');
       });
-      console.warn('TrackCardCtrl showGroepen tmp: ', tmp, tmp.length);
+      //console.warn('TrackCardCtrl showGroepen tmp: ', tmp, tmp.length);
       loDash.each(tmp, function (groep) {
         tmp = loDash.mapValues(groep, 'value');
         $scope.deelnemers.push(tmp);
       });
-      console.warn('TrackCardCtrl showGroepen $scope.deelnemers: ', $scope.deelnemers);
+      //console.warn('TrackCardCtrl showGroepen $scope.deelnemers: ', $scope.deelnemers);
 
       $scope.groepen = loDash.uniqBy($scope.deelnemers, 'groep');
-      console.warn('TrackCardCtrl showGroepen $scope.groepen: ', $scope.groepen);
+      //console.warn('TrackCardCtrl showGroepen $scope.groepen: ', $scope.groepen);
 
       if ($scope.groepen.length > 1) {
         $scope.openGroepen($event);
@@ -1085,7 +1085,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
               if (found) {
                 $scope.details.groep = found.get('groep');
                 trackModel.xData.groep = found.get('groep');
-                console.error('TrackCardCtrl updateXprive details.groep track.xData.groep set: ', $scope.details.groep);
+                //console.error('TrackCardCtrl updateXprive details.groep track.xData.groep set: ', $scope.details.groep);
               }
             }
             //
@@ -1098,7 +1098,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
             //  Standaard labels zijn altijd public. Dus niet publiceren.
             //  Andere Tags en tracktags ook prive/public maken
             //
-            console.log('TrackCardCtrl updateXprive tracktags, tags van naam: ', trackModel.get('naam'));
+            //console.log('TrackCardCtrl updateXprive tracktags, tags van naam: ', trackModel.get('naam'));
             //
             loDash.each(dataFactoryTrackTag.store, function (trackTagModel) {
 
@@ -1106,7 +1106,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
                 //
                 //
                 var tagId = trackTagModel.get('tagId');
-                console.log('TrackCardCtrl updateXprive tagId: ', tagId);
+                //console.log('TrackCardCtrl updateXprive tagId: ', tagId);
                 //
                 var groepenId = trackModel.get('groepenId');
                 if (groepenId === '' || groepenId === 'Iedereen') {
@@ -1115,13 +1115,13 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
                     trackTagModel.set('yprive', true);
                     trackTagModel.set('xprive', false);
                     trackTagModel.save();
-                    console.log('TrackCardCtrl updateXprive gepubliceerd tagId', trackTagModel.get('tagId'));
+                    //console.log('TrackCardCtrl updateXprive gepubliceerd tagId', trackTagModel.get('tagId'));
                   }
                 } else {
                   trackTagModel.set('yprive', true);
                   trackTagModel.set('xprive', false);
                   trackTagModel.save();
-                  console.log('TrackCardCtrl updateXprive gepubliceerd tagId', trackTagModel.get('tagId'));
+                  //console.log('TrackCardCtrl updateXprive gepubliceerd tagId', trackTagModel.get('tagId'));
                   var tag = loDash.find(dataFactoryTag.store, function (tagModel) {
                     return tagModel.get('Id') === tagId && tagModel.get('gebruikerId') !== '';
                   });
@@ -1129,7 +1129,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
                     tag.set('yprive', true);
                     tag.set('xprive', false);
                     tag.save();
-                    console.log('TrackCardCtrl updateXprive gepubliceerd tag, naam', tag.get('tag'));
+                    //console.log('TrackCardCtrl updateXprive gepubliceerd tag, naam', tag.get('tag'));
                   }
                 }
               }
@@ -1143,7 +1143,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
           //
           $scope.details.groep = '';
           trackModel.xData.groep = '';
-          console.error('TrackCardCtrl updateXprive details.groep track.xData.groep reset: ', $scope.details.groep);
+          //console.error('TrackCardCtrl updateXprive details.groep track.xData.groep reset: ', $scope.details.groep);
 
           trackModel.set('gebruikerId', trackModel.get('gebruikerId'));
           trackModel.set('yprive', true);
@@ -1161,12 +1161,12 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
           });
         }
 
-        console.warn('TrackCardCtrl updateXprive: ', trackModel);
+        //console.warn('TrackCardCtrl updateXprive: ', trackModel);
 
         trackModel.set('Id', trackId);
         trackModel.set('gebruikerId', trackModel.get('gebruikerId'));
         trackModel.save().then(function () {
-          console.error('TrackCardCtrl updateXprive saved SUCCESS: ', trackModel.get('xprive'));
+          //console.error('TrackCardCtrl updateXprive saved SUCCESS: ', trackModel.get('xprive'));
         });
       }
     };
@@ -1174,7 +1174,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     //removeIf(!tracks)
     $scope.updatePoisVolgen = function () {
     
-      console.warn('TrackCardCtrl updatePoisVolgen');
+      //console.warn('TrackCardCtrl updatePoisVolgen');
     
       if ($scope.details.poisVolgen) {
         $scope.details.poisVolgen = false;
@@ -1183,7 +1183,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         trackSupModel.set('gebruikerId', trackSupModel.get('gebruikerId'));
         trackSupModel.set('poisVolgen', false);
         trackSupModel.save();
-        console.log('TrackCardCtrl trackMakersVolgen saved in trackSupModel: ', $scope.details.poisVolgen);
+        //console.log('TrackCardCtrl trackMakersVolgen saved in trackSupModel: ', $scope.details.poisVolgen);
     
       } else {
     
@@ -1194,13 +1194,13 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         trackSupModel.set('gebruikerId', trackSupModel.get('gebruikerId'));
         trackSupModel.set('poisVolgen', true);
         trackSupModel.save();
-        console.log('TrackCardCtrl trackPoisVolgen saved in trackSupModel: ', $scope.details.poisVolgen);
+        //console.log('TrackCardCtrl trackPoisVolgen saved in trackSupModel: ', $scope.details.poisVolgen);
       }
     };
     
     $scope.updateFotosVolgen = function () {
     
-      console.warn('TrackCardCtrl updateFotosVolgen');
+      //console.warn('TrackCardCtrl updateFotosVolgen');
     
       if ($scope.details.fotosVolgen) {
     
@@ -1210,7 +1210,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         trackSupModel.set('gebruikerId', trackSupModel.get('gebruikerId'));
         trackSupModel.set('fotosVolgen', false);
         trackSupModel.save();
-        console.log('TrackCardCtrl trackFotosVolgen saved in trackSupModel: ', $scope.details.fotosVolgen);
+        //console.log('TrackCardCtrl trackFotosVolgen saved in trackSupModel: ', $scope.details.fotosVolgen);
     
       } else {
     
@@ -1220,7 +1220,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         trackSupModel.set('gebruikerId', trackSupModel.get('gebruikerId'));
         trackSupModel.set('fotosVolgen', true);
         trackSupModel.save();
-        console.log('TrackCardCtrl trackFotosVolgen saved in trackSupModel: ', $scope.details.fotosVolgen);
+        //console.log('TrackCardCtrl trackFotosVolgen saved in trackSupModel: ', $scope.details.fotosVolgen);
       }
     };
     //endRemoveIf(!tracks)
@@ -1232,27 +1232,27 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       //
       if (!trackModel.xData) {
         trackModel.xData = {};
-        console.log('TracksCtrl initxData xData');
+        //console.log('TracksCtrl initxData xData');
       }
       if (!trackModel.xData.tracks) {
         trackModel.xData.tracks = [];
-        console.log('TracksCtrl initxData xData.tracks');
+        //console.log('TracksCtrl initxData xData.tracks');
       }
       if (!trackModel.xData.fotos) {
         trackModel.xData.fotos = [];
-        console.log('TracksCtrl initxData xData.fotoa');
+        //console.log('TracksCtrl initxData xData.fotoa');
       }
       if (!trackModel.xData.tags) {
         trackModel.xData.tags = [];
-        console.log('TracksCtrl initxData xData.tags');
+        //console.log('TracksCtrl initxData xData.tags');
       }
     }
 
     function updateTrack() {
 
-      console.log('TrackCardCtrl trackModel: ', trackModel, trackModel.get('naam'));
+      //console.log('TrackCardCtrl trackModel: ', trackModel, trackModel.get('naam'));
       var trackId = trackModel.get('Id');
-      console.warn('TrackCardCtrl trackUpdate trackId: ', trackId);
+      //console.warn('TrackCardCtrl trackUpdate trackId: ', trackId);
       
       
       
@@ -1287,7 +1287,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       $scope.details.trackId = trackId;
       $scope.details.tags = trackModel.xData.tags;
       sorteerDetailsTags();
-      console.log('TrackCardCtrl updateTrack xData.tags: ', trackModel.xData.tags);
+      //console.log('TrackCardCtrl updateTrack xData.tags: ', trackModel.xData.tags);
 
       $scope.details.groep = '';
 
@@ -1323,21 +1323,21 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
       var gelezen = +trackSupModel.get('gelezen');
       $scope.details.gelezen = gelezen;
-      console.log('updateTrackUpdate gelezen: ', gelezen);
+      //console.log('updateTrackUpdate gelezen: ', gelezen);
 
-      console.log('TrackCardCtrl updateTrack updateReacties Clock');
+      //console.log('TrackCardCtrl updateTrack updateReacties Clock');
 
       updateReacties(trackModel);
 
       dataFactoryClock.stopClockTrack();
       $rootScope.$emit('startClockTrack');
       $timeout(function () {
-        console.log('TrackCardCtrl updateTrack updateReacties start Clock');
+        //console.log('TrackCardCtrl updateTrack updateReacties start Clock');
 
         dataFactoryClock.startClockTrackCardFast(function () {
-          console.log('TrackCardCtrl updateTrack syncDown controleren op gelezen en reacties');
+          //console.log('TrackCardCtrl updateTrack syncDown controleren op gelezen en reacties');
           $scope.details.gelezen = +trackSupModel.get('gelezen');
-          console.log('TrackCardCtrl updateTrack syncDown controleren op gelezen: ', +trackSupModel.get('gelezen'));
+          //console.log('TrackCardCtrl updateTrack syncDown controleren op gelezen: ', +trackSupModel.get('gelezen'));
           updateReacties(trackModel);
         });
       }, 200);
@@ -1347,7 +1347,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
       if (!tmp.Id) {
 
-        console.warn('TrackCardCtrl HELP tmp: ', tmp);
+        //console.warn('TrackCardCtrl HELP tmp: ', tmp);
 
       } else {
 
@@ -1364,14 +1364,14 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         tmp3 = tmp2.replace(/__TYPE__/g, helpType);
         tmp.help = tmp3.replace(/__TYPES__/g, helpTypes);
 
-        console.log('TrackCardCtrl HELP tmp: ', tmp.modal);
+        //console.log('TrackCardCtrl HELP tmp: ', tmp.modal);
 
         $scope.cardHelps.push(tmp);
       }
     }
 
     function showHelp() {
-      console.warn('TrackCardCtrl showHelp');
+      //console.warn('TrackCardCtrl showHelp');
 
       var item;
       if (mode === 'bericht') {
@@ -1587,7 +1587,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         });
         typingHelp(loDash.mapValues(label, 'value'));
 
-        console.error('TrackCardCtrl kaartItemHelps $scope.cardHelps: ', $scope.cardHelps);
+        //console.error('TrackCardCtrl kaartItemHelps $scope.cardHelps: ', $scope.cardHelps);
       }
       //endRemoveIf(berichten)
       
@@ -1595,7 +1595,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     function removeTrackFromStores(trackId, backend) {
 
-      console.warn('TrackCardCtrl removeTrackFromStores trackId: ', trackId);
+      //console.warn('TrackCardCtrl removeTrackFromStores trackId: ', trackId);
 
       var trackModel = loDash.find(dataFactoryTrack.store, function (trackModel) {
         return trackModel.get('Id') === trackId;
@@ -1625,7 +1625,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
             tagModel: tagModel
           });
         } else {
-          console.error('TrackCardCtrl removeTrackFromStores tagModel NOT FOUND');
+          //console.error('TrackCardCtrl removeTrackFromStores tagModel NOT FOUND');
         }
       });
 
@@ -1658,7 +1658,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     }
 
     $scope.deleteTrack = function () {
-      console.warn('TrackCardCtrl deleteTrack');
+      //console.warn('TrackCardCtrl deleteTrack');
       $ionicPopup.confirm({
         title: 'Verwijder Spoor',
         content:
@@ -1686,7 +1686,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     $scope.closeTrackCard = function (stay) {
 
-      console.error('TrackCardCtrl closeTrackCard isCardClosed: ', isCardClosed);
+      //console.error('TrackCardCtrl closeTrackCard isCardClosed: ', isCardClosed);
 
       dataFactoryClock.stopClockTrackCard();
 
@@ -1694,7 +1694,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         if (stay === undefined) {
           stay = true;
         }
-        console.error('TrackCardCtrl closePoiCard stay: ', stay);
+        //console.error('TrackCardCtrl closePoiCard stay: ', stay);
         if (blacklisted) {
           removeTrackFromStores(trackId, false);
 
@@ -1712,7 +1712,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
               reactieSupModel.save();
             }
           });
-          console.log('TrackCardCtrl closeTrackCard reacties xnew reset in dataFactoryTrackReactieSup.store');
+          //console.log('TrackCardCtrl closeTrackCard reacties xnew reset in dataFactoryTrackReactieSup.store');
           //
           // Verwijder status nieuw van track in model sup.
           //
@@ -1722,19 +1722,19 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
             trackSupModel.set('trackId', trackSupModel.get('trackId'));
             var gelezen = +trackSupModel.get('gelezen');
 
-            console.log('TrackCardCtrl closeTrackCard $scope.details.gelezen: ', $scope.details.gelezen);
+            //console.log('TrackCardCtrl closeTrackCard $scope.details.gelezen: ', $scope.details.gelezen);
 
-            console.log('TrackCardCtrl closeTrackCard gelezen trackSupModel oud: ', gelezen);
+            //console.log('TrackCardCtrl closeTrackCard gelezen trackSupModel oud: ', gelezen);
             var xread = +trackSupModel.get('xread') + 1;
             trackSupModel.set('xread', xread);
-            console.log('TrackCardCtrl closeTrackCard xread updated in trackSupModel: ', xread);
+            //console.log('TrackCardCtrl closeTrackCard xread updated in trackSupModel: ', xread);
 
             $scope.details.gelezen = gelezen + xread;
             trackModel.xData.sup.set('gelezen', $scope.details.gelezen);
-            console.log('TrackCardCtrl closeTrackCard gelezen + xread updated as gelezen in trackSupModel: ', $scope.details.gelezen);
+            //console.log('TrackCardCtrl closeTrackCard gelezen + xread updated as gelezen in trackSupModel: ', $scope.details.gelezen);
 
             trackSupModel.set('xnew', false);
-            console.log('TrackCardCtrl closeTrackCard xnew reset in trackSupModel');
+            //console.log('TrackCardCtrl closeTrackCard xnew reset in trackSupModel');
             //
             // Verwijder track van lijst nieuw in store
             //
@@ -1757,17 +1757,17 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
                   return trackReactieSup.get('xnew');
                 });
 
-                console.log('TrackCardCtrl closed nieuwe track, trackReacties: ', trackNieuw, trackReactieNieuw);
+                //console.log('TrackCardCtrl closed nieuwe track, trackReacties: ', trackNieuw, trackReactieNieuw);
 
                 if (trackNieuw.length > 0 || trackReactieNieuw.length > 0) {
                   dataFactoryNotification.composeTitleBodyNotification(trackNieuw.length, trackReactieNieuw.length, 'track');
-                  console.log('TrackCardCtrl notification met trackNieuw, trackReactieNieuw: ', trackNieuw, trackReactieNieuw);
+                  //console.log('TrackCardCtrl notification met trackNieuw, trackReactieNieuw: ', trackNieuw, trackReactieNieuw);
                 }
 
                 $rootScope.$emit('sleepClockTrack');
               },
               function () {
-                console.error('trackSupModel saved ERROR');
+                //console.error('trackSupModel saved ERROR');
               }
             );
           }
@@ -1779,12 +1779,12 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         }
         isCardClosed = true;
       } else {
-        console.warn('TrackCardCtrl closeTrackCard SKIPPED!!!!!');
+        //console.warn('TrackCardCtrl closeTrackCard SKIPPED!!!!!');
       }
     };
 
     $scope.clearSearchLabel = function () {
-      console.warn('TrackCardCtrl clearearchLabel');
+      //console.warn('TrackCardCtrl clearearchLabel');
 
       $scope.search.label = '';
     };
@@ -1798,7 +1798,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.closeTags = function () {
-      console.warn('TrackCracCtrl closeTags');
+      //console.warn('TrackCracCtrl closeTags');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeModalTags();
       } else {
@@ -1817,12 +1817,12 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       });
 
     $scope.openModalTags = function ($event) {
-      console.warn('openModalTags: ');
+      //console.warn('openModalTags: ');
       $scope.modalTags.show($event);
     };
 
     $scope.closeModalTags = function () {
-      console.warn('closeModalTags: ');
+      //console.warn('closeModalTags: ');
       $scope.modalTags.hide();
     };
 
@@ -1856,7 +1856,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     $scope.$on('$destroy', function () {
       $scope.modalTrack.remove();
-      console.log('TrackCardCtrl ModalTrack is removed!');
+      //console.log('TrackCardCtrl ModalTrack is removed!');
     });
     //
     // Popover Tag
@@ -1907,11 +1907,11 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
 
     $scope.$on('$destroy', function () {
       $scope.modalTrack.remove();
-      console.log('TrackCardCtrl ModalTrack is removed!');
+      //console.log('TrackCardCtrl ModalTrack is removed!');
     });
 
     $scope.closeGroepen = function ($event) {
-      console.log('TrackCardCtrl closeGroepen');
+      //console.log('TrackCardCtrl closeGroepen');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeGroepenModal();
       } else {
@@ -1920,7 +1920,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.openGroepen = function ($event) {
-      console.log('TrackCardCtrl openGroepen $event: ', $event);
+      //console.log('TrackCardCtrl openGroepen $event: ', $event);
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openGroepenModal();
       } else {
@@ -1941,17 +1941,17 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     );
 
     $scope.openGroepenModal = function () {
-      console.log('TrackCardCtrl openGroepenModal');
+      //console.log('TrackCardCtrl openGroepenModal');
       $scope.groepenModal.show();
     };
 
     $scope.closeGroepenModal = function () {
-      console.log('TrackCardCtrl closeGroepenModal');
+      //console.log('TrackCardCtrl closeGroepenModal');
       $scope.groepenModal.hide();
     };
     $scope.$on('$destroy', function () {
       $scope.groepenModal.remove();
-      console.log('TrackCardCtrl groepenModal is removed!');
+      //console.log('TrackCardCtrl groepenModal is removed!');
     });
     //
     // GroepenPopover
@@ -1965,12 +1965,12 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       });
 
     $scope.openGroepenPopover = function ($event) {
-      console.log('TrackCardCtrl openGroepenPopover');
+      //console.log('TrackCardCtrl openGroepenPopover');
       $scope.groepenPopover.show($event);
     };
 
     $scope.closeGroepenPopover = function () {
-      console.log('TrackCardCtrl closeGroepenPopover');
+      //console.log('TrackCardCtrl closeGroepenPopover');
       $scope.groepenPopover.hide();
     };
 
@@ -1979,7 +1979,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     });
 
     $scope.closeGroepDeelnemers = function () {
-      console.log('TrackCardCtrl closeGroepen');
+      //console.log('TrackCardCtrl closeGroepen');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeGroepDeelnemersModal();
       } else {
@@ -1988,7 +1988,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.openGroepDeelnemers = function ($event) {
-      console.log('TrackCardCtrl openGroepen $event: ', $event);
+      //console.log('TrackCardCtrl openGroepen $event: ', $event);
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openGroepDeelnemersModal();
       } else {
@@ -2009,17 +2009,17 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     );
 
     $scope.openGroepDeelnemersModal = function () {
-      console.log('TrackCardCtrl openGroepDeelnemersModal');
+      //console.log('TrackCardCtrl openGroepDeelnemersModal');
       $scope.groepDeelnemersModal.show();
     };
 
     $scope.closeGroepDeelnemersModal = function () {
-      console.log('TrackCardCtrl closeGroepDeelnemersModal');
+      //console.log('TrackCardCtrl closeGroepDeelnemersModal');
       $scope.groepDeelnemersModal.hide();
     };
     $scope.$on('$destroy', function () {
       $scope.groepDeelnemersModal.remove();
-      console.log('TrackCardCtrl groepDeelnemersModal is removed!');
+      //console.log('TrackCardCtrl groepDeelnemersModal is removed!');
     });
     //
     // GroepDeelnemersPopover
@@ -2033,12 +2033,12 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       });
 
     $scope.openGroepDeelnemersPopover = function ($event) {
-      console.log('TrackCardCtrl openGroepDeelnemersPopover');
+      //console.log('TrackCardCtrl openGroepDeelnemersPopover');
       $scope.groepDeelnemersPopover.show($event);
     };
 
     $scope.closeGroepDeelnemersPopover = function () {
-      console.log('TrackCardCtrl closeGroepDeelnemersPopover');
+      //console.log('TrackCardCtrl closeGroepDeelnemersPopover');
       $scope.groepDeelnemersPopover.hide();
     };
 
@@ -2049,7 +2049,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     // Popover helpPopoverCard
     //
     $scope.openHelp = function ($event) {
-      console.log('TrackCardCtrl openHelp');
+      //console.log('TrackCardCtrl openHelp');
       showHelp();
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openHelpModal();
@@ -2059,7 +2059,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.closeHelp = function ($event) {
-      console.log('TrackCardCtrl openHelp');
+      //console.log('TrackCardCtrl openHelp');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeHelpModal();
       } else {
@@ -2075,11 +2075,11 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         $scope.helpPopover = helpPopover;
       });
     $scope.openHelpPopover = function ($event) {
-      console.log('TrackCardCtrl openHelpPopover');
+      //console.log('TrackCardCtrl openHelpPopover');
       $scope.helpPopover.show($event);
     };
     $scope.closeHelpPopover = function () {
-      console.log('TrackCardCtrl openHelpPopover');
+      //console.log('TrackCardCtrl openHelpPopover');
       $scope.helpPopover.hide();
     };
     $scope.$on('$destroy', function () {
@@ -2095,11 +2095,11 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       }
     );
     $scope.openHelpModal = function () {
-      console.log('TrackCardCtrl closeHelpModal');
+      //console.log('TrackCardCtrl closeHelpModal');
       $scope.helpModal.show();
     };
     $scope.closeHelpModalCard = function () {
-      console.log('TrackCardCtrl closeHelpModal');
+      //console.log('TrackCardCtrl closeHelpModal');
       $scope.helpModal.hide();
     };
     $scope.$on('$destroy', function () {
@@ -2140,7 +2140,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       });
     
       $scope.openGlobalHelpPopover = function ($event) {
-      console.warn('KaartCtrl openGlobaleHelpPopover');
+      //console.warn('KaartCtrl openGlobaleHelpPopover');
       $scope.globalHelpPopover.show($event);
     };
     
@@ -2198,7 +2198,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
     };
 
     $scope.setReactieNavTitle = function (title) {
-      console.log('TrackCardCtrl setReactieNavTitle: ' + title);
+      //console.log('TrackCardCtrl setReactieNavTitle: ' + title);
       $ionicNavBarDelegate.title(title);
     };
 
@@ -2206,13 +2206,13 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
       dataFactoryTrackSup.store = loDash.uniqBy(dataFactoryTrackSup.store, function (trackSup) {
         return trackSup.get('trackId');
       });
-      console.warn('TrackCardCtrl init TrackStore: ', dataFactoryTrack.store);
-      console.warn('TrackCardCtrl init TrackSupStore: ', dataFactoryTrackSup.store);
+      //console.warn('TrackCardCtrl init TrackStore: ', dataFactoryTrack.store);
+      //console.warn('TrackCardCtrl init TrackSupStore: ', dataFactoryTrackSup.store);
       trackModel = loDash.find(dataFactoryTrack.store, function (trackModel) {
         return trackModel.get('Id') === trackId;
       });
 
-      console.warn('TrackCardCtrl init trackModel: ', trackModel, trackModel.get('naam'));
+      //console.warn('TrackCardCtrl init trackModel: ', trackModel, trackModel.get('naam'));
 
       if (trackModel) {
         trackSupModel = loDash.find(dataFactoryTrackSup.store, function (trackSupModel) {
@@ -2227,7 +2227,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
           trackSupModel.set('star', false);
           //trackSupModel.set('trackId', trackId);
           trackSupModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
-          console.error('TrackCardCtrl init trackSupModel: ', trackSupModel.get('trackId'));
+          //console.error('TrackCardCtrl init trackSupModel: ', trackSupModel.get('trackId'));
           trackSupModel.save().then(function () {
             trackModel.xData.sup = trackSupModel;
             var xnew = trackModel.xData.sup.get('xnew');
@@ -2240,15 +2240,15 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
                 dataFactoryTrack.nieuw.push(trackModel, trackModel.get('naam'));
               }
             }
-            console.log('TrackCardCtrl init met nieuw supModel');
+            //console.log('TrackCardCtrl init met nieuw supModel');
           });
         } else {
-          console.log('TrackCardCtrl init bestaand supModel: ', trackSupModel);
+          //console.log('TrackCardCtrl init bestaand supModel: ', trackSupModel);
 
           initxData(trackModel);
 
           trackModel.xData.sup = trackSupModel;
-          console.log('trackModel.xData.sup: ', trackModel.xData.sup);
+          //console.log('trackModel.xData.sup: ', trackModel.xData.sup);
 
           var xnew = trackModel.xData.sup.get('xnew');
 
@@ -2263,7 +2263,7 @@ trinl.controller('TrackCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$s
         }
         updateTrack(trackModel, trackModel.get('naam'));
       } else {
-        console.warn('TrackCardCtrl findRecord ERROR Id: ', trackId);
+        //console.warn('TrackCardCtrl findRecord ERROR Id: ', trackId);
 
         $ionicPopup.confirm({
           title: 'Spoor',

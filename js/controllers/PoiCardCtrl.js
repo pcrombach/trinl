@@ -31,8 +31,8 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     var ceo = {};
     ceo.Id = localStorage.getItem('authentication_id');
     ceo.profielId = localStorage.getItem('authentication_profielId');
-    console.error('PoiCardCtrl ceo.Id: ', ceo.Id);
-    console.error('PoiCardCtrl ceo.profielId: ', +ceo.profielId);
+    //console.error('PoiCardCtrl ceo.Id: ', ceo.Id);
+    //console.error('PoiCardCtrl ceo.profielId: ', +ceo.profielId);
 
     $scope.global = {};
 
@@ -64,19 +64,19 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     // eslint-disable-next-line no-unused-vars
     //
     var event0a = $scope.$on('$ionicView.beforeEnter', function () {
-      console.warn('PoiCardCtrl $ionicView.beforeEnter');
+      //console.warn('PoiCardCtrl $ionicView.beforeEnter');
       init();
     });
     $scope.$on('$destroy', event0a);
 
     var event0z = $scope.$on('$ionicView.afterEnter', function () {
-      console.warn('PoiCardCtrl $ionicView.afterEnter');
+      //console.warn('PoiCardCtrl $ionicView.afterEnter');
       isCardClosed = false;
     });
     $scope.$on('$destroy', event0z);
 
     var event0b = $scope.$on('$ionicView.beforeLeave', function () {
-      console.warn('PoiCardCtrl $ionicView.beforeLeave');
+      //console.warn('PoiCardCtrl $ionicView.beforeLeave');
       //$timeout(function () {
       $scope.closePoiCard(false);
       //}, 100);
@@ -85,7 +85,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     //
     var event1 = $rootScope.$on('labelsPoiUpdate', function (event, args) {
       var poiModel = args.poiModel;
-      console.warn('PoiCardCtrl on.labelsPoiUpdate poiModel: ', poiModel, poiModel.get('naam'));
+      //console.warn('PoiCardCtrl on.labelsPoiUpdate poiModel: ', poiModel, poiModel.get('naam'));
       updateLabels(poiModel);
     });
     $scope.$on('$destroy', event1);
@@ -110,7 +110,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     //
     $scope.infoTag = function (tagModel) {
 
-      console.log('PoiCardCtrl tagModel: ', tagModel);
+      //console.log('PoiCardCtrl tagModel: ', tagModel);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -126,7 +126,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     $scope.editTag = function (tagModel) {
       var tag = tagModel.get('tag');
-      console.warn('PoiCardCtrl editTag: ', tag, tagModel);
+      //console.warn('PoiCardCtrl editTag: ', tag, tagModel);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -156,10 +156,10 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       });
       popupEditTag.then(function (res) {
 
-        console.log('PoisSideMenuCtrl editTag Label gewijzigd in: ' + res);
+        //console.log('PoisSideMenuCtrl editTag Label gewijzigd in: ' + res);
         if (res !== undefined) {
 
-          console.log('PoisSideMenuCtrl editTag poiModel tags: ', tag, poiModel && poiModel.xData.tags);
+          //console.log('PoisSideMenuCtrl editTag poiModel tags: ', tag, poiModel && poiModel.xData.tags);
 
           $rootScope.$emit('poiRemoveLabel', {
             poiModel: poiModel,
@@ -192,7 +192,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     $scope.deleteTag = function (tagModel) {
       var tag = tagModel.get('tag');
-      console.warn('PoiCardCtrl editTag: ', tag);
+      //console.warn('PoiCardCtrl editTag: ', tag);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -209,14 +209,14 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
             $scope.closeTags();
 
             loDash.each(dataFactoryPoi.store, function (poiModel) {
-              console.log('PoisSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, poiModel);
+              //console.log('PoisSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, poiModel);
               loDash.each(poiModel.xData.tags, function (poiTagModel) {
-                console.log('PoisSideMenuCtrl deleteTag poiModal.tags loop: ', poiModel.xData.tags, poiTagModel);
+                //console.log('PoisSideMenuCtrl deleteTag poiModal.tags loop: ', poiModel.xData.tags, poiTagModel);
                 (function (poiTagModel) {
                   if (poiTagModel.xData.get('tag') === tag) {
-                    console.log('PoisSideMenuCtrl deleteTag poiTagModel in poiModel.tags wordt verwijderd uit backend: ', poiTagModel);
+                    //console.log('PoisSideMenuCtrl deleteTag poiTagModel in poiModel.tags wordt verwijderd uit backend: ', poiTagModel);
                     poiTagModel.remove().then(function () {
-                      console.log('PoisSideMenuCtrl deleteTag poiTagModel wordt verwijderd uit poiModel.tags: ', poiTagModel);
+                      //console.log('PoisSideMenuCtrl deleteTag poiTagModel wordt verwijderd uit poiModel.tags: ', poiTagModel);
                       loDash.remove(poiModel.xData.tags, function (poiTagModel) {
                         return poiTagModel.xData.get('tag') === tag;
                       });
@@ -236,12 +236,12 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
             loDash.remove(dataFactoryTag.data, function (dataItem) {
               return dataItem.record.get('Id') === tag && dataItem.record.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
             });
-            console.log('PoisSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
+            //console.log('PoisSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
             //
             // Verwijder tag in de backend. De backend verwijderd ook alle poitags met tagId van alle andere gebruikers
             //
             if (tagModel.get('gebruikerId') !== '') {
-              console.log('PoisSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
+              //console.log('PoisSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
               tagModel.remove();
             }
 
@@ -254,7 +254,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     function sorteerGlobalTags() {
 
-      console.error('poiCardCtrl sorteerGlobalTags');
+      //console.error('poiCardCtrl sorteerGlobalTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
@@ -281,12 +281,12 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     function sorteerDetailsTags() {
 
-      console.error('PoiCardCtrl sorteerDetailsTags');
+      //console.error('PoiCardCtrl sorteerDetailsTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
 
-      console.error('$scope.details.tags: ', $scope.details.tags);
+      //console.error('$scope.details.tags: ', $scope.details.tags);
 
       var tagsPrivate = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length <= 3 && tag.xData.get('gebruikerId') !== '';
@@ -294,7 +294,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       if (tagsPrivate.length > 0) {
         tagsPrivate = loDash.orderBy(tagsPrivate, o => o.xData.get('tag'), 'asc');
       }
-      console.error('tagsPrivate: ', tagsPrivate);
+      //console.error('tagsPrivate: ', tagsPrivate);
 
       var tagsStandaard = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length <= 3 && tag.xData.get('gebruikerId') === '';
@@ -302,7 +302,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       if (tagsStandaard.length > 0) {
         tagsStandaard = loDash.orderBy(tagsStandaard, o => o.xData.get('tag'), 'asc');
       }
-      console.error('tagsStandaard: ', tagsStandaard);
+      //console.error('tagsStandaard: ', tagsStandaard);
 
       var tagsNormaal = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length > 3;
@@ -310,13 +310,13 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       if (tagsNormaal.length > 0) {
         tagsNormaal = loDash.orderBy(tagsNormaal, o => o.xData.tag.value, 'asc');
       }
-      console.error('tagsNormaal: ', tagsNormaal);
+      //console.error('tagsNormaal: ', tagsNormaal);
 
       $scope.details.tags = [...tagsPrivate, ...tagsStandaard, ...tagsNormaal];
     }
 
     function poisCheckPoiReactieAantal(reacties) {
-      console.warn('PoisCtrl poisCheckPoiReactieOud, reacties: ', reacties);
+      //console.warn('PoisCtrl poisCheckPoiReactieOud, reacties: ', reacties);
 
       var maxAantal = 50;
 
@@ -326,7 +326,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
       var teller = 0;
       loDash.each(reacties, function (reactieModel) {
-        console.log('PoisCtrl poisCheckPoiReactieAantal reactieModel: ', reactieModel);
+        //console.log('PoisCtrl poisCheckPoiReactieAantal reactieModel: ', reactieModel);
         teller += 1;
         if (teller > maxAantal) {
 
@@ -353,7 +353,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
               return dataItem.record.get('reactieId') === reactieId;
             });
           }
-          console.error('PoisCtrl poisCheckPoiReactieAantal reactie removed SUCCESS');
+          //console.error('PoisCtrl poisCheckPoiReactieAantal reactie removed SUCCESS');
         }
       });
       if (verwijderingen > 0) {
@@ -370,7 +370,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     function poisCheckPoiReactieOud(reacties) {
 
-      console.warn('PoisCtrl poisCheckPoiReactieOud, reacties: ', reacties);
+      //console.warn('PoisCtrl poisCheckPoiReactieOud, reacties: ', reacties);
 
       var aantalOuder = 7;
       var formatOuder = 'days';
@@ -378,18 +378,18 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       var q = $q.defer();
       var tooOld = moment().subtract(aantalOuder, formatOuder).format('YYYY-MM-DD HH:mm:ss');
       var verwijderingen = false;
-      console.log('PoisCtrl poisCheckPoiReactieOud: ', tooOld);
+      //console.log('PoisCtrl poisCheckPoiReactieOud: ', tooOld);
       //
       //  Ouder dan 
       //
       loDash.each(reacties, function (reactieModel) {
         if (reactieModel) {
-          console.log('PoisCtrl poisCheckPoiReactieOud reactieModel: ', reactieModel);
+          //console.log('PoisCtrl poisCheckPoiReactieOud reactieModel: ', reactieModel);
           var datum = reactieModel.get('changedOn');
           var reactieId = reactieModel.get('Id');
           if (datum < tooOld) {
             verwijderingen += 1;
-            console.log('PoisCtrl poisCheckPoiReactieOud changedOn, poiId, tooOld: ', datum, poiId, tooOld);
+            //console.log('PoisCtrl poisCheckPoiReactieOud changedOn, poiId, tooOld: ', datum, poiId, tooOld);
 
             reactieModel.remove();
             loDash.remove(dataFactoryPoiReactie.store, function (reactieModel) {
@@ -412,7 +412,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
             }
             $rootScope.$emit('filter');
             $rootScope.$emit('poisNieuweAantallen');
-            console.error('PoisCtrl poisCheckPoiReactieOud reactie removed SUCCESS');
+            //console.error('PoisCtrl poisCheckPoiReactieOud reactie removed SUCCESS');
           }
         }
       });
@@ -429,10 +429,10 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     }
 
     function updateReacties(poiModel) {
-      console.log('PoisCtrl updateReacties voor poi naam Id: ', poiModel.get('Id'), poiModel.get('naam'));
+      //console.log('PoisCtrl updateReacties voor poi naam Id: ', poiModel.get('Id'), poiModel.get('naam'));
       var poiId = poiModel.get('Id');
 
-      console.log('PoisCtrl updateReacties dataFactoryPoiReactie.store: ', dataFactoryPoiReactie.store);
+      //console.log('PoisCtrl updateReacties dataFactoryPoiReactie.store: ', dataFactoryPoiReactie.store);
 
       var poiReacties = loDash.filter(dataFactoryPoiReactie.store, function (poiReactieModel) {
         return poiReactieModel.get('poiId') === poiId;
@@ -443,13 +443,13 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         poisCheckPoiReactieOud(poiReacties).then(function () {
         });
       });
-      console.warn('PoiCardCtrl loadReactie poi in store, aantal: ', dataFactoryPoi.store.length);
-      console.warn('PoiCardCtrl loadReactie reacties in store, aantal: ', poiReacties.length);
+      //console.warn('PoiCardCtrl loadReactie poi in store, aantal: ', dataFactoryPoi.store.length);
+      //console.warn('PoiCardCtrl loadReactie reacties in store, aantal: ', poiReacties.length);
       $scope.details.reactiesAantal = poiReacties.length;
     }
 
     $scope.reactie = function () {
-      console.warn('PoiCardCtrl reactie');
+      //console.warn('PoiCardCtrl reactie');
 
       $scope.input = {};
       $scope.input.naam = '';
@@ -461,7 +461,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     $scope.saveReactie = function (input) {
 
-      console.warn('PoiCardCtrl saveReactie input poiId: ', input, poiId);
+      //console.warn('PoiCardCtrl saveReactie input poiId: ', input, poiId);
 
       if ($scope.initPoi === 'Reactie') {
 
@@ -473,7 +473,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         tmp = tmp.replace(/\\"/g, '"');
         var htmlreactietekst = '<p>' + tmp + '</p>';
         tmp = false;
-        console.error('PoiCardCtrl saveReactie: ', htmlreactietekst);
+        //console.error('PoiCardCtrl saveReactie: ', htmlreactietekst);
         reactieModel.set('reactie', htmlreactietekst);
         reactieModel.set('poiId', poiId);
         reactieModel.set('poiGebruikerId', poiModel.get('gebruikerId'));
@@ -494,14 +494,14 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
           reactieSupModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
           reactieSupModel.set('xnew', false);
           reactieSupModel.save().then(function (reactieSupModel) {
-            console.error('PoiCardCtrl saveReactie reactieSupModel: ', reactieSupModel);
+            //console.error('PoiCardCtrl saveReactie reactieSupModel: ', reactieSupModel);
             reactieModel.xData = {
               sup: reactieSupModel
             };
           });
           poiSupModel.set('poiId', poiId);
           poiSupModel.save().then(function () {
-            console.error('PoiCardCtrl saveReactie poiSupModel: ', poiSupModel);
+            //console.error('PoiCardCtrl saveReactie poiSupModel: ', poiSupModel);
           });
           $scope.details.reacties.splice(0, 0, reactieModel);
         });
@@ -510,9 +510,9 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.savePoiItemTekst = function (input) {
-      console.warn('PoiCardCtrl savePoiTekst: ', $scope.details);
-      console.warn('PoiCardCtrl savePoiTekst: ', input);
-      console.error('PoiCardCtrl size message: ', input.naam.length + input.tekst.length);
+      //console.warn('PoiCardCtrl savePoiTekst: ', $scope.details);
+      //console.warn('PoiCardCtrl savePoiTekst: ', input);
+      //console.error('PoiCardCtrl size message: ', input.naam.length + input.tekst.length);
 
       $scope.details.naam = input.naam;
       $scope.details.tekst = input.tekst;
@@ -545,7 +545,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.openPoiTekst = function () {
-      console.warn('PoiCardCtrl openPoiTekst');
+      //console.warn('PoiCardCtrl openPoiTekst');
 
       $scope.input = {};
       $scope.input.naam = $scope.details.naam;
@@ -557,9 +557,9 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     function updateLabels(poiModel) {
-      console.log('PoiCardCtrl updateLabels poiModel, poiId: ', poiModel, poiId, poiModel.get('naam'));
+      //console.log('PoiCardCtrl updateLabels poiModel, poiId: ', poiModel, poiId, poiModel.get('naam'));
       if (poiModel.get('Id') === poiId) {
-        console.log('PoiCardCtrl updateLabels poiModel: ', poiModel.get('naam'), poiModel.get('Id'));
+        //console.log('PoiCardCtrl updateLabels poiModel: ', poiModel.get('naam'), poiModel.get('Id'));
         //
         // Indien labels worden toegevoegd dan worden die toegevoegd in de dataFactoryPoiTag store en data
         // De label moet ook toegevoegd worden aan de poiModel.xData.tags
@@ -577,7 +577,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     //  Bovendien wordt dit label toegevoegd aan de labels van het het Model.
     //
     $scope.addNieuweLabel = function (tag) {
-      console.warn('PoiCardCtrl addNieuweLabel: ', tag);
+      //console.warn('PoiCardCtrl addNieuweLabel: ', tag);
 
       if (tag !== '') {
         var found = loDash.find($scope.global.tags, function (tagModel) {
@@ -595,15 +595,15 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
             tagModel.set('yprive', true);
           }
           tagModel.save().then(function () {
-            console.log('addNieuweLabel: ', dataFactoryTag.store);
+            //console.log('addNieuweLabel: ', dataFactoryTag.store);
             $scope.global.tags = loDash.filter(dataFactoryTag.store, function (tagModel) {
               return ((tagModel.get('Id').length < 3 && tagModel.get('gebruikerId') === '') || tagModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id'));
             });
             sorteerGlobalTags();
-            console.log('addNieuweLabel: ', $scope.global.tags);
+            //console.log('addNieuweLabel: ', $scope.global.tags);
             $scope.selectLabelClick(tagModel);
             $scope.clearSearchLabel();
-            console.log('PoiCardCtrl addNieuweLabel tag: ', tagModel);
+            //console.log('PoiCardCtrl addNieuweLabel tag: ', tagModel);
           });
         } else {
           $ionicPopup.confirm({
@@ -628,9 +628,9 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     $scope.selectLabelClick = function (tagModel) {
       var tagId = tagModel.get('Id');
 
-      console.warn('PoiCardCtrl selectLabelClick tagModel: ', tagModel);
-      console.warn('PoiCardCtrl selectLabelClick poiId: ', poiId);
-      console.warn('PoiCardCtrl selectLabelClick tagId: ', tagModel.get('Id'));
+      //console.warn('PoiCardCtrl selectLabelClick tagModel: ', tagModel);
+      //console.warn('PoiCardCtrl selectLabelClick poiId: ', poiId);
+      //console.warn('PoiCardCtrl selectLabelClick tagId: ', tagModel.get('Id'));
       //
       //  Kijk of de poitag reeds bestaat
       //
@@ -646,18 +646,18 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         poiTagModel.set('xprive', true);
         poiTagModel.set('yprive', false);
 
-        console.error('PoiCardCtrl newLabel groepenId: ', poiModel.get('groepenId'));
+        //console.error('PoiCardCtrl newLabel groepenId: ', poiModel.get('groepenId'));
         var groepenId = poiModel.get('groepenId');
         if (groepenId === '' || groepenId === 'Iedereen') {
           if (tagId.length <= 3) {
             poiTagModel.set('yprive', true);
             poiTagModel.set('xprive', false);
-            console.log('PoiCardCtrl publiceren PUBLIC tagId', poiTagModel.get('tagId'));
+            //console.log('PoiCardCtrl publiceren PUBLIC tagId', poiTagModel.get('tagId'));
           }
         } else {
           poiTagModel.set('yprive', true);
           poiTagModel.set('xprive', false);
-          console.log('PoiCardCtrl publiceren made PUBLIC tagId', poiTagModel.get('tagId'));
+          //console.log('PoiCardCtrl publiceren made PUBLIC tagId', poiTagModel.get('tagId'));
           //
           tagModel.set('yprive', true);
           tagModel.set('xprive', false);
@@ -667,7 +667,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
             });
             sorteerGlobalTags();
           });
-          console.log('PoiCardCtrl publiceren made PUBLIC tag, naam', tagModel.get('tag'));
+          //console.log('PoiCardCtrl publiceren made PUBLIC tag, naam', tagModel.get('tag'));
         }
         poiTagModel.save().then(function () {
 
@@ -723,22 +723,22 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.addTagToPoi = function ($event) {
-      console.warn('PoiCardCtrl addTagToPoi');
+      //console.warn('PoiCardCtrl addTagToPoi');
 
       $scope.clearSearchLabel($event);
       $scope.openTags($event);
     };
 
     $scope.deleteLabelTag = function (poiTagModel) {
-      console.warn('PoiCardCtrl deleteLabelTag poiModel: ', poiModel, poiModel.get('naam'), );
-      console.warn('PoiCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
-      console.warn('PoiCardCtrl deleteLabelTag poiTagModel: ', poiTagModel);
-      console.warn('PoiCardCtrl deleteLabelTag tagModel: ', poiTagModel.xData);
+      //console.warn('PoiCardCtrl deleteLabelTag poiModel: ', poiModel, poiModel.get('naam'), );
+      //console.warn('PoiCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
+      //console.warn('PoiCardCtrl deleteLabelTag poiTagModel: ', poiTagModel);
+      //console.warn('PoiCardCtrl deleteLabelTag tagModel: ', poiTagModel.xData);
       var tagModel = poiTagModel.xData;
-      console.warn('PoiCardCtrl deleteLabelTag tag.gebruikerId: ', tagModel.get('gebruikerId'));
-      console.warn('PoiCardCtrl ceo.gebruikerId: ', dataFactoryCeo.currentModel.get('Id'));
-      console.warn('PoiCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
-      console.warn('PoiCardCtrl deleteLabelTag poiModel.xdata.tags: ', poiModel.xData.tags);
+      //console.warn('PoiCardCtrl deleteLabelTag tag.gebruikerId: ', tagModel.get('gebruikerId'));
+      //console.warn('PoiCardCtrl ceo.gebruikerId: ', dataFactoryCeo.currentModel.get('Id'));
+      //console.warn('PoiCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
+      //console.warn('PoiCardCtrl deleteLabelTag poiModel.xdata.tags: ', poiModel.xData.tags);
 
       var poiTagId = poiTagModel.get('Id');
 
@@ -762,17 +762,17 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.selecteerPoi = function () {
-      console.log('PoisCtrl selecteerPoi: ', poiModel);
+      //console.log('PoisCtrl selecteerPoi: ', poiModel);
 
       $rootScope.$emit('poiSelected', poiModel);
       $state.go('app.kaart');
     };
 
     $scope.clickedAvatar = function (details) {
-      console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
+      //console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
 
-      console.warn('PoiCardCtrl clickedAvatar naam: ', details.gebruikerNaam);
-      console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
+      //console.warn('PoiCardCtrl clickedAvatar naam: ', details.gebruikerNaam);
+      //console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
 
       if (details.gebruikerId == $scope.ceo.Id) {
         var content =
@@ -817,10 +817,10 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
                   return blacklistModel.get('type') === 'gebruikers' && blacklistModel.get('blackId') === gebruikerId;
                 });
 
-                console.warn('PoiCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
+                //console.warn('PoiCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
 
                 if (found) {
-                  console.warn('PoiCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
+                  //console.warn('PoiCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
 
                   $scope.details.volgt = true;
 
@@ -844,7 +844,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
                   blacklistModel.save();
                   removed = true;
 
-                  console.warn('PoiCardCtrl updateVolgt blacklistStore blacklistModel niet gevonden aangemaakt en saved: ', blacklistModel);
+                  //console.warn('PoiCardCtrl updateVolgt blacklistStore blacklistModel niet gevonden aangemaakt en saved: ', blacklistModel);
                 }
 
                 if (removed) {
@@ -872,7 +872,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
                 var itemsToRemove = loDash.filter(dataFactoryPoi.store, function (poiModel) {
                   return poiModel.get('gebruikerId') === gebruikerId;
                 });
-                console.log('PoiCardCtrl poiItems removing from Store.....: ', itemsToRemove);
+                //console.log('PoiCardCtrl poiItems removing from Store.....: ', itemsToRemove);
 
                 loDash.each(itemsToRemove, function (poiModel) {
                   var poiId = poiModel.get('Id');
@@ -891,7 +891,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.updateVolgt = function () {
-      console.warn('PoiCardCtrl updateVolgt: ', poiModel, poiModel.get('naam'));
+      //console.warn('PoiCardCtrl updateVolgt: ', poiModel, poiModel.get('naam'));
 
       $scope.details.volgt = false;
 
@@ -901,10 +901,10 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         return blacklistModel.get('blackId') === poiModel.get('Id');
       });
 
-      console.warn('PoiCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
+      //console.warn('PoiCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
 
       if (found) {
-        console.warn('PoiCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
+        //console.warn('PoiCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
 
         removePoiFromStores(poiModel.get('Id'), false);
 
@@ -933,7 +933,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.updateStar = function () {
-      console.warn('PoiCardCtrl updateStar in: ', poiSupModel);
+      //console.warn('PoiCardCtrl updateStar in: ', poiSupModel);
 
       $scope.details.star = poiSupModel.get('star');
 
@@ -944,9 +944,9 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
           return poiModel.get('Id') === poiId;
         });
         poiSupModel.set('star', $scope.details.star);
-        console.warn('PoiCardCtrl updateStar poiSupModel: ', poiSupModel.get('poiId'));
+        //console.warn('PoiCardCtrl updateStar poiSupModel: ', poiSupModel.get('poiId'));
         poiSupModel.save();
-        console.warn('PoiCardCtrl updateStar: ', poiSupModel, poiModel.xData.sup.xnew.value);
+        //console.warn('PoiCardCtrl updateStar: ', poiSupModel, poiModel.xData.sup.xnew.value);
       } else {
         $scope.details.star = true;
         poiModel.xData.sup.set('star', true);
@@ -958,15 +958,15 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         }
         poiSupModel.set('star', $scope.details.star);
         //poiSupModel.set('poiId', poiId);
-        console.warn('PoiCardCtrl updateStar poiSupModel: ', poiSupModel.get('poiId'));
+        //console.warn('PoiCardCtrl updateStar poiSupModel: ', poiSupModel.get('poiId'));
         poiSupModel.save();
-        console.warn('PoiCardCtrl updateStar: ', poiSupModel, poiModel.xData.sup.xnew.value);
+        //console.warn('PoiCardCtrl updateStar: ', poiSupModel, poiModel.xData.sup.xnew.value);
       }
       $rootScope.$emit('poisNieuweAantallen');
     };
 
     $scope.selectGroep = function (groep) {
-      console.warn('PoiCardCtrl selectGroep: ', groep, groep.groep, groep.groepenId);
+      //console.warn('PoiCardCtrl selectGroep: ', groep, groep.groep, groep.groepenId);
       $scope.details.groep = groep.groep;
       poiModel.set('groepenId', groep.groepenId);
       $scope.details.xprive = false;
@@ -979,7 +979,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       //  Standaard labels zijn altijd public. Dus niet publiceren.
       //  Andere Tags en poitags ook prive/public maken
       //
-      console.log('PoiCardCtrl selectGroeppoitags, tags van naam: ', poiModel.get('naam'));
+      //console.log('PoiCardCtrl selectGroeppoitags, tags van naam: ', poiModel.get('naam'));
       //
       loDash.each(dataFactoryPoiTag.store, function (poiTagModel) {
         //
@@ -989,7 +989,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
           //
           poiTagModel.set('yprive', true);
           poiTagModel.set('xprive', true);
-          console.log('PoiCardCtrl selectGroep made PRIVATE tagId', poiTagModel.get('tagId'));
+          //console.log('PoiCardCtrl selectGroep made PRIVATE tagId', poiTagModel.get('tagId'));
 
           var groepenId = poiModel.get('groepenId');
           if (groepenId === '' || groepenId === 'Iedereen') {
@@ -997,12 +997,12 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
             if (tagId.length <= 3) {
               poiTagModel.set('yprive', true);
               poiTagModel.set('xprive', false);
-              console.log('PoiCardCtrl selectGroep PUBLIC tagId', poiTagModel.get('tagId'));
+              //console.log('PoiCardCtrl selectGroep PUBLIC tagId', poiTagModel.get('tagId'));
             }
           } else {
             poiTagModel.set('yprive', true);
             poiTagModel.set('xprive', false);
-            console.log('PoiCardCtrl selectGroep made PUBLIC tagId', poiTagModel.get('tagId'));
+            //console.log('PoiCardCtrl selectGroep made PUBLIC tagId', poiTagModel.get('tagId'));
             //
             var tag = loDash.find(dataFactoryTag.store, function (tagModel) {
               return tagModel.get('Id') === tagId && tagModel.get('gebruikerId') !== '';
@@ -1011,7 +1011,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
               tag.set('yprive', true);
               tag.set('xprive', false);
               tag.save();
-              console.log('PoiCardCtrl selectGroep made PUBLIC tag, naam', tag.get('tag'));
+              //console.log('PoiCardCtrl selectGroep made PUBLIC tag, naam', tag.get('tag'));
             }
           }
           poiTagModel.save();
@@ -1021,19 +1021,19 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.openDeelnemers = function (groepy, $event) {
-      console.warn('PoiCardCtrl openDeelnemersGroep: ', groepy);
+      //console.warn('PoiCardCtrl openDeelnemersGroep: ', groepy);
 
       $scope.deelnemers = loDash.filter(dataFactoryGroepdeelnemers.store, function (groep) {
         return groep.get('groep') === groepy;
       });
-      console.warn('PoiCardCtrl openDeelnemersGroep: ', $scope.deelnemers);
+      //console.warn('PoiCardCtrl openDeelnemersGroep: ', $scope.deelnemers);
       $scope.openGroepDeelnemers($event);
     };
 
     function showGroepen($event) {
-      console.warn('PoiCardCtrl showGroepen: ', $event);
-      console.warn('PoiCardCtrl showGroepen groepen: ', dataFactoryGroepen.store, dataFactoryGroepen.store.length);
-      console.warn('PoiCardCtrl showGroepdeelnemers: ', dataFactoryGroepdeelnemers.store, dataFactoryGroepdeelnemers.store.length);
+      //console.warn('PoiCardCtrl showGroepen: ', $event);
+      //console.warn('PoiCardCtrl showGroepen groepen: ', dataFactoryGroepen.store, dataFactoryGroepen.store.length);
+      //console.warn('PoiCardCtrl showGroepdeelnemers: ', dataFactoryGroepdeelnemers.store, dataFactoryGroepdeelnemers.store.length);
 
       $scope.groepen = [];
       $scope.deelnemers = [];
@@ -1042,15 +1042,15 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       tmp = loDash.filter(dataFactoryGroepdeelnemers.store, function (groepdeelnemerModel) {
         return ((groepdeelnemerModel.get('deelnemerId') === dataFactoryCeo.currentModel.get('Id') && groepdeelnemerModel.get('publicist') === true) || groepdeelnemerModel.get('groep') === 'Iedereen');
       });
-      console.warn('PoiCardCtrl showGroepen tmp: ', tmp, tmp.length);
+      //console.warn('PoiCardCtrl showGroepen tmp: ', tmp, tmp.length);
       loDash.each(tmp, function (groep) {
         tmp = loDash.mapValues(groep, 'value');
         $scope.deelnemers.push(tmp);
       });
-      console.warn('PoiCardCtrl showGroepen $scope.deelnemers: ', $scope.deelnemers);
+      //console.warn('PoiCardCtrl showGroepen $scope.deelnemers: ', $scope.deelnemers);
 
       $scope.groepen = loDash.uniqBy($scope.deelnemers, 'groep');
-      console.warn('PoiCardCtrl showGroepen $scope.groepen: ', $scope.groepen);
+      //console.warn('PoiCardCtrl showGroepen $scope.groepen: ', $scope.groepen);
 
       if ($scope.groepen.length > 1) {
         $scope.openGroepen($event);
@@ -1085,7 +1085,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
               if (found) {
                 $scope.details.groep = found.get('groep');
                 poiModel.xData.groep = found.get('groep');
-                console.error('PoiCardCtrl updateXprive details.groep poi.xData.groep set: ', $scope.details.groep);
+                //console.error('PoiCardCtrl updateXprive details.groep poi.xData.groep set: ', $scope.details.groep);
               }
             }
             //
@@ -1098,7 +1098,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
             //  Standaard labels zijn altijd public. Dus niet publiceren.
             //  Andere Tags en poitags ook prive/public maken
             //
-            console.log('PoiCardCtrl updateXprive poitags, tags van naam: ', poiModel.get('naam'));
+            //console.log('PoiCardCtrl updateXprive poitags, tags van naam: ', poiModel.get('naam'));
             //
             loDash.each(dataFactoryPoiTag.store, function (poiTagModel) {
 
@@ -1106,7 +1106,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
                 //
                 //
                 var tagId = poiTagModel.get('tagId');
-                console.log('PoiCardCtrl updateXprive tagId: ', tagId);
+                //console.log('PoiCardCtrl updateXprive tagId: ', tagId);
                 //
                 var groepenId = poiModel.get('groepenId');
                 if (groepenId === '' || groepenId === 'Iedereen') {
@@ -1115,13 +1115,13 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
                     poiTagModel.set('yprive', true);
                     poiTagModel.set('xprive', false);
                     poiTagModel.save();
-                    console.log('PoiCardCtrl updateXprive gepubliceerd tagId', poiTagModel.get('tagId'));
+                    //console.log('PoiCardCtrl updateXprive gepubliceerd tagId', poiTagModel.get('tagId'));
                   }
                 } else {
                   poiTagModel.set('yprive', true);
                   poiTagModel.set('xprive', false);
                   poiTagModel.save();
-                  console.log('PoiCardCtrl updateXprive gepubliceerd tagId', poiTagModel.get('tagId'));
+                  //console.log('PoiCardCtrl updateXprive gepubliceerd tagId', poiTagModel.get('tagId'));
                   var tag = loDash.find(dataFactoryTag.store, function (tagModel) {
                     return tagModel.get('Id') === tagId && tagModel.get('gebruikerId') !== '';
                   });
@@ -1129,7 +1129,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
                     tag.set('yprive', true);
                     tag.set('xprive', false);
                     tag.save();
-                    console.log('PoiCardCtrl updateXprive gepubliceerd tag, naam', tag.get('tag'));
+                    //console.log('PoiCardCtrl updateXprive gepubliceerd tag, naam', tag.get('tag'));
                   }
                 }
               }
@@ -1143,7 +1143,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
           //
           $scope.details.groep = '';
           poiModel.xData.groep = '';
-          console.error('PoiCardCtrl updateXprive details.groep poi.xData.groep reset: ', $scope.details.groep);
+          //console.error('PoiCardCtrl updateXprive details.groep poi.xData.groep reset: ', $scope.details.groep);
 
           poiModel.set('gebruikerId', poiModel.get('gebruikerId'));
           poiModel.set('yprive', true);
@@ -1161,12 +1161,12 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
           });
         }
 
-        console.warn('PoiCardCtrl updateXprive: ', poiModel);
+        //console.warn('PoiCardCtrl updateXprive: ', poiModel);
 
         poiModel.set('Id', poiId);
         poiModel.set('gebruikerId', poiModel.get('gebruikerId'));
         poiModel.save().then(function () {
-          console.error('PoiCardCtrl updateXprive saved SUCCESS: ', poiModel.get('xprive'));
+          //console.error('PoiCardCtrl updateXprive saved SUCCESS: ', poiModel.get('xprive'));
         });
       }
     };
@@ -1179,39 +1179,39 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       //
       if (!poiModel.xData) {
         poiModel.xData = {};
-        console.log('PoisCtrl initxData xData');
+        //console.log('PoisCtrl initxData xData');
       }
       if (!poiModel.xData.pois) {
         poiModel.xData.pois = [];
-        console.log('PoisCtrl initxData xData.pois');
+        //console.log('PoisCtrl initxData xData.pois');
       }
       if (!poiModel.xData.fotos) {
         poiModel.xData.fotos = [];
-        console.log('PoisCtrl initxData xData.fotoa');
+        //console.log('PoisCtrl initxData xData.fotoa');
       }
       if (!poiModel.xData.tags) {
         poiModel.xData.tags = [];
-        console.log('PoisCtrl initxData xData.tags');
+        //console.log('PoisCtrl initxData xData.tags');
       }
     }
 
     function updatePoi() {
 
-      console.log('PoiCardCtrl poiModel: ', poiModel, poiModel.get('naam'));
+      //console.log('PoiCardCtrl poiModel: ', poiModel, poiModel.get('naam'));
       var poiId = poiModel.get('Id');
-      console.warn('PoiCardCtrl poiUpdate poiId: ', poiId);
+      //console.warn('PoiCardCtrl poiUpdate poiId: ', poiId);
       
       
       //removeIf(!pois)
       $scope.details.trackNaam = '';
       dataFactoryTrack.syncDown().then(function () {
-        console.log('TrackCardCtrl dataFactoryTrack.store: ', dataFactoryTrack.store, poiId);
+        //console.log('TrackCardCtrl dataFactoryTrack.store: ', dataFactoryTrack.store, poiId);
         var trackModel = loDash.find(dataFactoryTrack.store, function (trackModel) {
           return trackModel.get('Id') === poiModel.get('trackId');
         });
         if (trackModel) {
           $scope.details.trackNaam = trackModel.get('naam');
-          console.log('TrackCardCtrl trackNaam: ', $scope.details.trackNaam, dataFactoryTrack.store, trackModel);
+          //console.log('TrackCardCtrl trackNaam: ', $scope.details.trackNaam, dataFactoryTrack.store, trackModel);
         }
       });
       //endRemoveIf(!pois)
@@ -1238,7 +1238,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       $scope.details.poiId = poiId;
       $scope.details.tags = poiModel.xData.tags;
       sorteerDetailsTags();
-      console.log('PoiCardCtrl updatePoi xData.tags: ', poiModel.xData.tags);
+      //console.log('PoiCardCtrl updatePoi xData.tags: ', poiModel.xData.tags);
 
       $scope.details.groep = '';
 
@@ -1274,21 +1274,21 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
       var gelezen = +poiSupModel.get('gelezen');
       $scope.details.gelezen = gelezen;
-      console.log('updatePoiUpdate gelezen: ', gelezen);
+      //console.log('updatePoiUpdate gelezen: ', gelezen);
 
-      console.log('PoiCardCtrl updatePoi updateReacties Clock');
+      //console.log('PoiCardCtrl updatePoi updateReacties Clock');
 
       updateReacties(poiModel);
 
       dataFactoryClock.stopClockPoi();
       $rootScope.$emit('startClockPoi');
       $timeout(function () {
-        console.log('PoiCardCtrl updatePoi updateReacties start Clock');
+        //console.log('PoiCardCtrl updatePoi updateReacties start Clock');
 
         dataFactoryClock.startClockPoiCardFast(function () {
-          console.log('PoiCardCtrl updatePoi syncDown controleren op gelezen en reacties');
+          //console.log('PoiCardCtrl updatePoi syncDown controleren op gelezen en reacties');
           $scope.details.gelezen = +poiSupModel.get('gelezen');
-          console.log('PoiCardCtrl updatePoi syncDown controleren op gelezen: ', +poiSupModel.get('gelezen'));
+          //console.log('PoiCardCtrl updatePoi syncDown controleren op gelezen: ', +poiSupModel.get('gelezen'));
           updateReacties(poiModel);
         });
       }, 200);
@@ -1298,7 +1298,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
       if (!tmp.Id) {
 
-        console.warn('PoiCardCtrl HELP tmp: ', tmp);
+        //console.warn('PoiCardCtrl HELP tmp: ', tmp);
 
       } else {
 
@@ -1315,14 +1315,14 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         tmp3 = tmp2.replace(/__TYPE__/g, helpType);
         tmp.help = tmp3.replace(/__TYPES__/g, helpTypes);
 
-        console.log('PoiCardCtrl HELP tmp: ', tmp.modal);
+        //console.log('PoiCardCtrl HELP tmp: ', tmp.modal);
 
         $scope.cardHelps.push(tmp);
       }
     }
 
     function showHelp() {
-      console.warn('PoiCardCtrl showHelp');
+      //console.warn('PoiCardCtrl showHelp');
 
       var item;
       if (mode === 'bericht') {
@@ -1534,7 +1534,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         });
         typingHelp(loDash.mapValues(label, 'value'));
 
-        console.error('PoiCardCtrl kaartItemHelps $scope.cardHelps: ', $scope.cardHelps);
+        //console.error('PoiCardCtrl kaartItemHelps $scope.cardHelps: ', $scope.cardHelps);
       }
       //endRemoveIf(berichten)
       
@@ -1542,7 +1542,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     function removePoiFromStores(poiId, backend) {
 
-      console.warn('PoiCardCtrl removePoiFromStores poiId: ', poiId);
+      //console.warn('PoiCardCtrl removePoiFromStores poiId: ', poiId);
 
       var poiModel = loDash.find(dataFactoryPoi.store, function (poiModel) {
         return poiModel.get('Id') === poiId;
@@ -1572,7 +1572,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
             tagModel: tagModel
           });
         } else {
-          console.error('PoiCardCtrl removePoiFromStores tagModel NOT FOUND');
+          //console.error('PoiCardCtrl removePoiFromStores tagModel NOT FOUND');
         }
       });
 
@@ -1605,7 +1605,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     }
 
     $scope.deletePoi = function () {
-      console.warn('PoiCardCtrl deletePoi');
+      //console.warn('PoiCardCtrl deletePoi');
       $ionicPopup.confirm({
         title: 'Verwijder Locatie',
         content:
@@ -1633,7 +1633,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     $scope.closePoiCard = function (stay) {
 
-      console.error('PoiCardCtrl closePoiCard isCardClosed: ', isCardClosed);
+      //console.error('PoiCardCtrl closePoiCard isCardClosed: ', isCardClosed);
 
       dataFactoryClock.stopClockPoiCard();
 
@@ -1641,7 +1641,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         if (stay === undefined) {
           stay = true;
         }
-        console.error('PoiCardCtrl closePoiCard stay: ', stay);
+        //console.error('PoiCardCtrl closePoiCard stay: ', stay);
         if (blacklisted) {
           removePoiFromStores(poiId, false);
 
@@ -1659,7 +1659,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
               reactieSupModel.save();
             }
           });
-          console.log('PoiCardCtrl closePoiCard reacties xnew reset in dataFactoryPoiReactieSup.store');
+          //console.log('PoiCardCtrl closePoiCard reacties xnew reset in dataFactoryPoiReactieSup.store');
           //
           // Verwijder status nieuw van poi in model sup.
           //
@@ -1669,19 +1669,19 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
             poiSupModel.set('poiId', poiSupModel.get('poiId'));
             var gelezen = +poiSupModel.get('gelezen');
 
-            console.log('PoiCardCtrl closePoiCard $scope.details.gelezen: ', $scope.details.gelezen);
+            //console.log('PoiCardCtrl closePoiCard $scope.details.gelezen: ', $scope.details.gelezen);
 
-            console.log('PoiCardCtrl closePoiCard gelezen poiSupModel oud: ', gelezen);
+            //console.log('PoiCardCtrl closePoiCard gelezen poiSupModel oud: ', gelezen);
             var xread = +poiSupModel.get('xread') + 1;
             poiSupModel.set('xread', xread);
-            console.log('PoiCardCtrl closePoiCard xread updated in poiSupModel: ', xread);
+            //console.log('PoiCardCtrl closePoiCard xread updated in poiSupModel: ', xread);
 
             $scope.details.gelezen = gelezen + xread;
             poiModel.xData.sup.set('gelezen', $scope.details.gelezen);
-            console.log('PoiCardCtrl closePoiCard gelezen + xread updated as gelezen in poiSupModel: ', $scope.details.gelezen);
+            //console.log('PoiCardCtrl closePoiCard gelezen + xread updated as gelezen in poiSupModel: ', $scope.details.gelezen);
 
             poiSupModel.set('xnew', false);
-            console.log('PoiCardCtrl closePoiCard xnew reset in poiSupModel');
+            //console.log('PoiCardCtrl closePoiCard xnew reset in poiSupModel');
             //
             // Verwijder poi van lijst nieuw in store
             //
@@ -1704,17 +1704,17 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
                   return poiReactieSup.get('xnew');
                 });
 
-                console.log('PoiCardCtrl closed nieuwe poi, poiReacties: ', poiNieuw, poiReactieNieuw);
+                //console.log('PoiCardCtrl closed nieuwe poi, poiReacties: ', poiNieuw, poiReactieNieuw);
 
                 if (poiNieuw.length > 0 || poiReactieNieuw.length > 0) {
                   dataFactoryNotification.composeTitleBodyNotification(poiNieuw.length, poiReactieNieuw.length, 'poi');
-                  console.log('PoiCardCtrl notification met poiNieuw, poiReactieNieuw: ', poiNieuw, poiReactieNieuw);
+                  //console.log('PoiCardCtrl notification met poiNieuw, poiReactieNieuw: ', poiNieuw, poiReactieNieuw);
                 }
 
                 $rootScope.$emit('sleepClockPoi');
               },
               function () {
-                console.error('poiSupModel saved ERROR');
+                //console.error('poiSupModel saved ERROR');
               }
             );
           }
@@ -1726,12 +1726,12 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         }
         isCardClosed = true;
       } else {
-        console.warn('PoiCardCtrl closePoiCard SKIPPED!!!!!');
+        //console.warn('PoiCardCtrl closePoiCard SKIPPED!!!!!');
       }
     };
 
     $scope.clearSearchLabel = function () {
-      console.warn('PoiCardCtrl clearearchLabel');
+      //console.warn('PoiCardCtrl clearearchLabel');
 
       $scope.search.label = '';
     };
@@ -1745,7 +1745,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.closeTags = function () {
-      console.warn('PoiCracCtrl closeTags');
+      //console.warn('PoiCracCtrl closeTags');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeModalTags();
       } else {
@@ -1764,12 +1764,12 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       });
 
     $scope.openModalTags = function ($event) {
-      console.warn('openModalTags: ');
+      //console.warn('openModalTags: ');
       $scope.modalTags.show($event);
     };
 
     $scope.closeModalTags = function () {
-      console.warn('closeModalTags: ');
+      //console.warn('closeModalTags: ');
       $scope.modalTags.hide();
     };
 
@@ -1803,7 +1803,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     $scope.$on('$destroy', function () {
       $scope.modalPoi.remove();
-      console.log('PoiCardCtrl ModalPoi is removed!');
+      //console.log('PoiCardCtrl ModalPoi is removed!');
     });
     //
     // Popover Tag
@@ -1854,11 +1854,11 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
 
     $scope.$on('$destroy', function () {
       $scope.modalPoi.remove();
-      console.log('PoiCardCtrl ModalPoi is removed!');
+      //console.log('PoiCardCtrl ModalPoi is removed!');
     });
 
     $scope.closeGroepen = function ($event) {
-      console.log('PoiCardCtrl closeGroepen');
+      //console.log('PoiCardCtrl closeGroepen');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeGroepenModal();
       } else {
@@ -1867,7 +1867,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.openGroepen = function ($event) {
-      console.log('PoiCardCtrl openGroepen $event: ', $event);
+      //console.log('PoiCardCtrl openGroepen $event: ', $event);
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openGroepenModal();
       } else {
@@ -1888,17 +1888,17 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     );
 
     $scope.openGroepenModal = function () {
-      console.log('PoiCardCtrl openGroepenModal');
+      //console.log('PoiCardCtrl openGroepenModal');
       $scope.groepenModal.show();
     };
 
     $scope.closeGroepenModal = function () {
-      console.log('PoiCardCtrl closeGroepenModal');
+      //console.log('PoiCardCtrl closeGroepenModal');
       $scope.groepenModal.hide();
     };
     $scope.$on('$destroy', function () {
       $scope.groepenModal.remove();
-      console.log('PoiCardCtrl groepenModal is removed!');
+      //console.log('PoiCardCtrl groepenModal is removed!');
     });
     //
     // GroepenPopover
@@ -1912,12 +1912,12 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       });
 
     $scope.openGroepenPopover = function ($event) {
-      console.log('PoiCardCtrl openGroepenPopover');
+      //console.log('PoiCardCtrl openGroepenPopover');
       $scope.groepenPopover.show($event);
     };
 
     $scope.closeGroepenPopover = function () {
-      console.log('PoiCardCtrl closeGroepenPopover');
+      //console.log('PoiCardCtrl closeGroepenPopover');
       $scope.groepenPopover.hide();
     };
 
@@ -1926,7 +1926,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     });
 
     $scope.closeGroepDeelnemers = function () {
-      console.log('PoiCardCtrl closeGroepen');
+      //console.log('PoiCardCtrl closeGroepen');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeGroepDeelnemersModal();
       } else {
@@ -1935,7 +1935,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.openGroepDeelnemers = function ($event) {
-      console.log('PoiCardCtrl openGroepen $event: ', $event);
+      //console.log('PoiCardCtrl openGroepen $event: ', $event);
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openGroepDeelnemersModal();
       } else {
@@ -1956,17 +1956,17 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     );
 
     $scope.openGroepDeelnemersModal = function () {
-      console.log('PoiCardCtrl openGroepDeelnemersModal');
+      //console.log('PoiCardCtrl openGroepDeelnemersModal');
       $scope.groepDeelnemersModal.show();
     };
 
     $scope.closeGroepDeelnemersModal = function () {
-      console.log('PoiCardCtrl closeGroepDeelnemersModal');
+      //console.log('PoiCardCtrl closeGroepDeelnemersModal');
       $scope.groepDeelnemersModal.hide();
     };
     $scope.$on('$destroy', function () {
       $scope.groepDeelnemersModal.remove();
-      console.log('PoiCardCtrl groepDeelnemersModal is removed!');
+      //console.log('PoiCardCtrl groepDeelnemersModal is removed!');
     });
     //
     // GroepDeelnemersPopover
@@ -1980,12 +1980,12 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       });
 
     $scope.openGroepDeelnemersPopover = function ($event) {
-      console.log('PoiCardCtrl openGroepDeelnemersPopover');
+      //console.log('PoiCardCtrl openGroepDeelnemersPopover');
       $scope.groepDeelnemersPopover.show($event);
     };
 
     $scope.closeGroepDeelnemersPopover = function () {
-      console.log('PoiCardCtrl closeGroepDeelnemersPopover');
+      //console.log('PoiCardCtrl closeGroepDeelnemersPopover');
       $scope.groepDeelnemersPopover.hide();
     };
 
@@ -1996,7 +1996,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     // Popover helpPopoverCard
     //
     $scope.openHelp = function ($event) {
-      console.log('PoiCardCtrl openHelp');
+      //console.log('PoiCardCtrl openHelp');
       showHelp();
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openHelpModal();
@@ -2006,7 +2006,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.closeHelp = function ($event) {
-      console.log('PoiCardCtrl openHelp');
+      //console.log('PoiCardCtrl openHelp');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeHelpModal();
       } else {
@@ -2022,11 +2022,11 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         $scope.helpPopover = helpPopover;
       });
     $scope.openHelpPopover = function ($event) {
-      console.log('PoiCardCtrl openHelpPopover');
+      //console.log('PoiCardCtrl openHelpPopover');
       $scope.helpPopover.show($event);
     };
     $scope.closeHelpPopover = function () {
-      console.log('PoiCardCtrl openHelpPopover');
+      //console.log('PoiCardCtrl openHelpPopover');
       $scope.helpPopover.hide();
     };
     $scope.$on('$destroy', function () {
@@ -2042,11 +2042,11 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       }
     );
     $scope.openHelpModal = function () {
-      console.log('PoiCardCtrl closeHelpModal');
+      //console.log('PoiCardCtrl closeHelpModal');
       $scope.helpModal.show();
     };
     $scope.closeHelpModalCard = function () {
-      console.log('PoiCardCtrl closeHelpModal');
+      //console.log('PoiCardCtrl closeHelpModal');
       $scope.helpModal.hide();
     };
     $scope.$on('$destroy', function () {
@@ -2087,7 +2087,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       });
     
       $scope.openGlobalHelpPopover = function ($event) {
-      console.warn('KaartCtrl openGlobaleHelpPopover');
+      //console.warn('KaartCtrl openGlobaleHelpPopover');
       $scope.globalHelpPopover.show($event);
     };
     
@@ -2145,7 +2145,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
     };
 
     $scope.setReactieNavTitle = function (title) {
-      console.log('PoiCardCtrl setReactieNavTitle: ' + title);
+      //console.log('PoiCardCtrl setReactieNavTitle: ' + title);
       $ionicNavBarDelegate.title(title);
     };
 
@@ -2153,13 +2153,13 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
       dataFactoryPoiSup.store = loDash.uniqBy(dataFactoryPoiSup.store, function (poiSup) {
         return poiSup.get('poiId');
       });
-      console.warn('PoiCardCtrl init PoiStore: ', dataFactoryPoi.store);
-      console.warn('PoiCardCtrl init PoiSupStore: ', dataFactoryPoiSup.store);
+      //console.warn('PoiCardCtrl init PoiStore: ', dataFactoryPoi.store);
+      //console.warn('PoiCardCtrl init PoiSupStore: ', dataFactoryPoiSup.store);
       poiModel = loDash.find(dataFactoryPoi.store, function (poiModel) {
         return poiModel.get('Id') === poiId;
       });
 
-      console.warn('PoiCardCtrl init poiModel: ', poiModel, poiModel.get('naam'));
+      //console.warn('PoiCardCtrl init poiModel: ', poiModel, poiModel.get('naam'));
 
       if (poiModel) {
         poiSupModel = loDash.find(dataFactoryPoiSup.store, function (poiSupModel) {
@@ -2174,7 +2174,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
           poiSupModel.set('star', false);
           //poiSupModel.set('poiId', poiId);
           poiSupModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
-          console.error('PoiCardCtrl init poiSupModel: ', poiSupModel.get('poiId'));
+          //console.error('PoiCardCtrl init poiSupModel: ', poiSupModel.get('poiId'));
           poiSupModel.save().then(function () {
             poiModel.xData.sup = poiSupModel;
             var xnew = poiModel.xData.sup.get('xnew');
@@ -2187,15 +2187,15 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
                 dataFactoryPoi.nieuw.push(poiModel, poiModel.get('naam'));
               }
             }
-            console.log('PoiCardCtrl init met nieuw supModel');
+            //console.log('PoiCardCtrl init met nieuw supModel');
           });
         } else {
-          console.log('PoiCardCtrl init bestaand supModel: ', poiSupModel);
+          //console.log('PoiCardCtrl init bestaand supModel: ', poiSupModel);
 
           initxData(poiModel);
 
           poiModel.xData.sup = poiSupModel;
-          console.log('poiModel.xData.sup: ', poiModel.xData.sup);
+          //console.log('poiModel.xData.sup: ', poiModel.xData.sup);
 
           var xnew = poiModel.xData.sup.get('xnew');
 
@@ -2210,7 +2210,7 @@ trinl.controller('PoiCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '$sco
         }
         updatePoi(poiModel, poiModel.get('naam'));
       } else {
-        console.warn('PoiCardCtrl findRecord ERROR Id: ', poiId);
+        //console.warn('PoiCardCtrl findRecord ERROR Id: ', poiId);
 
         $ionicPopup.confirm({
           title: 'Locatie',

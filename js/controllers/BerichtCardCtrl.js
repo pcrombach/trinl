@@ -25,8 +25,8 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     var ceo = {};
     ceo.Id = localStorage.getItem('authentication_id');
     ceo.profielId = localStorage.getItem('authentication_profielId');
-    console.error('BerichtCardCtrl ceo.Id: ', ceo.Id);
-    console.error('BerichtCardCtrl ceo.profielId: ', +ceo.profielId);
+    //console.error('BerichtCardCtrl ceo.Id: ', ceo.Id);
+    //console.error('BerichtCardCtrl ceo.profielId: ', +ceo.profielId);
 
     $scope.global = {};
 
@@ -58,19 +58,19 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     // eslint-disable-next-line no-unused-vars
     //
     var event0a = $scope.$on('$ionicView.beforeEnter', function () {
-      console.warn('BerichtCardCtrl $ionicView.beforeEnter');
+      //console.warn('BerichtCardCtrl $ionicView.beforeEnter');
       init();
     });
     $scope.$on('$destroy', event0a);
 
     var event0z = $scope.$on('$ionicView.afterEnter', function () {
-      console.warn('BerichtCardCtrl $ionicView.afterEnter');
+      //console.warn('BerichtCardCtrl $ionicView.afterEnter');
       isCardClosed = false;
     });
     $scope.$on('$destroy', event0z);
 
     var event0b = $scope.$on('$ionicView.beforeLeave', function () {
-      console.warn('BerichtCardCtrl $ionicView.beforeLeave');
+      //console.warn('BerichtCardCtrl $ionicView.beforeLeave');
       //$timeout(function () {
       $scope.closeBerichtCard(false);
       //}, 100);
@@ -79,7 +79,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     //
     var event1 = $rootScope.$on('labelsBerichtUpdate', function (event, args) {
       var berichtModel = args.berichtModel;
-      console.warn('BerichtCardCtrl on.labelsBerichtUpdate berichtModel: ', berichtModel, berichtModel.get('naam'));
+      //console.warn('BerichtCardCtrl on.labelsBerichtUpdate berichtModel: ', berichtModel, berichtModel.get('naam'));
       updateLabels(berichtModel);
     });
     $scope.$on('$destroy', event1);
@@ -104,7 +104,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     //
     $scope.infoTag = function (tagModel) {
 
-      console.log('BerichtCardCtrl tagModel: ', tagModel);
+      //console.log('BerichtCardCtrl tagModel: ', tagModel);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -120,7 +120,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     $scope.editTag = function (tagModel) {
       var tag = tagModel.get('tag');
-      console.warn('BerichtCardCtrl editTag: ', tag, tagModel);
+      //console.warn('BerichtCardCtrl editTag: ', tag, tagModel);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -150,10 +150,10 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       });
       popupEditTag.then(function (res) {
 
-        console.log('BerichtenSideMenuCtrl editTag Label gewijzigd in: ' + res);
+        //console.log('BerichtenSideMenuCtrl editTag Label gewijzigd in: ' + res);
         if (res !== undefined) {
 
-          console.log('BerichtenSideMenuCtrl editTag berichtModel tags: ', tag, berichtModel && berichtModel.xData.tags);
+          //console.log('BerichtenSideMenuCtrl editTag berichtModel tags: ', tag, berichtModel && berichtModel.xData.tags);
 
           $rootScope.$emit('berichtRemoveLabel', {
             berichtModel: berichtModel,
@@ -186,7 +186,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     $scope.deleteTag = function (tagModel) {
       var tag = tagModel.get('tag');
-      console.warn('BerichtCardCtrl editTag: ', tag);
+      //console.warn('BerichtCardCtrl editTag: ', tag);
 
       $ionicListDelegate.closeOptionButtons();
 
@@ -203,14 +203,14 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
             $scope.closeTags();
 
             loDash.each(dataFactoryBericht.store, function (berichtModel) {
-              console.log('BerichtenSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, berichtModel);
+              //console.log('BerichtenSideMenuCtrl deleteTag xtag.items loop: ', xtag.items, berichtModel);
               loDash.each(berichtModel.xData.tags, function (berichtTagModel) {
-                console.log('BerichtenSideMenuCtrl deleteTag berichtModal.tags loop: ', berichtModel.xData.tags, berichtTagModel);
+                //console.log('BerichtenSideMenuCtrl deleteTag berichtModal.tags loop: ', berichtModel.xData.tags, berichtTagModel);
                 (function (berichtTagModel) {
                   if (berichtTagModel.xData.get('tag') === tag) {
-                    console.log('BerichtenSideMenuCtrl deleteTag berichtTagModel in berichtModel.tags wordt verwijderd uit backend: ', berichtTagModel);
+                    //console.log('BerichtenSideMenuCtrl deleteTag berichtTagModel in berichtModel.tags wordt verwijderd uit backend: ', berichtTagModel);
                     berichtTagModel.remove().then(function () {
-                      console.log('BerichtenSideMenuCtrl deleteTag berichtTagModel wordt verwijderd uit berichtModel.tags: ', berichtTagModel);
+                      //console.log('BerichtenSideMenuCtrl deleteTag berichtTagModel wordt verwijderd uit berichtModel.tags: ', berichtTagModel);
                       loDash.remove(berichtModel.xData.tags, function (berichtTagModel) {
                         return berichtTagModel.xData.get('tag') === tag;
                       });
@@ -230,12 +230,12 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
             loDash.remove(dataFactoryTag.data, function (dataItem) {
               return dataItem.record.get('Id') === tag && dataItem.record.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id');
             });
-            console.log('BerichtenSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
+            //console.log('BerichtenSideMenuCtrl deleteTag tagModel wordt verwijderd uit dataFactoryTag.store: ', tagModel);
             //
             // Verwijder tag in de backend. De backend verwijderd ook alle berichttags met tagId van alle andere gebruikers
             //
             if (tagModel.get('gebruikerId') !== '') {
-              console.log('BerichtenSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
+              //console.log('BerichtenSideMenuCtrl deleteTag tagModel wordt verwijderd uit backend: ', tagModel);
               tagModel.remove();
             }
 
@@ -248,7 +248,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     function sorteerGlobalTags() {
 
-      console.error('berichtCardCtrl sorteerGlobalTags');
+      //console.error('berichtCardCtrl sorteerGlobalTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
@@ -275,12 +275,12 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     function sorteerDetailsTags() {
 
-      console.error('BerichtCardCtrl sorteerDetailsTags');
+      //console.error('BerichtCardCtrl sorteerDetailsTags');
       //
       //  Eerst splitsen per type en sorteren en dan samenvoegen
       //
 
-      console.error('$scope.details.tags: ', $scope.details.tags);
+      //console.error('$scope.details.tags: ', $scope.details.tags);
 
       var tagsPrivate = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length <= 3 && tag.xData.get('gebruikerId') !== '';
@@ -288,7 +288,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       if (tagsPrivate.length > 0) {
         tagsPrivate = loDash.orderBy(tagsPrivate, o => o.xData.get('tag'), 'asc');
       }
-      console.error('tagsPrivate: ', tagsPrivate);
+      //console.error('tagsPrivate: ', tagsPrivate);
 
       var tagsStandaard = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length <= 3 && tag.xData.get('gebruikerId') === '';
@@ -296,7 +296,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       if (tagsStandaard.length > 0) {
         tagsStandaard = loDash.orderBy(tagsStandaard, o => o.xData.get('tag'), 'asc');
       }
-      console.error('tagsStandaard: ', tagsStandaard);
+      //console.error('tagsStandaard: ', tagsStandaard);
 
       var tagsNormaal = loDash.filter($scope.details.tags, function (tag) {
         return tag.xData.get('Id').length > 3;
@@ -304,13 +304,13 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       if (tagsNormaal.length > 0) {
         tagsNormaal = loDash.orderBy(tagsNormaal, o => o.xData.tag.value, 'asc');
       }
-      console.error('tagsNormaal: ', tagsNormaal);
+      //console.error('tagsNormaal: ', tagsNormaal);
 
       $scope.details.tags = [...tagsPrivate, ...tagsStandaard, ...tagsNormaal];
     }
 
     function berichtenCheckBerichtReactieAantal(reacties) {
-      console.warn('BerichtenCtrl berichtenCheckBerichtReactieOud, reacties: ', reacties);
+      //console.warn('BerichtenCtrl berichtenCheckBerichtReactieOud, reacties: ', reacties);
 
       var maxAantal = 50;
 
@@ -320,7 +320,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
       var teller = 0;
       loDash.each(reacties, function (reactieModel) {
-        console.log('BerichtenCtrl berichtenCheckBerichtReactieAantal reactieModel: ', reactieModel);
+        //console.log('BerichtenCtrl berichtenCheckBerichtReactieAantal reactieModel: ', reactieModel);
         teller += 1;
         if (teller > maxAantal) {
 
@@ -347,7 +347,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
               return dataItem.record.get('reactieId') === reactieId;
             });
           }
-          console.error('BerichtenCtrl berichtenCheckBerichtReactieAantal reactie removed SUCCESS');
+          //console.error('BerichtenCtrl berichtenCheckBerichtReactieAantal reactie removed SUCCESS');
         }
       });
       if (verwijderingen > 0) {
@@ -364,7 +364,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     function berichtenCheckBerichtReactieOud(reacties) {
 
-      console.warn('BerichtenCtrl berichtenCheckBerichtReactieOud, reacties: ', reacties);
+      //console.warn('BerichtenCtrl berichtenCheckBerichtReactieOud, reacties: ', reacties);
 
       var aantalOuder = 7;
       var formatOuder = 'days';
@@ -372,18 +372,18 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       var q = $q.defer();
       var tooOld = moment().subtract(aantalOuder, formatOuder).format('YYYY-MM-DD HH:mm:ss');
       var verwijderingen = false;
-      console.log('BerichtenCtrl berichtenCheckBerichtReactieOud: ', tooOld);
+      //console.log('BerichtenCtrl berichtenCheckBerichtReactieOud: ', tooOld);
       //
       //  Ouder dan 
       //
       loDash.each(reacties, function (reactieModel) {
         if (reactieModel) {
-          console.log('BerichtenCtrl berichtenCheckBerichtReactieOud reactieModel: ', reactieModel);
+          //console.log('BerichtenCtrl berichtenCheckBerichtReactieOud reactieModel: ', reactieModel);
           var datum = reactieModel.get('changedOn');
           var reactieId = reactieModel.get('Id');
           if (datum < tooOld) {
             verwijderingen += 1;
-            console.log('BerichtenCtrl berichtenCheckBerichtReactieOud changedOn, berichtId, tooOld: ', datum, berichtId, tooOld);
+            //console.log('BerichtenCtrl berichtenCheckBerichtReactieOud changedOn, berichtId, tooOld: ', datum, berichtId, tooOld);
 
             reactieModel.remove();
             loDash.remove(dataFactoryBerichtReactie.store, function (reactieModel) {
@@ -406,7 +406,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
             }
             $rootScope.$emit('filter');
             $rootScope.$emit('berichtenNieuweAantallen');
-            console.error('BerichtenCtrl berichtenCheckBerichtReactieOud reactie removed SUCCESS');
+            //console.error('BerichtenCtrl berichtenCheckBerichtReactieOud reactie removed SUCCESS');
           }
         }
       });
@@ -423,10 +423,10 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     }
 
     function updateReacties(berichtModel) {
-      console.log('BerichtenCtrl updateReacties voor bericht naam Id: ', berichtModel.get('Id'), berichtModel.get('naam'));
+      //console.log('BerichtenCtrl updateReacties voor bericht naam Id: ', berichtModel.get('Id'), berichtModel.get('naam'));
       var berichtId = berichtModel.get('Id');
 
-      console.log('BerichtenCtrl updateReacties dataFactoryBerichtReactie.store: ', dataFactoryBerichtReactie.store);
+      //console.log('BerichtenCtrl updateReacties dataFactoryBerichtReactie.store: ', dataFactoryBerichtReactie.store);
 
       var berichtReacties = loDash.filter(dataFactoryBerichtReactie.store, function (berichtReactieModel) {
         return berichtReactieModel.get('berichtId') === berichtId;
@@ -437,13 +437,13 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         berichtenCheckBerichtReactieOud(berichtReacties).then(function () {
         });
       });
-      console.warn('BerichtCardCtrl loadReactie bericht in store, aantal: ', dataFactoryBericht.store.length);
-      console.warn('BerichtCardCtrl loadReactie reacties in store, aantal: ', berichtReacties.length);
+      //console.warn('BerichtCardCtrl loadReactie bericht in store, aantal: ', dataFactoryBericht.store.length);
+      //console.warn('BerichtCardCtrl loadReactie reacties in store, aantal: ', berichtReacties.length);
       $scope.details.reactiesAantal = berichtReacties.length;
     }
 
     $scope.reactie = function () {
-      console.warn('BerichtCardCtrl reactie');
+      //console.warn('BerichtCardCtrl reactie');
 
       $scope.input = {};
       $scope.input.naam = '';
@@ -455,7 +455,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     $scope.saveReactie = function (input) {
 
-      console.warn('BerichtCardCtrl saveReactie input berichtId: ', input, berichtId);
+      //console.warn('BerichtCardCtrl saveReactie input berichtId: ', input, berichtId);
 
       if ($scope.initBericht === 'Reactie') {
 
@@ -467,7 +467,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         tmp = tmp.replace(/\\"/g, '"');
         var htmlreactietekst = '<p>' + tmp + '</p>';
         tmp = false;
-        console.error('BerichtCardCtrl saveReactie: ', htmlreactietekst);
+        //console.error('BerichtCardCtrl saveReactie: ', htmlreactietekst);
         reactieModel.set('reactie', htmlreactietekst);
         reactieModel.set('berichtId', berichtId);
         reactieModel.set('berichtGebruikerId', berichtModel.get('gebruikerId'));
@@ -488,14 +488,14 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
           reactieSupModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
           reactieSupModel.set('xnew', false);
           reactieSupModel.save().then(function (reactieSupModel) {
-            console.error('BerichtCardCtrl saveReactie reactieSupModel: ', reactieSupModel);
+            //console.error('BerichtCardCtrl saveReactie reactieSupModel: ', reactieSupModel);
             reactieModel.xData = {
               sup: reactieSupModel
             };
           });
           berichtSupModel.set('berichtId', berichtId);
           berichtSupModel.save().then(function () {
-            console.error('BerichtCardCtrl saveReactie berichtSupModel: ', berichtSupModel);
+            //console.error('BerichtCardCtrl saveReactie berichtSupModel: ', berichtSupModel);
           });
           $scope.details.reacties.splice(0, 0, reactieModel);
         });
@@ -504,9 +504,9 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.saveBerichtItemTekst = function (input) {
-      console.warn('BerichtCardCtrl saveBerichtTekst: ', $scope.details);
-      console.warn('BerichtCardCtrl saveBerichtTekst: ', input);
-      console.error('BerichtCardCtrl size message: ', input.naam.length + input.tekst.length);
+      //console.warn('BerichtCardCtrl saveBerichtTekst: ', $scope.details);
+      //console.warn('BerichtCardCtrl saveBerichtTekst: ', input);
+      //console.error('BerichtCardCtrl size message: ', input.naam.length + input.tekst.length);
 
       $scope.details.naam = input.naam;
       $scope.details.tekst = input.tekst;
@@ -539,7 +539,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.openBerichtTekst = function () {
-      console.warn('BerichtCardCtrl openBerichtTekst');
+      //console.warn('BerichtCardCtrl openBerichtTekst');
 
       $scope.input = {};
       $scope.input.naam = $scope.details.naam;
@@ -551,9 +551,9 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     function updateLabels(berichtModel) {
-      console.log('BerichtCardCtrl updateLabels berichtModel, berichtId: ', berichtModel, berichtId, berichtModel.get('naam'));
+      //console.log('BerichtCardCtrl updateLabels berichtModel, berichtId: ', berichtModel, berichtId, berichtModel.get('naam'));
       if (berichtModel.get('Id') === berichtId) {
-        console.log('BerichtCardCtrl updateLabels berichtModel: ', berichtModel.get('naam'), berichtModel.get('Id'));
+        //console.log('BerichtCardCtrl updateLabels berichtModel: ', berichtModel.get('naam'), berichtModel.get('Id'));
         //
         // Indien labels worden toegevoegd dan worden die toegevoegd in de dataFactoryBerichtTag store en data
         // De label moet ook toegevoegd worden aan de berichtModel.xData.tags
@@ -571,7 +571,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     //  Bovendien wordt dit label toegevoegd aan de labels van het het Model.
     //
     $scope.addNieuweLabel = function (tag) {
-      console.warn('BerichtCardCtrl addNieuweLabel: ', tag);
+      //console.warn('BerichtCardCtrl addNieuweLabel: ', tag);
 
       if (tag !== '') {
         var found = loDash.find($scope.global.tags, function (tagModel) {
@@ -589,15 +589,15 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
             tagModel.set('yprive', true);
           }
           tagModel.save().then(function () {
-            console.log('addNieuweLabel: ', dataFactoryTag.store);
+            //console.log('addNieuweLabel: ', dataFactoryTag.store);
             $scope.global.tags = loDash.filter(dataFactoryTag.store, function (tagModel) {
               return ((tagModel.get('Id').length < 3 && tagModel.get('gebruikerId') === '') || tagModel.get('gebruikerId') === dataFactoryCeo.currentModel.get('Id'));
             });
             sorteerGlobalTags();
-            console.log('addNieuweLabel: ', $scope.global.tags);
+            //console.log('addNieuweLabel: ', $scope.global.tags);
             $scope.selectLabelClick(tagModel);
             $scope.clearSearchLabel();
-            console.log('BerichtCardCtrl addNieuweLabel tag: ', tagModel);
+            //console.log('BerichtCardCtrl addNieuweLabel tag: ', tagModel);
           });
         } else {
           $ionicPopup.confirm({
@@ -622,9 +622,9 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     $scope.selectLabelClick = function (tagModel) {
       var tagId = tagModel.get('Id');
 
-      console.warn('BerichtCardCtrl selectLabelClick tagModel: ', tagModel);
-      console.warn('BerichtCardCtrl selectLabelClick berichtId: ', berichtId);
-      console.warn('BerichtCardCtrl selectLabelClick tagId: ', tagModel.get('Id'));
+      //console.warn('BerichtCardCtrl selectLabelClick tagModel: ', tagModel);
+      //console.warn('BerichtCardCtrl selectLabelClick berichtId: ', berichtId);
+      //console.warn('BerichtCardCtrl selectLabelClick tagId: ', tagModel.get('Id'));
       //
       //  Kijk of de berichttag reeds bestaat
       //
@@ -640,18 +640,18 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         berichtTagModel.set('xprive', true);
         berichtTagModel.set('yprive', false);
 
-        console.error('BerichtCardCtrl newLabel groepenId: ', berichtModel.get('groepenId'));
+        //console.error('BerichtCardCtrl newLabel groepenId: ', berichtModel.get('groepenId'));
         var groepenId = berichtModel.get('groepenId');
         if (groepenId === '' || groepenId === 'Iedereen') {
           if (tagId.length <= 3) {
             berichtTagModel.set('yprive', true);
             berichtTagModel.set('xprive', false);
-            console.log('BerichtCardCtrl publiceren PUBLIC tagId', berichtTagModel.get('tagId'));
+            //console.log('BerichtCardCtrl publiceren PUBLIC tagId', berichtTagModel.get('tagId'));
           }
         } else {
           berichtTagModel.set('yprive', true);
           berichtTagModel.set('xprive', false);
-          console.log('BerichtCardCtrl publiceren made PUBLIC tagId', berichtTagModel.get('tagId'));
+          //console.log('BerichtCardCtrl publiceren made PUBLIC tagId', berichtTagModel.get('tagId'));
           //
           tagModel.set('yprive', true);
           tagModel.set('xprive', false);
@@ -661,7 +661,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
             });
             sorteerGlobalTags();
           });
-          console.log('BerichtCardCtrl publiceren made PUBLIC tag, naam', tagModel.get('tag'));
+          //console.log('BerichtCardCtrl publiceren made PUBLIC tag, naam', tagModel.get('tag'));
         }
         berichtTagModel.save().then(function () {
 
@@ -717,22 +717,22 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.addTagToBericht = function ($event) {
-      console.warn('BerichtCardCtrl addTagToBericht');
+      //console.warn('BerichtCardCtrl addTagToBericht');
 
       $scope.clearSearchLabel($event);
       $scope.openTags($event);
     };
 
     $scope.deleteLabelTag = function (berichtTagModel) {
-      console.warn('BerichtCardCtrl deleteLabelTag berichtModel: ', berichtModel, berichtModel.get('naam'), );
-      console.warn('BerichtCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
-      console.warn('BerichtCardCtrl deleteLabelTag berichtTagModel: ', berichtTagModel);
-      console.warn('BerichtCardCtrl deleteLabelTag tagModel: ', berichtTagModel.xData);
+      //console.warn('BerichtCardCtrl deleteLabelTag berichtModel: ', berichtModel, berichtModel.get('naam'), );
+      //console.warn('BerichtCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
+      //console.warn('BerichtCardCtrl deleteLabelTag berichtTagModel: ', berichtTagModel);
+      //console.warn('BerichtCardCtrl deleteLabelTag tagModel: ', berichtTagModel.xData);
       var tagModel = berichtTagModel.xData;
-      console.warn('BerichtCardCtrl deleteLabelTag tag.gebruikerId: ', tagModel.get('gebruikerId'));
-      console.warn('BerichtCardCtrl ceo.gebruikerId: ', dataFactoryCeo.currentModel.get('Id'));
-      console.warn('BerichtCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
-      console.warn('BerichtCardCtrl deleteLabelTag berichtModel.xdata.tags: ', berichtModel.xData.tags);
+      //console.warn('BerichtCardCtrl deleteLabelTag tag.gebruikerId: ', tagModel.get('gebruikerId'));
+      //console.warn('BerichtCardCtrl ceo.gebruikerId: ', dataFactoryCeo.currentModel.get('Id'));
+      //console.warn('BerichtCardCtrl deleteLabelTag $scope.details.tags: ', $scope.details.tags);
+      //console.warn('BerichtCardCtrl deleteLabelTag berichtModel.xdata.tags: ', berichtModel.xData.tags);
 
       var berichtTagId = berichtTagModel.get('Id');
 
@@ -756,17 +756,17 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.selecteerBericht = function () {
-      console.log('BerichtenCtrl selecteerBericht: ', berichtModel);
+      //console.log('BerichtenCtrl selecteerBericht: ', berichtModel);
 
       $rootScope.$emit('berichtSelected', berichtModel);
       $state.go('app.kaart');
     };
 
     $scope.clickedAvatar = function (details) {
-      console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
+      //console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
 
-      console.warn('BerichtCardCtrl clickedAvatar naam: ', details.gebruikerNaam);
-      console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
+      //console.warn('BerichtCardCtrl clickedAvatar naam: ', details.gebruikerNaam);
+      //console.error(details.gebruikerId, $scope.ceo.Id, details.xprive);
 
       if (details.gebruikerId == $scope.ceo.Id) {
         var content =
@@ -811,10 +811,10 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
                   return blacklistModel.get('type') === 'gebruikers' && blacklistModel.get('blackId') === gebruikerId;
                 });
 
-                console.warn('BerichtCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
+                //console.warn('BerichtCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
 
                 if (found) {
-                  console.warn('BerichtCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
+                  //console.warn('BerichtCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
 
                   $scope.details.volgt = true;
 
@@ -838,7 +838,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
                   blacklistModel.save();
                   removed = true;
 
-                  console.warn('BerichtCardCtrl updateVolgt blacklistStore blacklistModel niet gevonden aangemaakt en saved: ', blacklistModel);
+                  //console.warn('BerichtCardCtrl updateVolgt blacklistStore blacklistModel niet gevonden aangemaakt en saved: ', blacklistModel);
                 }
 
                 if (removed) {
@@ -866,7 +866,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
                 var itemsToRemove = loDash.filter(dataFactoryBericht.store, function (berichtModel) {
                   return berichtModel.get('gebruikerId') === gebruikerId;
                 });
-                console.log('BerichtCardCtrl berichtItems removing from Store.....: ', itemsToRemove);
+                //console.log('BerichtCardCtrl berichtItems removing from Store.....: ', itemsToRemove);
 
                 loDash.each(itemsToRemove, function (berichtModel) {
                   var berichtId = berichtModel.get('Id');
@@ -885,7 +885,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.updateVolgt = function () {
-      console.warn('BerichtCardCtrl updateVolgt: ', berichtModel, berichtModel.get('naam'));
+      //console.warn('BerichtCardCtrl updateVolgt: ', berichtModel, berichtModel.get('naam'));
 
       $scope.details.volgt = false;
 
@@ -895,10 +895,10 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         return blacklistModel.get('blackId') === berichtModel.get('Id');
       });
 
-      console.warn('BerichtCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
+      //console.warn('BerichtCardCtrl updateVolgt blacklistStore: ', dataFactoryBlacklist.store);
 
       if (found) {
-        console.warn('BerichtCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
+        //console.warn('BerichtCardCtrl updateVolgt blacklistStore blacklistModel gevonden: ', found);
 
         removeBerichtFromStores(berichtModel.get('Id'), false);
 
@@ -927,7 +927,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.updateStar = function () {
-      console.warn('BerichtCardCtrl updateStar in: ', berichtSupModel);
+      //console.warn('BerichtCardCtrl updateStar in: ', berichtSupModel);
 
       $scope.details.star = berichtSupModel.get('star');
 
@@ -938,9 +938,9 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
           return berichtModel.get('Id') === berichtId;
         });
         berichtSupModel.set('star', $scope.details.star);
-        console.warn('BerichtCardCtrl updateStar berichtSupModel: ', berichtSupModel.get('berichtId'));
+        //console.warn('BerichtCardCtrl updateStar berichtSupModel: ', berichtSupModel.get('berichtId'));
         berichtSupModel.save();
-        console.warn('BerichtCardCtrl updateStar: ', berichtSupModel, berichtModel.xData.sup.xnew.value);
+        //console.warn('BerichtCardCtrl updateStar: ', berichtSupModel, berichtModel.xData.sup.xnew.value);
       } else {
         $scope.details.star = true;
         berichtModel.xData.sup.set('star', true);
@@ -952,15 +952,15 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         }
         berichtSupModel.set('star', $scope.details.star);
         //berichtSupModel.set('berichtId', berichtId);
-        console.warn('BerichtCardCtrl updateStar berichtSupModel: ', berichtSupModel.get('berichtId'));
+        //console.warn('BerichtCardCtrl updateStar berichtSupModel: ', berichtSupModel.get('berichtId'));
         berichtSupModel.save();
-        console.warn('BerichtCardCtrl updateStar: ', berichtSupModel, berichtModel.xData.sup.xnew.value);
+        //console.warn('BerichtCardCtrl updateStar: ', berichtSupModel, berichtModel.xData.sup.xnew.value);
       }
       $rootScope.$emit('berichtenNieuweAantallen');
     };
 
     $scope.selectGroep = function (groep) {
-      console.warn('BerichtCardCtrl selectGroep: ', groep, groep.groep, groep.groepenId);
+      //console.warn('BerichtCardCtrl selectGroep: ', groep, groep.groep, groep.groepenId);
       $scope.details.groep = groep.groep;
       berichtModel.set('groepenId', groep.groepenId);
       $scope.details.xprive = false;
@@ -973,7 +973,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       //  Standaard labels zijn altijd public. Dus niet publiceren.
       //  Andere Tags en berichttags ook prive/public maken
       //
-      console.log('BerichtCardCtrl selectGroepberichttags, tags van naam: ', berichtModel.get('naam'));
+      //console.log('BerichtCardCtrl selectGroepberichttags, tags van naam: ', berichtModel.get('naam'));
       //
       loDash.each(dataFactoryBerichtTag.store, function (berichtTagModel) {
         //
@@ -983,7 +983,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
           //
           berichtTagModel.set('yprive', true);
           berichtTagModel.set('xprive', true);
-          console.log('BerichtCardCtrl selectGroep made PRIVATE tagId', berichtTagModel.get('tagId'));
+          //console.log('BerichtCardCtrl selectGroep made PRIVATE tagId', berichtTagModel.get('tagId'));
 
           var groepenId = berichtModel.get('groepenId');
           if (groepenId === '' || groepenId === 'Iedereen') {
@@ -991,12 +991,12 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
             if (tagId.length <= 3) {
               berichtTagModel.set('yprive', true);
               berichtTagModel.set('xprive', false);
-              console.log('BerichtCardCtrl selectGroep PUBLIC tagId', berichtTagModel.get('tagId'));
+              //console.log('BerichtCardCtrl selectGroep PUBLIC tagId', berichtTagModel.get('tagId'));
             }
           } else {
             berichtTagModel.set('yprive', true);
             berichtTagModel.set('xprive', false);
-            console.log('BerichtCardCtrl selectGroep made PUBLIC tagId', berichtTagModel.get('tagId'));
+            //console.log('BerichtCardCtrl selectGroep made PUBLIC tagId', berichtTagModel.get('tagId'));
             //
             var tag = loDash.find(dataFactoryTag.store, function (tagModel) {
               return tagModel.get('Id') === tagId && tagModel.get('gebruikerId') !== '';
@@ -1005,7 +1005,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
               tag.set('yprive', true);
               tag.set('xprive', false);
               tag.save();
-              console.log('BerichtCardCtrl selectGroep made PUBLIC tag, naam', tag.get('tag'));
+              //console.log('BerichtCardCtrl selectGroep made PUBLIC tag, naam', tag.get('tag'));
             }
           }
           berichtTagModel.save();
@@ -1015,19 +1015,19 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.openDeelnemers = function (groepy, $event) {
-      console.warn('BerichtCardCtrl openDeelnemersGroep: ', groepy);
+      //console.warn('BerichtCardCtrl openDeelnemersGroep: ', groepy);
 
       $scope.deelnemers = loDash.filter(dataFactoryGroepdeelnemers.store, function (groep) {
         return groep.get('groep') === groepy;
       });
-      console.warn('BerichtCardCtrl openDeelnemersGroep: ', $scope.deelnemers);
+      //console.warn('BerichtCardCtrl openDeelnemersGroep: ', $scope.deelnemers);
       $scope.openGroepDeelnemers($event);
     };
 
     function showGroepen($event) {
-      console.warn('BerichtCardCtrl showGroepen: ', $event);
-      console.warn('BerichtCardCtrl showGroepen groepen: ', dataFactoryGroepen.store, dataFactoryGroepen.store.length);
-      console.warn('BerichtCardCtrl showGroepdeelnemers: ', dataFactoryGroepdeelnemers.store, dataFactoryGroepdeelnemers.store.length);
+      //console.warn('BerichtCardCtrl showGroepen: ', $event);
+      //console.warn('BerichtCardCtrl showGroepen groepen: ', dataFactoryGroepen.store, dataFactoryGroepen.store.length);
+      //console.warn('BerichtCardCtrl showGroepdeelnemers: ', dataFactoryGroepdeelnemers.store, dataFactoryGroepdeelnemers.store.length);
 
       $scope.groepen = [];
       $scope.deelnemers = [];
@@ -1036,15 +1036,15 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       tmp = loDash.filter(dataFactoryGroepdeelnemers.store, function (groepdeelnemerModel) {
         return ((groepdeelnemerModel.get('deelnemerId') === dataFactoryCeo.currentModel.get('Id') && groepdeelnemerModel.get('publicist') === true) || groepdeelnemerModel.get('groep') === 'Iedereen');
       });
-      console.warn('BerichtCardCtrl showGroepen tmp: ', tmp, tmp.length);
+      //console.warn('BerichtCardCtrl showGroepen tmp: ', tmp, tmp.length);
       loDash.each(tmp, function (groep) {
         tmp = loDash.mapValues(groep, 'value');
         $scope.deelnemers.push(tmp);
       });
-      console.warn('BerichtCardCtrl showGroepen $scope.deelnemers: ', $scope.deelnemers);
+      //console.warn('BerichtCardCtrl showGroepen $scope.deelnemers: ', $scope.deelnemers);
 
       $scope.groepen = loDash.uniqBy($scope.deelnemers, 'groep');
-      console.warn('BerichtCardCtrl showGroepen $scope.groepen: ', $scope.groepen);
+      //console.warn('BerichtCardCtrl showGroepen $scope.groepen: ', $scope.groepen);
 
       if ($scope.groepen.length > 1) {
         $scope.openGroepen($event);
@@ -1079,7 +1079,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
               if (found) {
                 $scope.details.groep = found.get('groep');
                 berichtModel.xData.groep = found.get('groep');
-                console.error('BerichtCardCtrl updateXprive details.groep bericht.xData.groep set: ', $scope.details.groep);
+                //console.error('BerichtCardCtrl updateXprive details.groep bericht.xData.groep set: ', $scope.details.groep);
               }
             }
             //
@@ -1092,7 +1092,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
             //  Standaard labels zijn altijd public. Dus niet publiceren.
             //  Andere Tags en berichttags ook prive/public maken
             //
-            console.log('BerichtCardCtrl updateXprive berichttags, tags van naam: ', berichtModel.get('naam'));
+            //console.log('BerichtCardCtrl updateXprive berichttags, tags van naam: ', berichtModel.get('naam'));
             //
             loDash.each(dataFactoryBerichtTag.store, function (berichtTagModel) {
 
@@ -1100,7 +1100,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
                 //
                 //
                 var tagId = berichtTagModel.get('tagId');
-                console.log('BerichtCardCtrl updateXprive tagId: ', tagId);
+                //console.log('BerichtCardCtrl updateXprive tagId: ', tagId);
                 //
                 var groepenId = berichtModel.get('groepenId');
                 if (groepenId === '' || groepenId === 'Iedereen') {
@@ -1109,13 +1109,13 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
                     berichtTagModel.set('yprive', true);
                     berichtTagModel.set('xprive', false);
                     berichtTagModel.save();
-                    console.log('BerichtCardCtrl updateXprive gepubliceerd tagId', berichtTagModel.get('tagId'));
+                    //console.log('BerichtCardCtrl updateXprive gepubliceerd tagId', berichtTagModel.get('tagId'));
                   }
                 } else {
                   berichtTagModel.set('yprive', true);
                   berichtTagModel.set('xprive', false);
                   berichtTagModel.save();
-                  console.log('BerichtCardCtrl updateXprive gepubliceerd tagId', berichtTagModel.get('tagId'));
+                  //console.log('BerichtCardCtrl updateXprive gepubliceerd tagId', berichtTagModel.get('tagId'));
                   var tag = loDash.find(dataFactoryTag.store, function (tagModel) {
                     return tagModel.get('Id') === tagId && tagModel.get('gebruikerId') !== '';
                   });
@@ -1123,7 +1123,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
                     tag.set('yprive', true);
                     tag.set('xprive', false);
                     tag.save();
-                    console.log('BerichtCardCtrl updateXprive gepubliceerd tag, naam', tag.get('tag'));
+                    //console.log('BerichtCardCtrl updateXprive gepubliceerd tag, naam', tag.get('tag'));
                   }
                 }
               }
@@ -1137,7 +1137,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
           //
           $scope.details.groep = '';
           berichtModel.xData.groep = '';
-          console.error('BerichtCardCtrl updateXprive details.groep bericht.xData.groep reset: ', $scope.details.groep);
+          //console.error('BerichtCardCtrl updateXprive details.groep bericht.xData.groep reset: ', $scope.details.groep);
 
           berichtModel.set('gebruikerId', berichtModel.get('gebruikerId'));
           berichtModel.set('yprive', true);
@@ -1155,12 +1155,12 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
           });
         }
 
-        console.warn('BerichtCardCtrl updateXprive: ', berichtModel);
+        //console.warn('BerichtCardCtrl updateXprive: ', berichtModel);
 
         berichtModel.set('Id', berichtId);
         berichtModel.set('gebruikerId', berichtModel.get('gebruikerId'));
         berichtModel.save().then(function () {
-          console.error('BerichtCardCtrl updateXprive saved SUCCESS: ', berichtModel.get('xprive'));
+          //console.error('BerichtCardCtrl updateXprive saved SUCCESS: ', berichtModel.get('xprive'));
         });
       }
     };
@@ -1173,27 +1173,27 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       //
       if (!berichtModel.xData) {
         berichtModel.xData = {};
-        console.log('BerichtenCtrl initxData xData');
+        //console.log('BerichtenCtrl initxData xData');
       }
       if (!berichtModel.xData.berichten) {
         berichtModel.xData.berichten = [];
-        console.log('BerichtenCtrl initxData xData.berichten');
+        //console.log('BerichtenCtrl initxData xData.berichten');
       }
       if (!berichtModel.xData.fotos) {
         berichtModel.xData.fotos = [];
-        console.log('BerichtenCtrl initxData xData.fotoa');
+        //console.log('BerichtenCtrl initxData xData.fotoa');
       }
       if (!berichtModel.xData.tags) {
         berichtModel.xData.tags = [];
-        console.log('BerichtenCtrl initxData xData.tags');
+        //console.log('BerichtenCtrl initxData xData.tags');
       }
     }
 
     function updateBericht() {
 
-      console.log('BerichtCardCtrl berichtModel: ', berichtModel, berichtModel.get('naam'));
+      //console.log('BerichtCardCtrl berichtModel: ', berichtModel, berichtModel.get('naam'));
       var berichtId = berichtModel.get('Id');
-      console.warn('BerichtCardCtrl berichtUpdate berichtId: ', berichtId);
+      //console.warn('BerichtCardCtrl berichtUpdate berichtId: ', berichtId);
       
       
       
@@ -1208,7 +1208,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         //removeIf(!berichten)
   
         var groepenId = berichtModel.get('groepenId');
-        console.log('BerichtCardCtrl updateBericht groepenId: ', groepenId);
+        //console.log('BerichtCardCtrl updateBericht groepenId: ', groepenId);
   
         $scope.details.groep = '';
         berichtModel.xData.groep = '';
@@ -1222,7 +1222,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
           if (groep) {
             $scope.details.groep = groep.get('groep');
             berichtModel.xData.groep = groep.get('groep');
-            console.error('BerichtCardCtrl updateBericht details.groep bericht.xData.groep update: ', $scope.details.groep);
+            //console.error('BerichtCardCtrl updateBericht details.groep bericht.xData.groep update: ', $scope.details.groep);
           }
         }
         //endRemoveIf(berichten)
@@ -1240,7 +1240,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       $scope.details.berichtId = berichtId;
       $scope.details.tags = berichtModel.xData.tags;
       sorteerDetailsTags();
-      console.log('BerichtCardCtrl updateBericht xData.tags: ', berichtModel.xData.tags);
+      //console.log('BerichtCardCtrl updateBericht xData.tags: ', berichtModel.xData.tags);
 
       $scope.details.groep = '';
 
@@ -1276,21 +1276,21 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
       var gelezen = +berichtSupModel.get('gelezen');
       $scope.details.gelezen = gelezen;
-      console.log('updateBerichtUpdate gelezen: ', gelezen);
+      //console.log('updateBerichtUpdate gelezen: ', gelezen);
 
-      console.log('BerichtCardCtrl updateBericht updateReacties Clock');
+      //console.log('BerichtCardCtrl updateBericht updateReacties Clock');
 
       updateReacties(berichtModel);
 
       dataFactoryClock.stopClockBericht();
       $rootScope.$emit('startClockBericht');
       $timeout(function () {
-        console.log('BerichtCardCtrl updateBericht updateReacties start Clock');
+        //console.log('BerichtCardCtrl updateBericht updateReacties start Clock');
 
         dataFactoryClock.startClockBerichtCardFast(function () {
-          console.log('BerichtCardCtrl updateBericht syncDown controleren op gelezen en reacties');
+          //console.log('BerichtCardCtrl updateBericht syncDown controleren op gelezen en reacties');
           $scope.details.gelezen = +berichtSupModel.get('gelezen');
-          console.log('BerichtCardCtrl updateBericht syncDown controleren op gelezen: ', +berichtSupModel.get('gelezen'));
+          //console.log('BerichtCardCtrl updateBericht syncDown controleren op gelezen: ', +berichtSupModel.get('gelezen'));
           updateReacties(berichtModel);
         });
       }, 200);
@@ -1300,7 +1300,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
       if (!tmp.Id) {
 
-        console.warn('BerichtCardCtrl HELP tmp: ', tmp);
+        //console.warn('BerichtCardCtrl HELP tmp: ', tmp);
 
       } else {
 
@@ -1317,14 +1317,14 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         tmp3 = tmp2.replace(/__TYPE__/g, helpType);
         tmp.help = tmp3.replace(/__TYPES__/g, helpTypes);
 
-        console.log('BerichtCardCtrl HELP tmp: ', tmp.modal);
+        //console.log('BerichtCardCtrl HELP tmp: ', tmp.modal);
 
         $scope.cardHelps.push(tmp);
       }
     }
 
     function showHelp() {
-      console.warn('BerichtCardCtrl showHelp');
+      //console.warn('BerichtCardCtrl showHelp');
 
       var item;
       if (mode === 'bericht') {
@@ -1370,7 +1370,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
           kaart,
           label;
 
-        console.error('BerichtCradCtrl profielId, gebruikerId, ceo: ', ceo.profielId, $scope.details.gebruikerId, $scope.ceo.Id);
+        //console.error('BerichtCradCtrl profielId, gebruikerId, ceo: ', ceo.profielId, $scope.details.gebruikerId, $scope.ceo.Id);
 
         if (+ceo.profielId !== 4 && +ceo.profielId !== 5) {
         //if ($scope.details.gebruikerId === $scope.ceo.Id) {
@@ -1670,7 +1670,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         });
         typingHelp(loDash.mapValues(label, 'value'));
 
-        console.error('BerichtCardCtrl kaartItemHelps $scope.cardHelps: ', $scope.cardHelps);
+        //console.error('BerichtCardCtrl kaartItemHelps $scope.cardHelps: ', $scope.cardHelps);
       }
       //endRemoveIf(berichten)
       
@@ -1678,7 +1678,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     function removeBerichtFromStores(berichtId, backend) {
 
-      console.warn('BerichtCardCtrl removeBerichtFromStores berichtId: ', berichtId);
+      //console.warn('BerichtCardCtrl removeBerichtFromStores berichtId: ', berichtId);
 
       var berichtModel = loDash.find(dataFactoryBericht.store, function (berichtModel) {
         return berichtModel.get('Id') === berichtId;
@@ -1708,7 +1708,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
             tagModel: tagModel
           });
         } else {
-          console.error('BerichtCardCtrl removeBerichtFromStores tagModel NOT FOUND');
+          //console.error('BerichtCardCtrl removeBerichtFromStores tagModel NOT FOUND');
         }
       });
 
@@ -1741,7 +1741,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     }
 
     $scope.deleteBericht = function () {
-      console.warn('BerichtCardCtrl deleteBericht');
+      //console.warn('BerichtCardCtrl deleteBericht');
       $ionicPopup.confirm({
         title: 'Verwijder Bericht',
         content:
@@ -1769,7 +1769,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     $scope.closeBerichtCard = function (stay) {
 
-      console.error('BerichtCardCtrl closeBerichtCard isCardClosed: ', isCardClosed);
+      //console.error('BerichtCardCtrl closeBerichtCard isCardClosed: ', isCardClosed);
 
       dataFactoryClock.stopClockBerichtCard();
 
@@ -1777,7 +1777,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         if (stay === undefined) {
           stay = true;
         }
-        console.error('BerichtCardCtrl closePoiCard stay: ', stay);
+        //console.error('BerichtCardCtrl closePoiCard stay: ', stay);
         if (blacklisted) {
           removeBerichtFromStores(berichtId, false);
 
@@ -1795,7 +1795,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
               reactieSupModel.save();
             }
           });
-          console.log('BerichtCardCtrl closeBerichtCard reacties xnew reset in dataFactoryBerichtReactieSup.store');
+          //console.log('BerichtCardCtrl closeBerichtCard reacties xnew reset in dataFactoryBerichtReactieSup.store');
           //
           // Verwijder status nieuw van bericht in model sup.
           //
@@ -1805,19 +1805,19 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
             berichtSupModel.set('berichtId', berichtSupModel.get('berichtId'));
             var gelezen = +berichtSupModel.get('gelezen');
 
-            console.log('BerichtCardCtrl closeBerichtCard $scope.details.gelezen: ', $scope.details.gelezen);
+            //console.log('BerichtCardCtrl closeBerichtCard $scope.details.gelezen: ', $scope.details.gelezen);
 
-            console.log('BerichtCardCtrl closeBerichtCard gelezen berichtSupModel oud: ', gelezen);
+            //console.log('BerichtCardCtrl closeBerichtCard gelezen berichtSupModel oud: ', gelezen);
             var xread = +berichtSupModel.get('xread') + 1;
             berichtSupModel.set('xread', xread);
-            console.log('BerichtCardCtrl closeBerichtCard xread updated in berichtSupModel: ', xread);
+            //console.log('BerichtCardCtrl closeBerichtCard xread updated in berichtSupModel: ', xread);
 
             $scope.details.gelezen = gelezen + xread;
             berichtModel.xData.sup.set('gelezen', $scope.details.gelezen);
-            console.log('BerichtCardCtrl closeBerichtCard gelezen + xread updated as gelezen in berichtSupModel: ', $scope.details.gelezen);
+            //console.log('BerichtCardCtrl closeBerichtCard gelezen + xread updated as gelezen in berichtSupModel: ', $scope.details.gelezen);
 
             berichtSupModel.set('xnew', false);
-            console.log('BerichtCardCtrl closeBerichtCard xnew reset in berichtSupModel');
+            //console.log('BerichtCardCtrl closeBerichtCard xnew reset in berichtSupModel');
             //
             // Verwijder bericht van lijst nieuw in store
             //
@@ -1840,17 +1840,17 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
                   return berichtReactieSup.get('xnew');
                 });
 
-                console.log('BerichtCardCtrl closed nieuwe bericht, berichtReacties: ', berichtNieuw, berichtReactieNieuw);
+                //console.log('BerichtCardCtrl closed nieuwe bericht, berichtReacties: ', berichtNieuw, berichtReactieNieuw);
 
                 if (berichtNieuw.length > 0 || berichtReactieNieuw.length > 0) {
                   dataFactoryNotification.composeTitleBodyNotification(berichtNieuw.length, berichtReactieNieuw.length, 'bericht');
-                  console.log('BerichtCardCtrl notification met berichtNieuw, berichtReactieNieuw: ', berichtNieuw, berichtReactieNieuw);
+                  //console.log('BerichtCardCtrl notification met berichtNieuw, berichtReactieNieuw: ', berichtNieuw, berichtReactieNieuw);
                 }
 
                 $rootScope.$emit('sleepClockBericht');
               },
               function () {
-                console.error('berichtSupModel saved ERROR');
+                //console.error('berichtSupModel saved ERROR');
               }
             );
           }
@@ -1862,12 +1862,12 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         }
         isCardClosed = true;
       } else {
-        console.warn('BerichtCardCtrl closeBerichtCard SKIPPED!!!!!');
+        //console.warn('BerichtCardCtrl closeBerichtCard SKIPPED!!!!!');
       }
     };
 
     $scope.clearSearchLabel = function () {
-      console.warn('BerichtCardCtrl clearearchLabel');
+      //console.warn('BerichtCardCtrl clearearchLabel');
 
       $scope.search.label = '';
     };
@@ -1881,7 +1881,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.closeTags = function () {
-      console.warn('BerichtCracCtrl closeTags');
+      //console.warn('BerichtCracCtrl closeTags');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeModalTags();
       } else {
@@ -1900,12 +1900,12 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       });
 
     $scope.openModalTags = function ($event) {
-      console.warn('openModalTags: ');
+      //console.warn('openModalTags: ');
       $scope.modalTags.show($event);
     };
 
     $scope.closeModalTags = function () {
-      console.warn('closeModalTags: ');
+      //console.warn('closeModalTags: ');
       $scope.modalTags.hide();
     };
 
@@ -1939,7 +1939,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     $scope.$on('$destroy', function () {
       $scope.modalBericht.remove();
-      console.log('BerichtCardCtrl ModalBericht is removed!');
+      //console.log('BerichtCardCtrl ModalBericht is removed!');
     });
     //
     // Popover Tag
@@ -1990,11 +1990,11 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
 
     $scope.$on('$destroy', function () {
       $scope.modalBericht.remove();
-      console.log('BerichtCardCtrl ModalBericht is removed!');
+      //console.log('BerichtCardCtrl ModalBericht is removed!');
     });
 
     $scope.closeGroepen = function ($event) {
-      console.log('BerichtCardCtrl closeGroepen');
+      //console.log('BerichtCardCtrl closeGroepen');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeGroepenModal();
       } else {
@@ -2003,7 +2003,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.openGroepen = function ($event) {
-      console.log('BerichtCardCtrl openGroepen $event: ', $event);
+      //console.log('BerichtCardCtrl openGroepen $event: ', $event);
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openGroepenModal();
       } else {
@@ -2024,17 +2024,17 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     );
 
     $scope.openGroepenModal = function () {
-      console.log('BerichtCardCtrl openGroepenModal');
+      //console.log('BerichtCardCtrl openGroepenModal');
       $scope.groepenModal.show();
     };
 
     $scope.closeGroepenModal = function () {
-      console.log('BerichtCardCtrl closeGroepenModal');
+      //console.log('BerichtCardCtrl closeGroepenModal');
       $scope.groepenModal.hide();
     };
     $scope.$on('$destroy', function () {
       $scope.groepenModal.remove();
-      console.log('BerichtCardCtrl groepenModal is removed!');
+      //console.log('BerichtCardCtrl groepenModal is removed!');
     });
     //
     // GroepenPopover
@@ -2048,12 +2048,12 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       });
 
     $scope.openGroepenPopover = function ($event) {
-      console.log('BerichtCardCtrl openGroepenPopover');
+      //console.log('BerichtCardCtrl openGroepenPopover');
       $scope.groepenPopover.show($event);
     };
 
     $scope.closeGroepenPopover = function () {
-      console.log('BerichtCardCtrl closeGroepenPopover');
+      //console.log('BerichtCardCtrl closeGroepenPopover');
       $scope.groepenPopover.hide();
     };
 
@@ -2062,7 +2062,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     });
 
     $scope.closeGroepDeelnemers = function () {
-      console.log('BerichtCardCtrl closeGroepen');
+      //console.log('BerichtCardCtrl closeGroepen');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeGroepDeelnemersModal();
       } else {
@@ -2071,7 +2071,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.openGroepDeelnemers = function ($event) {
-      console.log('BerichtCardCtrl openGroepen $event: ', $event);
+      //console.log('BerichtCardCtrl openGroepen $event: ', $event);
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openGroepDeelnemersModal();
       } else {
@@ -2092,17 +2092,17 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     );
 
     $scope.openGroepDeelnemersModal = function () {
-      console.log('BerichtCardCtrl openGroepDeelnemersModal');
+      //console.log('BerichtCardCtrl openGroepDeelnemersModal');
       $scope.groepDeelnemersModal.show();
     };
 
     $scope.closeGroepDeelnemersModal = function () {
-      console.log('BerichtCardCtrl closeGroepDeelnemersModal');
+      //console.log('BerichtCardCtrl closeGroepDeelnemersModal');
       $scope.groepDeelnemersModal.hide();
     };
     $scope.$on('$destroy', function () {
       $scope.groepDeelnemersModal.remove();
-      console.log('BerichtCardCtrl groepDeelnemersModal is removed!');
+      //console.log('BerichtCardCtrl groepDeelnemersModal is removed!');
     });
     //
     // GroepDeelnemersPopover
@@ -2116,12 +2116,12 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       });
 
     $scope.openGroepDeelnemersPopover = function ($event) {
-      console.log('BerichtCardCtrl openGroepDeelnemersPopover');
+      //console.log('BerichtCardCtrl openGroepDeelnemersPopover');
       $scope.groepDeelnemersPopover.show($event);
     };
 
     $scope.closeGroepDeelnemersPopover = function () {
-      console.log('BerichtCardCtrl closeGroepDeelnemersPopover');
+      //console.log('BerichtCardCtrl closeGroepDeelnemersPopover');
       $scope.groepDeelnemersPopover.hide();
     };
 
@@ -2132,7 +2132,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     // Popover helpPopoverCard
     //
     $scope.openHelp = function ($event) {
-      console.log('BerichtCardCtrl openHelp');
+      //console.log('BerichtCardCtrl openHelp');
       showHelp();
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.openHelpModal();
@@ -2142,7 +2142,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.closeHelp = function ($event) {
-      console.log('BerichtCardCtrl openHelp');
+      //console.log('BerichtCardCtrl openHelp');
       if (window.matchMedia('only screen and (max-width : 599px)').matches) {
         $scope.closeHelpModal();
       } else {
@@ -2158,11 +2158,11 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         $scope.helpPopover = helpPopover;
       });
     $scope.openHelpPopover = function ($event) {
-      console.log('BerichtCardCtrl openHelpPopover');
+      //console.log('BerichtCardCtrl openHelpPopover');
       $scope.helpPopover.show($event);
     };
     $scope.closeHelpPopover = function () {
-      console.log('BerichtCardCtrl openHelpPopover');
+      //console.log('BerichtCardCtrl openHelpPopover');
       $scope.helpPopover.hide();
     };
     $scope.$on('$destroy', function () {
@@ -2178,11 +2178,11 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       }
     );
     $scope.openHelpModal = function () {
-      console.log('BerichtCardCtrl closeHelpModal');
+      //console.log('BerichtCardCtrl closeHelpModal');
       $scope.helpModal.show();
     };
     $scope.closeHelpModalCard = function () {
-      console.log('BerichtCardCtrl closeHelpModal');
+      //console.log('BerichtCardCtrl closeHelpModal');
       $scope.helpModal.hide();
     };
     $scope.$on('$destroy', function () {
@@ -2223,7 +2223,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       });
     
       $scope.openGlobalHelpPopover = function ($event) {
-      console.warn('KaartCtrl openGlobaleHelpPopover');
+      //console.warn('KaartCtrl openGlobaleHelpPopover');
       $scope.globalHelpPopover.show($event);
     };
     
@@ -2281,7 +2281,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
     };
 
     $scope.setReactieNavTitle = function (title) {
-      console.log('BerichtCardCtrl setReactieNavTitle: ' + title);
+      //console.log('BerichtCardCtrl setReactieNavTitle: ' + title);
       $ionicNavBarDelegate.title(title);
     };
 
@@ -2289,13 +2289,13 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
       dataFactoryBerichtSup.store = loDash.uniqBy(dataFactoryBerichtSup.store, function (berichtSup) {
         return berichtSup.get('berichtId');
       });
-      console.warn('BerichtCardCtrl init BerichtStore: ', dataFactoryBericht.store);
-      console.warn('BerichtCardCtrl init BerichtSupStore: ', dataFactoryBerichtSup.store);
+      //console.warn('BerichtCardCtrl init BerichtStore: ', dataFactoryBericht.store);
+      //console.warn('BerichtCardCtrl init BerichtSupStore: ', dataFactoryBerichtSup.store);
       berichtModel = loDash.find(dataFactoryBericht.store, function (berichtModel) {
         return berichtModel.get('Id') === berichtId;
       });
 
-      console.warn('BerichtCardCtrl init berichtModel: ', berichtModel, berichtModel.get('naam'));
+      //console.warn('BerichtCardCtrl init berichtModel: ', berichtModel, berichtModel.get('naam'));
 
       if (berichtModel) {
         berichtSupModel = loDash.find(dataFactoryBerichtSup.store, function (berichtSupModel) {
@@ -2310,7 +2310,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
           berichtSupModel.set('star', false);
           //berichtSupModel.set('berichtId', berichtId);
           berichtSupModel.set('gebruikerId', dataFactoryCeo.currentModel.get('Id'));
-          console.error('BerichtCardCtrl init berichtSupModel: ', berichtSupModel.get('berichtId'));
+          //console.error('BerichtCardCtrl init berichtSupModel: ', berichtSupModel.get('berichtId'));
           berichtSupModel.save().then(function () {
             berichtModel.xData.sup = berichtSupModel;
             var xnew = berichtModel.xData.sup.get('xnew');
@@ -2323,15 +2323,15 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
                 dataFactoryBericht.nieuw.push(berichtModel, berichtModel.get('naam'));
               }
             }
-            console.log('BerichtCardCtrl init met nieuw supModel');
+            //console.log('BerichtCardCtrl init met nieuw supModel');
           });
         } else {
-          console.log('BerichtCardCtrl init bestaand supModel: ', berichtSupModel);
+          //console.log('BerichtCardCtrl init bestaand supModel: ', berichtSupModel);
 
           initxData(berichtModel);
 
           berichtModel.xData.sup = berichtSupModel;
-          console.log('berichtModel.xData.sup: ', berichtModel.xData.sup);
+          //console.log('berichtModel.xData.sup: ', berichtModel.xData.sup);
 
           var xnew = berichtModel.xData.sup.get('xnew');
 
@@ -2346,7 +2346,7 @@ trinl.controller('BerichtCardCtrl', ['loDash', '$timeout', '$rootScope', '$q', '
         }
         updateBericht(berichtModel, berichtModel.get('naam'));
       } else {
-        console.warn('BerichtCardCtrl findRecord ERROR Id: ', berichtId);
+        //console.warn('BerichtCardCtrl findRecord ERROR Id: ', berichtId);
 
         $ionicPopup.confirm({
           title: 'Bericht',
