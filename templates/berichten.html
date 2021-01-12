@@ -1,0 +1,135 @@
+<ion-view title="Berichten selectie">
+  <ion-nav-buttons side="secondary">
+    <button ng-click="nieuwBericht()" class="button button-icon icon ion-compose">&nbsp;&nbsp;Maak bericht</button>
+  </ion-nav-buttons>
+  <div class="bar bar-subheader">
+    <h2 ng-bind-html="subHeader" class="trinl-blauw trinl-subHeader trinl-title-left"></h2>
+  </div>
+  <ion-content close-option class="has-header has-subheader" delegate-handle="berichtList">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="Laat los om bij te werken..." refreshing-text="Bijwerken!"
+      refreshing-icon="ion-loading-c">
+    </ion-refresher>
+    <ion-list>
+      <ion-item item-body
+        ng-repeat="bericht in ( $parent.filteredBerichten = ( data.berichten | orderBy:predicate:reverse | regexStore: 'naam': searchBericht.naam)) | limitTo:showLimit:currentPage*showLimit track by bericht.Id.value">
+        <div ng-click="clickedBericht(bericht)" class="row" ng-if="bericht.profiel.value != 'anoniem'">
+          <div ng-click="clickedAvatar(bericht.gebruikerId.value)" class="col trinl-avatar">
+            <i ng-if="bericht.avatarInverse.value == '0' && bericht.avatarLetter.value == ''"
+              class="avatar avatar-color-{{bericht.avatarColor.value}}">?</i>
+            <i ng-if="bericht.avatarInverse.value == '1' && bericht.avatarLetter.value == ''"
+              class="avatar avatar-inverse avatar-color-{{bericht.avatarColor.value}}">?</i>
+            <i ng-if="bericht.avatarInverse.value == '0' && bericht.avatarLetter.value != ''"
+              class="avatar avatar-color-{{bericht.avatarColor.value}} avatar-letter-{{bericht.avatarLetter.value}}"></i>
+            <i ng-if="bericht.avatarInverse.value == '1' && bericht.avatarLetter.value != ''"
+              class="avatar avatar-inverse avatar-color-{{bericht.avatarColor.value}} avatar-letter-{{bericht.avatarLetter.value}}"></i>
+          </div>
+          <div ng-click="clickedBericht(bericht)" class="col trinl-gebruiker-datum-socio-container">
+            <div class="row trinl-gebruiker trinl-blauw">{{bericht.gebruikerNaam.value}}</div>
+            <div class="row trinl-datums-container">
+              <div class="trinl-datum"><span class="trinl-blauw">{{bericht.createdOn.value}}</span></div>
+              <div class="trinl-datum-ago"><span class="trinl-blauw" datum am-time-ago="bericht.createdOn.value"></span>
+              </div>
+            </div>
+            <div class="row trinl-socio-container">
+              <!--
+              <div class="trinl-socio-icon"
+                ng-if="(bericht.profiel.value === 'team' || bericht.profiel.value === 'developer') && bericht.xprive.value && bericht.gebruikerId.value === Id">
+                <i class="icon socio-red ion-locked"></i>
+              </div>
+              <div class="trinl-socio-icon"
+                ng-if="(bericht.profiel.value === 'team' || bericht.profiel.value === 'developer') && !bericht.xprive.value && bericht.gebruikerId.value === Id">
+                <i class="icon socio-green ion-unlocked"></i>
+              </div>
+              -->
+              <div ng-if="details.gelezen !== 0" class="trinl-socio-icons-aantal">
+                <div class="trinl-socio-icontext">&nbsp;{{bericht.xData.sup.gelezen.value}}</div>
+                <i class="icon socio-black ion-eye"></i>
+              </div>
+              <div ng-if="bericht.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon"
+                ng-if="(bericht.profiel.value === 'team' || bericht.profiel.value === 'developer') && bericht.xData.sup.xnew.value">
+                <i class="icon socio-red ion-ios-bell"></i>
+              </div>
+              <div ng-if="bericht.xData.sup.star.value && !bericht.xData.sup.xnew.value" class="trinl-socio-spacer-small">
+              </div>
+              <div class="trinl-socio-icon" ng-if="bericht.xData.sup.star.value">
+                <i class="icon socio-orange ion-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div ng-click="clickedBericht(bericht)" class="row trinl-header-container" ng-if="bericht.profiel.value == 'anoniem'">
+          <div ng-click="clickedAvatar(bericht.gebruikerId.value)" class="col trinl-avatar-anoniem">
+            <img class="trinl-avatar-anoniem-img" ng-src="images/small_non_existing_id.png">
+          </div>
+          <div ng-click="clickedBericht(bericht)" class="col trinl-gebruiker-datum-socio-container">
+            <div class="row trinl-gebruiker trinl-blauw">anoniem</div>
+            <div class="row trinl-datums-container">
+              <div class="trinl-datum"><span class="trinl-blauw">{{bericht.createdOn.value}}</span></div>
+              <div class="trinl-datum-ago"><span class="trinl-blauw" datum am-time-ago="bericht.createdOn.value"></span>
+              </div>
+            </div>
+            <div class="row trinl-socio-container">
+              <!--
+              <div class="trinl-socio-icon"
+                ng-if="(bericht.profiel.value === 'team' || bericht.profiel.value === 'developer') && bericht.xprive.value && bericht.gebruikerId.value === Id">
+                <i class="icon socio-red ion-locked"></i>
+              </div>
+              <div class="trinl-socio-icon"
+                ng-if="(bericht.profiel.value === 'team' || bericht.profiel.value === 'developer') && !bericht.xprive.value && bericht.gebruikerId.value === Id">
+                <i class="icon socio-green ion-unlocked"></i>
+              </div>
+              -->
+              <div ng-if="details.gelezen !== 0" class="trinl-socio-icons-aantal">
+                <div class="trinl-socio-icontext">&nbsp;{{bericht.xData.sup.gelezen.value}}</div>
+                <i class="icon socio-black ion-eye"></i>
+              </div>
+              <div ng-if="bericht.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon"
+                ng-if="(bericht.profiel.value === 'team' || bericht.profiel.value === 'developer') && bericht.xData.sup.xnew.value">
+                <i class="icon socio-red ion-ios-bell"></i>
+              </div>
+              <div ng-if="bericht.xData.sup.star.value && !bericht.xData.sup.xnew.value" class="trinl-socio-spacer-small">
+              </div>
+              <div class="trinl-socio-icon" ng-if="bericht.xData.sup.star.value">
+                <i class="icon socio-orange ion-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-click="clickedBericht(bericht)" class="spacer"></div>
+        <div ng-click="clickedBericht(bericht)" ng-if="bericht.xData.groep != ''" class="trinl-listgroeptext">
+          {{bericht.xData.groep}} </div>
+        <div ng-click="clickedBericht(bericht)" class="trinl-listnaam">{{bericht.naam.value}}</div>
+        <div ng-click="clickedBericht(bericht)" class="spacer"></div>
+        <div ng-click="clickedBericht(bericht)" class="trinl-tags-list">
+          <div class="trinl-tag" ng-repeat="berichtTag in bericht.xData.tags track by $index">
+            <div ng-if="berichtTag.get('gebruikerId') === ceo.Id">
+              <div class="trinl-tags">
+                <div class="trinl-tag-icon-left"><i class="ion-pricetag"></i></div>
+                <div ng-if="berichtTag.xData.get('Id').length <= 3 && berichtTag.xData.get('gebruikerId') === ''"
+                  class="trinl-tag-tekst trinl-blauw">{{berichtTag.xData.get('tag')}}</div>
+                <div ng-if="berichtTag.xData.get('Id').length <= 3 && berichtTag.xData.get('gebruikerId') != ''"
+                  class="trinl-tag-tekst trinl-rood">{{berichtTag.xData.get('tag')}}</div>
+                <div ng-if="berichtTag.xData.get('Id').length >= 3" class="trinl-tag-tekst">{{berichtTag.xData.get('tag')}}
+                </div>
+              </div>
+            </div>
+            <div ng-if="berichtTag.get('gebruikerId') !== ceo.Id">
+              <div class="trinl-tags-disabled">
+                <div class="trinl-tag-icon-left"><i class="ion-pricetag"></i></div>
+                <div ng-if="berichtTag.xData.get('Id').length <= 3 && berichtTag.xData.get('gebruikerId') === ''"
+                  class="trinl-tag-tekst trinl-blauw">{{berichtTag.xData.get('tag')}}</div>
+                <div ng-if="berichtTag.xData.get('Id').length <= 3 && berichtTag.xData.get('gebruikerId') != ''"
+                  class="trinl-tag-tekst trinl-rood">{{berichtTag.xData.get('tag')}}</div>
+                <div ng-if="berichtTag.xData.get('Id').length >= 3" class="trinl-tag-tekst">{{berichtTag.xData.get('tag')}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  </ion-nav-view>

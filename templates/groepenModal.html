@@ -1,0 +1,25 @@
+<div class="modal helpmodal" style="height:50%; width: 100%; max-width: 700px;">
+  <ion-header-bar class="bar-balanced">
+    <div class="buttons">
+      <button ng-click="closeGroepen()" class="button button-icon icon ion-ios-arrow-back"></button>
+    </div>
+    <h1 class="title">Selecteer een groep</h1>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item style="white-space: wrap; padding-top: -20px; padding-bottom: -10px;" class="item-button-right"
+        ng-repeat="groep in groepen | orderBy:'groep.groep'" ng-click="selectGroep(groep)">
+        <p>{{groep.groep}}</p>
+        <button ng-if="groep.groep !== 'Iedereen'" ng-click="openDeelnemers(groep.groep, $event); $event.stopPropagation();"
+          class="button button-icon">
+          <i class="button-icon iconinlistitem icon ion-android-people"></i>
+        </button>
+        <button ng-if="groep.groep === 'Iedereen'" class="button button-icon">
+          <i class="button-icon iconinlistitem icon ion-android-people"></i>
+          <i class="button-icon iconinlistitem icon ion-android-people"></i>
+          <i class="button-icon iconinlistitem icon ion-android-people"></i>
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</div>

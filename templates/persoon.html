@@ -1,0 +1,71 @@
+<ion-view title="Profiel">
+
+    <ion-nav-buttons side="secondary">
+        <button ng-click="savePersoon(persoon)" class="button button-icon icon ion-compose">&nbsp;&nbsp;Bijwerken</button>
+    </ion-nav-buttons>
+
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+
+    <ion-content close-option class="has-header">
+
+	<div class="list">
+	  <div class="item item-divider">
+	    Naam
+	  </div>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.voorLetters" placeholder="Voorletters">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.voorNaam" placeholder="Voornaam">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.tussenVoegsel1" placeholder="Tussenvoegsel">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.achterNaam" placeholder="Achternaam">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.tussenVoegsel2" placeholder="Tussenvoegsel">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.meisjesNaam" placeholder="Meisjesnaam">
+	  </label>
+<!--
+	  <div class="item item-divider">
+	    Adres
+	  </div>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.straatNaam" placeholder="Straatnaam">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.huisNummer" placeholder="Huisnummer">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.postCode" placeholder="Postcode">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.woonPlaats" placeholder="Woonplaats">
+	  </label>
+	  <div class="item item-divider">
+	    Contact
+	  </div>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.telefoonNummer" placeholder="Telefoon">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.mobiel" placeholder="Mobiel">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.email1" placeholder="E-mail 1">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.email2" placeholder="E-mail 2">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="persoon.email3" placeholder="E-mail 3">
+	  </label>
+-->
+	</div>
+
+</ion-content>

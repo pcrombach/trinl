@@ -1,0 +1,127 @@
+<body ng-controller="AppSideMenuCtrl">
+  <ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content can-swipe-back="false" drag-content="false">
+      <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+          <button ng-click="openKaart()" class="button button-icon button-clear ion-navicon"></button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left">
+      <ion-header-bar class="bar-balanced">
+        <h1 class="title">Hoofdmenu</h1>
+        <button class="button button-icon icon ion-help" ng-click="openHelpHoofdMenu($event)"></button>
+      </ion-header-bar>
+      <ion-content overflow-scroll="false">
+        <ion-list>
+          <ion-item class="item item-divider">Mijn profiel</ion-item>
+          <ion-item class="item" nav-clear menu-close href="#/app/persoon">
+            <div style="padding-top: 10px; padding-right:0; padding-left:0;" class="row">
+              <div ng-if="profiel != 'anoniem' && !ceo.uitgelogd">
+                <div ng-click="clickedAvatar(gebruikerId)" class="trinl-avatar-sideMenu">
+                  <i ng-if="avatarInverse == '0' && avatarLetter == ''"
+                    class="avatar avatar-color-{{ avatarColor }}">?</i>
+                  <i ng-if="avatarInverse == '1' && avatarLetter == ''"
+                    class="avatar avatar-inverse avatar-color-{{ avatarColor }}">?</i>
+                  <i ng-if="avatarInverse == '0' && avatarLetter != ''" class="avatar avatar-color-{{
+                      avatarColor
+                    }} avatar-letter-{{ avatarLetter }}"></i>
+                  <i ng-if="avatarInverse == '1' && avatarLetter != ''" class="avatar avatar-inverse avatar-color-{{
+                      avatarColor
+                    }} avatar-letter-{{ avatarLetter }}"></i>
+                </div>
+                <div class="trinl-sidemenu-profiel trinl-geel"> {{ profiel }} </div>
+              </div>
+              <div ng-if="profiel == 'anoniem' || ceo.uitgelogd">
+                <div style="height:50px; width:52px;" class="row">
+                  <div class="col item-avatar">
+                    <img ng-src="images/small_non_existing_id.png" />
+                  </div>
+                </div>
+                <div ng-if="ceo.uitgelogd" class="trinl-sidemenu-profiel trinl-geel"> anoniem </div>
+                <div ng-if="!ceo.uitgelogd" class="trinl-sidemenu-profiel trinl-geel"> {{ profiel }} </div>
+              </div>
+              <div ng-if="!ceo.uitgelogd" class="row" ng-click="clickedItem(bericht)">
+                <div class="col trinl-sidemenu-gebruiker-container">
+                  <div class="row trinl-sidemenu-gebruiker trinl-blauw">{{gebruikerNaam}}</div>
+                </div>
+              </div>
+            </div>
+          </ion-item>
+          <ion-item class="item item-divider">Navigeer</ion-item>
+          <ion-item ng-click="openKaart2()" class="item item-icon-left" nav-clear menu-close href="#/app/kaart">
+            <i class="icon ion-home"></i> Home (Kaart)
+          </ion-item>
+          <ion-item class="item item-divider">TRINL-team</ion-item>
+          <ion-item class="item item-icon-left" nav-clear menu-close ng-click="analytics('berichten')"
+            href="#/berichten/berichten"><i class="icon ion-email"></i> Berichten </ion-item>
+          <ion-item class="item item-divider">Persoonlijke gegevens</ion-item>
+          <!--
+          <ion-item class="item item-icon-left" nav-clear menu-close ng-click="analytics('locaties')"
+            href="#/pois/pois">
+            <i class="icon ion-location"></i> Locaties </ion-item>
+          -->
+          <ion-item class="item item-icon-left" nav-clear menu-close href="#/pois/pois">
+            <i class="icon ion-location"></i> Locaties
+          </ion-item>
+          <ion-item ng-if="(ceo.profielId == '5') && !ceo.uitgelogd" class="item item-icon-left"
+            nav-clear menu-close ng-click="ingelogd('fotos.fotos')">
+            <i class="icon ion-camera"></i> Foto's
+          </ion-item>
+          <ion-item ng-if="(ceo.profielId == '4' || ceo.profielId == '5') && !ceo.uitgelogd" class="item item-icon-left"
+            nav-clear menu-close ng-click="ingelogd('tracks.tracks')">
+            <i class="icon ion-map"></i> Sporen
+          </ion-item>
+          <div class="item item-divider">TRINL {{ appVersion }}</div>
+          <ion-item class="item item-icon-left" nav-clear menu-close ng-click="cancelStayTimer('over')"
+            href="#/app/over">
+            <i class="icon ion-speakerphone"></i> Over TRINL
+          </ion-item>
+          <ion-item class="item item-icon-left" nav-clear menu-close ng-click="cancelStayTimer('privacy')"
+            href="#/app/privacy">
+            <i class="icon ion-eye-disabled"></i> Privacyverklaring
+          </ion-item>
+          <ion-item class="item item-icon-left" nav-clear menu-close ng-click="cancelStayTimer('disclaimer')"
+            href="#/app/disclaimer">
+            <i class="icon ion-information"></i> Disclaimer
+          </ion-item>
+          <!--
+          <ion-item class="item item-icon-left" nav-clear menu-close ng-click="cancelStayTimer('help')"
+            href="#/handleiding/handleiding_ss">
+            <i class="icon ion-help"></i> Help </ion-item>
+            -->
+          <div class="item item-divider">Diversen</div>
+          <!--
+          <ion-item  ng-if="ceo.profielId !== '1' && ismobile && !ceo.uitgelogd"  class="item item-icon-left" nav-clear menu-close ng-click="maakFoto()">
+            <i class="icon ion-camera"></i>
+            Maak foto
+          </ion-item>
+          -->
+          <ion-item class="item item-icon-left" nav-clear menu-close ng-click="analytics('instellingen')"
+            href="#/app/instellingen">
+            <i class="icon ion-gear-a"></i> Instellingen
+          </ion-item>
+          <ion-item ng-if="isMobile && !running" class="item item-icon-left" nav-clear menu-close href="#/app/dash">
+            <!-- <ion-item class="item item-icon-left" nav-clear menu-close href="#/app/dash"> -->
+            <i class="icon ion-wand"></i> TRINL update
+          </ion-item>
+          <ion-item class="item item-icon-left" nav-clear menu-close ng-click="registreren('registreren')">
+            <i class="icon ion-email"></i> Registreren
+          </ion-item>
+          <ion-item ng-if="ceo.profielId != '1' && !ceo.uitgelogd" class="item item-icon-left" nav-clear menu-close
+            ng-click="uitloggen()">
+            <i class="icon ion-log-out"></i> Uitloggen
+          </ion-item>
+          <ion-item ng-if="ceo.uitgelogd || ceo.profielId == '1'" class="item item-icon-left" nav-clear menu-close
+            ng-click="inloggen()">
+            <i class="icon ion-log-in"></i> Inloggen
+          </ion-item>
+          <ion-item class="item item-icon-left" nav-clear menu-close ng-click="nieuwWachtwoord()">
+            <i class="icon ion-help"></i> Wachtwoord vergeten
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu>
+  </ion-side-menus>
+</body>

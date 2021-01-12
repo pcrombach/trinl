@@ -1,0 +1,20 @@
+<ion-popover-view style="height:420px; width: 300px;">
+    <ion-header-bar class="bar-balanced">
+        <h1 class="title">Selecteer label popoverTags</h1>
+        <button ng-if="data.filteredTags.length === 0" ng-click="closeTagsModal(search.label)" class="button button-icon icon ion-plus"></button>
+    </ion-header-bar>
+
+    <ion-content>
+        <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" class="detectFocus" placeholder="Zoek label" ng-model="search.label">
+            </label>
+            <button ng-click="clearSearchLabel()" class="button-clear button-medium ion-close-circled">
+            </button>
+        </div>
+        <ion-item ng-click="selectLabelClick(tag)" ng-repeat="tag in ( data.filteredTags = ( data.tags | orderBy: 'tag.value' | filter: {tag: {value: search.label}}))">
+            {{tag.get('tag')}}
+        </ion-item>
+    </ion-content>
+</ion-popover-view>

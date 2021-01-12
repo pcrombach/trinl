@@ -1,0 +1,96 @@
+<div class="modal modalKaartOptions">
+
+	<ion-header-bar class="bar-balanced">
+        <div class="buttons">
+            <button ng-click="closeModalKaartOpties()" class="button button-icon icon ion-ios-arrow-back"></button>
+        </div>
+		<h1 class="title">Kaart Opties</h1>
+        <div class="buttons">
+            <button class="button button-icon icon ion-help" ng-click="openKaartMenuHelpCard($event)"></button>
+        </div>
+	</ion-header-bar>
+	<ion-content>
+        <ion-list>
+            <div class="item myitem-divider">
+                Kaarten
+            </div>
+
+            <div class="item myitem-subdivider">
+                Limburg heden
+            </div>
+            <ion-item class="item-button-right" ng-repeat="kaart in configKaartHedenItems | orderBy:'index'" ng-click="changeKaart(kaart)">
+                <i ng-show="currentHedenKaartIndex == kaart.index" class="button-icon icon my-icon ion-checkmark"></i>
+                {{kaart.naam}}
+                <button ng-click="openLegenda($index, $event); $event.stopPropagation();" class="button button-icon">
+                    <i class="button-icon iconinlistitem icon ion-ios-information-outline"></i>
+                </button>
+            </ion-item>
+
+            <div class="item myitem-subdivider">
+                Limburg verleden
+            </div>
+
+            <ion-item class="item-button-right" ng-repeat="kaart in configKaartVerledenItems" ng-click="changeKaart(kaart)">
+                <i ng-show="currentNietHedenKaartIndex == kaart.index" class="button-icon icon my-icon ion-checkmark"></i>
+                {{kaart.naam}}
+                <button ng-click="openLegenda(kaart.index, $event); $event.stopPropagation();" class="button button-icon">
+                    <i class="button-icon iconinlistitem icon ion-ios-information-outline"></i>
+                </button>
+            </ion-item>
+
+            <div class="item myitem-subdivider">
+                Thema Kaarten
+            </div>
+
+            <ion-item ng-if="configKaartThemaItems.length !== 0" class="item-button-right" ng-repeat="kaart in configKaartThemaItems" ng-click="changeKaart(kaart)">
+                <i ng-show="currentNietHedenKaartIndex == kaart.index" class="button-icon icon my-icon ion-checkmark"></i>
+                {{kaart.naam}}
+                <button ng-click="openLegenda(kaart.index, $event); $event.stopPropagation();" class="button button-icon">
+                    <i class="button-icon iconinlistitem icon ion-ios-information-outline"></i>
+                </button>
+            </ion-item>
+
+            <div class="item myitem-subdivider">
+                Diversen
+            </div>
+
+            <div class="range">
+                <input type="range" name="opacity" min="0" max="100" value="{{opacity.value}}" ng-model="opacity.value">
+                <i class="icon ion-ios-sunny-outline"></i>
+                <div style="width:38px">{{oLevel}}%</div>
+            </div>
+
+            <ion-item ng-if="allowPreCache" item-type="item-icon-left" nav-clear ng-click="openPreCache($event)">
+                <i class="icon my-precache-icon24 ion-icon ion-refresh"></i>
+                Vooraf kaarten laden
+            </ion-item>
+
+            <div class="item-button-right item myitem-divider">
+                Lagen
+            </div>
+
+            <ion-item ng-if="configOverlays.length !== 0" class="mylistitemlaag item-button-right" ng-repeat="overlay in configOverlays | orderBy:'index'" ng-click="overlayChange(overlay)">
+                <i ng-if="overlay.checked" class="trinl-checkmark trinl-checkmark-laag icon ion-ios-checkmark"></i>
+                <i ng-if="!overlay.checked" class="trinl-circle trinl-checkmark-laag icon ion-ios-circle-outline"></i>
+                <span trinl-tekst-laag>{{overlay.menuNaam}}</span>
+                <button ng-click="openLegendaOverlay(overlay.index, $event); $event.stopPropagation();" class="button button-icon">
+                    <i class="trinl-info-laag button-icon iconinlistitem icon ion-ios-information-outline"></i>
+                </button>
+            </ion-item>
+
+            <div ng-if="configMijnOverlays.length !== 0" class="item-button-right item myitem-divider">
+                Thema Lagen
+            </div>
+
+            <ion-item ng-if="configMijnOverlays.length !== 0" class="mylistitemlaag item-button-right" ng-repeat="overlay in configOverlays | orderBy:'index'" ng-click="mijnOverlayChange(overlay)">
+                <i ng-if="overlay.checked" class="trinl-checkmark trinl-checkmark-laag icon ion-ios-checkmark"></i>
+                <i ng-if="!overlay.checked" class="trinl-circle trinl-checkmark-laag icon ion-ios-circle-outline"></i>
+                <span trinl-tekst-laag>{{overlay.menuNaam}}</span>
+                <button ng-click="openLegendaOverlay(overlay.index, $event); $event.stopPropagation();" class="button button-icon">
+                    <i class="trinl-info-laag button-icon iconinlistitem icon ion-ios-information-outline"></i>
+                </button>
+            </ion-item>
+
+        </ion-list>
+	</ion-content>
+</div>

@@ -1,0 +1,80 @@
+<ion-view title="Instellingen Camera">
+
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+
+    <ion-content scroll="true" class="has-header">
+
+		<ion-list>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+					Bestemming
+				</div>
+				<select>
+					<option>Data</option>
+					<option selected>Bestand</option>
+					<option>Native</option>
+				</select>
+			</label>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+					Encoding type
+				</div>
+				<select>
+					<option>JPG</option>
+					<option selected>PNG</option>
+				</select>
+			</label>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+					Media type
+				</div>
+				<select>
+					<option selected>Foto</option>
+					<option>Video</option>
+					<option>Beide</option>
+				</select>
+			</label>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+					Bron
+				</div>
+				<select>
+					<option selected>Camera</option>
+					<option>Foto bibliotheek</option>
+					<option>Camera roll</option>
+				</select>
+			</label>
+
+
+
+
+			<ion-toggle ng-model="orientatieroosDefault.checked" ng-change="orientatieroosDefaultChange()">Orientatieroos bij opstarten</ion-toggle>
+
+			<ion-toggle ng-model="provinciegrensDefault.checked" ng-change="provinciegrensDefaultChange()">Provinciegrens bij opstarten</ion-toggle>
+
+			<ion-toggle ng-model="notifyVibrate.checked" ng-change="notifyVibrateChange()">Notificatie trillen</ion-toggle>
+			<ion-toggle ng-model="notifySound.checked" ng-change="notifySoundChange()">Notificatie geluid</ion-toggle>
+            <div class="item range">
+            	&nbsp;Volume geluid&nbsp;&nbsp;
+                <i class="icon ion-volume-low"></i>
+                <input type="range" name="notifyVolume" min="0" max="100" value="{{notifyVolume.value}}" ng-model="notifyVolume.value">
+                <i class="icon ion-volume-high"></i>
+                <div style="width:48px">&nbsp;{{notifyVolumeLevel}}&nbsp;%</div>
+            </div>
+			<div class="item item-divider">
+				<div>GPS</div>
+			</div>
+			<ion-toggle ng-model="gpsDefault.checked" ng-change="gpsDefaultChange()">GPS volgen bij opstarten</ion-toggle>
+			<ion-toggle ng-model="gpsVolgen.checked" ng-change="gpsVolgenChange()">Kaart volgt GPS</ion-toggle>
+			<div class="item item-divider">
+				<div>TRINL update</div>
+			</div>
+			<ion-toggle ng-model="xupdate.checked" ng-change="updateChange()">Automatisch</ion-toggle>
+		</ion-list>
+	</ion-content>
+</vion-view>

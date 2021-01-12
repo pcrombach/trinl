@@ -1,0 +1,32 @@
+<ion-view title="Test">
+
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+
+    <ion-content>
+    	<ion-list>
+			<ion-item class="item item-divider">
+				Toelichting
+			</ion-item>
+
+			<ion-item class="item item-body">
+				<p>Controleer regelmatig of er een nieuwe update is. Nieuwe updates bevatten oplossingen voor bekende problemen of performanceverbeteringen.</p>
+				<p>Je gegevens staan altijd veilig opgeborgen in de cloud. Door een update gaan geen gegevens verloren.</p>
+				<p></p>
+				<p>Nadat de nieuwe update is geinstalleerd wordt TRINL opnieuw gestart.</p>
+<!--					<span class="trinl-rood">Je maakt momenteel gebruik van het {{channel}}-kanaal.</span> -->
+			</ion-item>
+
+			<ion-item class="item item-divider">
+				Update Historie
+			</ion-item>
+
+            <div class="item item-body item-borderless trinl-no-padding-top" ng-repeat="historie in histories  | orderBy: 'historie.version.value':true track by historie.Id.value"> 
+	            <div class="row">
+					<div style="padding-top: 0; min-width: 80px; max-width: 80px;"><p>{{historie.version.value}}</p></div><div><p>{{historie.tekst.value}}</p></div>
+				</div>
+			</div>
+	    </ion-list>
+    </ion-content>
+
+</ion-view>

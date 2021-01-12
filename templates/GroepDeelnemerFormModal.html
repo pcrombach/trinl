@@ -1,0 +1,25 @@
+<div class="modal myModal" ng-controller="BerichtFormCtrl">
+  <ion-header-bar class="bar-balanced">
+    <div class="buttons">
+      <button ng-click="closeGroepDeelnemerForm()" class="button button-icon icon ion-ios-arrow-back"></button>
+    </div>
+    <h1 class="title">Voeg deelnemers toe aan groep {{groep.groep}}</h1>
+    <div class="buttons">
+    </div>
+  </ion-header-bar>
+  <ion-scroll class="has-header" scroll-handle="your-scroll-handle">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">E-mailadres</span>
+        <input type="text" ng-model="groep.emailadres">
+      </label>
+      <ion-toggle ng-model="groep.publicist" ng-change="publicistChange()">Publiceren</ion-toggle>
+    </div>
+    <button ng-click="saveGroepDeelnemer(deelnemer)" class="button button-icon icon ion-person">&nbsp;Voeg
+      deelnemer toe</button>
+      <div>{{groep.gebruikerNaam}}</div>
+    <div class="padding trinl-blauw">
+      <p>Iedere deelnemer ontvangt alle items die door andere deelnemers worden gepubliceerd.<br>Om een deelnemer toe voegen voer zijn emailadres in. TRINL controleert of de gebruiker correct is geregistreerd.<br>Publiceren betekent dat de deelnemer ook mag publiceren naar de deelnemers van deze groep.</p><br>
+    </div>
+  </ion-scroll>
+  </ion-view>

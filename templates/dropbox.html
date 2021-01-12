@@ -1,0 +1,32 @@
+<ion-view>
+
+  <ion-nav-title>
+    Dropbox {{padje}}
+  </ion-nav-title>
+
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+
+  <ion-nav-buttons side="secondary">
+    <button ng-if="depth != 0" ng-click="goBack()" class="button button-icon icon ion-ios-arrow-back"> Terug</button>
+  </ion-nav-buttons>
+
+
+  <ion-content close-option class="has-header">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="Laat los om bij te werken..." refreshing-text="Herladen..."
+      refreshing-icon="ion-loading-c">
+    </ion-refresher>
+    <ion-list>
+      <ion-item item-body ng-repeat="folder in folders">
+        <div class="item-icon-left" ng-if="folder['.tag'] == 'folder'" ng-click="openFolder(folder)">
+          <i class="icon ion-folder"></i>
+          {{folder.name}}
+        </div>
+        <div class="item-icon-left" ng-if="folder['.tag'] == 'file'" ng-click="downloadFile(folder)">
+          <i class="icon ion-document"></i>
+          {{folder.name}}
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

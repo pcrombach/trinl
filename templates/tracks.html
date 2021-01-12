@@ -1,0 +1,126 @@
+<ion-view title="Sporen selectie">
+  <div class="bar bar-subheader">
+    <h2 ng-bind-html="subHeader" class="trinl-blauw trinl-subHeader trinl-title-left"></h2>
+  </div>
+  <ion-content close-option class="has-header has-subheader" delegate-handle="trackList">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="Laat los om bij te werken..." refreshing-text="Bijwerken!"
+      refreshing-icon="ion-loading-c">
+    </ion-refresher>
+    <ion-list>
+      <ion-item item-body
+        ng-repeat="track in ( $parent.filteredTracks = ( data.tracks | orderBy:predicate:reverse | regexStore: 'naam': searchTrack.naam)) | limitTo:showLimit:currentPage*showLimit track by track.Id.value">
+        <div ng-click="clickedTrack(track)" class="row" ng-if="track.profiel.value != 'anoniem'">
+          <div ng-click="clickedAvatar(track.gebruikerId.value)" class="col trinl-avatar">
+            <i ng-if="track.avatarInverse.value == '0' && track.avatarLetter.value == ''"
+              class="avatar avatar-color-{{track.avatarColor.value}}">?</i>
+            <i ng-if="track.avatarInverse.value == '1' && track.avatarLetter.value == ''"
+              class="avatar avatar-inverse avatar-color-{{track.avatarColor.value}}">?</i>
+            <i ng-if="track.avatarInverse.value == '0' && track.avatarLetter.value != ''"
+              class="avatar avatar-color-{{track.avatarColor.value}} avatar-letter-{{track.avatarLetter.value}}"></i>
+            <i ng-if="track.avatarInverse.value == '1' && track.avatarLetter.value != ''"
+              class="avatar avatar-inverse avatar-color-{{track.avatarColor.value}} avatar-letter-{{track.avatarLetter.value}}"></i>
+          </div>
+          <div ng-click="clickedTrack(track)" class="col trinl-gebruiker-datum-socio-container">
+            <div class="row trinl-gebruiker trinl-blauw">{{track.gebruikerNaam.value}}</div>
+            <div class="row trinl-datums-container">
+              <div class="trinl-datum"><span class="trinl-blauw">{{track.createdOn.value}}</span></div>
+              <div class="trinl-datum-ago"><span class="trinl-blauw" datum am-time-ago="track.createdOn.value"></span>
+              </div>
+            </div>
+            <div class="row trinl-socio-container">
+              <div class="trinl-socio-icon"
+                ng-if="(track.profiel.value === 'team' || track.profiel.value === 'developer') && track.xprive.value && track.gebruikerId.value === Id">
+                <i class="icon socio-red ion-locked"></i>
+              </div>
+              <div class="trinl-socio-icon"
+                ng-if="(track.profiel.value === 'team' || track.profiel.value === 'developer') && !track.xprive.value && track.gebruikerId.value === Id">
+                <i class="icon socio-green ion-unlocked"></i>
+              </div>
+              <div ng-if="details.gelezen !== 0" class="trinl-socio-icons-aantal">
+                <div class="trinl-socio-icontext">&nbsp;{{track.xData.sup.gelezen.value}}</div>
+                <i class="icon socio-black ion-eye"></i>
+              </div>
+              <div ng-if="track.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon"
+                ng-if="(track.profiel.value === 'team' || track.profiel.value === 'developer') && track.xData.sup.xnew.value">
+                <i class="icon socio-red ion-ios-bell"></i>
+              </div>
+              <div ng-if="track.xData.sup.star.value && !track.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon" ng-if="track.xData.sup.star.value">
+                <i class="icon socio-orange ion-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div ng-click="clickedTrack(track)" class="row trinl-header-container" ng-if="track.profiel.value == 'anoniem'">
+          <div ng-click="clickedAvatar(track.gebruikerId.value)" class="col trinl-avatar-anoniem">
+            <img class="trinl-avatar-anoniem-img" ng-src="images/small_non_existing_id.png">
+          </div>
+          <div ng-click="clickedTrack(track)" class="col trinl-gebruiker-datum-socio-container">
+            <div class="row trinl-gebruiker trinl-blauw">anoniem</div>
+            <div class="row trinl-datums-container">
+              <div class="trinl-datum"><span class="trinl-blauw">{{track.createdOn.value}}</span></div>
+              <div class="trinl-datum-ago"><span class="trinl-blauw" datum am-time-ago="track.createdOn.value"></span>
+              </div>
+            </div>
+            <div class="row trinl-socio-container">
+              <div class="trinl-socio-icon"
+                ng-if="(track.profiel.value === 'team' || track.profiel.value === 'developer') && track.xprive.value && track.gebruikerId.value === Id">
+                <i class="icon socio-red ion-locked"></i>
+              </div>
+              <div class="trinl-socio-icon"
+                ng-if="(track.profiel.value === 'team' || track.profiel.value === 'developer') && !track.xprive.value && track.gebruikerId.value === Id">
+                <i class="icon socio-green ion-unlocked"></i>
+              </div>
+              <div ng-if="details.gelezen !== 0" class="trinl-socio-icons-aantal">
+                <div class="trinl-socio-icontext">&nbsp;{{track.xData.sup.gelezen.value}}</div>
+                <i class="icon socio-black ion-eye"></i>
+              </div>
+              <div ng-if="track.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon"
+                ng-if="(track.profiel.value === 'team' || track.profiel.value === 'developer') && track.xData.sup.xnew.value">
+                <i class="icon socio-red ion-ios-bell"></i>
+              </div>
+              <div ng-if="track.xData.sup.star.value && !track.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon" ng-if="track.xData.sup.star.value">
+                <i class="icon socio-orange ion-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div ng-click="clickedTrack(track)" class="spacer"></div>
+        <div ng-click="clickedTrack(track)" ng-if="track.xData.groep != ''" class="trinl-listgroeptext">{{track.xData.groep}}
+        </div>
+        <div ng-click="clickedTrack(track)" class="trinl-listnaam">{{track.naam.value}}</div>
+        <div ng-click="clickedTrack(track)" class="spacer"></div>
+
+        <div ng-click="clickedTrack(track)" class="trinl-tags-list">
+          <div class="trinl-tag" ng-repeat="trackTag in track.xData.tags track by $index">
+            <div ng-if="trackTag.get('gebruikerId') === ceo.Id">
+              <div class="trinl-tags">
+                <div class="trinl-tag-icon-left"><i class="ion-pricetag"></i></div>
+                <div ng-if="trackTag.xData.get('Id').length <= 3 && trackTag.xData.get('gebruikerId') === ''"
+                  class="trinl-tag-tekst trinl-blauw">{{trackTag.xData.get('tag')}}</div>
+                <div ng-if="trackTag.xData.get('Id').length <= 3 && trackTag.xData.get('gebruikerId') != ''"
+                  class="trinl-tag-tekst trinl-rood">{{trackTag.xData.get('tag')}}</div>
+                <div ng-if="trackTag.xData.get('Id').length >= 3" class="trinl-tag-tekst">{{trackTag.xData.get('tag')}}</div>
+              </div>
+            </div>
+            <div ng-if="trackTag.get('gebruikerId') !== ceo.Id">
+              <div class="trinl-tags-disabled">
+                <div class="trinl-tag-icon-left"><i class="ion-pricetag"></i></div>
+                <div ng-if="trackTag.xData.get('Id').length <= 3 && trackTag.xData.get('gebruikerId') === ''"
+                  class="trinl-tag-tekst trinl-blauw">{{trackTag.xData.get('tag')}}</div>
+                <div ng-if="trackTag.xData.get('Id').length <= 3 && trackTag.xData.get('gebruikerId') != ''"
+                  class="trinl-tag-tekst trinl-rood">{{trackTag.xData.get('tag')}}</div>
+                <div ng-if="trackTag.xData.get('Id').length >= 3" class="trinl-tag-tekst">{{trackTag.xData.get('tag')}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  </ion-nav-view>

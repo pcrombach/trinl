@@ -1,0 +1,35 @@
+<div class="modal legendaModal">
+
+	<ion-header-bar class="bar-balanced">
+        <div class="buttons">
+            <button ng-click="closeModalLegenda()" class="button button-icon icon ion-ios-arrow-back"></button>
+        </div>
+		<h1 class="title">Info {{legenda.titel}}</h1>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list>
+			<div ng-if="legenda.toelichting.length !== ''" class="item item-divider">
+				Toelichting
+			</div>
+			<ion-item ng-if="legenda.toelichting.length !== ''" class="item-body" ng-bind-html="legenda.toelichting">
+			</ion-item>
+
+			<div ng-if="legenda.legenda.length !== 0" class="item item-divider">
+				Legenda
+			</div>
+            <div ng-if="legenda.legenda.length && legendaItem.image_class === 'leg-afkorting'" class="item" ng-repeat="legendaItem in legenda.legenda">
+				<div class="{{legendaItem.image_class}}">{{legendaItem.image}}</div><div class="{{legendaItem.tekst_class}}" ng-bind-html="legendaItem.tekst"></div>
+			</div>
+            <div ng-if="legenda.legenda.length && legendaItem.image_class !== 'leg-afkorting'" class="item" ng-repeat="legendaItem in legenda.legenda"> 
+				<div><img ng-src="{{legendaItem.image}}.png" class="{{legendaItem.image_class}}" style="background-color:{{legendaItem.image_color}};" /></div><div class="{{legendaItem.tekst_class}}" ng-bind-html="legendaItem.tekst"></div>
+			</div>
+
+			<div ng-if="legenda.bron.length !== 0" class="item item-divider">
+				Bronvermelding
+			</div>
+			<ion-item ng-if="legenda.bron.length !== 0" class="item" ng-bind-html="legenda.bron">
+			</ion-item>
+		</ion-list>
+	</ion-content>
+
+</div>

@@ -1,0 +1,46 @@
+<div style="opacity:0.4;top:45px;bottom:45px;left:0px;width:50px;" class="no=backdrop modal">
+
+    <ion-content overflow-scroll="false">
+        <ul class="list">
+            <a class="sm-icon item item-icon-left" ng-click="openLegenda(index, $event)">
+                <i class="icon ion-information-circled"></i>
+            </a>
+            <a class="sm-icon item item-icon-left" on-hold="onHold(true)" ng-click="prevKaart()">
+                <i class="icon ion-arrow-right-a"></i>
+            </a>
+            <a class="sm-icon item item-icon-left" on-hold="onHold(true)" ng-click="nextKaart()">
+                <i class="icon ion-arrow-left-a"></i>
+            </a>
+            <a class="sm-icon item item-icon-left" ng-click="zoomLevelPlus()">
+                <i class="icon ion-plus-circled"></i>
+            </a>
+            <a class="sm-icon item item-icon-left" ng-click="zoomLevelMin()">
+                <i class="icon ion-minus-circled"></i>
+            </a>
+            <a class="sm-icon item item-icon-left" ng-click="toggleCrosshair()">
+                <i class="icon ion-pinpoint"></i>
+            </a>
+            <a class="sm-icon item item-icon-left" ng-click="plaatsMarker()">
+                <i class="icon ion-ios-location"></i>
+            </a>
+            <a ng-if="(+ceo.profielId === 5) && isMobile" class="sm-icon item item-icon-left"
+              ng-click="maakFoto()">
+                <i class="icon ion-camera"></i>
+            </a>
+            <a ng-if="gpsWatch" style="color:#00FF00;" class="sm-icon item item-icon-left" ng-click="gpsWatchChange()">
+                <i class="icon ion-navigate"></i>
+            </a>
+            <a ng-if="!gpsWatch" class="sm-icon item item-icon-left" ng-click="gpsWatchChange()">
+                <i class="icon ion-navigate"></i>
+            </a>
+            <a ng-if="!gpsRecord && ceo.profielId === '5' && isMobile" class="sm-icon item item-icon-left" ng-click="gpsRecordChange()">
+                <i class="icon ion-record"></i>
+            </a>
+            <a ng-if="gpsRecord && ceo.profielId === '5' && isMobile" style="color:red;" class="sm-icon item item-icon-left" ng-click="gpsRecordChange()">
+                <i class="icon ion-record"></i>
+            </a>
+
+         </ul>
+    </ion-content>
+
+</div>

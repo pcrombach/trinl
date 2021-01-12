@@ -1,0 +1,47 @@
+<div class="modal" style="height:300px;">
+	<ion-header-bar class="bar-balanced">
+       <div class="buttons">
+            <button ng-click="closeModalPreCache()" class="button button-icon icon ion-ios-arrow-back"></button>
+        </div>
+		<h1 class="title">Vooraf kaarten laden</h1>
+        <div class="buttons">
+            <button ng-click="togglePreCache()" class="button button-icon icon ion-refresh"></button>
+        </div>
+	</ion-header-bar>
+	<ion-content delegate-handle="modalPreCache">
+		<ion-list>
+			<div class="item item-divider">
+				Toelichting
+			</div>
+			<ion-item ng-if="preLoadingState !=='counting' && preLoadingState !=='cancel' && preLoadingState!=='downloading' && preLoadingState!=='ready'" class="item item-body">
+				<p>Selecteer de kaarten die je vooraf wil laden in jouw apparaat. Open Street Map, Open Street Map Terrein en Open Street Map Satellite worden gehaald van internet. Soms is het daar erg druk. Dit kan dan langer duren. Probeer anders de Open Street Map kaarten 1 voor 1.<br>De overige kaarten worden gehaald op de TRINL-server. Die gaan een stuk sneller.<br>Na 'Vooraf laden' zijn de kaarten ook te gebruiken zonder internetverbinding</p>
+				<p>Het gebied rondom de orientatieroos wordt geladen</p>
+			</ion-item>
+			<div class="row">
+				<div ng-show="preLoadingState=='downloading' || preLoadingState=='ready'" class="col col-33 progress_container">
+					<div class="progress" id="progressPreCacheModal"></div>
+				</div>
+				<div class="col col-66">
+					<div ng-show="preLoadingState=='counting'">
+						<p>Berekenen.<br>Een ogenblik geduld aub......</p>
+					</div>
+					<div ng-if="preLoadingState=='downloading'">
+						<p>Bezig met laden kaarten.<br>Een ogenblik geduld aub......  {{aantal_tiles}}</p>
+					</div>
+					<div ng-if="preLoadingState=='ready'">
+						<p><br>Vooraf kaarten laden<br>gereed</p>
+					</div>
+					<div ng-if="preLoadingState=='cancel'">
+						<p><br>Vooraf kaarten laden<br>geannuleerd</p>
+					</div>
+				</div>
+			</div>
+			<div class="item item-divider">
+				Kaarten
+			</div>
+            <ion-checkbox ng-model="map.enable" ng-repeat="map in precache_options.maps">
+                {{map.naam}}
+            </ion-checkbox>
+		</ion-list>
+	</ion-content>
+</div>

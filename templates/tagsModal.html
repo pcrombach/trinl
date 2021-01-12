@@ -1,0 +1,45 @@
+<div class="modal myModal">
+  <ion-header-bar class="bar-balanced">
+    <div class="buttons">
+      <button ng-click="closeTags()" class="button button-icon icon ion-ios-arrow-back"></button>
+    </div>
+    <h1 class="title">Selecteer label</h1>
+    <div class="buttons">
+      <button ng-if="global.filtertags.length === 0" ng-click="addNieuweLabel(search.label)"
+        class="button button-icon icon ion-plus">&nbsp;Voeg toe</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <ion-item class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" class="detectFocus" placeholder="Zoek label" ng-model="search.label">
+      </label>
+      <button ng-if="search.label.length" ng-click="clearSearch()"
+        class="input-button button button-icon ion-close-circled">
+      </button>
+    </ion-item>
+    <div class="row">
+      <p class="padding trinl-geel"><b>Selecteer een label in onderstaande lijst of maak een eigen label aan.</b></p>
+    </div>
+    <ion-list click-for-options-wrapper>
+      <ion-item ng-click="selectLabelClick(tag)"
+        ng-repeat="tag in ( global.filtertags = ( global.tags | regexStoreBegin: 'tag': search.label)) track by $index">
+        <ion-option-button class="button-balanced" ng-show="tag.get('gebruikerId') == ceo.Id"
+          ng-click="editTag(tag)">
+          <div class="aligner"></div><i class="radio-icon ion-edit"></i>&nbsp;Wijzig
+        </ion-option-button>
+        <ion-option-button class="button-assertive" ng-show="tag.get('gebruikerId') == ceo.Id"
+          ng-click="deleteTag(tag)">
+          <div class="aligner"></div><i class="radio-icon ion-trash-b"></i>&nbsp;Verwijder
+        </ion-option-button>
+        <ion-option-button class="trinl-geel" ng-show="tag.get('Id').length <= 3 && tag.get('gebruikerId') === ceo.Id" ng-click="infoTag(tag)">
+          <div class="aligner"></div><i class="radio-icon ion-trash-b"></i>&nbsp;Info
+        </ion-option-button>
+        <div ng-if="tag.get('Id').length <= 3 && tag.get('gebruikerId') === ''"><span class="trinl-blauw">{{tag.get('tag')}}</span></div>
+        <div ng-if="tag.get('Id').length <= 3 && tag.get('gebruikerId') !== ''"><span class="trinl-rood">{{tag.get('tag')}}</span></div>
+        <div ng-if="tag.get('Id').length > 3">{{tag.get('tag')}}</span></div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</div>

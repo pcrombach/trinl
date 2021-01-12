@@ -1,0 +1,76 @@
+<ion-view title="TRINL update">
+	<ion-nav-back-button>
+	</ion-nav-back-button>
+	<ion-content scroll="true" class="has-header">
+		<ion-list>
+			<ion-item class="item item-divider"> Toelichting </ion-item>
+
+			<!--
+				Nog geen update bekend
+			-->
+			<div ng-if="!hasUpdate">
+				<ion-item ng-if="preLoadingState == 'ready'" class="item item-body">
+					<p>Controleer regelmatig of er een nieuwe update is. Nieuwe updates bevatten oplossingen voor bekende problemen of
+						performanceverbeteringen.</p>
+					<p>Je gegevens staan altijd veilig opgeborgen in de cloud. Door een update gaan geen gegevens verloren.<br></p>
+				</ion-item>
+			</div>
+			<!--
+				Indien downloaden of informeren (beide tegelijk in eigen div col) samen in container row
+				Progressindicator
+				Informatie
+			-->
+			<ion-item ng-if="hasUpdate" class="item item-body">
+				<div class="progress_container">
+					<div class="progress" id="progressDown"></div>
+				</div>
+				<div ng-bind-html="info"></div>
+			</ion-item>
+			<!--
+				Indien geen update
+			-->
+			<ion-item ng-if="preLoadingState == 'geenupdaterollback'" class="item item-body">
+				<p><span class="trinl-rood-titel-light">TRINL update mislukt. Probeer het later nog eens.</span></p>
+			</ion-item>
+
+			<ion-item ng-if="preLoadingState == 'geenupdate'" class="item item-body">
+				<p><span class="trinl-rood-titel-light">{{uptodate}}</span></p>
+			</ion-item>
+
+			<ion-item ng-if="preLoadingState == 'geenupdateauto'" class="item item-body">
+				<p><span class="trinl-rood-titel-light">TRINL heeft reeds een automatische update gestart.</span><br><span class="trinl-blauw">Een ogenblik geduld aub...... </span></p>
+
+			</ion-item>
+			<ion-item ng-if="preLoadingState == 'abort'" class="item item-body">
+				<p><span class="trinl-rood-titel-light">{{abortTekst}}</span></p>
+			</ion-item>
+
+			<ion-item ng-if="preLoadingState == 'downloaden'" class="item item-body">
+				<p><span class="trinl-rood-titel-light">Bezig met downloaden nieuwe update</span><br><span class="trinl-blauw">Een ogenblik geduld aub...... </span></p>
+			</ion-item>
+			<ion-item ng-if="preLoadingState == 'installeren'" class="item item-body">
+				<p><span class="trinl-rood-titel-light">Bezig met installeren nieuwe update</span><br><Span class="trinl-blauw">Een ogenblik geduld aub...... </span></p>
+			</ion-item>
+			<ion-item ng-if="preLoadingState == 'done'" class="item item-body">
+				<p><span class="trinl-rood-titel-light">Bedankt dat je TRINL hebt bijgewerkt naar de nieuwste versie. TRINL wordt over 25 sec geherstart</span></p>
+			</ion-item>
+			<!--
+				Buttons start en einde
+			-->
+			<ion-item ng-if="!hasUpdate && preLoadingState == 'ready'">
+				<button class="button button-balanced button-block " ng-click="checkForUpdates()"> Controleren op nieuwe update
+				</button>
+			</ion-item>
+			<ion-item ng-if="preLoadingState == 'done'">
+				<button class="button button-balanced button-block " ng-click="herstartNu()"> Of herstart TRINL <b>NU</b>
+				</button>
+			</ion-item>
+
+			<ion-item class="item item-divider"> Update Historie </ion-item>
+			<ion-item class="no-padding" item-body ng-repeat="historie in histories  | orderBy: 'historie.version.value':true track by historie.Id.value">
+				<div class="row trinl-historie-version" ng-bind-html="historie.version.value"></div>
+				<div class="row trinl-historie-tekst" ng-bind-html="historie.tekst.value"></div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	</vion-view>

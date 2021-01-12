@@ -1,0 +1,6225 @@
+.rotate180 {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+@-webkit-keyframes anim-pulse {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(.5);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1.25)
+  }
+}
+
+.responsive .col {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.responsive {
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+/* css to customize Leaflet default styles  */
+.myTooltipElectriciteitHoofd {
+  background: mistyrose !important;
+  border-style: solid;
+  border-width: 1px !important;
+  border-color: black !important;
+  font-size: 12px !important;
+  padding: 2px 6px 6px 6px !important;
+  height: 24px !important;
+}
+
+.leaflet-tooltip-left.myTooltipElectriciteitHoofd::before {
+  border-left-color: black !important;
+}
+
+.leaflet-tooltip-right.myTooltipElectriciteitHoofd::before {
+  border-right-color: black !important;
+}
+
+.myTooltipElectriciteitNeven {
+  background: palegreen !important;
+  border-style: solid;
+  border-width: 1px !important;
+  border-color: black !important;
+  font-size: 12px !important;
+  padding: 2px 6px 6px 6px !important;
+  height: 24px !important;
+}
+
+.leaflet-tooltip-left.myTooltipElectriciteitNeven::before {
+  border-left-color: black !important;
+}
+
+.leaflet-tooltip-right.myTooltipElectriciteitNeven::before {
+  border-right-color: black !important;
+}
+
+.myTooltipPlaats {
+  background: mistyrose !important;
+  border-style: solid;
+  border-width: 1px !important;
+  border-color: black !important;
+  font-size: 12px !important;
+  padding: 2px 6px 6px 6px !important;
+  height: 24px !important;
+}
+
+.leaflet-tooltip-left.myTooltipPlaats::before {
+  border-left-color: black !important;
+}
+
+.leaflet-tooltip-right.myTooltipPlaats::before {
+  border-right-color: black !important;
+}
+
+.myTooltipAchter {
+  background: palegreen !important;
+  border-style: solid;
+  border-width: 1px !important;
+  border-color: black !important;
+  font-size: 12px !important;
+  padding: 2px 6px 6px 6px !important;
+  height: 24px !important;
+}
+
+.leaflet-tooltip-left.myTooltipAchter::before {
+  border-left-color: black !important;
+}
+
+.leaflet-tooltip-right.myTooltipAchter::before {
+  border-right-color: black !important;
+}
+
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+  background: #ffffff;
+  color: #000;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.trinl-popup-bodyNode {
+  clear: left;
+}
+
+.trinl-popup-iconsNode {
+  padding-bottom: 40px !important;
+}
+
+.trinl-popup-naamNode {
+  padding-bottom: 4px !important;
+}
+
+.trinl-popup-naam {
+  font-size: 14px !important;
+}
+
+.trinl-popup-datumCoordNode {
+  margin-top: -16px !important;
+}
+
+.trinl-datum-coord {
+  margin-top: -14px !important;
+}
+
+.trinl-popup-coord {
+  font-size: 12px !important;
+}
+
+.trinl-popup-tekstNode {
+  margin-top: -8px !important;
+  margin-bottom: -12px !important;
+}
+
+.leaflet-popup-content {
+  max-height: 400px !important;
+  white-space: pre-wrap;
+  width: 250px !important;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.disclaimer {
+  list-style-type: decimal;
+  font-size: 14px;
+  padding: 16px;
+}
+
+/*
+.leaflet-popup-content {
+  width:auto !important;
+}
+*/
+.modal-backdrop {
+  background: none;
+}
+
+.spinner-hide .loading {
+  visibility: visible;
+}
+
+.spinner-show .loading {
+  visibility: hidden;
+}
+
+.scroll-bar-indicator {
+  display: none;
+}
+
+.infoNaam {
+  height: 30px;
+  font-size: 14px !important;
+}
+
+.infoTekst {
+  height: 30px;
+  font-size: 14px !important;
+}
+
+.progress_title {
+  height: 30px;
+  width: 100px;
+}
+
+.progress_container {
+  margin: auto !important;
+  padding-bottom: 20px;
+  height: 180px;
+  width: 180px;
+}
+
+.progress_tekstcontainer {
+  height: 150px;
+  width: 150%;
+}
+
+.progress {
+  height: 160px;
+}
+
+.progress>svg {
+  height: 100%;
+  display: block;
+}
+
+.core {
+  fill: "#00FF00";
+}
+
+.ring {
+  opacity: 0;
+  stroke: red;
+  -webkit-transform-origin: center;
+  -webkit-animation: anim-pulse 2s 1s infinite;
+}
+
+.wrapper {
+  float: left;
+  width: 25%;
+}
+
+
+.clear-icon {
+  padding: -100px;
+}
+
+.gps-groen {
+  color: #00FF00;
+}
+
+.trinl-tekst-laag {
+  margin-top: 0px !important;
+  margin-left: -20px !important;
+}
+
+.trinl-info-laag {
+  margin-top: 4px !important;
+}
+
+.trinl-checkmark-laag {
+  margin-right: 10px !important;
+}
+
+.trinl-circle {
+  margin-top: -5px !important;
+  height: 64px !important;
+  width: 54px !important;
+  font-size: 30px !important;
+}
+
+.trinl-checkmark {
+  margin-top: -5px !important;
+  height: 64px !important;
+  width: 54px !important;
+  font-size: 30px !important;
+  color: #009bc9 !important;
+}
+
+.trinl-blauw {
+  color: #009bc9;
+}
+
+.trinl-geel {
+  color: #c3b600;
+}
+
+.trinl-rood {
+  color: #aa2017;
+}
+
+.trinl-rood-titel-light {
+  font-size: 16px;
+  font-weight: 400;
+  color: #aa2017;
+}
+
+.trinl-rood-titel {
+  font-size: 18px;
+  font-weight: 500;
+  color: #aa2017;
+}
+
+.trinl-maakFotoModel {
+  width: 100px;
+  height: 100px;
+}
+
+.trinl-camera-super {
+  color: #aa2017;
+  font-size: 80px;
+}
+
+.trinl-subHeader {
+  padding-top: 8px !important;
+  font-size: 14px !important;
+}
+
+.custom-popup.popup-container .popup-buttons {
+  visibility: hidden;
+}
+
+#header p {
+  position: relative;
+  border: 0 none transparent;
+  font-size: 2em;
+  margin: 1em auto;
+  border: 1px solid #ccc;
+}
+
+#header img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.border-red {
+  border: 1px solid red;
+}
+
+.border-geen {
+  border: 1px solid green;
+}
+
+.border-blue {
+  border: 1px solid blue;
+}
+
+.selected {
+  background-color: silver;
+}
+
+ion-nav-view {
+  background-color: #fff;
+}
+
+.ta-editor {
+  min-height: 300px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+.leaflet-tile-container img {
+  -webkit-backface-visibility: hidden;
+}
+
+.my-icon:before,
+.my-icon {
+  font-size: 18px !important;
+}
+
+.my-icon-disabled:before,
+.my-icon-disabled {
+  color: silver !important;
+  font-size: 24px !important;
+}
+
+.col-12 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 12%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 12%;
+  -ms-flex: 0 0 12%;
+  flex: 0 0 12%;
+  max-width: 12%;
+}
+
+.col-14 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 14%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 14%;
+  -ms-flex: 0 0 14%;
+  flex: 0 0 14%;
+  max-width: 14%;
+}
+
+.col-30 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 30%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 30%;
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+
+.col-40 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 40%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 40%;
+  -ms-flex: 0 0 40%;
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.col-60 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 60%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 60%;
+  -ms-flex: 0 0 60%;
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+
+.col-70 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 70%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 70%;
+  -ms-flex: 0 0 70%;
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+
+.bar .button.button-clear,
+.bar button.button-clear {
+  font-size: 26px;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+
+/*
+.header-icon {
+  font-size: 100px;
+}
+*/
+
+.sm-icon {
+  margin-top: 14px;
+  margin-right: 0px;
+  margin-bottom: 14px;
+  margin-left: 0px;
+}
+
+.sm-icon-red {
+  margin-top: 14px;
+  margin-right: 0px;
+  margin-bottom: 14px;
+  margin-left: 0px;
+  font-color: red;
+}
+
+.sm-icon-green {
+  margin-top: 14px;
+  margin-right: 0px;
+  margin-bottom: 14px;
+  margin-left: 0px;
+  color: green;
+}
+
+.item-complex.wrap.item-icon-left  .item-content {
+  white-space: normal !important;
+  padding-left: 54px !important;
+}
+
+.my-item-body p {
+  overflow: visible;
+  white-space: normal;
+  border-style: none;
+}
+
+.listHeader {
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.my-socio-icon {
+  float: right;
+  margin-right: 10px;
+}
+
+.socio-icons {
+  float: right;
+  font-size: 40px;
+  padding: 10px;
+}
+
+.socio-trinl-yellow {
+  float: right;
+  font-size: 20px;
+  color: #c3b600;
+}
+
+.socio-trinl-yellow-disabled {
+  float: right;
+  font-size: 20px;
+  color: #f0e68c;
+}
+
+.socio-trinl-brown {
+  float: right;
+  font-size: 20px;
+  color: #aa2017;
+}
+
+.socio-trinl-brown-disabled {
+  float: right;
+  font-size: 20px;
+  color: #f4a460;
+}
+
+.socio-trinl-blue {
+  float: right;
+  font-size: 20px;
+  color: #009bc9;
+}
+
+.socio-trinl-blue-disabled {
+  float: right;
+  font-size: 20px;
+  color: #99e7ff;
+}
+
+.socio-blue {
+  float: right;
+  font-size: 20px;
+  color: #009bc9;
+}
+
+.socio-grey {
+  float: right;
+  font-size: 20px;
+  color: grey;
+}
+
+.socio-black {
+  float: right;
+  font-size: 20px;
+  color: black;
+}
+
+.socio-orange {
+  float: right;
+  font-size: 20px;
+  color: #FF9900;
+}
+
+.socio-red {
+  float: right;
+  font-size: 20px;
+  color: red;
+}
+
+.socio-red-disabled {
+  float: right;
+  font-size: 20px;
+  color: #ffcccc;
+}
+
+.socio-green {
+  float: right;
+  font-size: 20px;
+  color: green;
+}
+
+.socio-green-disabled {
+  float: right;
+  font-size: 20px;
+  color: #ccffcc;
+}
+
+.onderwerp {
+  float: left;
+}
+
+.buttonTekstFix {
+  color: black;
+}
+
+.signInText {
+  margin: 10px;
+  margin-right: 5px;
+  color: red;
+}
+
+.logo {
+  padding: 20px;
+  max-width: 120px;
+  max-height: 120px;
+}
+
+.overtrinl {
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+@media only screen and (max-width: 479px) and (orientation: portrait) {
+
+  .overtrinl {
+    padding: 20px;
+    width: 100%;
+  }
+
+  /*
+  .platform-ios .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-ios .modalKaartOptionsSmR {
+    background: green;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmR {
+    background: blue;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+*/
+  .signinmodal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .disclaimermodal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .registreermodal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .inloggenmodal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .wachtwoordmodal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .editormodal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .editorarea {
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .legendaModal {
+    /* top: 45px; */
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    color: #b8a80d;
+  }
+
+  .legendaPopover {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    color: #b8a80d;
+  }
+
+  .myModal {
+    /* top: 45px; */
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .tile {
+    margin: 10px 20px 10px 10px;
+    width: 95%;
+    height: auto;
+  }
+
+  .row-button {
+    width: 135px;
+    color: #fff;
+  }
+
+  .logintext {
+    margin: 10px 20px 10px 10px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) and (orientation: landscape) {
+  .overtrinl {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .platform-ios .signinmodal {
+    /*    background: yellow; */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .platform-android .signinmodal {
+    background: yellow;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  /*
+  .platform-ios .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-ios .modalKaartOptionsSmR {
+    background: green;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmR {
+    background: blue;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+*/
+  .disclaimermodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .registreermodal {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .inloggenmodal {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .wachtwoordmodal {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .editormodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .editorarea {
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 160px;
+    width: 755px;
+  }
+
+  .myModal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .tile {
+    margin: 5px 20px 10px 10px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .row-button {
+    width: 200px;
+  }
+
+  .logintext {
+    margin: 20px 20px 10px 10px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  .overtrinl {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .platform-ios .signinmodal {
+    /*     background: yellow; */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .platform-android .signinmodal {
+    /*    background: yellow; */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  /*
+  .platform-ios .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-ios .modalKaartOptionsSmR {
+    background: green;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmR {
+    background: blue;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+*/
+  .disclaimermodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .registreermodal {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .inloggenmodal {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .wachtwoordmodal {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #b8a80d;
+  }
+
+  .editormodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .editorarea {
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 160px;
+    width: 755px;
+  }
+
+  .myModal {
+    top: 194px;
+    left: 8px;
+    height: 72%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .tile {
+    margin: 5px 20px 10px 10px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .row-button {
+    width: 200px;
+  }
+
+  .logintext {
+    margin: 20px 20px 10px 10px;
+    font-size: 16px;
+  }
+}
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1381px) and (orientation: landscape) {
+
+  .overtrinl {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .platform-ios .signinmodal {
+    /*    background: blue; */
+    top: 144px;
+    left: 72px;
+    height: 480px;
+    width: 880px;
+    color: #b8a80d;
+  }
+
+  .platform-android .signinmodal {
+    /*    background: blue; */
+    top: 160px;
+    left: 200px;
+    height: 480px;
+    width: 880px;
+
+    /*
+    top: 72px;
+    left: 72px;
+    height: 480px;
+    width: 880px;
+*/
+    color: #b8a80d;
+  }
+
+  /*
+  .platform-ios .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-ios .modalKaartOptionsSmR {
+    background: green;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmR {
+    background: blue;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+*/
+  .disclaimermodal {
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 300px;
+    color: #b8a80d;
+  }
+
+  .platform-ios .registreermodal {
+    top: 144px;
+    left: 72px;
+    height: 480px;
+    width: 880px;
+    color: #b8a80d;
+  }
+
+  .platform-ios .inloggenmodal {
+    top: 144px;
+    left: 72px;
+    height: 480px;
+    width: 880px;
+    color: #b8a80d;
+  }
+
+  .platform-ios .wachtwoordmodal {
+    top: 144px;
+    left: 72px;
+    height: 480px;
+    width: 880px;
+    color: #b8a80d;
+  }
+
+  .platform-android .registreermodal {
+    top: 160px;
+    left: 200px;
+    height: 480px;
+    width: 880px;
+    color: #b8a80d;
+  }
+
+  .platform-android .inloggenmodal {
+    top: 160px;
+    left: 200px;
+    height: 480px;
+    width: 880px;
+    color: #b8a80d;
+  }
+
+  .platform-android .wachtwoordmodal {
+    top: 160px;
+    left: 200px;
+    height: 480px;
+    width: 880px;
+    color: #b8a80d;
+  }
+
+  .editormodal {
+    top: 76px;
+    left: 133px;
+    height: 80%;
+    width: 74%;
+    color: #b8a80d;
+  }
+
+  .editorarea {
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 160px;
+    width: 755px;
+  }
+
+  .myModal {
+    top: 76px;
+    left: 133px;
+    height: 80%;
+    width: 74%;
+    color: #b8a80d;
+  }
+
+  .tile {
+    margin: 5px 20px 10px 10px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .row-button {
+    width: 200px;
+  }
+
+  .logintext {
+    margin: 20px 20px 10px 10px;
+    font-size: 16px;
+  }
+}
+
+/*
+.modalKaartOptions {
+  width: 650px !important;
+  height: 80% !important;
+}
+
+.popoverKaartOptions {
+  width: 650px !important;
+  height: 80% !important;
+}
+*/
+
+@media only screen and (min-width: 1382px) {
+
+  .overtrinl {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .platform-ios .modalKaartOptions {
+    width: 530px;
+    height: 80%;
+  }
+
+  .platform-android .modalKaartOptions {
+    width: 530px;
+    height: 80%;
+  }
+
+  .modalKaartOptions {
+    width: 530px;
+    height: 80%;
+  }
+
+  .signinmodal {
+    /*    background: black; */
+    top: 166px;
+    left: 210px;
+    height: 468px;
+    width: 860px;
+    color: #b8a80d;
+  }
+
+  .disclaimermodal {
+    top: 76px;
+    left: 133px;
+    height: 80%;
+    width: 74%;
+    color: #b8a80d;
+  }
+
+  .registreermodal {
+    top: 166px;
+    left: 210px;
+    height: 468px;
+    width: 860px;
+    color: #b8a80d;
+  }
+
+  .inloggenmodal {
+    top: 166px;
+    left: 210px;
+    height: 468px;
+    width: 860px;
+    color: #b8a80d;
+  }
+
+  .wachtwoordmodal {
+    top: 166px;
+    left: 210px;
+    height: 468px;
+    width: 860px;
+    color: #b8a80d;
+  }
+
+  .editormodal {
+    top: 76px;
+    left: 133px;
+    height: 50%;
+    width: 50%;
+    color: #b8a80d;
+  }
+
+  .editorarea {
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 50%;
+    width: 50%;
+  }
+
+  .myModal {
+    top: 76px;
+    left: 133px;
+    height: 80%;
+    width: 74%;
+    color: #b8a80d;
+  }
+
+  .tile {
+    margin: 5px 20px 10px 10px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .row-button {
+    width: 200px;
+  }
+
+  .logintext {
+    margin: 20px 20px 10px 10px;
+    font-size: 16px
+  }
+}
+
+.platform-ios .modalKaartOptions {
+  width: 330px;
+  height: 80%;
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px) and (orientation: portrait) {
+
+  .overtrinl {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .platform-ios .signinmodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .signinmodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  /*
+  .platform-ios .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-ios .modalKaartOptionsSmR {
+    background: green;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmR {
+    background: blue;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+*/
+  .disclaimermodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .platform-ios .registreermodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-ios .inloggenmodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-ios .wachtwoordmodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .registreermodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .inloggenmodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .wachtwoordmodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .editormodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .editorarea {
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 160px;
+    width: 755px;
+  }
+
+  .myModal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .tile {
+    margin: 5px 20px 10px 10px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .row-button {
+    width: 200px;
+  }
+
+  .logintext {
+    margin: 20px 20px 10px 10px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 799px) and (orientation: portrait) {
+
+  .overtrinl {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .platform-ios .signinmodal {
+    /*    background: green; */
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .signinmodal {
+    /*    background: green; */
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  /*
+  .platform-ios .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+/*
+  .platform-android .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-ios .modalKaartOptionsSmR {
+    background: green;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmR {
+    background: blue;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+*/
+  .disclaimermodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .platform-ios .registreermodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-ios .inloggenmodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-ios .wachtwoordmodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .registreermodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .inloggenmodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .wachtwoordmodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .editormodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .editorarea {
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 160px;
+    width: 755px;
+  }
+
+  .myModal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .tile {
+    margin: 5px 20px 10px 10px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .row-button {
+    width: 200px;
+  }
+
+  .logintext {
+    margin: 20px 20px 10px 10px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 800px) and (orientation: portrait) {
+
+  .overtrinl {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .platform-ios .signinmodal {
+    /*    background: green; */
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .signinmodal {
+    /*    background: green; */
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  /*
+  .platform-ios .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmL {
+    top: 45px;
+    bottom: 45px;
+    left: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-ios .modalKaartOptionsSmR {
+    background: green;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+
+  .platform-android .modalKaartOptionsSmR {
+    background: blue;
+    top: 45px;
+    bottom: 45px;
+    right: 0;
+    width: 50px;
+    opacity: 0.4 !important;
+  }
+*/
+  .disclaimermodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .platform-ios .registreermodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-ios .inloggenmodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-ios .wachtwoordmodal {
+    top: 252px;
+    left: 0;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .registreermodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .inloggenmodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .platform-android .wachtwoordmodal {
+    top: 380px;
+    left: 16px;
+    height: 520px;
+    width: 768px;
+    color: #b8a80d;
+  }
+
+  .editormodal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .editorarea {
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 160px;
+    width: 755px;
+  }
+
+  .myModal {
+    top: 194px;
+    left: 8px;
+    height: 62%;
+    width: 98%;
+    color: #b8a80d;
+  }
+
+  .tile {
+    margin: 5px 20px 10px 10px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .row-button {
+    width: 200px;
+  }
+
+  .logintext {
+    margin: 20px 20px 10px 10px;
+    font-size: 16px;
+  }
+}
+
+.item-divider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #f5f5f5;
+  color: #222;
+  font-weight: bold;
+}
+
+.myitem-divider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #d6d6d6;
+  color: #222;
+  font-weight: bold;
+}
+
+.platform-android .modal .myitem-divider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #d6d6d6;
+  color: #222;
+  font-weight: bold;
+}
+
+.platform-android .modal .myitem-subdivider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #ebebeb;
+  color: #222;
+}
+
+.platform-ios .modal .myitem-divider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #ebebeb;
+  color: #222;
+  font-weight: bold;
+}
+
+.myitem-subdivider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+.platform-ios .modal .myitem-subdivider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+.platform-android .popover .myitem-divider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #d6d6d6;
+  color: #222;
+  font-weight: bold;
+}
+
+.platform-android .popover .myitem-subdivider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #ebebeb;
+  color: #222;
+}
+
+.platform-ios .popover .myitem-divider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #d6d6d6;
+  color: #222;
+  font-weight: bold;
+}
+
+.platform-ios .popover .myitem-subdivider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+.helpmodal {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.downloadmodal {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.testmodal {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.settingmodal {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.fotomodal {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.trackmodal {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.mylistitemlaag {
+  height: 54px;
+}
+
+.mylistitem {
+  margin-left: 2px;
+  width: 45px;
+}
+
+.itemwithicon {
+  border-color: #ddd;
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: -1px;
+  padding-top: 12px;
+  padding-bottom: 16px;
+  padding-right: 13px;
+  padding-left: 16px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 16px;
+}
+
+
+.platform-browser .iconinlistitem {
+  margin-top: 2px;
+  margin-right: -20px;
+  width: 40px;
+}
+
+.platform-android .iconinlistitem {
+  margin-top: 1px;
+  margin-right: -20px;
+  width: 30px;
+}
+
+.platform-ios .iconinlistitem {
+  margin-top: 4px;
+  margin-right: -20px;
+  width: 40px;
+}
+
+.iconinlistitem {
+  margin-top: -6px;
+  margin-right: -20px;
+  width: 40px;
+  height: 40px;
+}
+
+.iconinlistitemdivider {
+  float: right;
+  margin-top: 0px;
+  margin-right: -20px;
+  width: 40px;
+  height: 40px;
+}
+
+.platform-ios .iconinlistitemdivider {
+  float: right;
+  margin-top: -5px;
+  margin-right: -20px;
+  width: 40px;
+  height: 40px;
+}
+
+.platform-android .iconinlistitemdivider {
+  float: right;
+  margin-top: -5px;
+  margin-right: -20px;
+  width: 40px;
+  height: 40px;
+}
+
+.my-precache-icon24 {
+  margin-right: 16px;
+  margin-left: 0px;
+  font-size: 24px;
+}
+
+.my-icon16 {
+  margin-right: 20px;
+  margin-left: 2px;
+  font-size: 16px;
+}
+
+.my-icon24 {
+  margin-right: 18px;
+  margin-left: 4px;
+  font-size: 24px;
+}
+
+.my-icon28 {
+  margin-right: 17px;
+  margin-left: 2px;
+  font-size: 28px;
+}
+
+.my-icon32 {
+  margin-right: 20px;
+  margin-left: 2px;
+  font-size: 32px;
+}
+
+.iconinradio {
+  z-index: 999;
+  float: right;
+  margin-top: -12px;
+  margin-right: -8px;
+  width: 40px;
+  height: 40px;
+}
+
+.rangefooter {
+  width: 400px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  padding: 2px 11px;
+}
+
+.range.range-light input::-webkit-slider-thumb:before {
+  background: #ddd;
+}
+
+.range.range-light input::-ms-fill-lower {
+  background: #ddd;
+}
+
+.range.range-stable input::-webkit-slider-thumb:before {
+  background: #b2b2b2;
+}
+
+.range.range-stable input::-ms-fill-lower {
+  background: #b2b2b2;
+}
+
+.range.range-positive input::-webkit-slider-thumb:before {
+  background: #009bc9;
+}
+
+.range.range-positive input::-ms-fill-lower {
+  background: #009bc9;
+}
+
+.range.range-calm input::-webkit-slider-thumb:before {
+  background: #11c1f3;
+}
+
+.range.range-calm input::-ms-fill-lower {
+  background: #11c1f3;
+}
+
+.range.range-balanced input::-webkit-slider-thumb:before {
+  background: #aa2017;
+}
+
+.range.range-balanced input::-ms-fill-lower {
+  background: #aa2017;
+}
+
+.range.range-assertive input::-webkit-slider-thumb:before {
+  background: #c3b600;
+}
+
+.range.range-assertive input::-ms-fill-lower {
+  background: #c3b600;
+}
+
+.range.range-energized input::-webkit-slider-thumb:before {
+  background: #ffc900;
+}
+
+.range.range-energized input::-ms-fill-lower {
+  background: #ffc900;
+}
+
+.range.range-royal input::-webkit-slider-thumb:before {
+  background: #886aea;
+}
+
+.range.range-royal input::-ms-fill-lower {
+  background: #886aea;
+}
+
+.range.range-dark input::-webkit-slider-thumb:before {
+  background: #444;
+}
+
+.range.range-dark input::-ms-fill-lower {
+  background: #444;
+}
+
+.footerbuttoncenter {
+  width: 44px
+}
+
+.footerimg {
+  margin-top: 9px;
+  width: 20px
+}
+
+.footerbutton {
+  width: 44px
+}
+
+.platform-android .footerbutton {
+  width: 44px
+}
+
+.footertekstXY {
+  /*  border-style: solid;
+  border-width: 1px; */
+  margin-top: 7px;
+  width: 60px
+}
+
+.footerX {
+  margin-left: 3px;
+  margin-right: 1px;
+  margin-top: 7px;
+  width: 55px
+}
+
+.footerY {
+  margin-right: 1px;
+  margin-top: 7px;
+  width: 55px
+}
+
+.footerroos {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-right: 5px;
+}
+
+.footermap {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+.footerToggleRight {
+  float: right;
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 5;
+}
+
+.footerToggleLeft {
+  float: left;
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 5;
+}
+
+.footergps {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 5;
+}
+
+.footergpsgreen {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 5;
+  color: #00FF00;
+}
+
+.footergpsred {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 5;
+  color: red;
+}
+
+.footersunny {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 5;
+}
+
+.footersearch {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 5;
+}
+
+.footertekstlatlng {
+  margin-top: 7px;
+  width: 140px
+}
+
+.footertekstlatlnglong {
+  margin-left: 5px;
+  margin-top: 7px;
+  width: 220px
+}
+
+.footertekstgps {
+  margin-top: 7px;
+  width: 35px
+}
+
+.vleegtuug {
+  margin-top: 1px;
+}
+
+.my-icon {
+  margin-top: 27px;
+  width: 44px;
+}
+
+.footerZoomTitle {
+  margin-left: 10px;
+  margin-top: 7px;
+  width: 40px
+}
+
+.footerZoomTekst {
+  margin-left: 5px;
+  margin-top: 7px;
+  width: 45px
+}
+
+.footerSearchTekst {
+  margin-left: 5px;
+  margin-top: 7px;
+  width: 20px
+}
+
+.footerTileTitle {
+  margin-left: 10px;
+  margin-top: 7px;
+  width: 45px
+}
+
+.footerOrientTitle {
+  margin-left: 10px;
+  margin-top: 7px;
+  width: 65px
+}
+
+.footerrecord {
+  margin-top: 3px;
+  width: 40px
+}
+
+.menuZ {
+  margin-top: -4px;
+  width: 45px;
+  text-align: center;
+}
+
+.crosshair {
+  z-index: 800;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.footercrosshair {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  width: 44px;
+}
+
+.longtext {
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  word-wrap: true;
+}
+
+.right {
+  margin-left: 10px;
+}
+
+.rightwater {
+  margin-left: 35px;
+}
+
+.crosshair-icon {
+  width: 44px;
+}
+
+.leg-tekst {
+  width: 70%;
+  float: left;
+}
+
+.leg-tekst-bold {
+  font-weight: bold;
+  width: 70%;
+  float: left;
+}
+
+.leg-afkorting {
+  font-size: 12px;
+  width: 35px;
+  float: left;
+}
+
+.leg-tekst-image {
+  margin-top: -32px;
+  margin-left: 36px;
+}
+
+.legenda-MaasKanalen {
+  background-color: #0038fd;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-NatuurBeken {
+  background-color: #1476da;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-OverigeBeken {
+  background-color: #20b2aa;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda {
+  background-color: #FCEDB1;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-0 {
+  background-color: #FCEDB1;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-5 {
+  background-color: #F0CD7D;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-10 {
+  background-color: #C98A68;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-20 {
+  background-color: #A33910;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-50 {
+  background-color: #6F0008;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.rood_vierkant_Icon {
+  background-color: #e31736;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 18px;
+  height: 18px;
+}
+
+.groen_vierkant_Icon {
+  background-color: #02880a;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 18px;
+  height: 18px;
+}
+
+.legenda-l-363-420kV {
+  background-color: #ff0066;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-l-146-170kV {
+  background-color: #0055ff;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-k-146-170kV {
+  background-color: #4dc4c4;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-k-60_1-66kV {
+  background-color: #ffd47f;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-k-40_5-80kV {
+  background-color: #d5d580;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-k-30-40_4kV {
+  background-color: #9b7d9b;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-staatsbosbeheer {
+  background-color: #9c5828;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-limburgs-landschap {
+  background-color: #634faf;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-natuurmonumenten {
+  background-color: #34b32c;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-uitsluiting {
+  background-color: #abcd66;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-uitsluiting-mens {
+  background-color: #ffff00;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-uitsluiting-natuur {
+  background-color: #abcd66;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-zoek {
+  background-color: #8400a8;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-bepalen {
+  background-color: #ffffff;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-stedelijkcentrum {
+  background-color: #feb3e7;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-stedelijkgebied {
+  background-color: #fdb19c;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-landelijkekern {
+  background-color: #fee7fd;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-bedrijventerrein {
+  background-color: #cdb4fd;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-goudgroen {
+  background-color: #b5fd9e;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-zilvergroen {
+  background-color: #e9febd;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-bronsgroen {
+  background-color: #b3cccb;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-buitengebied {
+  background-color: #fee5b3;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.legenda-image {
+  width: 25px;
+  height: 10px;
+  margin-top: 5px;
+  margin-right: 5px;
+  float: left;
+  z-index: 999;
+}
+
+.legenda-verkeer-image {
+  width: 40px;
+  height: 5px;
+  margin-top: 8px;
+  margin-right: 10px;
+  float: left;
+  z-index: 999;
+}
+
+.legenda-verkeer-dik-image {
+  width: 40px;
+  height: 10px;
+  margin-top: 6px;
+  margin-right: 10px;
+  float: left;
+  z-index: 999;
+}
+
+.legenda-verkeer-streep-image {
+  width: 40px;
+  height: 3px;
+  margin-top: 10px;
+  margin-right: 10px;
+  float: left;
+  z-index: 999;
+}
+
+.legenda-toegang-image {
+  width: 25px;
+  height: 3px;
+  margin-top: 10px;
+  margin-right: 25px;
+  float: left;
+  z-index: 999;
+}
+
+.legenda-luchthaven-image {
+  width: 25px;
+  height: 10px;
+  margin-top: 5px;
+  margin-right: 25px;
+  float: left;
+  z-index: 999;
+}
+
+.legenda-terrein-image {
+  width: 25px;
+  height: 10px;
+  margin-top: 6px;
+  margin-right: 25px;
+  float: left;
+  z-index: 999;
+}
+
+.legenda-brug-image {
+  width: 30px;
+  height: 10px;
+  margin-top: 6px;
+  margin-right: 20px;
+  float: left;
+  z-index: 999;
+}
+
+.legenda-belangrijk-image {
+  width: 10px;
+  height: 10px;
+  margin-top: 6px;
+  margin-right: 40px;
+  float: left;
+  z-index: 999;
+}
+
+.legenda-station-image {
+  width: 6px;
+  height: 6px;
+  margin-top: 10px;
+  margin-right: 44px;
+  float: left;
+  z-index: 999;
+}
+
+.p1 {
+  background-color: #03716B;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.p2 {
+  background-color: #ACB973;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.p3 {
+  background-color: #CDD4A8;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.p4 {
+  background-color: #F9D38C;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.p5a {
+  background-color: #F1C169;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.p5b {
+  background-color: #E9AB43;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.p6 {
+  background-color: #F3A78B;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.p7 {
+  margin-left: -7px;
+  margin-top: -11px;
+  width: 45px;
+  float: left;
+}
+
+.p8 {
+  background-color: #F8F290;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.p9 {
+  background-color: #F6C5A5;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 10px;
+}
+
+.grensStedelijk {
+  background-color: #5A234B;
+  margin-top: 8px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 3px;
+}
+
+.intWegen {
+  background-color: #C76153;
+  margin-top: 8px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 3px;
+}
+
+.regWegen {
+  background-color: #E2AFA5;
+  margin-top: 8px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 3px;
+}
+
+.spoor {
+  background-color: #A6A2A3;
+  margin-top: 8px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 3px;
+}
+
+.water {
+  position: relative;
+  width: 25px;
+  height: 3px;
+}
+
+.water1 {
+  position: absolute;
+  background-color: #75A8D3;
+  left: 0;
+  top: 8px;
+  width: 12px;
+  height: 10px;
+}
+
+.water2 {
+  position: absolute;
+  background-color: #D9E1E8;
+  left: 12px;
+  top: 8px;
+  width: 13px;
+  height: 10px;
+}
+
+.provincie {
+  background-color: #534F50;
+  margin-top: 8px;
+  margin-right: 10px;
+  float: left;
+  width: 25px;
+  height: 3px;
+}
+
+.themaleg-image {
+  width: 40px;
+  height: 5px;
+  margin-top: 8px;
+  margin-right: 10px;
+  float: left;
+  z-index: 999;
+}
+
+.themaleg-tekst {
+  width: 70%;
+  float: left;
+}
+
+#lfmap {
+  height: 100%;
+  transform: none;
+}
+
+.scroll {
+  height: 100%;
+}
+
+.legend {
+  line-height: 18px;
+  color: #555;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
+}
+
+.leaflet-tile {
+  -webkit-backface-visibility: visible !important;
+}
+
+.leaflet-popup-close-button {
+  display: none;
+}
+
+.leaflet-label-right {
+  font: 10px "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+}
+
+.leaflet-label-overlay {
+  position: absolute;
+  text-align: center;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.popup-container .popup {
+  width: 280px;
+}
+
+.loader {
+  width: 24px;
+  height: 24px;
+  float: center;
+}
+
+.menuright {
+  float: right;
+}
+
+.aantal {
+  text-align: right;
+}
+
+/*
+.ionicLoading {
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    padding: 20px;
+}
+
+.loading-container .loading {
+    background-color: white;
+    color: black;
+
+    width: 50% !important;
+    border-width: 2px !important;
+    border-color: black !important;
+    border-style: solid !important;
+}
+*/
+.scroll {
+  height: 100%
+}
+
+.steden-image {
+  max-width: 100%;
+}
+
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  overflow: auto;
+  position: absolute;
+  z-index: 999;
+}
+
+.aligner {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  margin-top: 25px;
+}
+
+​ .avatar50 {
+  width: 50px;
+  height: 50px;
+}
+
+
+[class*="span"] {
+  float: left;
+}
+
+.embedded-posts.top {
+  margin-left: 112px;
+}
+
+.embedded-posts {
+  background: whitesmoke;
+}
+
+.row:before,
+.row:after {
+  display: table;
+  content: "";
+}
+
+.hide,
+.hidden {
+  display: none;
+}
+
+.gap {
+  background-color: whitesmoke;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  color: #8c8c8c;
+  cursor: pointer;
+  text-align: center;
+  width: 820px;
+}
+
+.clearfix:after,
+.container:after {
+  clear: both;
+}
+
+.post-cloak {
+  padding: 0;
+}
+
+.topic-list-item td:first-child,
+.topic-post {
+  background-color: inherit;
+  border-left: 1px solid transparent;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: transparent;
+}
+
+.topic-post article.boxed {
+  position: relative;
+  line-height: 21px;
+}
+
+body .boxed {
+  height: 100%;
+  border-radius: 5px;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+.boxed {
+  position: relative;
+  line-height: 21px;
+}
+
+.span2 {
+  max-width: 92px;
+}
+
+.span5 {
+  max-width: 200px;
+}
+
+.span14 {
+  width: 7%;
+  max-width: 720px;
+}
+
+.topic-body {
+  border-top: 1px solid #e6e6e6;
+  float: left;
+  position: relative;
+  padding: 10px 10px 15px 20px;
+}
+
+.topic-meta-data {
+  float: left;
+  position: relative;
+}
+
+.gutter {
+  float: left;
+  width: 15%;
+  margin-top: 6px;
+  padding-left: 10px;
+}
+
+.clearfix:before,
+.container:before,
+.clearfix:after,
+.container:after {
+  display: table;
+  content: " ";
+}
+
+.button.button-icon.input-button {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  right: 15px;
+  color: #bbb;
+}
+
+.leaflet-popup-content {
+  /*
+  white-space:pre-wrap;
+  max-height: 460px;
+  max-width: 270px;
+  overflow : auto;
+  overflow-x: hidden;
+*/
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item .icon .icon-badge {
+  top: 3px;
+  right: 0px;
+  width: 10px;
+  height: 10px;
+  font-size: 8px;
+}
+
+.notify {
+  color: red !important;
+}
+
+.trinl-title-left {
+  padding-top: 4px;
+  padding-left: 12px;
+  width: 100%;
+  font-size: 16px;
+  float: left !important;
+}
+
+.trinl-sidemenu-gebruiker-container {
+  display: inline-block;
+  max-height: 100px;
+  margin-left: 0px;
+  margin-top: -14px;
+}
+
+.trinl-sidemenu-gebruiker {
+  margin: -1px 0 0 4px;
+  font-size: 12px;
+  float: left;
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+.trinl-sidemenu-profiel {
+  margin: 10px 0 0 0;
+  font-size: 12px;
+}
+
+.trinl-profiel {
+  margin: 0px 0px 0px 0px;
+  font-size: 12px;
+}
+
+.trinl-sidemenu-padding {
+  padding-right: 1 !important;
+}
+
+.trinl-icons-card {
+  clear: left !important;
+  margin-left: 0 !important;
+}
+
+.trinl-icon-edit {
+  font-size: 24px !important;
+}
+
+.trinl-icon-popup {
+  font-size: 24px !important;
+}
+
+.one {
+  float: left;
+}
+
+.two {
+  float: left;
+}
+
+.trinl-popup-wijzig-verwijder-dummy {
+  display: block !important;
+  float: left !important;
+  width: 150px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 4px 0 0 -5px !important;
+}
+
+.trinl-popup-icon-left-dummy {
+  float: left !important;
+  width: 35px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 5px 0 0 4px !important;
+}
+
+.trinl-popup-wijzig {
+  display: block !important;
+  float: left !important;
+  width: 80px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 4px 0 0 0 !important;
+}
+
+.trinl-popup-verwijder {
+  display: block !important;
+  float: left !important;
+  width: 100px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 4px 0 0 0 !important;
+}
+
+.trinl-popup-icon-right {
+  float: right !important;
+  width: 3px !important;
+  font-size: 16px !important;
+  text-align: right !important;
+  margin: 5px 0 0 4px !important;
+}
+
+.trinl-popup-icon-left {
+  float: left !important;
+  width: 31px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 5px 0 0 4px !important;
+}
+
+.trinl-text-wijzig-left {
+  font-size: 14px !important;
+  width: 40px !important;
+  margin: -22px 0 0 22px !important;
+}
+
+.trinl-text-verwijder-left {
+  font-size: 14px !important;
+  width: 90px !important;
+  margin: -22px 0 0 22px !important;
+}
+
+.trinl-text-edit-left {
+  font-size: 14px !important;
+  width: 64px !important;
+  margin: -22px 0 0 22px !important;
+}
+
+.trinl-text-popup-left {
+  font-size: 14px !important;
+  width: 64px !important;
+  margin: -25px 0 0 22px !important;
+}
+
+.trinl-text-edit-right {
+  font-size: 14px !important;
+  margin: -22px 26px 0 0 !important;
+}
+
+.trinl-edit-left {
+  display: block !important;
+  float: left !important;
+  width: 85px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 10px 0 0 -4px !important;
+}
+
+.trinl-verwijder-left {
+  display: block !important;
+  float: left !important;
+  width: 90px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 10px 0 0 -4px !important;
+}
+
+.trinl-verwijder-left-small {
+  display: block !important;
+  float: left !important;
+  width: 45px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 10px 0 0 -4px !important;
+}
+
+.trinl-wijzig-left {
+  display: block !important;
+  float: left !important;
+  width: 56px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 10px 0 0 -4px !important;
+}
+
+.trinl-wijzig-left-small {
+  display: block !important;
+  float: left !important;
+  width: 45px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 10px 0 0 -4px !important;
+}
+
+.trinl-edit-left-small {
+  display: block !important;
+  float: left !important;
+  width: 50px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 10px 0 0 -5px !important;
+}
+
+.trinl-edit-left-medium {
+  display: block !important;
+  float: left !important;
+  width: 100px !important;
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 10px 0 0 0 !important;
+}
+
+.trinl-reactie-right {
+  display: block !important;
+  float: right !important;
+  width: 85px !important;
+  font-size: 16px !important;
+  text-align: right !important;
+  margin: 10px -10px 0 0 !important;
+}
+
+.trinl-kaart-right {
+  display: block !important;
+  float: right !important;
+  width: 75px !important;
+  font-size: 16px !important;
+  text-align: right !important;
+  margin: 10px -10px 0 0 !important;
+}
+
+.trinl-reactie-right-small {
+  display: block !important;
+  float: right !important;
+  width: 45px !important;
+  font-size: 16px !important;
+  text-align: right !important;
+  margin: 10px -10px 0 0 !important;
+}
+
+.trinl-kaart-right-small {
+  display: block !important;
+  float: right !important;
+  width: 45px !important;
+  font-size: 16px !important;
+  text-align: right !important;
+  margin: 10px -10px 0 0 !important;
+}
+
+.trinl-edit-right {
+  display: block !important;
+  float: right !important;
+  width: 75px !important;
+  font-size: 16px !important;
+  text-align: right !important;
+  margin: 10px -10px 0 0 !important;
+}
+
+.trinl-edit-right-100 {
+  display: block !important;
+  float: left !important;
+  width: 100% !important;
+  font-size: 16px !important;
+  text-align: right !important;
+  margin: 10px 0 0 0 !important;
+}
+
+.space-left-icon {
+  margin-left: -4px;
+}
+
+.space-right-icon {
+  margin-right: 10px;
+}
+
+.label-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.spacer {
+  height: 5px;
+}
+
+.spacer10 {
+  height: 10px;
+}
+.spacer20 {
+  height: 20px;
+}
+
+.spacer30 {
+  height: 30px;
+}
+
+.card-foto {
+  margin: 0 0 0 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cardFullScreen-foto {
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.trinl-no-padding-top {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.trinl-avatar-sideMenu {
+  margin: 0 0 0 0;
+}
+
+.trinl-avatar {
+  max-width: 35px !important;
+  padding: 0 0 0 0;
+  margin: -4px 0 0 -4px;
+}
+
+.trinl-help-avatar {
+  max-width: 25px !important;
+  padding: 0 0 0 0;
+  margin: -4px 0 0 -4px;
+}
+
+.trinl-labelplus {
+  margin-left: -8px;
+}
+
+.trinl-avatar-anoniem {
+  max-width: 35px !important;
+  padding: 0 0 0 0;
+  margin: -2px 0 0 -4px;
+}
+
+.trinl-avatar-anoniem-img {
+  height: 32px;
+  width: 32px;
+}
+
+.trinl-reactie-gebruiker-datum-socio-container {
+  display: block;
+  height: 50px;
+  width: 100% !important;
+  margin-top: -14px;
+  margin-right: -14px;
+  float: right;
+}
+
+.trinl-gebruiker-datum-socio-container {
+  display: block;
+  height: 75px;
+  width: 100% !important;
+  margin-top: -14px;
+  margin-right: -14px;
+  float: right;
+}
+
+.trinl-gebruiker {
+  display: block;
+  height: 25px;
+  min-width: 200px !important;
+  font-size: 12px;
+  float: right;
+  text-align: right;
+  white-space: pre-wrap;
+}
+
+.trinl-datums-container {
+  display: block;
+  padding-top: 2px !important;
+  height: 25px;
+  width: 100% !important;
+  float: right;
+}
+
+.trinl-datum {
+  display: block;
+  height: 25px;
+  width: auto !important;
+  font-size: 12px;
+  float: right;
+  text-align: right;
+}
+
+.trinl-datum-ago {
+  display: block;
+  padding-right: 8px !important;
+  height: 25px;
+  width: auto !important;
+  font-size: 12px;
+  float: right;
+  text-align: right;
+}
+
+.trinl-socio-container {
+  display: block;
+  height: 25px;
+  width: 100% !important;
+  float: right;
+}
+
+.trinl-socio-icons {
+  height: 25px;
+  width: auto !important;
+  float: right;
+  font-size: 40px;
+}
+
+.trinl-socio-icons-aantal {
+  margin-top: 2px !important;
+  height: 25px;
+  width: auto !important;
+  float: right;
+  font-size: 40px;
+}
+
+/*
+.trinl-socio-star {
+  height: 25px;
+  min-width: 30px !important;
+  float: right;
+  font-size: 40px;
+}
+*/
+.trinl-help-icon {
+  height: 30px;
+  min-width: 30px !important;
+  float: right;
+  font-size: 25px;
+}
+
+.trinl-socio-icon {
+  height: 25px;
+  min-width: 25px !important;
+  float: right;
+  font-size: 40px;
+}
+
+.trinl-socio-spacer {
+  height: 25px;
+  min-width: 16px !important;
+  float: right;
+}
+
+.trinl-socio-spacer-small {
+  height: 25px;
+  min-width: 8px !important;
+  float: right;
+}
+
+.trinl-socio-text {
+  display: block;
+  height: 25px;
+  min-width: 50px !important;
+  margin-top: 0;
+  font-size: 12px;
+  float: right;
+  text-align: right;
+}
+
+.trinl-socio-icontext {
+  display: block;
+  height: 22px;
+  width: auto !important;
+  margin-top: 0;
+  font-size: 12px;
+  float: right;
+  text-align: right;
+}
+
+.trinl-help-naam {
+  clear: left !important;
+  display: inline-block !important;
+  min-height: 20px !important;
+  width: 95% !important;
+  margin: 0 0 0 0 !important;
+  color: #009bc9 !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+
+.trinl-naam {
+  overflow:hidden;
+  height: 1%;
+  width: 100% !important;
+  color: #aa2017 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  overflow-wrap: break-word !important;
+}  
+
+.trinl-listnaam {
+  overflow:hidden;
+  height:1%;
+  width: 100% !important;
+  margin-top: 0 !important;
+  color: #aa2017 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  white-space: normal !important;
+}
+
+.trinl-groeptext {
+  width: 100% !important;
+  margin-top: -16px !important;
+  color: #aa2017 !important;
+  font-size: 12px;
+  text-align: right !important;
+}
+
+.trinl-helpgroeptext {
+  width: 100% !important;
+  margin-left: -32px !important;
+  color: #aa2017 !important;
+  font-size: 12px;
+  text-align: right !important;
+}
+
+.trinl-listgroeptext {
+  width: 100% !important;
+  margin-top: -20px !important;
+  color: #aa2017 !important;
+  font-size: 12px;
+  text-align: right !important;
+}
+
+.trinl-naam-kaart {
+  display: block !important;
+  max-height: 20px !important;
+  width: 100% !important;
+  color: #aa2017 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.trinl-tekst {
+  display: block !important;
+  width: 100% !important;
+  min-height: 30px !important;
+  margin-top: -12px !important;
+  font-size: 16px !important;
+  white-space: pre-wrap !important;
+}
+
+.trinl-tracknaamtekst {
+  color: #aa2017 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.trinl-tracknaam {
+  display: inline-block !important;
+  width: 100% !important;
+  margin-top: -12px !important;
+  min-height: 20px !important;
+  font-size: 16px !important;
+}
+
+.trinl-reactie-tekst {
+  display: block;
+  width: 100%;
+  margin: -30px 0 0 -4px !important;
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+.trinl-titel {
+  display: inline-block;
+  margin: 0 0 0 2px;
+  padding: 10px 0 10px 17px;
+  font-size: 16px;
+}
+
+.trinl-historie-version {
+  width: 100%;
+  margin: 0 0 0 0 !important;
+  font-size: 16px;
+}
+
+.trinl-historie-tekst {
+  width: 100%;
+  margin: 0 0 0 0 !important;
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+.trinl-button-container-left {
+  padding: 0;
+  width: 55%;
+  margin: 10px 0 10px 0 !important;
+}
+
+.trinl-button-container-right {
+  padding: 0;
+  width: 45%;
+  margin: 10px 0 10px 0 !important;
+}
+
+.trinl-button-container {
+  padding: 20px 12px 30px 6px !important;
+  height: 24px !important;
+  width: 100%;
+  margin: -20px 0 10px 0 !important;
+}
+
+.trinl-titel-coords {
+  color: #aa2017 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  margin-top: -20px !important;
+}
+
+.trinl-tekst-coords {
+  display: inline-block !important;
+  width: 100% !important;
+  min-height: 20px !important;
+  font-size: 16px !important;
+  margin-top: -14px !important;
+}
+
+.trinl-plus-disabled {
+  margin-left: 4px;
+  font-size: 20px !important;
+  color: silver !important;
+}
+
+.trinl-text-disabled {
+  font-size: 16px !important;
+  color: silver !important;
+}
+
+.trinl-headertext-disabled {
+  font-size: 16px !important;
+  color: silver !important;
+}
+
+.trinl-card-plus {
+  height: 0px !important;
+}
+
+.trinl-plus-start {
+  margin-left: -6px !important;
+  font-size: 20px !important;
+  color: black !important;
+}
+
+.trinl-plus {
+  margin-left: 4px !important;
+  font-size: 20px !important;
+  color: black !important;
+}
+
+.trinl-flex-wrap {
+  flex-wrap: pre-wrap;
+}
+
+.trinl-fluid {
+  display: flex;
+  flex-direction: row;
+  white-space: pre-wrap;
+}
+
+.trinl-tags {
+  margin: 0 0 0 6px;
+  color: black !important;
+  min-height: 60px;
+}
+
+.trinl-tag-disabled {
+  margin: 20px 0 0 6px;
+  color: silver !important;
+  min-height: 60px;
+}
+
+.trinl-tags:after {
+  clear: both;
+  display: block;
+  height: 20px;
+  overflow: hidden;
+  visibility: hidden;
+  color: black !important;
+  font-size: 14px;
+  padding: 40px 0 0 3px;
+  float: left;
+}
+
+.trinl-tags-list {
+  margin: 0 0 0 -6px;
+  color: black !important;
+  min-height: 30px;
+}
+
+.trinl-tags-list:after {
+  clear: both;
+  display: block;
+  height: 20px;
+  overflow: hidden;
+  visibility: hidden;
+  color: black !important;
+  font-size: 14px;
+  padding: 40px 0 0 3px;
+  float: left;
+}
+
+.trinl-tags-disabled {
+  margin: 0 0 0 -2px;
+  color: silver !important;
+  min-height: 60px;
+}
+
+.trinl-tags-disabled:after {
+  clear: both;
+  display: block;
+  height: 20px;
+  overflow: hidden;
+  visibility: hidden;
+  color: silver !important;
+  font-size: 14px;
+  padding: 40px 0 0 0;
+  float: left;
+}
+
+.trinl-tag {
+  display: inline;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  border: 1px solid black;
+  display: inline;
+  width: auto;
+  border-radius: 25px;
+  border: 1px solid #73AD21;
+  margin-top: 10px;
+  margin-right: 10px;
+  height: 30px;
+  float: left;
+}
+
+.trinl-tag-rood {
+  display: inline;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  border: 1px solid black;
+  display: inline;
+  width: auto;
+  border-radius: 25px;
+  border: 1px solid #73AD21;
+  margin-top: 10px;
+  margin-right: 10px;
+  height: 30px;
+  float: left;
+  background-color: #aa2017;
+}
+
+.trinl-tag-blauw {
+  display: inline;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  border: 1px solid black;
+  display: inline;
+  width: auto;
+  border-radius: 25px;
+  border: 1px solid #73AD21;
+  margin-top: 10px;
+  margin-right: 10px;
+  height: 30px;
+  float: left;
+  background-color: #009bc9;
+}
+
+.trinl-tag-disabled {
+  display: inline;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  border: 1px solid black;
+  display: inline;
+  color: silver !important;
+  border-radius: 25px;
+  border: 1px solid #73AD21;
+  margin-right: 10px;
+}
+
+.trinl-tag-icon-left {
+  display: inline-block;
+  padding: 3px 1px 0 8px;
+  width: 24px;
+}
+
+.trinl-tag-icon-right {
+  display: inline-block;
+  margin-left: -8px;
+  width: 24px;
+}
+
+.trinl-tag-icon-left-wit {
+  display: inline-block;
+  padding: 3px 1px 0 10px;
+  width: 30px;
+  color: white;
+}
+
+.trinl-tag-icon-right-wit {
+  display: inline-block;
+  padding: 3px 10px 0 10px;
+  width: 30px;
+  color: white;
+}
+
+.trinl-tag-tekst {
+  display: inline-block;
+  padding: 3px 8px 0 0;
+  font-size: 14px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trinl-tag-tekst-wit {
+  display: inline-block;
+  padding: 3px 10px 0 0;
+  font-size: 14px !important;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.gebruikernaam {
+  font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+}
+
+.vliegmachine-image {
+  background: url(../images/vliegmachine.png) no-repeat;
+  width: 24px;
+  /* Width of new image */
+  height: 24px;
+  /* Height of new image */
+}
+
+.vliegmachine-green-image {
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(../images/vliegmachine_green.png) no-repeat;
+  width: 24px;
+  /* Width of new image */
+  height: 24px;
+  /* Height of new image */
+}
+
+.vliegmachine-red-image {
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(../images/vliegmachine_red.png) no-repeat;
+  width: 24px;
+  /* Width of new image */
+  height: 24px;
+  /* Height of new image */
+}
+
+.handleiding-image-portrait {
+  height: 100% !important;
+  max-height: 98% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+
+  vertical-align: middle;
+  padding-left: 5px 5px 5px 5px;
+}
+
+.handleiding-image-landscape-tablet {
+  height: auto !important;
+  max-height: 98% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+
+  vertical-align: middle;
+  padding-left: 5px 5px 5px 5px;
+}
+
+.handleiding-image-landscape-phone {
+  height: auto !important;
+  max-height: 98% !important;
+  width: 75% !important;
+  max-width: 75% !important;
+
+  vertical-align: middle;
+  padding-left: 5px 5px 5px 5px;
+}
+
+.image-list-thumb {
+  padding: 2px 2px 2px 2px;
+  height: 150px;
+}
+
+.image-modal {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.canvas-modal {
+  max-width: 100% !important;
+  min-width: 100% !important;
+  margin-bottom: -10px !important;
+  padding: 0 !important;
+}
+
+.transparent {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  /*    height: 600px; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center, center;
+}
+
+
+/*!
+ * CSS avatars v0.4.0 (https://github.com/rmhdev/css-avatars)
+ * Copyright 2015 Rober Martín H (@rmhdev)
+ * Licensed under MIT
+ */
+
+.avatar {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 20px;
+}
+
+.avatar-sm {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 10px;
+}
+
+.avatar-md {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  font-size: 40px;
+}
+
+.avatar-lg {
+  width: 128px;
+  height: 128px;
+  line-height: 128px;
+  font-size: 80px;
+}
+
+.avatar-letter-a:before {
+  content: "\0061";
+}
+
+.avatar-letter-b:before {
+  content: "\0062";
+}
+
+.avatar-letter-c:before {
+  content: "\0063";
+}
+
+.avatar-letter-d:before {
+  content: "\0064";
+}
+
+.avatar-letter-e:before {
+  content: "\0065";
+}
+
+.avatar-letter-f:before {
+  content: "\0066";
+}
+
+.avatar-letter-g:before {
+  content: "\0067";
+}
+
+.avatar-letter-h:before {
+  content: "\0068";
+}
+
+.avatar-letter-i:before {
+  content: "\0069";
+}
+
+.avatar-letter-j:before {
+  content: "\006A";
+}
+
+.avatar-letter-k:before {
+  content: "\006B";
+}
+
+.avatar-letter-l:before {
+  content: "\006C";
+}
+
+.avatar-letter-m:before {
+  content: "\006D";
+}
+
+.avatar-letter-n:before {
+  content: "\006E";
+}
+
+.avatar-letter-o:before {
+  content: "\006F";
+}
+
+.avatar-letter-p:before {
+  content: "\0070";
+}
+
+.avatar-letter-q:before {
+  content: "\0071";
+}
+
+.avatar-letter-r:before {
+  content: "\0072";
+}
+
+.avatar-letter-s:before {
+  content: "\0073";
+}
+
+.avatar-letter-t:before {
+  content: "\0074";
+}
+
+.avatar-letter-u:before {
+  content: "\0075";
+}
+
+.avatar-letter-v:before {
+  content: "\0076";
+}
+
+.avatar-letter-w:before {
+  content: "\0077";
+}
+
+.avatar-letter-x:before {
+  content: "\0078";
+}
+
+.avatar-letter-y:before {
+  content: "\0079";
+}
+
+.avatar-letter-z:before {
+  content: "\007A";
+}
+
+.avatar {
+  background-color: #333333;
+  color: #eeeeee;
+  text-shadow: #4d4d4d 0.02em 0.02em 0.02em;
+}
+
+.avatar-color-0 {
+  background-color: #000000;
+}
+
+.avatar-color-1 {
+  background-color: #000033;
+}
+
+.avatar-color-2 {
+  background-color: #000066;
+}
+
+.avatar-color-3 {
+  background-color: #000099;
+}
+
+.avatar-color-4 {
+  background-color: #0000cc;
+}
+
+.avatar-color-5 {
+  background-color: #0000ff;
+}
+
+.avatar-color-6 {
+  background-color: #003300;
+}
+
+.avatar-color-7 {
+  background-color: #003333;
+}
+
+.avatar-color-8 {
+  background-color: #003366;
+}
+
+.avatar-color-9 {
+  background-color: #003399;
+}
+
+.avatar-color-10 {
+  background-color: #0033cc;
+}
+
+.avatar-color-11 {
+  background-color: #0033ff;
+}
+
+.avatar-color-12 {
+  background-color: #006600;
+}
+
+.avatar-color-13 {
+  background-color: #006633;
+}
+
+.avatar-color-14 {
+  background-color: #006666;
+}
+
+.avatar-color-15 {
+  background-color: #006699;
+}
+
+.avatar-color-16 {
+  background-color: #0066cc;
+}
+
+.avatar-color-17 {
+  background-color: #0066ff;
+}
+
+.avatar-color-18 {
+  background-color: #009900;
+}
+
+.avatar-color-19 {
+  background-color: #009933;
+}
+
+.avatar-color-20 {
+  background-color: #009966;
+}
+
+.avatar-color-21 {
+  background-color: #009999;
+}
+
+.avatar-color-22 {
+  background-color: #0099cc;
+}
+
+.avatar-color-23 {
+  background-color: #0099ff;
+}
+
+.avatar-color-24 {
+  background-color: #00cc00;
+  color: #333333;
+}
+
+.avatar-color-25 {
+  background-color: #00cc33;
+  color: #333333;
+}
+
+.avatar-color-26 {
+  background-color: #00cc66;
+  color: #333333;
+}
+
+.avatar-color-27 {
+  background-color: #00cc99;
+  color: #333333;
+}
+
+.avatar-color-28 {
+  background-color: #00cccc;
+  color: #333333;
+}
+
+.avatar-color-29 {
+  background-color: #00ccff;
+  color: #333333;
+}
+
+.avatar-color-30 {
+  background-color: #00ff00;
+  color: #333333;
+}
+
+.avatar-color-31 {
+  background-color: #00ff33;
+  color: #333333;
+}
+
+.avatar-color-32 {
+  background-color: #00ff66;
+  color: #333333;
+}
+
+.avatar-color-33 {
+  background-color: #00ff99;
+  color: #333333;
+}
+
+.avatar-color-34 {
+  background-color: #00ffcc;
+  color: #333333;
+}
+
+.avatar-color-35 {
+  background-color: #00ffff;
+  color: #333333;
+}
+
+.avatar-color-36 {
+  background-color: #330000;
+}
+
+.avatar-color-37 {
+  background-color: #330033;
+}
+
+.avatar-color-38 {
+  background-color: #330066;
+}
+
+.avatar-color-39 {
+  background-color: #330099;
+}
+
+.avatar-color-40 {
+  background-color: #3300cc;
+}
+
+.avatar-color-41 {
+  background-color: #3300ff;
+}
+
+.avatar-color-42 {
+  background-color: #333300;
+}
+
+.avatar-color-43 {
+  background-color: #333333;
+}
+
+.avatar-color-44 {
+  background-color: #333366;
+}
+
+.avatar-color-45 {
+  background-color: #333399;
+}
+
+.avatar-color-46 {
+  background-color: #3333cc;
+}
+
+.avatar-color-47 {
+  background-color: #3333ff;
+}
+
+.avatar-color-48 {
+  background-color: #336600;
+}
+
+.avatar-color-49 {
+  background-color: #336633;
+}
+
+.avatar-color-50 {
+  background-color: #336666;
+}
+
+.avatar-color-51 {
+  background-color: #336699;
+}
+
+.avatar-color-52 {
+  background-color: #3366cc;
+}
+
+.avatar-color-53 {
+  background-color: #3366ff;
+}
+
+.avatar-color-54 {
+  background-color: #339900;
+}
+
+.avatar-color-55 {
+  background-color: #339933;
+}
+
+.avatar-color-56 {
+  background-color: #339966;
+}
+
+.avatar-color-57 {
+  background-color: #339999;
+}
+
+.avatar-color-58 {
+  background-color: #3399cc;
+}
+
+.avatar-color-59 {
+  background-color: #3399ff;
+}
+
+.avatar-color-60 {
+  background-color: #33cc00;
+  color: #333333;
+}
+
+.avatar-color-61 {
+  background-color: #33cc33;
+  color: #333333;
+}
+
+.avatar-color-62 {
+  background-color: #33cc66;
+  color: #333333;
+}
+
+.avatar-color-63 {
+  background-color: #33cc99;
+  color: #333333;
+}
+
+.avatar-color-64 {
+  background-color: #33cccc;
+  color: #333333;
+}
+
+.avatar-color-65 {
+  background-color: #33ccff;
+  color: #333333;
+}
+
+.avatar-color-66 {
+  background-color: #33ff00;
+  color: #333333;
+}
+
+.avatar-color-67 {
+  background-color: #33ff33;
+  color: #333333;
+}
+
+.avatar-color-68 {
+  background-color: #33ff66;
+  color: #333333;
+}
+
+.avatar-color-69 {
+  background-color: #33ff99;
+  color: #333333;
+}
+
+.avatar-color-70 {
+  background-color: #33ffcc;
+  color: #333333;
+}
+
+.avatar-color-71 {
+  background-color: #33ffff;
+  color: #333333;
+}
+
+.avatar-color-72 {
+  background-color: #660000;
+}
+
+.avatar-color-73 {
+  background-color: #660033;
+}
+
+.avatar-color-74 {
+  background-color: #660066;
+}
+
+.avatar-color-75 {
+  background-color: #660099;
+}
+
+.avatar-color-76 {
+  background-color: #6600cc;
+}
+
+.avatar-color-77 {
+  background-color: #6600ff;
+}
+
+.avatar-color-78 {
+  background-color: #663300;
+}
+
+.avatar-color-79 {
+  background-color: #663333;
+}
+
+.avatar-color-80 {
+  background-color: #663366;
+}
+
+.avatar-color-81 {
+  background-color: #663399;
+}
+
+.avatar-color-82 {
+  background-color: #6633cc;
+}
+
+.avatar-color-83 {
+  background-color: #6633ff;
+}
+
+.avatar-color-84 {
+  background-color: #666600;
+}
+
+.avatar-color-85 {
+  background-color: #666633;
+}
+
+.avatar-color-86 {
+  background-color: #666666;
+}
+
+.avatar-color-87 {
+  background-color: #666699;
+}
+
+.avatar-color-88 {
+  background-color: #6666cc;
+}
+
+.avatar-color-89 {
+  background-color: #6666ff;
+}
+
+.avatar-color-90 {
+  background-color: #669900;
+}
+
+.avatar-color-91 {
+  background-color: #669933;
+}
+
+.avatar-color-92 {
+  background-color: #669966;
+}
+
+.avatar-color-93 {
+  background-color: #669999;
+}
+
+.avatar-color-94 {
+  background-color: #6699cc;
+}
+
+.avatar-color-95 {
+  background-color: #6699ff;
+}
+
+.avatar-color-96 {
+  background-color: #66cc00;
+  color: #333333;
+}
+
+.avatar-color-97 {
+  background-color: #66cc33;
+  color: #333333;
+}
+
+.avatar-color-98 {
+  background-color: #66cc66;
+  color: #333333;
+}
+
+.avatar-color-99 {
+  background-color: #66cc99;
+  color: #333333;
+}
+
+.avatar-color-100 {
+  background-color: #66cccc;
+  color: #333333;
+}
+
+.avatar-color-101 {
+  background-color: #66ccff;
+  color: #333333;
+}
+
+.avatar-color-102 {
+  background-color: #66ff00;
+  color: #333333;
+}
+
+.avatar-color-103 {
+  background-color: #66ff33;
+  color: #333333;
+}
+
+.avatar-color-104 {
+  background-color: #66ff66;
+  color: #333333;
+}
+
+.avatar-color-105 {
+  background-color: #66ff99;
+  color: #333333;
+}
+
+.avatar-color-106 {
+  background-color: #66ffcc;
+  color: #333333;
+}
+
+.avatar-color-107 {
+  background-color: #66ffff;
+  color: #333333;
+}
+
+.avatar-color-108 {
+  background-color: #990000;
+}
+
+.avatar-color-109 {
+  background-color: #990033;
+}
+
+.avatar-color-110 {
+  background-color: #990066;
+}
+
+.avatar-color-111 {
+  background-color: #990099;
+}
+
+.avatar-color-112 {
+  background-color: #9900cc;
+}
+
+.avatar-color-113 {
+  background-color: #9900ff;
+}
+
+.avatar-color-114 {
+  background-color: #993300;
+}
+
+.avatar-color-115 {
+  background-color: #993333;
+}
+
+.avatar-color-116 {
+  background-color: #993366;
+}
+
+.avatar-color-117 {
+  background-color: #993399;
+}
+
+.avatar-color-118 {
+  background-color: #9933cc;
+}
+
+.avatar-color-119 {
+  background-color: #9933ff;
+}
+
+.avatar-color-120 {
+  background-color: #996600;
+}
+
+.avatar-color-121 {
+  background-color: #996633;
+}
+
+.avatar-color-122 {
+  background-color: #996666;
+}
+
+.avatar-color-123 {
+  background-color: #996699;
+}
+
+.avatar-color-124 {
+  background-color: #9966cc;
+}
+
+.avatar-color-125 {
+  background-color: #9966ff;
+}
+
+.avatar-color-126 {
+  background-color: #999900;
+}
+
+.avatar-color-127 {
+  background-color: #999933;
+}
+
+.avatar-color-128 {
+  background-color: #999966;
+}
+
+.avatar-color-129 {
+  background-color: #999999;
+}
+
+.avatar-color-130 {
+  background-color: #9999cc;
+}
+
+.avatar-color-131 {
+  background-color: #9999ff;
+}
+
+.avatar-color-132 {
+  background-color: #99cc00;
+  color: #333333;
+}
+
+.avatar-color-133 {
+  background-color: #99cc33;
+  color: #333333;
+}
+
+.avatar-color-134 {
+  background-color: #99cc66;
+  color: #333333;
+}
+
+.avatar-color-135 {
+  background-color: #99cc99;
+  color: #333333;
+}
+
+.avatar-color-136 {
+  background-color: #99cccc;
+  color: #333333;
+}
+
+.avatar-color-137 {
+  background-color: #99ccff;
+  color: #333333;
+}
+
+.avatar-color-138 {
+  background-color: #99ff00;
+  color: #333333;
+}
+
+.avatar-color-139 {
+  background-color: #99ff33;
+  color: #333333;
+}
+
+.avatar-color-140 {
+  background-color: #99ff66;
+  color: #333333;
+}
+
+.avatar-color-141 {
+  background-color: #99ff99;
+  color: #333333;
+}
+
+.avatar-color-142 {
+  background-color: #99ffcc;
+  color: #333333;
+}
+
+.avatar-color-143 {
+  background-color: #99ffff;
+  color: #333333;
+}
+
+.avatar-color-144 {
+  background-color: #cc0000;
+}
+
+.avatar-color-145 {
+  background-color: #cc0033;
+}
+
+.avatar-color-146 {
+  background-color: #cc0066;
+}
+
+.avatar-color-147 {
+  background-color: #cc0099;
+}
+
+.avatar-color-148 {
+  background-color: #cc00cc;
+}
+
+.avatar-color-149 {
+  background-color: #cc00ff;
+}
+
+.avatar-color-150 {
+  background-color: #cc3300;
+}
+
+.avatar-color-151 {
+  background-color: #cc3333;
+}
+
+.avatar-color-152 {
+  background-color: #cc3366;
+}
+
+.avatar-color-153 {
+  background-color: #cc3399;
+}
+
+.avatar-color-154 {
+  background-color: #cc33cc;
+}
+
+.avatar-color-155 {
+  background-color: #cc33ff;
+}
+
+.avatar-color-156 {
+  background-color: #cc6600;
+}
+
+.avatar-color-157 {
+  background-color: #cc6633;
+}
+
+.avatar-color-158 {
+  background-color: #cc6666;
+}
+
+.avatar-color-159 {
+  background-color: #cc6699;
+}
+
+.avatar-color-160 {
+  background-color: #cc66cc;
+}
+
+.avatar-color-161 {
+  background-color: #cc66ff;
+}
+
+.avatar-color-162 {
+  background-color: #cc9900;
+}
+
+.avatar-color-163 {
+  background-color: #cc9933;
+}
+
+.avatar-color-164 {
+  background-color: #cc9966;
+}
+
+.avatar-color-165 {
+  background-color: #cc9999;
+}
+
+.avatar-color-166 {
+  background-color: #cc99cc;
+}
+
+.avatar-color-167 {
+  background-color: #cc99ff;
+}
+
+.avatar-color-168 {
+  background-color: #cccc00;
+  color: #333333;
+}
+
+.avatar-color-169 {
+  background-color: #cccc33;
+  color: #333333;
+}
+
+.avatar-color-170 {
+  background-color: #cccc66;
+  color: #333333;
+}
+
+.avatar-color-171 {
+  background-color: #cccc99;
+  color: #333333;
+}
+
+.avatar-color-172 {
+  background-color: #cccccc;
+  color: #333333;
+}
+
+.avatar-color-173 {
+  background-color: #ccccff;
+  color: #333333;
+}
+
+.avatar-color-174 {
+  background-color: #ccff00;
+  color: #333333;
+}
+
+.avatar-color-175 {
+  background-color: #ccff33;
+  color: #333333;
+}
+
+.avatar-color-176 {
+  background-color: #ccff66;
+  color: #333333;
+}
+
+.avatar-color-177 {
+  background-color: #ccff99;
+  color: #333333;
+}
+
+.avatar-color-178 {
+  background-color: #ccffcc;
+  color: #333333;
+}
+
+.avatar-color-179 {
+  background-color: #ccffff;
+  color: #333333;
+}
+
+.avatar-color-180 {
+  background-color: #ff0000;
+}
+
+.avatar-color-181 {
+  background-color: #ff0033;
+}
+
+.avatar-color-182 {
+  background-color: #ff0066;
+}
+
+.avatar-color-183 {
+  background-color: #ff0099;
+}
+
+.avatar-color-184 {
+  background-color: #ff00cc;
+}
+
+.avatar-color-185 {
+  background-color: #ff00ff;
+}
+
+.avatar-color-186 {
+  background-color: #ff3300;
+}
+
+.avatar-color-187 {
+  background-color: #ff3333;
+}
+
+.avatar-color-188 {
+  background-color: #ff3366;
+}
+
+.avatar-color-189 {
+  background-color: #ff3399;
+}
+
+.avatar-color-190 {
+  background-color: #ff33cc;
+}
+
+.avatar-color-191 {
+  background-color: #ff33ff;
+}
+
+.avatar-color-192 {
+  background-color: #ff6600;
+}
+
+.avatar-color-193 {
+  background-color: #ff6633;
+}
+
+.avatar-color-194 {
+  background-color: #ff6666;
+}
+
+.avatar-color-195 {
+  background-color: #ff6699;
+}
+
+.avatar-color-196 {
+  background-color: #ff66cc;
+}
+
+.avatar-color-197 {
+  background-color: #ff66ff;
+}
+
+.avatar-color-198 {
+  background-color: #ff9900;
+  color: #333333;
+}
+
+.avatar-color-199 {
+  background-color: #ff9933;
+  color: #333333;
+}
+
+.avatar-color-200 {
+  background-color: #ff9966;
+  color: #333333;
+}
+
+.avatar-color-201 {
+  background-color: #ff9999;
+  color: #333333;
+}
+
+.avatar-color-202 {
+  background-color: #ff99cc;
+  color: #333333;
+}
+
+.avatar-color-203 {
+  background-color: #ff99ff;
+  color: #333333;
+}
+
+.avatar-color-204 {
+  background-color: #ffcc00;
+  color: #333333;
+}
+
+.avatar-color-205 {
+  background-color: #ffcc33;
+  color: #333333;
+}
+
+.avatar-color-206 {
+  background-color: #ffcc66;
+  color: #333333;
+}
+
+.avatar-color-207 {
+  background-color: #ffcc99;
+  color: #333333;
+}
+
+.avatar-color-208 {
+  background-color: #ffcccc;
+  color: #333333;
+}
+
+.avatar-color-209 {
+  background-color: #ffccff;
+  color: #333333;
+}
+
+.avatar-color-210 {
+  background-color: #ffff00;
+  color: #333333;
+}
+
+.avatar-color-211 {
+  background-color: #ffff33;
+  color: #333333;
+}
+
+.avatar-color-212 {
+  background-color: #ffff66;
+  color: #333333;
+}
+
+.avatar-color-213 {
+  background-color: #ffff99;
+  color: #333333;
+}
+
+.avatar-color-214 {
+  background-color: #ffffcc;
+  color: #333333;
+}
+
+.avatar-color-215 {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.avatar-inverse {
+  background-color: #333333;
+  color: #eeeeee;
+  text-shadow: #6f6f6f 0.02em 0.02em 0.02em;
+}
+
+.avatar-inverse.avatar-color-215 {
+  color: #ffffff;
+}
+
+.avatar-inverse.avatar-color-214 {
+  color: #ffffcc;
+}
+
+.avatar-inverse.avatar-color-213 {
+  color: #ffff99;
+}
+
+.avatar-inverse.avatar-color-212 {
+  color: #ffff66;
+}
+
+.avatar-inverse.avatar-color-211 {
+  color: #ffff33;
+}
+
+.avatar-inverse.avatar-color-210 {
+  color: #ffff00;
+}
+
+.avatar-inverse.avatar-color-209 {
+  color: #ffccff;
+}
+
+.avatar-inverse.avatar-color-208 {
+  color: #ffcccc;
+}
+
+.avatar-inverse.avatar-color-207 {
+  color: #ffcc99;
+}
+
+.avatar-inverse.avatar-color-206 {
+  color: #ffcc66;
+}
+
+.avatar-inverse.avatar-color-205 {
+  color: #ffcc33;
+}
+
+.avatar-inverse.avatar-color-204 {
+  color: #ffcc00;
+}
+
+.avatar-inverse.avatar-color-203 {
+  color: #ff99ff;
+}
+
+.avatar-inverse.avatar-color-202 {
+  color: #ff99cc;
+}
+
+.avatar-inverse.avatar-color-201 {
+  color: #ff9999;
+}
+
+.avatar-inverse.avatar-color-200 {
+  color: #ff9966;
+}
+
+.avatar-inverse.avatar-color-199 {
+  color: #ff9933;
+}
+
+.avatar-inverse.avatar-color-198 {
+  color: #ff9900;
+}
+
+.avatar-inverse.avatar-color-197 {
+  background-color: #eeeeee;
+  color: #ff66ff;
+}
+
+.avatar-inverse.avatar-color-196 {
+  background-color: #eeeeee;
+  color: #ff66cc;
+}
+
+.avatar-inverse.avatar-color-195 {
+  background-color: #eeeeee;
+  color: #ff6699;
+}
+
+.avatar-inverse.avatar-color-194 {
+  background-color: #eeeeee;
+  color: #ff6666;
+}
+
+.avatar-inverse.avatar-color-193 {
+  background-color: #eeeeee;
+  color: #ff6633;
+}
+
+.avatar-inverse.avatar-color-192 {
+  background-color: #eeeeee;
+  color: #ff6600;
+}
+
+.avatar-inverse.avatar-color-191 {
+  background-color: #eeeeee;
+  color: #ff33ff;
+}
+
+.avatar-inverse.avatar-color-190 {
+  background-color: #eeeeee;
+  color: #ff33cc;
+}
+
+.avatar-inverse.avatar-color-189 {
+  background-color: #eeeeee;
+  color: #ff3399;
+}
+
+.avatar-inverse.avatar-color-188 {
+  background-color: #eeeeee;
+  color: #ff3366;
+}
+
+.avatar-inverse.avatar-color-187 {
+  background-color: #eeeeee;
+  color: #ff3333;
+}
+
+.avatar-inverse.avatar-color-186 {
+  background-color: #eeeeee;
+  color: #ff3300;
+}
+
+.avatar-inverse.avatar-color-185 {
+  background-color: #eeeeee;
+  color: #ff00ff;
+}
+
+.avatar-inverse.avatar-color-184 {
+  background-color: #eeeeee;
+  color: #ff00cc;
+}
+
+.avatar-inverse.avatar-color-183 {
+  background-color: #eeeeee;
+  color: #ff0099;
+}
+
+.avatar-inverse.avatar-color-182 {
+  background-color: #eeeeee;
+  color: #ff0066;
+}
+
+.avatar-inverse.avatar-color-181 {
+  background-color: #eeeeee;
+  color: #ff0033;
+}
+
+.avatar-inverse.avatar-color-180 {
+  background-color: #eeeeee;
+  color: #ff0000;
+}
+
+.avatar-inverse.avatar-color-179 {
+  color: #ccffff;
+}
+
+.avatar-inverse.avatar-color-178 {
+  color: #ccffcc;
+}
+
+.avatar-inverse.avatar-color-177 {
+  color: #ccff99;
+}
+
+.avatar-inverse.avatar-color-176 {
+  color: #ccff66;
+}
+
+.avatar-inverse.avatar-color-175 {
+  color: #ccff33;
+}
+
+.avatar-inverse.avatar-color-174 {
+  color: #ccff00;
+}
+
+.avatar-inverse.avatar-color-173 {
+  color: #ccccff;
+}
+
+.avatar-inverse.avatar-color-172 {
+  color: #cccccc;
+}
+
+.avatar-inverse.avatar-color-171 {
+  color: #cccc99;
+}
+
+.avatar-inverse.avatar-color-170 {
+  color: #cccc66;
+}
+
+.avatar-inverse.avatar-color-169 {
+  color: #cccc33;
+}
+
+.avatar-inverse.avatar-color-168 {
+  color: #cccc00;
+}
+
+.avatar-inverse.avatar-color-167 {
+  background-color: #eeeeee;
+  color: #cc99ff;
+}
+
+.avatar-inverse.avatar-color-166 {
+  background-color: #eeeeee;
+  color: #cc99cc;
+}
+
+.avatar-inverse.avatar-color-165 {
+  background-color: #eeeeee;
+  color: #cc9999;
+}
+
+.avatar-inverse.avatar-color-164 {
+  background-color: #eeeeee;
+  color: #cc9966;
+}
+
+.avatar-inverse.avatar-color-163 {
+  background-color: #eeeeee;
+  color: #cc9933;
+}
+
+.avatar-inverse.avatar-color-162 {
+  background-color: #eeeeee;
+  color: #cc9900;
+}
+
+.avatar-inverse.avatar-color-161 {
+  background-color: #eeeeee;
+  color: #cc66ff;
+}
+
+.avatar-inverse.avatar-color-160 {
+  background-color: #eeeeee;
+  color: #cc66cc;
+}
+
+.avatar-inverse.avatar-color-159 {
+  background-color: #eeeeee;
+  color: #cc6699;
+}
+
+.avatar-inverse.avatar-color-158 {
+  background-color: #eeeeee;
+  color: #cc6666;
+}
+
+.avatar-inverse.avatar-color-157 {
+  background-color: #eeeeee;
+  color: #cc6633;
+}
+
+.avatar-inverse.avatar-color-156 {
+  background-color: #eeeeee;
+  color: #cc6600;
+}
+
+.avatar-inverse.avatar-color-155 {
+  background-color: #eeeeee;
+  color: #cc33ff;
+}
+
+.avatar-inverse.avatar-color-154 {
+  background-color: #eeeeee;
+  color: #cc33cc;
+}
+
+.avatar-inverse.avatar-color-153 {
+  background-color: #eeeeee;
+  color: #cc3399;
+}
+
+.avatar-inverse.avatar-color-152 {
+  background-color: #eeeeee;
+  color: #cc3366;
+}
+
+.avatar-inverse.avatar-color-151 {
+  background-color: #eeeeee;
+  color: #cc3333;
+}
+
+.avatar-inverse.avatar-color-150 {
+  background-color: #eeeeee;
+  color: #cc3300;
+}
+
+.avatar-inverse.avatar-color-149 {
+  background-color: #eeeeee;
+  color: #cc00ff;
+}
+
+.avatar-inverse.avatar-color-148 {
+  background-color: #eeeeee;
+  color: #cc00cc;
+}
+
+.avatar-inverse.avatar-color-147 {
+  background-color: #eeeeee;
+  color: #cc0099;
+}
+
+.avatar-inverse.avatar-color-146 {
+  background-color: #eeeeee;
+  color: #cc0066;
+}
+
+.avatar-inverse.avatar-color-145 {
+  background-color: #eeeeee;
+  color: #cc0033;
+}
+
+.avatar-inverse.avatar-color-144 {
+  background-color: #eeeeee;
+  color: #cc0000;
+}
+
+.avatar-inverse.avatar-color-143 {
+  color: #99ffff;
+}
+
+.avatar-inverse.avatar-color-142 {
+  color: #99ffcc;
+}
+
+.avatar-inverse.avatar-color-141 {
+  color: #99ff99;
+}
+
+.avatar-inverse.avatar-color-140 {
+  color: #99ff66;
+}
+
+.avatar-inverse.avatar-color-139 {
+  color: #99ff33;
+}
+
+.avatar-inverse.avatar-color-138 {
+  color: #99ff00;
+}
+
+.avatar-inverse.avatar-color-137 {
+  color: #99ccff;
+}
+
+.avatar-inverse.avatar-color-136 {
+  color: #99cccc;
+}
+
+.avatar-inverse.avatar-color-135 {
+  color: #99cc99;
+}
+
+.avatar-inverse.avatar-color-134 {
+  color: #99cc66;
+}
+
+.avatar-inverse.avatar-color-133 {
+  color: #99cc33;
+}
+
+.avatar-inverse.avatar-color-132 {
+  color: #99cc00;
+}
+
+.avatar-inverse.avatar-color-131 {
+  background-color: #eeeeee;
+  color: #9999ff;
+}
+
+.avatar-inverse.avatar-color-130 {
+  background-color: #eeeeee;
+  color: #9999cc;
+}
+
+.avatar-inverse.avatar-color-129 {
+  background-color: #eeeeee;
+  color: #999999;
+}
+
+.avatar-inverse.avatar-color-128 {
+  background-color: #eeeeee;
+  color: #999966;
+}
+
+.avatar-inverse.avatar-color-127 {
+  background-color: #eeeeee;
+  color: #999933;
+}
+
+.avatar-inverse.avatar-color-126 {
+  background-color: #eeeeee;
+  color: #999900;
+}
+
+.avatar-inverse.avatar-color-125 {
+  background-color: #eeeeee;
+  color: #9966ff;
+}
+
+.avatar-inverse.avatar-color-124 {
+  background-color: #eeeeee;
+  color: #9966cc;
+}
+
+.avatar-inverse.avatar-color-123 {
+  background-color: #eeeeee;
+  color: #996699;
+}
+
+.avatar-inverse.avatar-color-122 {
+  background-color: #eeeeee;
+  color: #996666;
+}
+
+.avatar-inverse.avatar-color-121 {
+  background-color: #eeeeee;
+  color: #996633;
+}
+
+.avatar-inverse.avatar-color-120 {
+  background-color: #eeeeee;
+  color: #996600;
+}
+
+.avatar-inverse.avatar-color-119 {
+  background-color: #eeeeee;
+  color: #9933ff;
+}
+
+.avatar-inverse.avatar-color-118 {
+  background-color: #eeeeee;
+  color: #9933cc;
+}
+
+.avatar-inverse.avatar-color-117 {
+  background-color: #eeeeee;
+  color: #993399;
+}
+
+.avatar-inverse.avatar-color-116 {
+  background-color: #eeeeee;
+  color: #993366;
+}
+
+.avatar-inverse.avatar-color-115 {
+  background-color: #eeeeee;
+  color: #993333;
+}
+
+.avatar-inverse.avatar-color-114 {
+  background-color: #eeeeee;
+  color: #993300;
+}
+
+.avatar-inverse.avatar-color-113 {
+  background-color: #eeeeee;
+  color: #9900ff;
+}
+
+.avatar-inverse.avatar-color-112 {
+  background-color: #eeeeee;
+  color: #9900cc;
+}
+
+.avatar-inverse.avatar-color-111 {
+  background-color: #eeeeee;
+  color: #990099;
+}
+
+.avatar-inverse.avatar-color-110 {
+  background-color: #eeeeee;
+  color: #990066;
+}
+
+.avatar-inverse.avatar-color-109 {
+  background-color: #eeeeee;
+  color: #990033;
+}
+
+.avatar-inverse.avatar-color-108 {
+  background-color: #eeeeee;
+  color: #990000;
+}
+
+.avatar-inverse.avatar-color-107 {
+  color: #66ffff;
+}
+
+.avatar-inverse.avatar-color-106 {
+  color: #66ffcc;
+}
+
+.avatar-inverse.avatar-color-105 {
+  color: #66ff99;
+}
+
+.avatar-inverse.avatar-color-104 {
+  color: #66ff66;
+}
+
+.avatar-inverse.avatar-color-103 {
+  color: #66ff33;
+}
+
+.avatar-inverse.avatar-color-102 {
+  color: #66ff00;
+}
+
+.avatar-inverse.avatar-color-101 {
+  color: #66ccff;
+}
+
+.avatar-inverse.avatar-color-100 {
+  color: #66cccc;
+}
+
+.avatar-inverse.avatar-color-99 {
+  color: #66cc99;
+}
+
+.avatar-inverse.avatar-color-98 {
+  color: #66cc66;
+}
+
+.avatar-inverse.avatar-color-97 {
+  color: #66cc33;
+}
+
+.avatar-inverse.avatar-color-96 {
+  color: #66cc00;
+}
+
+.avatar-inverse.avatar-color-95 {
+  background-color: #eeeeee;
+  color: #6699ff;
+}
+
+.avatar-inverse.avatar-color-94 {
+  background-color: #eeeeee;
+  color: #6699cc;
+}
+
+.avatar-inverse.avatar-color-93 {
+  background-color: #eeeeee;
+  color: #669999;
+}
+
+.avatar-inverse.avatar-color-92 {
+  background-color: #eeeeee;
+  color: #669966;
+}
+
+.avatar-inverse.avatar-color-91 {
+  background-color: #eeeeee;
+  color: #669933;
+}
+
+.avatar-inverse.avatar-color-90 {
+  background-color: #eeeeee;
+  color: #669900;
+}
+
+.avatar-inverse.avatar-color-89 {
+  background-color: #eeeeee;
+  color: #6666ff;
+}
+
+.avatar-inverse.avatar-color-88 {
+  background-color: #eeeeee;
+  color: #6666cc;
+}
+
+.avatar-inverse.avatar-color-87 {
+  background-color: #eeeeee;
+  color: #666699;
+}
+
+.avatar-inverse.avatar-color-86 {
+  background-color: #eeeeee;
+  color: #666666;
+}
+
+.avatar-inverse.avatar-color-85 {
+  background-color: #eeeeee;
+  color: #666633;
+}
+
+.avatar-inverse.avatar-color-84 {
+  background-color: #eeeeee;
+  color: #666600;
+}
+
+.avatar-inverse.avatar-color-83 {
+  background-color: #eeeeee;
+  color: #6633ff;
+}
+
+.avatar-inverse.avatar-color-82 {
+  background-color: #eeeeee;
+  color: #6633cc;
+}
+
+.avatar-inverse.avatar-color-81 {
+  background-color: #eeeeee;
+  color: #663399;
+}
+
+.avatar-inverse.avatar-color-80 {
+  background-color: #eeeeee;
+  color: #663366;
+}
+
+.avatar-inverse.avatar-color-79 {
+  background-color: #eeeeee;
+  color: #663333;
+}
+
+.avatar-inverse.avatar-color-78 {
+  background-color: #eeeeee;
+  color: #663300;
+}
+
+.avatar-inverse.avatar-color-77 {
+  background-color: #eeeeee;
+  color: #6600ff;
+}
+
+.avatar-inverse.avatar-color-76 {
+  background-color: #eeeeee;
+  color: #6600cc;
+}
+
+.avatar-inverse.avatar-color-75 {
+  background-color: #eeeeee;
+  color: #660099;
+}
+
+.avatar-inverse.avatar-color-74 {
+  background-color: #eeeeee;
+  color: #660066;
+}
+
+.avatar-inverse.avatar-color-73 {
+  background-color: #eeeeee;
+  color: #660033;
+}
+
+.avatar-inverse.avatar-color-72 {
+  background-color: #eeeeee;
+  color: #660000;
+}
+
+.avatar-inverse.avatar-color-71 {
+  color: #33ffff;
+}
+
+.avatar-inverse.avatar-color-70 {
+  color: #33ffcc;
+}
+
+.avatar-inverse.avatar-color-69 {
+  color: #33ff99;
+}
+
+.avatar-inverse.avatar-color-68 {
+  color: #33ff66;
+}
+
+.avatar-inverse.avatar-color-67 {
+  color: #33ff33;
+}
+
+.avatar-inverse.avatar-color-66 {
+  color: #33ff00;
+}
+
+.avatar-inverse.avatar-color-65 {
+  color: #33ccff;
+}
+
+.avatar-inverse.avatar-color-64 {
+  color: #33cccc;
+}
+
+.avatar-inverse.avatar-color-63 {
+  color: #33cc99;
+}
+
+.avatar-inverse.avatar-color-62 {
+  color: #33cc66;
+}
+
+.avatar-inverse.avatar-color-61 {
+  color: #33cc33;
+}
+
+.avatar-inverse.avatar-color-60 {
+  color: #33cc00;
+}
+
+.avatar-inverse.avatar-color-59 {
+  background-color: #eeeeee;
+  color: #3399ff;
+}
+
+.avatar-inverse.avatar-color-58 {
+  background-color: #eeeeee;
+  color: #3399cc;
+}
+
+.avatar-inverse.avatar-color-57 {
+  background-color: #eeeeee;
+  color: #339999;
+}
+
+.avatar-inverse.avatar-color-56 {
+  background-color: #eeeeee;
+  color: #339966;
+}
+
+.avatar-inverse.avatar-color-55 {
+  background-color: #eeeeee;
+  color: #339933;
+}
+
+.avatar-inverse.avatar-color-54 {
+  background-color: #eeeeee;
+  color: #339900;
+}
+
+.avatar-inverse.avatar-color-53 {
+  background-color: #eeeeee;
+  color: #3366ff;
+}
+
+.avatar-inverse.avatar-color-52 {
+  background-color: #eeeeee;
+  color: #3366cc;
+}
+
+.avatar-inverse.avatar-color-51 {
+  background-color: #eeeeee;
+  color: #336699;
+}
+
+.avatar-inverse.avatar-color-50 {
+  background-color: #eeeeee;
+  color: #336666;
+}
+
+.avatar-inverse.avatar-color-49 {
+  background-color: #eeeeee;
+  color: #336633;
+}
+
+.avatar-inverse.avatar-color-48 {
+  background-color: #eeeeee;
+  color: #336600;
+}
+
+.avatar-inverse.avatar-color-47 {
+  background-color: #eeeeee;
+  color: #3333ff;
+}
+
+.avatar-inverse.avatar-color-46 {
+  background-color: #eeeeee;
+  color: #3333cc;
+}
+
+.avatar-inverse.avatar-color-45 {
+  background-color: #eeeeee;
+  color: #333399;
+}
+
+.avatar-inverse.avatar-color-44 {
+  background-color: #eeeeee;
+  color: #333366;
+}
+
+.avatar-inverse.avatar-color-43 {
+  background-color: #eeeeee;
+  color: #333333;
+}
+
+.avatar-inverse.avatar-color-42 {
+  background-color: #eeeeee;
+  color: #333300;
+}
+
+.avatar-inverse.avatar-color-41 {
+  background-color: #eeeeee;
+  color: #3300ff;
+}
+
+.avatar-inverse.avatar-color-40 {
+  background-color: #eeeeee;
+  color: #3300cc;
+}
+
+.avatar-inverse.avatar-color-39 {
+  background-color: #eeeeee;
+  color: #330099;
+}
+
+.avatar-inverse.avatar-color-38 {
+  background-color: #eeeeee;
+  color: #330066;
+}
+
+.avatar-inverse.avatar-color-37 {
+  background-color: #eeeeee;
+  color: #330033;
+}
+
+.avatar-inverse.avatar-color-36 {
+  background-color: #eeeeee;
+  color: #330000;
+}
+
+.avatar-inverse.avatar-color-35 {
+  color: #00ffff;
+}
+
+.avatar-inverse.avatar-color-34 {
+  color: #00ffcc;
+}
+
+.avatar-inverse.avatar-color-33 {
+  color: #00ff99;
+}
+
+.avatar-inverse.avatar-color-32 {
+  color: #00ff66;
+}
+
+.avatar-inverse.avatar-color-31 {
+  color: #00ff33;
+}
+
+.avatar-inverse.avatar-color-30 {
+  color: #00ff00;
+}
+
+.avatar-inverse.avatar-color-29 {
+  color: #00ccff;
+}
+
+.avatar-inverse.avatar-color-28 {
+  color: #00cccc;
+}
+
+.avatar-inverse.avatar-color-27 {
+  color: #00cc99;
+}
+
+.avatar-inverse.avatar-color-26 {
+  color: #00cc66;
+}
+
+.avatar-inverse.avatar-color-25 {
+  color: #00cc33;
+}
+
+.avatar-inverse.avatar-color-24 {
+  color: #00cc00;
+}
+
+.avatar-inverse.avatar-color-23 {
+  background-color: #eeeeee;
+  color: #0099ff;
+}
+
+.avatar-inverse.avatar-color-22 {
+  background-color: #eeeeee;
+  color: #0099cc;
+}
+
+.avatar-inverse.avatar-color-21 {
+  background-color: #eeeeee;
+  color: #009999;
+}
+
+.avatar-inverse.avatar-color-20 {
+  background-color: #eeeeee;
+  color: #009966;
+}
+
+.avatar-inverse.avatar-color-19 {
+  background-color: #eeeeee;
+  color: #009933;
+}
+
+.avatar-inverse.avatar-color-18 {
+  background-color: #eeeeee;
+  color: #009900;
+}
+
+.avatar-inverse.avatar-color-17 {
+  background-color: #eeeeee;
+  color: #0066ff;
+}
+
+.avatar-inverse.avatar-color-16 {
+  background-color: #eeeeee;
+  color: #0066cc;
+}
+
+.avatar-inverse.avatar-color-15 {
+  background-color: #eeeeee;
+  color: #006699;
+}
+
+.avatar-inverse.avatar-color-14 {
+  background-color: #eeeeee;
+  color: #006666;
+}
+
+.avatar-inverse.avatar-color-13 {
+  background-color: #eeeeee;
+  color: #006633;
+}
+
+.avatar-inverse.avatar-color-12 {
+  background-color: #eeeeee;
+  color: #006600;
+}
+
+.avatar-inverse.avatar-color-11 {
+  background-color: #eeeeee;
+  color: #0033ff;
+}
+
+.avatar-inverse.avatar-color-10 {
+  background-color: #eeeeee;
+  color: #0033cc;
+}
+
+.avatar-inverse.avatar-color-9 {
+  background-color: #eeeeee;
+  color: #003399;
+}
+
+.avatar-inverse.avatar-color-8 {
+  background-color: #eeeeee;
+  color: #003366;
+}
+
+.avatar-inverse.avatar-color-7 {
+  background-color: #eeeeee;
+  color: #003333;
+}
+
+.avatar-inverse.avatar-color-6 {
+  background-color: #eeeeee;
+  color: #003300;
+}
+
+.avatar-inverse.avatar-color-5 {
+  background-color: #eeeeee;
+  color: #0000ff;
+}
+
+.avatar-inverse.avatar-color-4 {
+  background-color: #eeeeee;
+  color: #0000cc;
+}
+
+.avatar-inverse.avatar-color-3 {
+  background-color: #eeeeee;
+  color: #000099;
+}
+
+.avatar-inverse.avatar-color-2 {
+  background-color: #eeeeee;
+  color: #000066;
+}
+
+.avatar-inverse.avatar-color-1 {
+  background-color: #eeeeee;
+  color: #000033;
+}
+
+.avatar-inverse.avatar-color-0 {
+  background-color: #eeeeee;
+  color: #000000;
+}
+
+.avatar-plain {
+  text-shadow: none;
+}

@@ -1,0 +1,22 @@
+<ion-popover-view style="height:50%; width: 350px;">
+  <ion-header-bar class="bar-balanced">
+    <button ng-click="closeGroepen()" class="button button-icon icon ion-ios-arrow-back"></button>
+    <h1 class="title">Selecteer een groep</h1>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item class="item-button-right" ng-repeat="groep in groepen | orderBy:'groep.groep'"
+        ng-click="selectGroep(groep)">
+        <p>{{groep.groep}}</P>
+        <button ng-if="groep.groep !== 'Iedereen'" ng-click="openDeelnemers(groep.groep, $event); $event.stopPropagation();" class="button button-icon">
+          <i class="button-icon iconinlistitem icon ion-android-people"></i>
+        </button>
+        <button ng-if="groep.groep === 'Iedereen'" class="button button-icon">
+          <i class="button-icon iconinlistitem icon ion-android-people"></i>
+          <i class="button-icon iconinlistitem icon ion-android-people"></i>
+          <i class="button-icon iconinlistitem icon ion-android-people"></i>
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-popover-view>

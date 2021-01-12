@@ -1,0 +1,21 @@
+<ion-popover-view style="height:420px; width: 300px;">
+    <ion-header-bar class="bar-balanced">
+        <h1 class="title">Selecteer een label</h1>
+    </ion-header-bar>
+
+    <div class="bar bar-subheader">
+        <ion-input class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" class="detectFocus" placeholder="Zoek in labels" ng-model="search.tagNaam">
+            <button ng-click="clearTagsSearch()" class="button-clear button-medium ion-close-circled"></button>
+        </ion-input>
+    </div>
+
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="tag in ( data.filteredTags = ( data.tags | filter: {tag.tag: search.tagNaam}))">
+                {{tag.tag}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-popover-view>

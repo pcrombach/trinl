@@ -1,0 +1,18 @@
+<div class="modal editormodal">
+  <ion-header-bar class="bar-balanced">
+    <div class="buttons">
+      <button ng-click="closePopupModalPoi()" class="button button-icon icon ion-ios-arrow-back"> Sluit</button>
+    </div>
+    <h1 class="title">Locatie naam tekst bewerken</h1>
+    <button ng-click="savePoiItemTekstPopup(input)" class="button button-icon icon ion-checkmark"> Opslaan </button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <ion-input class="item item-input">
+      <ion-label>Naam</ion-label>
+      <input type="text" ng-model="input.naam">
+    </ion-input>
+    <ion-input class="item item-input">
+      <textarea class="msd-elastic: \n;" ng-model="input.tekst" cols="{{editorCols}}"></textarea>
+    </ion-input>
+  </ion-content>
+</div>

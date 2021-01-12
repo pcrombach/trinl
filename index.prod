@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#009bc9">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, user-scalable=no">
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="TRINL pwa">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+  
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src
+      https://codepush.appcenter.ms
+      https://ssl.gstatic.com
+      http://localhost
+      https://quitteapp.nl
+      &apos;self&apos;
+      data:
+      gap://ready
+      file: *
+      'unsafe-eval'
+    ;
+    img-src
+      data:
+      &apos;self&apos;
+      http://localhost
+      https://www.pcmatic.nl
+      https://www.trinl.nl
+      https://api.tiles.mapbox.com
+      https://tile.openstreetmap.nl
+      https://a.tile.openstreetmap.org
+      https://b.tile.openstreetmap.org
+      https://c.tile.openstreetmap.org
+      https://a.tile.openstreetmap.nl
+      https://b.tile.openstreetmap.nl
+      https://c.tile.openstreetmap.nl
+      https://tile.openstreetmap.de
+      https://a.tile.openstreetmap.de
+      https://b.tile.openstreetmap.de
+      https://c.tile.openstreetmap.de
+      https://a.tile.openstreetmap.org
+      https://b.tile.openstreetmap.org
+      https://c.tile.openstreetmap.org
+      https://api.maptiler.com
+      http://a.tile.stamen.com
+      https://stamen-tiles-a.a.ssl.fastly.net
+      https://stamen-tiles-b.a.ssl.fastly.net
+      https://stamen-tiles-c.a.ssl.fastly.net
+      https://a.dyn.tile.stamen.com
+      https://b.dyn.tile.stamen.com
+      https://c.dyn.tile.stamen.com
+      https://d.dyn.tile.stamen.com
+      http://a.b.tile.stamen.com
+      http://b.b.tile.stamen.com
+      http://c.b.tile.stamen.com
+      http://d.b.tile.stamen.com
+      https://server.arcgisonline.com
+      https://b.basemaps.cartocdn.com
+      https://c.basemaps.cartocdn.com
+      https://a.basemaps.cartocdn.com
+      https://cartodb-basemaps-a.global.ssl.fastly.net
+      https://cartodb-basemaps-b.global.ssl.fastly.net
+      https://cartodb-basemaps-c.global.ssl.fastly.net
+      https://services.arcgisonline.com
+      https://a.tile.opentopomap.org
+      https://b.tile.opentopomap.org
+      https://c.tile.opentopomap.org
+    ;
+    script-src
+      file *
+      &apos;self&apos;
+      &apos;unsafe-inline&apos;
+      &apos;unsafe-eval&apos;
+      http://localhost
+      https://quitteapp.nl
+      https://www.pcmatic.nl
+      https://www.trinl.nl
+      http://nominatim.openstreetmap.org
+      https://ajax.googleapis.com
+      https://cdnjs.cloudflare.com
+    ;
+    style-src
+      &apos;self&apos;
+      &apos;unsafe-inline&apos;
+      http://localhost
+      https://quitteapp.nl
+      https://www.pcmatic.nl
+      https://www.trinl.nl
+    ;
+    connect-src
+      file: *
+      http://localhost
+      https://quitteapp.nl
+      https://www.pcmatic.nl
+      https://www.trinl.nl
+      http://nominatim.openstreetmap.org
+      https://*.ionic.io
+      https://*.google.com
+      https://api.dropboxapi.com
+      https://content.dropboxapi.com
+      https://www.dropbox.com
+      https://codepush.azurewebsites.net
+    ;
+
+    media-src
+      *
+    ;
+
+    font-src
+      data: *
+      'self'
+    ;
+  ">
+
+  <title>Tijdreizen in Limburg</title>
+  <link rel="apple-touch-icon" sizes="512x512" href="assets/icons/apple-icon-512.png">
+  <link rel="apple-touch-icon" sizes="384x384" href="assets/icons/apple-icon-384.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/icons/apple-icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-icon-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="assets/icons/apple-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-icon-152.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/icons/apple-icon-144.png">
+  <link rel="apple-touch-icon" sizes="128x128" href="assets/icons/apple-icon-128.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-icon-120.png">
+  <link rel="apple-touch-icon" sizes="96x96" href="assets/icons/apple-icon-96.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-icon-72.png">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-2048-2732.png"
+    media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-2732-2048.png"
+    media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-1668-2388.png"
+    media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-2388-1668.png"
+    media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-1668-2224.png"
+    media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-2224-1668.png"
+    media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-1536-2048.png"
+    media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-2048-1536.png"
+    media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-1242-2688.png"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-2688-1242.png"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-1125-2436.png"
+    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-2436-1125.png"
+    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-828-1792.png"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-1792-828.png"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-1242-2208.png"
+    media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-2208-1242.png"
+    media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-750-1334.png"
+    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-1334-750.png"
+    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-640-1136.png"
+    media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="assets/splashscreen/apple-splash-1136-640.png"
+    media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+  <link rel="stylesheet" href="lib/leaflet-graphicscale/dist/Leaflet.GraphicScale.min.css">
+  <link rel="stylesheet" href="lib/L.GeoSearch/src/css/l.geosearch.css">
+  <link rel="stylesheet" href="lib/Leaflet.markercluster/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="lib/Leaflet.markercluster/dist/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="lib/leaflet-pulse-icon/dist/L.Icon.Pulse.css">
+  <link rel="stylesheet" href="css/ionic.app.css">
+  <!-- custom css -->
+  <link rel="stylesheet" href="css/trinl-style.css">
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json" />
+</head>
+
+<body ng-app="trinl">
+  <ion-nav-bar>
+  </ion-nav-bar>
+  <ion-nav-view>
+  </ion-nav-view>
+</body>
+
+<script src="cordova.js"></script>
+
+<!-- ionic libs  -->
+<script src="lib/ionic/js/ionic.bundle.min.js"></script>
+
+<!-- leaflet lib -->
+<script src="lib/leaflet/leaflet.js"></script>
+<script src="lib/leaflet-pulse-icon/dist/L.Icon.Pulse.js"></script>
+
+<!-- 3th party libs  -->
+<script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+<script src="lib/exif/exif.js"></script>
+<script src="lib/togeojson/togeojson.js"></script>
+<script src="lib/togpx/togpx.js"></script>
+<script src="lib/progressbar/dist/progressbar.min.js"></script>
+<script src="lib/howler/dist/howler.core.min.js"></script>
+
+<!-- Templates -->
+<script src="templateCache/templates.js"></script>
+
+<!-- App source files -->
+<script src="js/app.js"></script>
+
+<!-- Web Push -->
+<!-- <script src="web-push-notifications.js"></script> -->
+<script src="js/run/run.js"></script>
+
+<!-- Gegenereerd door GULP TRINLCOMPILE input: index.prod -->
+<script src="lib/ngscripts.js"></script>
+<script src="js/ngscripts.js"></script>
+<script src="js/controllers/ngscripts.js"></script>
+<script src="js/directives/ngscripts.js"></script>
+<script src="js/factories/ngscripts.js"></script>
+
+</html>

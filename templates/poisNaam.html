@@ -1,0 +1,81 @@
+<ion-side-menus>
+  <!-- Center content -->
+  <ion-side-menu-content>
+    <ion-view title="Locaties">
+
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+
+        <ion-content close-option class="has-header">
+
+            <ion-refresher on-refresh="doRefresh()"
+                pulling-text="Laat los om bij te werken..."
+                refreshing-text="Bijwerken!"
+                refreshing-icon="ion-loading-c">
+
+            </ion-refresher>
+
+            <ion-list>
+                <ion-item ng-repeat="poi in pois | orderBy:predicate:reverse">
+                    <div class="row responsive-sm">
+                        <div class="col col-14 item-body">
+                            <img ng-src="{{poi.xData.avatarSrc}}">
+                            <p>{{poi.xData.profiel}}<br>{{poi.xData.gebruiker}}</p>
+                            <p>{{poi.changedOn}}</p>
+                        </div>
+                        <div class="col item-body">
+                            <h2>{{poi.xData.poiNaam}}</h2>
+                            <div ng-bind-html="poi.xData.poiTekst"></div>
+                            <br>
+                            <span class="list-datum" datum am-time-ago="poi.xData.mChangedOn"></span>{{xData.mChangedOn}}
+                        </div>
+                        <ion-option-button class="button-positive" ng-click="onSelecteerPoi(poi, $index)"><div class="aligner">Ga naar</div></ion-option-button>
+                        <ion-option-button class="button-balanced" ng-show="poi.gebruikerId == ceo.Id" ng-click="onItemEdit(poi, $index)"><div class="aligner">Wijzig</div></ion-option-button>
+                        <ion-option-button class="button-assertive" ng-show="poi.gebruikerId == ceo.Id" ng-click="onItemDelete(poi, $index)"><div class="aligner">Verwijder</div></ion-option-button>
+                    </div>
+                </ion-item>
+            </ion-list>
+
+        </ion-content>
+
+    </ion-view>
+  </ion-side-menu-content>
+
+  <!-- Left menu -->
+  <ion-side-menu expose-aside-when="large">
+    <div class="item item-divider">
+        Zoeken
+    </div>
+    <ion-item href="">
+        Zoeken in naam
+    </ion-item>
+    <ion-item href="">
+        Zoeken in beschrijving
+    </ion-item>
+    <div class="item item-divider">
+        Filteren
+    </div>
+    <ion-item href="#/app/pois/favorieten">
+        Alles
+    </ion-item>
+    <ion-item href="#/app/pois/favorieten">
+        Mijn Locaties
+    </ion-item>
+    <ion-item href="#/app/pois/favorieten">
+        Favoriete Locaties
+    </ion-item>
+    <div class="item item-divider">
+        Sorteren
+    </div>
+    <ion-item href="#/app/pois/sort/created">
+        Datum
+    </ion-item>
+    <ion-item href="#/app/pois/sort/naam">
+        Naam
+    </ion-item>
+  </ion-side-menu>
+</ion-side-menus>
+
+
+
+

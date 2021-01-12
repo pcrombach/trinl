@@ -1,0 +1,126 @@
+<ion-view title="Locaties selectie">
+  <div class="bar bar-subheader">
+    <h2 ng-bind-html="subHeader" class="trinl-blauw trinl-subHeader trinl-title-left"></h2>
+  </div>
+  <ion-content close-option class="has-header has-subheader" delegate-handle="poiList">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="Laat los om bij te werken..." refreshing-text="Bijwerken!"
+      refreshing-icon="ion-loading-c">
+    </ion-refresher>
+    <ion-list>
+      <ion-item item-body
+        ng-repeat="poi in ( $parent.filteredPois = ( data.pois | orderBy:predicate:reverse | regexStore: 'naam': searchPoi.naam)) | limitTo:showLimit:currentPage*showLimit track by poi.Id.value">
+        <div ng-click="clickedPoi(poi)" class="row" ng-if="poi.profiel.value">
+          <div ng-click="clickedAvatar(poi.gebruikerId.value)" class="col trinl-avatar">
+            <i ng-if="poi.avatarInverse.value == '0' && poi.avatarLetter.value == ''"
+              class="avatar avatar-color-{{poi.avatarColor.value}}">?</i>
+            <i ng-if="poi.avatarInverse.value == '1' && poi.avatarLetter.value == ''"
+              class="avatar avatar-inverse avatar-color-{{poi.avatarColor.value}}">?</i>
+            <i ng-if="poi.avatarInverse.value == '0' && poi.avatarLetter.value != ''"
+              class="avatar avatar-color-{{poi.avatarColor.value}} avatar-letter-{{poi.avatarLetter.value}}"></i>
+            <i ng-if="poi.avatarInverse.value == '1' && poi.avatarLetter.value != ''"
+              class="avatar avatar-inverse avatar-color-{{poi.avatarColor.value}} avatar-letter-{{poi.avatarLetter.value}}"></i>
+          </div>
+          <div ng-click="clickedPoi(poi)" class="col trinl-gebruiker-datum-socio-container">
+            <div class="row trinl-gebruiker trinl-blauw">{{poi.gebruikerNaam.value}}</div>
+            <div class="row trinl-datums-container">
+              <div class="trinl-datum"><span class="trinl-blauw">{{poi.createdOn.value}}</span></div>
+              <div class="trinl-datum-ago"><span class="trinl-blauw" datum am-time-ago="poi.createdOn.value"></span>
+              </div>
+            </div>
+            <div class="row trinl-socio-container">
+              <div class="trinl-socio-icon"
+                ng-if="(poi.profiel.value === 'team' || poi.profiel.value === 'developer') && poi.xprive.value && poi.gebruikerId.value === Id">
+                <i class="icon socio-red ion-locked"></i>
+              </div>
+              <div class="trinl-socio-icon"
+                ng-if="(poi.profiel.value === 'team' || poi.profiel.value === 'developer') && !poi.xprive.value && poi.gebruikerId.value === Id">
+                <i class="icon socio-green ion-unlocked"></i>
+              </div>
+              <div ng-if="details.gelezen !== 0" class="trinl-socio-icons-aantal">
+                <div class="trinl-socio-icontext">&nbsp;{{poi.xData.sup.gelezen.value}}</div>
+                <i class="icon socio-black ion-eye"></i>
+              </div>
+              <div ng-if="poi.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon"
+                ng-if="(poi.profiel.value === 'team' || poi.profiel.value === 'developer') && poi.xData.sup.xnew.value">
+                <i class="icon socio-red ion-ios-bell"></i>
+              </div>
+              <div ng-if="poi.xData.sup.star.value && !poi.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon" ng-if="poi.xData.sup.star.value">
+                <i class="icon socio-orange ion-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div ng-click="clickedPoi(poi)" class="row trinl-header-container" ng-if="!poi.profiel.value">
+          <div ng-click="clickedAvatar(poi.gebruikerId.value)" class="col trinl-avatar-anoniem">
+            <img class="trinl-avatar-anoniem-img" ng-src="images/small_non_existing_id.png">
+          </div>
+          <div ng-click="clickedPoi(poi)" class="col trinl-gebruiker-datum-socio-container">
+            <div class="row trinl-gebruiker trinl-blauw">anoniem</div>
+            <div class="row trinl-datums-container">
+              <div class="trinl-datum"><span class="trinl-blauw">{{poi.createdOn.value}}</span></div>
+              <div class="trinl-datum-ago"><span class="trinl-blauw" datum am-time-ago="poi.createdOn.value"></span>
+              </div>
+            </div>
+            <div class="row trinl-socio-container">
+              <div class="trinl-socio-icon"
+                ng-if="(poi.profiel.value === 'team' || poi.profiel.value === 'developer') && poi.xprive.value && poi.gebruikerId.value === Id">
+                <i class="icon socio-red ion-locked"></i>
+              </div>
+              <div class="trinl-socio-icon"
+                ng-if="(poi.profiel.value === 'team' || poi.profiel.value === 'developer') && !poi.xprive.value && poi.gebruikerId.value === Id">
+                <i class="icon socio-green ion-unlocked"></i>
+              </div>
+              <div ng-if="details.gelezen !== 0" class="trinl-socio-aantal">
+                <div class="trinl-socio-icontext">&nbsp;{{poi.xData.sup.gelezen.value}}</div>
+                <i class="icon socio-black ion-eye"></i>
+              </div>
+              <div ng-if="poi.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon"
+                ng-if="(poi.profiel.value === 'team' || poi.profiel.value === 'developer') && poi.xData.sup.xnew.value">
+                <i class="icon socio-red ion-ios-bell"></i>
+              </div>
+              <div ng-if="poi.xData.sup.star.value && !poi.xData.sup.xnew.value" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon" ng-if="poi.xData.sup.star.value">
+                <i class="icon socio-orange ion-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div ng-click="clickedPoi(poi)" class="spacer"></div>
+        <div ng-click="clickedPoi(poi)" ng-if="poi.xData.groep != ''" class="trinl-listgroeptext">{{poi.xData.groep}}
+        </div>
+        <div ng-click="clickedPoi(poi)" class="trinl-listnaam">{{poi.naam.value}}</div>
+        <div ng-click="clickedPoi(poi)" class="spacer"></div>
+
+        <div class="trinl-tags-list" ng-click="clickedPoi(poi)">
+          <div class="trinl-tag" ng-repeat="poiTag in poi.xData.tags track by $index">
+            <div ng-if="poiTag.get('gebruikerId') === ceo.Id">
+              <div class="trinl-tags">
+                <div class="trinl-tag-icon-left"><i class="ion-pricetag"></i></div>
+                <div ng-if="poiTag.xData.get('Id').length <= 3 && poiTag.xData.get('gebruikerId') === ''"
+                  class="trinl-tag-tekst trinl-blauw">{{poiTag.xData.get('tag')}}</div>
+                <div ng-if="poiTag.xData.get('Id').length <= 3 && poiTag.xData.get('gebruikerId') != ''"
+                  class="trinl-tag-tekst trinl-rood">{{poiTag.xData.get('tag')}}</div>
+                <div ng-if="poiTag.xData.get('Id').length >= 3" class="trinl-tag-tekst">{{poiTag.xData.get('tag')}}</div>
+              </div>
+            </div>
+            <div ng-if="poiTag.get('gebruikerId') !== ceo.Id">
+              <div class="trinl-tags-disabled">
+                <div class="trinl-tag-icon-left"><i class="ion-pricetag"></i></div>
+                <div ng-if="poiTag.xData.get('Id').length <= 3 && poiTag.xData.get('gebruikerId') === ''"
+                  class="trinl-tag-tekst trinl-blauw">{{poiTag.xData.get('tag')}}</div>
+                <div ng-if="poiTag.xData.get('Id').length <= 3 && poiTag.xData.get('gebruikerId') != ''"
+                  class="trinl-tag-tekst trinl-rood">{{poiTag.xData.get('tag')}}</div>
+                <div ng-if="poiTag.xData.get('Id').length >= 3" class="trinl-tag-tekst">{{poiTag.xData.get('tag')}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  </ion-nav-view>

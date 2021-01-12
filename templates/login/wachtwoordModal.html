@@ -1,0 +1,82 @@
+<div class="modal wachtwoordmodal" ng-controller="WachtwoordCtrl">
+    <ion-header-bar class="bar-balanced">
+        <div class="buttons">
+            <button ng-click="closeModalWachtwoord()" class="button button-icon icon ion-ios-arrow-back"></button>
+        </div>
+        <h1 class="title">Nieuw wachtwoord</h1>
+    </ion-header-bar>
+
+    <ion-content has-header="true" padding="true">
+
+        <ion-input ng-show="formWachtwoord" class="item item-input">
+            <ion-label>E-mail</ion-label>
+            <input type="email" ng-model="user.emailadres">
+        </ion-input>
+
+        <ion-input ng-show="formWachtwoord" class="item item-input">
+            <ion-label>Wachtwoord</ion-label>
+            <input type="password" ng-model="user.wachtwoord">
+        </ion-input>
+<!--
+        <ion-input ng-show="formWachtwoord" class="item item-input">
+            <ion-label>Wachtwoord herhalen</ion-label>
+            <input type="password" ng-model="user.wachtwoord2">
+        </ion-input>
+-->
+        <div class="padding" ng-show="formWachtwoord">
+            <button class="button button-block button-positive" ng-click="nieuwWachtwoord(user)">Wijzig wachtwoord</button>
+        </div>
+
+        <div ng-show="onbekend">
+            <div class="padding trinl-rood">
+                Het gebruikte e-mailadres is onbekend.
+            </div>
+        </div>
+        <div ng-show="geactiveerd">
+            <div class="padding trinl-rood">
+                <br>
+                <h1 class="trinl-rood">Je wachtwoord is gewijzigd</h1>
+             </div>
+        </div>
+        <div ng-show="nietsingevuld">
+            <div class="padding trinl-rood">
+                <p>E-mailadres en wachtwoord verplicht.</p>
+            </div>
+        </div>
+        <div ng-show="wachtwoordenongelijk">
+            <div class="padding trinl-rood">
+                <p>De twee wachtwoorden zijn verschillend. Probeer het opnieuw.</p>
+            </div>
+        </div>
+        <div ng-show="wachtwoordweak">
+            <div class="padding trinl-rood">
+                <p>Wachtwoord voldoet niet aan het voorschrift voor wachtwoord.</p>
+            </div>
+        </div>
+        <div ng-show="verbinding">
+            <div class="padding trinl-rood">
+                <p>Om je wachtwoord te wijzigen is een internetVerbinding nodig..</p>
+            </div>
+        </div>
+        <div ng-show="toelichting">
+            <div class="padding trinl-blauw">
+                <hr><p>Wijzig het wachtwoord van een door jou geregistreerd account.<br>Heb je nog geen geregistreerd account sluit dan dit paneel en kies 'Registreren' in het Hoofdmenu</p><hr>
+            </div>
+        </div>
+        <div ng-show="geregistreerd">
+            <div class="padding">
+                <br>
+                <h1 class="trinl-rood">Welkom. Je bent er bijna.</h1>
+                <h2 class="trinl-geel" style="font-size:20px;">Raadpleeg je e-mail voor een activeringsbericht van:</h2>
+                <h2 class="trinl-blauw" style="font-size:20px;"><br>Tijdreizen in Limburg wachtwoord wijzigen.</h2><br>
+                <h2 class="trinl-geel" style="font-size:20px;">Om jouw nieuwe wachtwoord te activeren, klik op de link in het activeringsbericht.</h2><br>
+                <h2 class="trinl-rood" style="font-size:28px;">Wacht vervolgens totdat dit scherm verdwijnt......</h2>            
+             </div>
+        </div>
+        <div ng-show="wachtwoordrichtlijn">
+            <div class="padding"><span class="trinl-rood">
+                <p>Wachtwoord moet minimaal 1 hoofdletter, minimaal 1 kleine letter en minimaal 1 cijfer bevatten. Verder zijn ook de volgende speciale karakters ( ! ? _ - + = @ # % * ) toegestaan.<br><br>Wachtwoord moet bovendien minimaal 8 karakters lang zijn.</p>
+            </span></div>
+        </div>
+    </ion-content>
+</div>

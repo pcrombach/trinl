@@ -1,0 +1,14 @@
+<ion-popover-view style="height:90%; width: 400px;">
+  <ion-header-bar class="bar-balanced">
+    <button ng-click="closeDoelgroepen()" class="button button-icon icon ion-ios-arrow-back"></button>
+    <h1 class="title">Selecteer een groep</h1>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item style="white-space: wrap; padding-top: -20px; padding-bottom: -10px;"
+        class="item item-body item-icon-left item-text-wrap"
+        ng-repeat="deelnemer in deelnemers | orderBy:'deelnemer.deelnemerNaam.value' track by $index"> {{deelnemer.email}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-popover-view>

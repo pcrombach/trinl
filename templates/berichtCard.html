@@ -1,0 +1,260 @@
+<ion-view title="Bericht Blad">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-ios-arrow-back" ng-click="closeBerichtCard()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon icon ion-help" ng-click="openHelp($event)"></button>
+  </ion-nav-buttons>
+  <ion-content close-option class="has-header">
+    <!-- bericht -->
+    <div><img id="imgForExif" ng-show="details.mode === 'bericht' && details.content !== ''" class="card-bericht"
+        src="{{details.content}}" imageonload /> </div>
+    <div class="spacer"></div>
+    <!-- bericht -->
+    </div>
+    <div class="card">
+      <div class="item item-body">
+        <div class="trinl-naam"><b>{{details.naam}}</b></div>
+        <div class="spacer10"></div>
+        <div class="row" ng-if="details.profiel != 'anoniem'">
+          <div ng-click="clickedAvatar(details)" class="col trinl-avatar">
+            <i ng-if="details.avatarInverse == '0' && details.avatarLetter == ''"
+              class="avatar avatar-color-{{details.avatarColor}}">?</i>
+            <i ng-if="details.avatarInverse == '1' && details.avatarLetter == ''"
+              class="avatar avatar-inverse avatar-color-{{details.avatarColor}}">?</i>
+            <i ng-if="details.avatarInverse == '0' && details.avatarLetter != ''"
+              class="avatar avatar-color-{{details.avatarColor}} avatar-letter-{{details.avatarLetter}}"></i>
+            <i ng-if="details.avatarInverse == '1' && details.avatarLetter != ''"
+              class="avatar avatar-inverse avatar-color-{{details.avatarColor}} avatar-letter-{{details.avatarLetter}}"></i>
+          </div>
+          <div ng-click="clickedBericht(details.berichtModel)" class="col trinl-gebruiker-datum-socio-container">
+            <div class="row trinl-gebruiker trinl-blauw">{{details.gebruikerNaam}}</div>
+            <div class="row trinl-datums-container">
+              <div class="trinl-datum"><span class="trinl-blauw">{{details.createdOn}}</span></div>
+              <div class="trinl-datum-ago"><span class="trinl-blauw" datum am-time-ago="details.createdOn"></span></div>
+            </div>
+            <div class="row trinl-socio-container">
+              <!--
+              <div
+                ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && details.xprive && details.gebruikerId === ceo.Id"
+                class="trinl-socio-icon" ng-click="updateXprive($event)">
+                <i class="icon socio-red ion-locked"></i>
+              </div>
+              <div
+                ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && !details.xprive && details.gebruikerId === ceo.Id"
+                class="trinl-socio-icon" ng-click="updateXprive($event)">
+                <i class="icon socio-green ion-unlocked"></i>
+              </div>
+              -->
+              <div ng-if="details.gelezen !== 0" class="trinl-socio-icons-aantal">
+                <div class="trinl-socio-icontext">&nbsp;{{details.gelezen}}</div>
+                <i class="icon socio-black ion-eye"></i>
+              </div>
+              <div ng-if="details.reactiesAantal !== 0" class="trinl-socio-spacer-small"></div>
+              <div ng-if="details.reactiesAantal !== 0" class="trinl-socio-icons-aantal">
+                <div class="trinl-socio-icontext">&nbsp;{{details.reactiesAantal}}</div>
+                <i class="icon socio-blue ion-chatbox"></i>
+              </div>
+              <div ng-if="details.xnew" class="trinl-socio-spacer-small"></div>
+              <div ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && details.xnew" class="trinl-socio-icon">
+                <i class="icon socio-red ion-ios-bell"></i>
+              </div>
+              <div ng-if="!details.xnew" class="trinl-socio-spacer-small"></div>
+              <div class="trinl-socio-icon" ng-click="updateStar()" ng-if="details.star">
+                <i class="icon socio-orange ion-star"></i>
+              </div>
+              <div class="trinl-socio-icon" ng-click="updateStar()" ng-if="!details.star">
+                <i class="icon socio-black ion-star"></i>
+              </div>
+              <div class="trinl-socio-icon" ng-click="updateVolgt()"
+                ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && details.volgt && (details.gebruikerId !== ceo.Id)">
+                <i class="icon socio-green ion-pin"></i>
+              </div>
+              <div class="trinl-socio-icon" ng-click="updateVolgt()"
+                ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && !details.volgt && (details.gebruikerId !== ceo.Id)">
+                <i class="icon socio-red ion-pin"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-if="details.profiel == 'anoniem'">
+          <div ng-click="clickedAvatar(details)" class="col trinl-avatar-anoniem">
+            <img class="trinl-avatar-anoniem-img" ng-src="images/small_non_existing_id.png">
+          </div>
+          <div ng-click="clickedBericht(details.berichtModel)" class="col trinl-gebruiker-datum-socio-container">
+            <div class="row trinl-gebruiker trinl-blauw">anoniem</div>
+            <div class="row trinl-datums-container">
+              <div class="trinl-datum"><span class="trinl-blauw">{{details.createdOn}}</span></div>
+              <div class="trinl-datum-ago"><span class="trinl-blauw" datum am-time-ago="details.createdOn"></span></div>
+            </div>
+            <div class="row trinl-socio-container">
+              <!--
+              <div
+                ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && details.xprive && details.gebruikerId === ceo.Id"
+                class="trinl-socio-icon" ng-click="updateXprive($event)">
+                <i class="icon socio-red ion-locked"></i>
+              </div>
+              <div
+                ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && !details.xprive && details.gebruikerId === ceo.Id"
+                class="trinl-socio-icon" ng-click="updateXprive($event)">
+                <i class="icon socio-green ion-unlocked"></i>
+              </div>
+              -->
+              <div ng-if="details.gelezen !== 0" class="trinl-socio-icons">
+                <div class="trinl-socio-icontext">&nbsp;{{details.gelezen}}</div>
+                <i class="icon socio-black ion-eye"></i>
+              </div>
+              <div ng-if="details.reactiesAantal !== 0" class="trinl-socio-spacer"></div>
+              <div ng-if="details.reactiesAantal !== 0" class="trinl-socio-icons">
+                <div class="trinl-socio-icontext">&nbsp;{{details.reactiesAantal}}</div>
+                <i class="icon socio-blue ion-chatbox"></i>
+              </div>
+              <div ng-if="details.xnew" class="trinl-socio-spacer"></div>
+              <div ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && details.xnew" class="trinl-socio-icon">
+                <i class="icon socio-red ion-ios-bell"></i>
+              </div>
+              <div ng-if="!details.xnew" class="trinl-socio-spacer"></div>
+              <div class="trinl-socio-icon" ng-click="updateStar()" ng-if="details.star">
+                <i class="icon socio-orange ion-star"></i>
+              </div>
+              <div class="trinl-socio-icon" ng-click="updateStar()" ng-if="!details.star">
+                <i class="icon socio-black ion-star"></i>
+              </div>
+              <div class="trinl-socio-icon" ng-click="updateVolgt()"
+                ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && details.volgt && (details.gebruikerId !== ceo.Id)">
+                <i class="icon socio-green ion-pin"></i>
+              </div>
+              <div class="trinl-socio-icon" ng-click="updateVolgt()"
+                ng-if="(+ceo.profielId === 4 || +ceo.profielId === 5) && !details.volgt && (details.gebruikerId !== ceo.Id)">
+                <i class="icon socio-red ion-pin"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <div ng-if="details.groep != ''" class="trinl-groeptext">{{details.groep}}</div>
+        <div>
+        </div>
+        <!-- Coordinaten -->
+        <!--
+        <div class="trinl-titel-coords">GPS coordinaten</div>
+        <div class="trinl-tekst-coords">
+          <p>{{details.lat}} - {{details.lng}}</p>
+        </div>
+        -->
+        <!-- Coordinaten -->
+        <!-- Gekoppeld spoor -->
+        <!--
+        <div ng-if="details.trackNaam !== ''" class="spacer"></div>
+        <div ng-if="details.trackNaam !== ''" class="trinl-tracknaamtekst"> Gekoppeld aan Spoor </div>
+        <div ng-if="details.trackNaam !== ''" class="trinl-tracknaam">
+          <p><span>{{details.trackNaam}}</span></p>
+        </div>
+        -->
+        <!-- Gekoppeld spoor -->
+        <div class="trinl-button-container">
+          <div class="trinl-verwijder-left my-icon" ng-click="deleteBericht()" ng-if="details.gebruikerId === ceo.Id">
+            <i class="trinl-icon-edit ion-trash-a"></i>
+            <div class="trinl-text-verwijder-left">Verwijder</div>
+          </div>
+          <div class="trinl-wijzig-left my-icon" ng-click="openBerichtTekst()" ng-if="details.gebruikerId === ceo.Id">
+            <i class="trinl-icon-edit ion-compose"></i>
+            <div class="trinl-text-wijzig-left">wijzig</div>
+          </div>
+          <!--
+          <div class="trinl-kaart-right my-icon" ng-click="selecteerBericht()">
+            <i class="trinl-icon-edit ion-map"></i>
+            <div class="trinl-text-edit-right">kaart</div>
+          </div>
+          -->
+          <div ng-if="+ceo.profielId === 5 || +ceo.profielId === 4 || details.gebruikerId === ceo.Id" class="trinl-reactie-right my-icon"
+            ng-click="reactie()">
+            <i class="trinl-icon-edit ion-reply"></i>
+            <div class="trinl-text-edit-right">reageer</div>
+          </div>
+        </div>
+        <div class="label-container">
+          <div class="trinl-tag" ng-repeat="berichtTag in details.tags track by $index">
+            <div ng-if="berichtTag.get('gebruikerId') === ceo.Id">
+              <div class="trinl-tags">
+                <div class="trinl-tag-icon-left"><i ng-click="selectLabelTag(berichtTag)" class="ion-pricetag"></i></div>
+                <div ng-if="berichtTag.xData.get('Id').length <= 3 && berichtTag.xData.get('gebruikerId') === ''"
+                  class="trinl-tag-tekst trinl-blauw">{{berichtTag.xData.get('tag')}}</div>
+                <div ng-if="berichtTag.xData.get('Id').length <= 3 && berichtTag.xData.get('gebruikerId') != ''"
+                  class="trinl-tag-tekst trinl-rood">{{berichtTag.xData.get('tag')}}</div>
+                <div ng-if="berichtTag.xData.get('Id').length >= 3" class="trinl-tag-tekst">{{berichtTag.xData.get('tag')}}
+                </div>
+                <div class="trinl-tag-icon-right"><i ng-click="deleteLabelTag(berichtTag)" class="ion-close-circled"></i>
+                </div>
+              </div>
+            </div>
+            <div ng-if="berichtTag.get('gebruikerId') !== ceo.Id">
+              <div class="trinl-tags-disabled">
+                <div class="trinl-tag-icon-left"><i class="ion-pricetag"></i></div>
+                <div ng-if="berichtTag.xData.get('Id').length <= 3 && berichtTag.xData.get('gebruikerId') === ''"
+                  class="trinl-tag-tekst trinl-blauw">{{berichtTag.xData.get('tag')}}</div>
+                <div ng-if="berichtTag.xData.get('Id').length <= 3 && berichtTag.xData.get('gebruikerId') != ''"
+                  class="trinl-tag-tekst trinl-rood">{{berichtTag.xData.get('tag')}}</div>
+                <div ng-if="berichtTag.xData.get('Id').length >= 3" class="trinl-tag-tekst">{{berichtTag.xData.get('tag')}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button ng-click="addTagToBericht($event)" class="trinl-plus-start button button-icon ion-plus"></button>
+          </div>
+        </div>
+        <div ng-if="details.htmltekst != '<p></p>' && details.htmltekst != '<p> </p>'" class="spacer10"></div>
+        <div ng-if="details.htmltekst != '<p></p>' && details.htmltekst != '<p> </p>'" class="trinl-tekst"
+          ng-bind-html="details.htmltekst"></div>
+      </div>
+      <div ng-if="details.reacties.length != 0">
+        <div class="row trinl-titel"><span class="trinl-rood">Reacties</span></div>
+        <div class="item item-body" ng-repeat="reactie in details.reacties | orderBy:reactiesPredicate:reactiesReverse">
+          <div class="row"
+            ng-if="reactie.profiel.value === 'gebruiker' || reactie.profiel.value === 'developer' || reactie.profiel.value === 'team'">
+            <div ng-click="clickedAvatar(reactie.gebruikerId.value)" class="col trinl-avatar">
+              <i ng-if="reactie.avatarInverse.value == '0' && reactie.avatarLetter.value == ''"
+                class="avatar avatar-color-{{reactie.avatarColor.value}}">?</i>
+              <i ng-if="reactie.avatarInverse.value == '1' && reactie.avatarLetter.value == ''"
+                class="avatar avatar-inverse avatar-color-{{reactie.avatarColor.value}}">?</i>
+              <i ng-if="reactie.avatarInverse.value == '0' && reactie.avatarLetter.value != ''"
+                class="avatar avatar-color-{{reactie.avatarColor.value}} avatar-letter-{{reactie.avatarLetter.value}}"></i>
+              <i ng-if="reactie.avatarInverse.value == '1' && reactie.avatarLetter.value != ''"
+                class="avatar avatar-inverse avatar-color-{{reactie.avatarColor.value}} avatar-letter-{{reactie.avatarLetter.value}}"></i>
+            </div>
+            <div ng-click="clickedBericht(bericht)" class="col trinl-gebruiker-datum-socio-container">
+              <div class="row trinl-gebruiker trinl-blauw">{{reactie.gebruikerNaam.value}}</div>
+              <div class="row trinl-datum-ago"><span class="trinl-blauw" datum
+                  am-time-ago="reactie.createdOn.value"></span>
+              </div>
+              <div class="row trinl-socio-container">
+                <div class="trinl-socio-icons" ng-if="reactie.xData.sup.xnew.value"><i
+                    class="icon socio-red ion-ios-bell"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row"
+            ng-if="reactie.profiel.value !== 'gebruiker' && reactie.profiel.value !== 'developer' && reactie.profiel.value !== 'team'">
+            <div ng-click="clickedAvatar(bericht.gebruikerId.value)" class="col trinl-avatar-anoniem">
+              <img class="trinl-avatar-anoniem-img" ng-src="images/small_non_existing_id.png">
+            </div>
+            <div ng-click="clickedBericht(bericht)" class="col trinl-gebruiker-datum-socio-container">
+              <div class="row trinl-gebruiker trinl-blauw">anoniem</div>
+              <div class="row trinl-datum-ago"><span class="trinl-blauw" datum
+                  am-time-ago="reactie.createdOn.value"></span>
+              </div>
+              <div class="row trinl-socio-container">
+                <div class="trinl-socio-icons" ng-if="reactie.xData.xnew.value"><i
+                    class="icon socio-red ion-ios-bell"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row trinl-reactie-tekst" ng-bind-html="reactie.reactie.value">
+          </div>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

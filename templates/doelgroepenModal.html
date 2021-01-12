@@ -1,0 +1,40 @@
+<div class="modal helpmodal">
+  <ion-header-bar class="bar-balanced">
+    <div class="buttons">
+      <button ng-click="closeDoelgroepen()" class="button button-icon icon ion-ios-arrow-back"></button>
+    </div>
+    <h1 class="title">Seleteer een groep</h1>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <pre>{{doelgroepenDeelnemers}}</pre>
+    <ion-item style="white-space: wrap; padding-top: -20px; padding-bottom: -10px;"
+      class="item item-body item-icon-left item-text-wrap"
+      ng-repeat="groep in groepen | orderBy: 'groep.groep' track by $index">
+      {{groep.groep}}
+      <!--
+      <div class="row">
+        <div class="col col-90">
+          <span class="trinl-help-naam">{{deelnemer.naam.value}}</span>
+        </div>
+        <div class="col col-10">
+          <div style="margin-left: -16px; margin-top: 0; width: 10px; position: absolute; top: 50%;
+          -ms-transform: translateY(-50%); transform: translateY(-50%);">
+            <i ng-if="deelnemer.avatarInverse == '0' && deelnemer.avatarLetter == ''"
+                class="avatar avatar-color-{{deelnemer.avatarColor}}">?</i>
+            <i ng-if="details.avatarInverse == '1' && deelnemer.avatarLetter == ''"
+                class="avatar avatar-inverse avatar-color-{{deelnemer.avatarColor}}">?</i>
+            <i ng-if="details.avatarInverse == '0' && deelnemer.avatarLetter != ''"
+                class="avatar avatar-color-{{deelnemer.avatarColor}} avatar-letter-{{deelnemer.avatarLetter}}"></i>
+            <i ng-if="details.avatarInverse == '1' && deelnemer.avatarLetter != ''"
+                class="avatar avatar-inverse avatar-color-{{deelnemer.avatarColor}} avatar-letter-{{deelnemer.avatarLetter}}"></i>
+          </div>
+        </div>
+
+        <div class="col col-90">
+          <span class="trinl-help-naam">{{deelnemer.naam.value}}</span>
+        </div>
+      </div>
+      -->
+    </ion-item>
+  </ion-content>
+</div>

@@ -1,0 +1,50 @@
+<ion-view title="Instellingen GPS">
+
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+
+    <ion-content scroll="true" class="has-header">
+
+		<ion-list>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+					Nauwkeurigheid
+				</div>
+				<select>
+					<option>0</option>
+					<option selected>10</option>
+					<option>100</option>
+					<option>1000</option>
+				</select>
+			</label>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+					Radius
+				</div>
+				<select>
+					<option>0 m</option>
+					<option selected>10 m</option>
+					<option>100 m</option>
+					<option>1000 m</option>
+				</select>
+			</label>
+
+			<ion-toggle ng-model="cameradebug.checked" ng-change="cameradebugChange()">Debug</ion-toggle>
+
+			<label ng-if="platform='Android' || paltform='IOS'" class="item item-input item-select">
+				<div class="input-label">
+					Afstand filter
+				</div>
+				<select>
+					<option>0 m</option>
+					<option selected>9999999 m</option>
+					<option>100 m</option>
+					<option>1000 m</option>
+				</select>
+			</label>
+
+		</ion-list>
+	</ion-content>
+</vion-view>

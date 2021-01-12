@@ -1,0 +1,25 @@
+<ion-popover-view style="height:90%; width: 400px;">
+  <ion-header-bar class="bar-balanced">
+    <button ng-click="closeDoelgroepen()" class="button button-icon icon ion-ios-arrow-back"></button>
+    <h1 class="title">Selecteer een groep</h1>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item style="white-space: wrap; padding-top: -20px; padding-bottom: -10px;" class="item-button-right"
+        ng-repeat="groep in groepen" ng-click="selectGroep(groep.groep)">
+        {{groep.groep}}
+        <button ng-click="openGroepDeelnemers(groep.groep, $event); $event.stopPropagation();" class="button button-icon">
+          <i class="button-icon iconinlistitem icon ion-ios-information-outline"></i>
+        </button>
+      </ion-item>
+
+      <!--
+      <ion-item style="white-space: wrap; padding-top: -20px; padding-bottom: -10px;"
+        class="item item-body item-icon-left item-text-wrap"
+        ng-repeat="groep in groepen | orderBy: 'groep.groep' track by $index">
+        {{groep.groep}}
+      </ion-item>
+    -->
+    </ion-list>
+  </ion-content>
+</ion-popover-view>

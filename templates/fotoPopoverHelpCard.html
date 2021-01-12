@@ -1,0 +1,36 @@
+<ion-popover-view style="height:420px; width: 300px;">
+  <ion-header-bar class="bar-balanced">
+    <button ng-click="poiCloseHelpCard()" class="button button-icon icon ion-ios-arrow-back"></button>
+    <h1 class="title">Toelichting Foto Kaart</h1>
+  </ion-header-bar>
+  <ion-content class="has-header">
+        <pre>{{cardHelps}}</pre>
+
+    <ion-item style="white-space: wrap; padding-top: -20px; padding-bottom: -10px;"
+      class="item item-body item-icon-left item-text-wrap"
+      ng-repeat="help in cardHelps | orderBy: 'help.Id.value' track by $index">
+      <div class="row">
+        <div class="col col-10" ng-if="help.get('icon') === 'avatar'">
+          <div style="margin-left: -16px; margin-top: 0; width: 10px; position: absolute; top: 50%;
+            -ms-transform: translateY(-50%); transform: translateY(-50%);">
+            <i ng-if="details.avatarInverse == '0' && details.avatarLetter == ''"
+              class="avatar avatar-color-{{details.avatarColor}}">?</i>
+            <i ng-if="details.avatarInverse == '1' && details.avatarLetter == ''"
+              class="avatar avatar-inverse avatar-color-{{details.avatarColor}}">?</i>
+            <i ng-if="details.avatarInverse == '0' && details.avatarLetter != ''"
+              class="avatar avatar-color-{{details.avatarColor}} avatar-letter-{{details.avatarLetter}}"></i>
+            <i ng-if="details.avatarInverse == '1' && details.avatarLetter != ''"
+              class="avatar avatar-inverse avatar-color-{{details.avatarColor}} avatar-letter-{{details.avatarLetter}}"></i>
+          </div>
+        </div>
+        <div class="col col-10" ng-if="help.get('icon') !== 'avatar'">
+          <i class={{help.get('icon')}}></i>
+        </div>
+        <div class="col col-90">
+          <span class="trinl-help-naam">{{help.naam.value}}</span>
+          <p ng-bind-html="help.help.value"></p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-content>
+</ion-popover-view>

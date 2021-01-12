@@ -1,0 +1,29 @@
+<ion-popover-view style="height:50%; width: 450px;">
+  <ion-header-bar class="bar-balanced">
+    <button ng-click="closeGroepDeelnemers()" class="button button-icon icon ion-ios-arrow-back"></button>
+    <h1 class="title">Deelnemers</h1>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item style="white-space: wrap; padding-top: -20px; padding-bottom: -10px;" class="item-button-right"
+        ng-repeat="deelnemer in deelnemers">
+        <div class="row">
+          <div class="col col-10">
+            <div style="margin-left: -16px; margin-top: 0; width: 10px; position: absolute; top: 50%;
+                                      -ms-transform: translateY(-50%); transform: translateY(-50%);">
+              <i ng-if="deelnemer.get('avatarInverse') == '0' && deelnemer.get('avatarLetter') == ''"
+                class="avatar avatar-color-{{deelnemer.get('avatarColor')}}">?</i>
+              <i ng-if="deelnemer.get('avatarInverse') == '1' && deelnemer.get('avatarLetter') == ''"
+                class="avatar avatar-inverse avatar-color-{{deelnemer.get('avatarColor')}}">?</i>
+              <i ng-if="deelnemer.get('avatarInverse') == '0' && deelnemer.get('avatarLetter') != ''"
+                class="avatar avatar-color-{{deelnemer.get('avatarColor')}} avatar-letter-{{deelnemer.get('avatarLetter')}}"></i>
+              <i ng-if="deelnemer.get('avatarInverse') == '1' && deelnemer.get('avatarLetter') != ''"
+                class="avatar avatar-inverse avatar-color-{{deelnemer.get('avatarColor')}} avatar-letter-{{deelnemer.get('avatarLetter')}}"></i>
+            </div>
+          </div>
+          <div class="col col-90"> <br>{{deelnemer.get('deelnemerNaam')}}<br>{{deelnemer.get('emailadres')}}</p> </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-popover-view>

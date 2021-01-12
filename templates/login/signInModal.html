@@ -1,0 +1,48 @@
+<div class="modal signinmodal" ng-controller="SignInCtrl">
+
+    <ion-header-bar class="bar-balanced">
+        <div class="buttons">
+            <button ng-click="closeModalSignIn()" class="button button-icon icon ion-ios-arrow-back"></button>
+        </div>
+        <h1 class="title">Natuur en Milieufederatie Limburg</h1>
+    </ion-header-bar>
+
+    <ion-content has-header="true" padding="true">
+
+        <div>
+            <div>
+                <img ng-src="images/5485.png" align="left" class="tile">
+            </div>
+            <div class="logintext trinl-blauw">
+
+                <p>Voor het gebruik van de Tranchotkaarten (1800) vragen wij je om je eenmalig te registreren. De uitgever van de app mag deze kaarten namelijk alleen verspreiden onder leden en  ‘vrienden’ van de Stichting Natuur en Milieufederatie Limburg (NMF Limburg). Door te registreren verbind jij je (gratis) als vriend aan de NMF Limburg (zie disclaimer).</p>
+
+                <p>Napoleon Bonaparte gaf kolonel Tranchot in de 19de eeuw de opdracht om het gebied tussen Maas en Rijn te karteren. De Franse ingenieur-cartograaf maakte vervolgens gedetailleerde topografische kaarten van onder meer Limburg. Deze Tranchot-kaarten zijn een waardevolle bron voor de bestudering van de Limburgse historie. Na registratie krijg je toegang tot deze prachtige kaarten die nu voor het eerst digitaal worden aangeboden voor gebruik met GPS.</p>
+
+                <p>Als geregistreerde gebruiker mag je ook zelf 'Locaties' van interessante plekjes in Limburg aanmaken.</p>
+                <p>Heb je je al geregistreerd, log dan in met je emailadres en wachtwoord.</p>
+            </div>
+            <div style="padding: 0 0 20px 10px;" class="row">
+
+                <div ng-if="isOnline" class="col">
+                    <a ng-click="openModalInloggen()" align="center" style="color: black;" class="button row-button">Inloggen</a>
+                </div>
+
+                <div ng-if="isOnline" class="col">
+                    <a ng-click="openModalRegistreer()" align="center" style="color: black;" class="button row-button">Registreren</a>
+                </div>
+
+            </div>
+            <div class="trinl-rood" style="padding: 0 0 20px 10px; font-size: 16px;" ng-if="!isOnline">             
+                <p>Om te registreren of in te loggen is een internetverbinding noodzakelijk.</p>
+            </div>
+            <div class="trinl-rood" style="padding: 0 0 20px 10px; font-size: 16px;" ng-if="isOnline">             
+                <p> </p>
+            </div>
+        </div>
+    </ion-content>
+
+</div>
+
+
+

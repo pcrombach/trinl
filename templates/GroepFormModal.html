@@ -1,0 +1,23 @@
+<div class="modal myModal" ng-controller="BerichtFormCtrl">
+
+    <ion-header-bar class="bar-balanced">
+        <div class="buttons">
+            <button ng-click="closeGroepForm()" class="button button-icon icon ion-ios-arrow-back"></button>
+        </div>
+        <h1 class="title"></h1>
+        <div class="buttons">
+	        <button ng-click="saveGroep(groep)" class="button button-icon icon ion-paper-airplane">&nbsp;Nieuwe groep</button>
+        </div>
+    </ion-header-bar>
+
+    <ion-scroll class="has-header" scroll-handle="your-scroll-handle">
+		<div class="list">
+			<label class="item item-input">
+				<span class="input-label">Groep</span>
+		    	<input type="text" ng-model="groep.groep">		  	
+		  	</label>
+		</div>
+		<div class="padding trinl-blauw"><p></p></div>
+
+	</ion-scroll>
+</ion-view>

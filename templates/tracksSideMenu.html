@@ -1,0 +1,186 @@
+<body ng-controller="TracksCtrl">
+  <ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+      <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+          <button ng-click="toggleLeftSideMenu()" class="button button-icon button-clear ion-navicon"></button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view name="menuTrackContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu expose-aside-when="large" side="left">
+      <ion-header-bar class="bar-balanced">
+        <h1 class="title">Sporen menu</h1>
+          <button class="button button-icon icon ion-help" ng-click="openHelpTrackMenu($event)"></button>
+      </ion-header-bar>
+      <ion-content>
+        <ion-list>
+          <div class="item item-divider"> Navigeer </div>
+          <ion-item ng-click="openKaart2()" class="item item-icon-left" href="#/app/kaart">
+            <i class="icon ion-home"></i> Home (Kaart) </ion-item>
+          <div class="item item-divider"> Zoeken </div>
+          <ion-item class="item item-input-inset">
+            <label class="item-input-wrapper">
+              <i class="icon ion-search placeholder-icon"></i>
+              <input type="text" class="detectFocus" placeholder="Zoek in Sporen" ng-model="searchTrack.naam">
+            </label>
+            <button ng-if="searchTrack.naam.length" ng-click="clearSearchTrack()"
+              class="input-button button button-icon ion-close-circled">
+            </button>
+          </ion-item>
+          <ion-item class="item item-divider"> Filter </ion-item>
+          <label class="item item-radio" nav-clear menu-close ng-click="tracksFilterAlle()">
+            <input type="radio" name="filter">
+            <div class="item item-icon-left ">
+              <i class="icon ion-filing"></i> Alle {{aantalAlle || ''}} </div>
+          </label>
+          <label ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && aantalMijn > 0" class="item item-radio"
+            nav-clear menu-close ng-click="tracksFilterMijn()">
+            <input type="radio" name="filter">
+            <div class="item item-icon-left ">
+              <i class="icon ion-person"></i> Mijn {{aantalMijn || ''}} </div>
+          </label>
+          <label ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && aantalPublic > 0" class="item item-radio"
+            nav-clear menu-close ng-click="tracksFilterPublic()">
+            <input type="radio" name="filter">
+            <div class="item item-icon-left ">
+              <i class="icon ion-person"></i> Publicaties {{aantalPublic || ''}} </div>
+          </label>
+          <label ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && aantalNieuw > 0" class="item item-radio"
+            nav-clear menu-close ng-click="tracksFilterNieuw()">
+            <input type="radio" name="filter">
+            <div class="item item-icon-left ">
+              <i ng-if="aantalNieuw != 0" class="icon socio-red ion-ios-bell"></i>
+              <i ng-if="aantalNieuw == 0" class="icon ion-ios-bell"></i> Nieuw {{aantalNieuw || ''}} </div>
+          </label>
+          <label class="item item-radio" nav-clear menu-close ng-click="tracksFilterFavorieten()">
+            <input type="radio" name="filter">
+            <div class="item item-icon-left ">
+              <i ng-if="aantalStar !== 0" class="icon socio-orange ion-star"></i>
+              <i ng-if="aantalStar == 0" class="icon socio-black ion-star"></i> Favorieten {{aantalStar || ''}} </div>
+          </label>
+          <label class="item item-radio" nav-clear menu-close ng-click="tracksFilterGeen()">
+            <input type="radio" name="filter">
+            <div class="item item-icon-left ">
+              <i class="icon ion-android-checkbox-outline-blank"></i> Geen </div>
+          </label>
+          <div ng-show="searchTrack.naam == ''">
+            <ion-item class="item item-divider"> Filter op label </ion-item>
+            <label class="item item-radio" nav-clear menu-close ng-click="tracksFilterGeenLabel()">
+              <input type="radio" name="filter">
+              <div class="item item-icon-left ">
+                <i class="icon ion-close"></i> Geen labels {{aantalGeenLabels || ''}} </div>
+            </label>
+            <ion-list click-for-options-wrapper>
+              <ion-item class="item-icon-left wrap" ng-repeat="tag in data.tags track by tag.tag"
+                nav-clear menu-close ng-click="filterTag(tag)">
+                <i class="icon ion-pricetag"></i>
+                <ion-option-button class="button-balanced" ng-click="editTagFromSideMenu(tag, $index)">
+                  <div class="aligner"></div><i class="radio-icon ion-edit"></i>&nbsp;Wijzig
+                </ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="deleteTagFromSideMenu(tag, $index)">
+                  <div class="aligner"></div><i class="radio-icon ion-trash-b"></i>&nbsp;Verwijder
+                </ion-option-button>
+                <div ng-if="tag.tagId.length <= 3 && tag.tagGebruikerId === ''"
+                  class="trinl-blauw"> {{tag.tag}} {{tag.aantal || ''}}</div>
+                <div ng-if="tag.tagId.length <= 3 && tag.tagGebruikerId != ''"
+                  class="trinl-rood">{{tag.tag}} {{tag.aantal || ''}}</div>
+                <div ng-if="tag.tagId.length > 3">{{tag.tag}} {{tag.aantal || ''}}</div>
+              </ion-item>
+            </ion-list>
+          </div>
+          <ion-item class="item item-divider"> Sorteren </ion-item>
+          <label class="item item-radio" nav-clear menu-close ng-click="tracksSortNaamClick()">
+            <input type="radio" name="sorteer">
+            <div class="item item-icon-left ">
+              <i class="icon ion-edit"></i> Naam </div>
+            <i ng_if="tracksSortNaamUp" class="radio-icon ion-arrow-up-b"></i>
+            <i ng_if="!tracksSortNaamUp" class="radio-icon ion-arrow-down-b"></i>
+          </label>
+          <label class="item item-radio" nav-clear menu-close ng-click="tracksSortDatumClick()">
+            <input type="radio" name="sorteer">
+            <div class="item item-icon-left">
+              <i class="icon ion-calendar"></i> Datum </div>
+            <i ng_if="tracksSortChangedOnUp" class="radio-icon ion-arrow-up-b"></i>
+            <i ng_if="!tracksSortChangedOnUp" class="radio-icon ion-arrow-down-b"></i>
+          </label>
+          <label class="item item-radio" nav-clear menu-close ng-click="tracksSortGelezenClick()">
+            <input type="radio" name="sorteer">
+            <div class="item item-icon-left">
+              <i class="icon ion-eye"></i> Gelezen </div>
+            <i ng_if="tracksSortGelezenUp" class="radio-icon ion-arrow-up-b"></i>
+            <i ng_if="!tracksSortGelezenUp" class="radio-icon ion-arrow-down-b"></i>
+          </label>
+          <ion-item class="item item-divider"> Diversen </ion-item>
+          <ion-item class="item item-icon-left" nav-clear ng-click="verwijderSelectie()">
+            <i class="icon ion-ios-trash"></i> Verwijder selectie </ion-item>
+          <ion-item class="item item-icon-left" nav-clear ng-click="geenLabelSelectie($event, $scope.global.tags)">
+            <i class="icon ion-pricetags"></i> Geen labels labelen </ion-item>
+          <!-- Header -->
+          <!-- Desktop -->
+          <ion-item ng-if="((+ceo.profielId == 4 || +ceo.profielId == 5) && dropbox && !isMobile)"
+            class="item item-divider"> Dropbox </ion-item>
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && !online && !isMobile"
+            class="item item-divider">
+            <span class="trinl-headertext-disabled">Dropbox offline</span>
+          </ion-item>
+          <!-- Mobiel -->
+          <ion-item ng-if="((+ceo.profielId == 4 || +ceo.profielId == 5) && online && isMobile)"
+            class="item item-divider"> Dropbox </ion-item>
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && !online && isMobile"
+            class="item item-divider">
+            <span class="trinl-headertext-disabled">Dropbox offline</span>
+          </ion-item>
+          <!-- Importeren -->
+          <!-- Desktop -->
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && dropbox && !isMobile"
+            class="item item-icon-left" nav-clear href="#/app/trackdropbox">
+            <i class="icon ion-ios-redo"></i> Importeren (gpx) </ion-item>
+          <!-- mobile -->
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && dropbox && online && isMobile"
+            class="item item-icon-left" nav-clear href="#/app/trackdropbox">
+            <i class="icon ion-ios-redo"></i> Importeren (gpx) </ion-item>
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && dropbox && !online && isMobile"
+            class="item item-icon-left">
+            <i class="icon ion-ios-redo my-icon-disabled"></i>
+            <span class="trinl-text-disabled">Importeren (gpx)</span>
+          </ion-item>
+          <!-- Exporteren -->
+          <!-- Desktop -->
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && dropbox && !isMobile"
+            class="item item-icon-left" nav-clear ng-click="exporteerSelectie()"> <i class="icon ion-ios-undo"></i>
+            Exporteren (gpx) selectie</ion-item>
+          <!-- Mobile -->
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && dropbox && online && isMobile"
+            class="item item-icon-left" nav-clear ng-click="exporteerSelectie()">
+            <i class="icon ion-ios-undo"></i> Exporteren (gpx) selectie </ion-item>
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && dropbox && !online && isMobile"
+            class="item item-icon-left">
+            <i class="icon ion-ios-undo my-icon-disabled"></i>
+            <span class="trinl-text-disabled">Exporteren (gpx) selectie</span>
+          </ion-item>
+          <!-- Koppelen -->
+          <!-- Mobile -->
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && !dropbox && online && isMobile"
+            class="item item-icon-left" nav-clear menu-close ng-click="setDropbox()">
+            <i class="icon ion-log-out"></i> Koppelen Dropbox </ion-item>
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && !dropbox && !online && isMobile"
+            class="item item-icon-left">
+            <i class="icon ion-log-out my-icon-disabled"></i>
+            <span class="trinl-text-disabled">Koppelen Dropbox</span>
+          </ion-item>
+          <!-- Ontkoppelen -->
+          <!-- Mobile -->
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && dropbox && online && isMobile"
+            class="item item-icon-left" nav-clear menu-close ng-click="resetDropbox()">
+            <i class="icon ion-log-out"></i> Ontkoppelen Dropbox </ion-item>
+          <ion-item ng-if="(+ceo.profielId == 4 || +ceo.profielId == 5) && dropbox && !online && isMobile"
+            class="item item-icon-left">
+            <i class="icon ion-log-out my-icon-disabled"></i>
+            <span class="trinl-text-disabled">Ontkoppelen Dropbox</span>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu>
+  </ion-side-menus>
+</body>

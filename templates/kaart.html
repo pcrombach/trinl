@@ -1,0 +1,74 @@
+<ion-view>
+  <ion-nav-title>
+    {{kaartTitle}}
+  </ion-nav-title>
+  <ion-nav-buttons>
+    <button ng-if="snelMenuPos === 'l'" ng-click="snelMenuOpen(pos)"
+      class="space-right-icon button button-icon icon ion-android-more-vertical"></button>
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="secondary">
+    <button ng-click="gpsWatchChange()" class="button button-clear header-icon ion-navigate"></button>
+    <!-- <button ng-click="gotoHelp()" class="button button-clear header-icon ion-help"></button> -->
+    <button ng-click="openKaartOpties($event)" class="button button-icon icon ion-map"></button>
+    <button ng-if="snelMenuPos === 'r'" ng-click="snelMenuOpen(pos)"
+      class="space-left-icon button button-icon icon ion-android-more-vertical"></button>
+  </ion-nav-buttons>
+  <ion-scroll can-swipe-back="false" direction="y" style="right: 0;bottom: 40;left: 0;position: absolute;"
+    class="has-header has-footer">
+    <div data-tap-disabled="true" id="lfmap"></div>
+    <div ng-show="crossHair"><img ng-src="images/mycrosshair_02.png" class="fullscreen-image" style:"z-index:100" />
+    </div>
+    <!--        <div ng-if="spinner"><ion-spinner></ion-spinner></div> -->
+  </ion-scroll>
+
+  <ion-footer-bar ng-if="footerOpacity" class="bar-light">
+    <div style="width: 100%;" class="range">
+      <i class="icon ion-icon ion-arrow-left-c footerToggleLeft" ng-click="toggleStatus()"></i>
+      <input type="range" name="opacity" min="0" max="100" value="{{opacity.value}}" ng-model="opacity.value">
+      <i class="icon ion-ios-sunny-outline"></i>
+      <div style="width:38px">{{oLevel}}%</div>
+    </div>
+
+  </ion-footer-bar>
+
+  <ion-footer-bar ng-if="!footerOpacity" class="bar-light">
+
+    <div class="buttons">
+
+      <div ng-if="!gpsWatch && !gpsRecord" class="icon ion-icon ion-navigate footergps"></div>
+
+      <div ng-if="gpsWatch && !gpsRecord" class="icon ion-icon ion-navigate footergpsgreen"></div>
+
+      <div ng-if="gpsWatch && gpsRecord" class="icon ion-icon ion-navigate footergpsred"></div>
+
+      <div ng-if="viewport &gt 375" style="width:40px"></div>
+
+      <div class="icon ion-icon ion-search footersearch"></div>
+      <div class="footerSearchTekst">{{+zoomLevel.value}}</div>
+
+      <div ng-if="viewport &gt 375" style="width:40px"></div>
+      <div class="icon ion-icon ion-ios-sunny-outline footersunny"></div>
+      <div class="footerZoomTekst">{{oLevel || 100}}%</div>
+
+      <div ng-if="viewport &gt 375 &&  (ceo.profiel == 'developer')" style="width:40px"></div>
+
+      <div ng-if="viewport &gt 375 && crossHair && (ceo.profiel == 'developer')"
+        class="icon ion-icon ion-map footermap"></div>
+      <div ng-if="viewport &gt 375 && crossHair && (ceo.profiel == 'developer')" class="footerX">{{LatLngCrossHairX}}
+      </div>
+      <div ng-if="viewport &gt 375 && crossHair && (ceo.profiel == 'developer')" class="footerY">{{LatLngCrossHairY}}
+      </div>
+
+      <div ng-if="viewport &gt 375" style="width:40px"></div>
+
+      <div ng-if="crossHair" class="icon ion-icon ion-pinpoint footerroos"></div>
+      <div ng-if="viewport &lt 476 && crossHair" class="footertekstlatlng">{{LatLngCrossHair}}</div>
+      <div ng-if="viewport &gt 475 && crossHair" class="footertekstlatlnglong">{{LatLngCrossHairLong}}</div>
+
+      <!--            <i class="icon ion-icon ion-arrow-right-c footerToggleRight" ng-click="toggleStatus()"></i> -->
+
+    </div>
+  </ion-footer-bar>
+</ion-view>
